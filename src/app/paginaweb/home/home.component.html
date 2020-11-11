@@ -1,0 +1,65 @@
+<app-header-pagina></app-header-pagina>
+
+
+
+<section >
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    
+    <h2 align="center">¡Hola! ¿Podrías decirnos quién eres?</h2>
+<br>
+<br>
+<br>
+      <div class="row ">
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+       
+    
+        <div class="col-lg-4">
+            <div class="card bg-primary"[routerLink]="['/categoria1']" routerLinkActive="router-link-active" >
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="../assets/images/icon/assets-w.png" alt="Income" /></div>
+                        <div class="align-self-center">
+                            <h2 class="text-white m-t-10 m-b-0" [routerLink]="['/categoria1']" routerLinkActive="router-link-active" > <b>Una Persona</b> 
+                              </h2>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <br>
+        <div class="col-lg-4">
+            <div class="card bg-danger">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center" [routerLink]="['/categoria1']" routerLinkActive="router-link-active" ><img src="../assets/images/icon/staff-w.png" alt="Income" /></div>
+                        <div class="align-self-center">
+                            <h2 class="text-white m-t-10 m-b-0" [routerLink]="['/categoria1']" routerLinkActive="router-link-active" ><b>Una empresa</b> 
+                             </h2>
+                           </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <br>
+     <br>
+     <br>
+    
+      
+    </section>
+
+
+    <section>
+
+        <h2 align="center">¿Ya eres miembro? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Inicia sesión</a></h2>
+
+    </section>
