@@ -54,7 +54,7 @@ Table-Layout
   border: 0px; }
 
 .color-table.primary-table thead th {
-  background-color: #745af2;
+  background-color: #56c2c6;
   color: #ffffff; }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -97,9 +97,9 @@ Table-Layout
   color: #ffffff; }
 
 .color-bordered-table.primary-bordered-table {
-  border: 2px solid #745af2; }
+  border: 2px solid #56c2c6; }
   .color-bordered-table.primary-bordered-table thead th {
-    background-color: #745af2;
+    background-color: #56c2c6;
     color: #ffffff; }
 
 .color-bordered-table.success-bordered-table {
@@ -159,13 +159,13 @@ Table-Layout
 .full-color-table.full-primary-table {
   background-color: #f1effd; }
   .full-color-table.full-primary-table thead th {
-    background-color: #745af2;
+    background-color: #56c2c6;
     border: 0;
     color: #ffffff; }
   .full-color-table.full-primary-table tbody td {
     border: 0; }
   .full-color-table.full-primary-table tr:hover {
-    background-color: #745af2;
+    background-color: #56c2c6;
     color: #ffffff; }
 
 .full-color-table.full-success-table {

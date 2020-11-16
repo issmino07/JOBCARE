@@ -32,7 +32,7 @@ google map Page
   color: #ffffff;
   font-size: 16px;
   line-height: 40px;
-  background: #745af2;
+  background: #56c2c6;
   border-radius: 4px;
   padding: 10px 20px; }
 
@@ -47,13 +47,13 @@ google map Page
   bottom: -15px;
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-top: 16px solid #745af2; }
+  border-top: 16px solid #56c2c6; }
 
 .gmaps-overlay_arrow.below {
   top: -15px;
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-bottom: 16px solid #745af2; }
+  border-bottom: 16px solid #56c2c6; }
 
 /*******************
 vector map Page

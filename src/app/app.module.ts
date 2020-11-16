@@ -1,10 +1,11 @@
+import { PagesModule } from './pages/pages.module';
 import { PaginawebModule } from './paginaweb/paginaweb.module';
 import { AuthModule } from './auth/auth.module';
 
 
 
 //modulos
-import { PagesModule } from './pages/pages.module';
+
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -37,6 +38,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     PagesModule,
     AuthModule,
     PaginawebModule
+  
 
   ],
   providers: [],

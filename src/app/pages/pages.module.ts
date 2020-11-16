@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
+import { AdmininicioComponent } from './admininicio/admininicio.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -11,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     PagesComponent,
     DashboardComponent,
+    AdmininicioComponent,
+    AccountSettingsComponent,
     
 
   ],
@@ -19,7 +23,7 @@ import { SharedModule } from '../shared/shared.module';
 
     PagesComponent,
     DashboardComponent,
-
+    AccountSettingsComponent,
   ],
   imports: [
     CommonModule,
@@ -27,4 +31,7 @@ import { SharedModule } from '../shared/shared.module';
     AppRoutingModule
   ]
 })
+
+
+
 export class PagesModule { }

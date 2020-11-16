@@ -287,7 +287,7 @@ option = {
             }
         }
     }
-    , color: ["#745af2", "#f62d51", "#26c6da", "#dadada"]
+    , color: ["#56c2c6", "#f62d51", "#26c6da", "#dadada"]
     , calculable: true
     , series: [
         {

@@ -45,8 +45,8 @@ File: scss
   border-color: #398bf7; }
 
 .card-primary {
-  background: #745af2;
-  border-color: #745af2; }
+  background: #56c2c6;
+  border-color: #56c2c6; }
 
 .card-dark {
   background: #2f3d4a;
@@ -83,8 +83,8 @@ File: scss
   border-color: #398bf7; }
 
 .card-primary {
-  background: #745af2;
-  border-color: #745af2; }
+  background: #56c2c6;
+  border-color: #56c2c6; }
 
 .card-outline-info {
   border-color: #398bf7; }
@@ -117,7 +117,7 @@ File: scss
     border-color: #ef5350; }
 
 .card-outline-primary {
-  border-color: #745af2; }
+  border-color: #56c2c6; }
   .card-outline-primary .card-header {
-    background: #745af2;
-    border-color: #745af2; }
+    background: #56c2c6;
+    border-color: #56c2c6; }
