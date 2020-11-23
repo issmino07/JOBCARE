@@ -1,48 +1,35 @@
 <app-header-pagina></app-header-pagina>
 
-<section  class="background" >
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h2>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;El cuidado ideal para tu fammilia</h2>
-<br>
-<br>
-<form class="form-inline my-2 my-lg-0">
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <input class="form-control mr-sm-3" type="search" placeholder="Ingresa Aqui tu codigo postal" aria-label="Search">
-  <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-      <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-    </svg>
-  </button>
-</form>
- <br>
- <br>
-    <h3>   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;¿En búsqueda de trabajo? Buscar ya</h3>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+
+  
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+ 
+      <img class="d-block img-fluid" src="../../../assets/images/children.jpg" alt="First slide">
+     
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="../../../assets/images/children.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="../../../assets/images/children.jpg" alt="Third slide">
+    </div>
+  </div>
+</div>
+<section   >
+ 
+
 </section>
 <!--===========================================================================================================-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="carouselExampleSlidesOnly" >
   <a class="navbar-brand" href="#"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse  carousel slide" id="navbarSupportedContent" data-ride="carousel" >
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">CUIDADO DE NIÑOS <span class="sr-only">(current)</span></a>
@@ -74,37 +61,49 @@
 
 
   <div class="row ">
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+   
    
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 hover">
         <div class="card bg-primary">
             <div class="card-body">
                 <div class="d-flex no-block">
                     <div class="m-r-20 align-self-center" [routerLink]="['/home']" routerLinkActive="router-link-active" ><img src="../assets/images/icon/assets-w.png" alt="Income" /></div>
                     <div class="align-self-center">
-                        <h2 class="text-white m-t-10 m-b-0"[routerLink]="['/home']" routerLinkActive="router-link-active" > <b>Para buscadores de trabajo</b> 
+                        <h2 class="text-white m-t-10 m-b-0"[routerLink]="['/home']" routerLinkActive="router-link-active" > <b>Buscar Empleo</b> 
                           </h2>
-                        <p class="m-t-0 text-white">Crea un perfil y encuentra trabajos en el sector del cuidado.</p></div>
+                       </div>
                 </div>
             </div>
         </div>
     </div>
-    
     <div class="col-lg-4">
-        <div class="card bg-danger">
-            <div class="card-body">
-                <div class="d-flex no-block">
-                    <div class="m-r-20 align-self-center"[routerLink]="['/home']" routerLinkActive="router-link-active" ><img src="../assets/images/icon/staff-w.png" alt="Income" /></div>
-                    <div class="align-self-center">
-                        <h2 class="text-white m-t-10 m-b-0"[routerLink]="['/home']" routerLinkActive="router-link-active" ><b>Para empresas</b> 
-                         </h2>
-                        <p class="m-t-0 text-white"[routerLink]="['/home']" routerLinkActive="router-link-active" > Encuentra familias e individuos que más se ajusten a tus servicios.</p></div>
-                </div>
+      <div class="card bg-primary">
+          <div class="card-body">
+              <div class="d-flex no-block">
+                  <div class="m-r-20 align-self-center" [routerLink]="['/home']" routerLinkActive="router-link-active" ><img src="../assets/images/icon/assets-w.png" alt="Income" /></div>
+                  <div class="align-self-center">
+                      <h2 class="text-white m-t-10 m-b-0"[routerLink]="['/home']" routerLinkActive="router-link-active" > <b>Publicar Empleo</b> 
+                        </h2>
+                     </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    
+  <div class="col-lg-4">
+    <div class="card bg-primary">
+        <div class="card-body">
+            <div class="d-flex no-block">
+                <div class="m-r-20 align-self-center" [routerLink]="['/home']" routerLinkActive="router-link-active" ><img src="../assets/images/icon/assets-w.png" alt="Income" /></div>
+                <div class="align-self-center">
+                    <h2 class="text-white m-t-10 m-b-0"[routerLink]="['/home']" routerLinkActive="router-link-active" > <b>Capacítate</b> 
+                      </h2>
+                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
  <br>
  <br>
@@ -113,106 +112,37 @@
   
 </section>
 
-<section>
-
-  <h1 align="center">¿Cuándo necesitas ayuda?</h1>
-  <br>
-  <br>
-  <div class="col-lg-12 col-xlg-6">
-    <div class="card">
-        <div class="card-body">
-          
-            <div class="button-group">
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-primary"[routerLink]="['/home']" routerLinkActive="router-link-active" >Inmediatamente</button>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-               
-                <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-primary"[routerLink]="['/home']" routerLinkActive="router-link-active" >Esta semana&nbsp; &nbsp;</button>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                
-                <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-primary"[routerLink]="['/home']" routerLinkActive="router-link-active" >Este mes&nbsp; &nbsp; &nbsp;</button>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-               
-                <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-primary"[routerLink]="['/home']" routerLinkActive="router-link-active" >No estoy seguro/a</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-
-
-</section>
-
-<section class=" responsive">
-  <h2 align="center">Así funciona</h2>
-  <br>
-  <br>
-     <!-- Row -->
-     <div class="row">
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <!-- column -->
-      <div class="col-lg-3 col-md-6">
-          <!-- Card -->
-          <div class="card">
-              <img class="card-img-top img-responsive" src="../../../assets/images/ayuda.jpg" alt="Card image cap">
-              <div class="card-body">
-                  <h4 class="card-title">Cuéntanos tus necesidades</h4>
-                  <p class="card-text">Selecciona el tipo de ayuda que necesitas, cuándo y dónde..</p>
-               
-              </div>
-          </div>
-          <!-- Card -->
-      </div>
-      <!-- column -->
-      <!-- column -->
-      <div class="col-lg-3 col-md-6">
-          <!-- Card -->
-          <div class="card">
-              <img class="card-img-top img-responsive" src="../../../assets/images/estrella.jpg" alt="Card image cap">
-              <div class="card-body">
-                  <h4 class="card-title">Visita perfiles</h4>
-                  <p class="card-text">Revisa todos aquellos candidatos que se ajusten a tus requisitos.</p>
-                 
-              </div>
-          </div>
-          <!-- Card -->
-      </div>
-      <!-- column -->
-      <!-- column -->
-      <div class="col-lg-3 col-md-6">
-          <!-- Card -->
-          <div class="card">
-              <img class="card-img-top img-responsive" src="../../../assets/images/contactar.png" alt="Card image cap">
-              <div class="card-body">
-                  <h4 class="card-title">Contacta y contrata</h4>
-                  <p class="card-text">Conecta con todos tus preferidos. Encuentra al adecuado para el trabajo.</p>
-               
-              </div>
-          </div>
-          <!-- Card -->
-      </div>
-      <!-- column -->
-      <!-- column -->
-    
-      <!-- column -->
-  </div>
-  <!-- Row -->
 
 
 
-</section>
 
 <section>
 
   <h2 align="center">Quiénes somos</h2>
-
-
+  <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+            
+                <div class="row">
+                    <div class="col-lg-4 col-md-3"><img src="../assets/images/big/img1.jpg" class="img-fluid" /></div>
+                    <div class="col-lg-8 col-md-9" id="slimtest1" style="height: 250px;">
+                        <div>
+                            <p>Somos una empresa familiar, que fue creada con la convicción de que la tecnología e innovación enfocadas al servicio a los demás son la clave para que todos podamos crecer juntos.</p>
+                            <p>En Job and Care, queremos ser un canal seguro, ágil y eficiente, entre empleados y empleadores, incentivando tu crecimiento y empoderamiento, participando en todas las etapas de tu vida, cuidando de tu familia, ayudándote a encontrar empleo u ofertarlo y siendo un soporte en tu formación. </p>
+                            <p>Job and Care ayuda también a las empresas a encontrar el talento adecuado, lo que facilita la atracción, contratación y retención del personal, impulsando la productividad y el crecimiento económico tanto de empresas como de los postulantes.</p>
+                            <p>En nuestra plataforma hay oportunidades de empleo y formación para todos, UNETE </p>
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+   
+     
+    </div>
+</div>
 </section>
 
-    
+    <app-footer></app-footer>

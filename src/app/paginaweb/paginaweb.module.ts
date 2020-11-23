@@ -7,6 +7,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { Cajas1Component } from './cajas1/cajas1.component';
 import { Cajas2Component } from './cajas2/cajas2.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -17,7 +18,8 @@ import { Cajas2Component } from './cajas2/cajas2.component';
     InicioComponent,
     HomeComponent,
     Cajas1Component,
-    Cajas2Component
+    Cajas2Component,
+    FooterComponent
   ],
   imports: [
     CommonModule,
