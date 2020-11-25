@@ -14,6 +14,15 @@ p{
   padding: 0;
 }
 
+.bgm{ 
+  color: #fc1f2a; 
+  font-size: 190%;
+  font-family: fantasy;
+  text-align:center;
+  width:360px;
+  height:720px;
+}
+
 .background{
   height: 100vh;
   width: 100%;
@@ -37,5 +46,5 @@ div.scrollmenu a {
 }
 
 div.scrollmenu a:hover {
-  background-color: rgb(62, 136, 146);
+  background-color: #56c2c6;
 }

@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { Cajas1Component } from './cajas1/cajas1.component';
 import { Cajas2Component } from './cajas2/cajas2.component';
 import { FooterComponent } from './footer/footer.component';
+import { Home2Component } from './home2/home2.component';
+import { NineraComponent } from './ninera/ninera.component';
 
 
 
@@ -19,7 +21,9 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     Cajas1Component,
     Cajas2Component,
-    FooterComponent
+    FooterComponent,
+    Home2Component,
+    NineraComponent
   ],
   imports: [
     CommonModule,

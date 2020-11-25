@@ -5,21 +5,30 @@
   
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
- 
+      <div class="carousel-caption">
+        <h1 class="bgm animated infinite pulse" >A un paso de encontrarnos, simple rápido y seguro.</h1>
+    </div>
       <img class="d-block img-fluid" src="../../../assets/images/children.jpg" alt="First slide">
-     
+   
     </div>
     <div class="carousel-item">
       <img class="d-block img-fluid" src="../../../assets/images/children.jpg" alt="Second slide">
+      <div class="carousel-caption">
+        <h1 class="bgm animated infinite pulse">A un paso de encontrarnos, simple rápido y seguro.</h1>
+    </div>
     </div>
     <div class="carousel-item">
+      <div class="carousel-caption">
+        <h1 class="bgm animated infinite pulse">A un paso de encontrarnos, simple rápido y seguro.</h1>
+    </div>
       <img class="d-block img-fluid" src="../../../assets/images/children.jpg" alt="Third slide">
+     
     </div>
   </div>
 </div>
 <section   >
   <div  class="scrollmenu">
-    <a href="#home">Niñeras</a>
+    <a [routerLink]="['/ninera']" routerLinkActive="router-link-active" >Niñeras</a>
     <a href="#news">Cuidado del adulto mayor</a>
     <a href="#work">Servicio Doméstico</a>
     <a href="#contact">Cuidado de mascotas</a>
@@ -63,9 +72,9 @@
       <div class="card bg-primary">
           <div class="card-body">
               <div class="d-flex no-block">
-                  <div class="m-r-20 align-self-center" [routerLink]="['/home']" routerLinkActive="router-link-active" ><img src="../assets/images/icon/assets-w.png" alt="Income" /></div>
+                  <div class="m-r-20 align-self-center" [routerLink]="['/home2']" routerLinkActive="router-link-active" ><img src="../assets/images/icon/assets-w.png" alt="Income" /></div>
                   <div class="align-self-center">
-                      <h2 class="text-white m-t-10 m-b-0"[routerLink]="['/home']" routerLinkActive="router-link-active" > <b>Publicar Empleo</b> 
+                      <h2 class="text-white m-t-10 m-b-0"[routerLink]="['/home2']" routerLinkActive="router-link-active" > <b>Publicar Empleo</b> 
                         </h2>
                      </div>
               </div>
@@ -108,7 +117,7 @@
             
                 <div class="row">
                     <div class="col-lg-4 col-md-3"><img src="../assets/images/big/img1.jpg" class="img-fluid" /></div>
-                    <div class="col-lg-8 col-md-9" id="slimtest1" style="height: 250px;">
+                    <div class="col-lg-8 col-md-9"  style="height: 250px;">
                         <div>
                             <p>Somos una empresa familiar, que fue creada con la convicción de que la tecnología e innovación enfocadas al servicio a los demás son la clave para que todos podamos crecer juntos.</p>
                             <p>En Job and Care, queremos ser un canal seguro, ágil y eficiente, entre empleados y empleadores, incentivando tu crecimiento y empoderamiento, participando en todas las etapas de tu vida, cuidando de tu familia, ayudándote a encontrar empleo u ofertarlo y siendo un soporte en tu formación. </p>
@@ -126,5 +135,5 @@
     </div>
 </div>
 </section>
-
+<br>
     <app-footer></app-footer>
