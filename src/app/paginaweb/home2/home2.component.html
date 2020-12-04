@@ -1,8 +1,8 @@
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
-      <img src="../../../assets/images/logo-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      Jobandcare
+      <img src="../../../assets/images/j-logoreco.png"  alt="homepage" class="dark-logo" >
+      <img src="../../../assets/images/text-logo.png"  alt="homepage" class="dark-logo">
     </a>
   </nav>
 
@@ -16,7 +16,7 @@
     <h2 align="center">¡Hola! ¿Selecciona una de nuetras categorias para publicar?</h2>
 <br>
 
-<div  align="center">
+<div class="row m-0 justify-content-center align-items-center vh-100" >
     
     <!-- Column -->
    
@@ -68,6 +68,10 @@
       </a>
       <a class="nav-link  " [routerLink]="['/home']" routerLinkActive="router-link-active"> 
         <button type="button" class="boton_personalizado"><i  [routerLink]="['/home']" routerLinkActive="router-link-active" ></i>Profesionales Titulados</button>
+          <div class="notify"> <span class="heartbit"></span></div>
+      </a>
+      <a class="nav-link  " [routerLink]="['/inicio']" routerLinkActive="router-link-active"> 
+        <button type="button" class="boton_personalizado"><i  [routerLink]="['/inicio']" routerLinkActive="router-link-active" ></i>Regresar a inicio</button>
           <div class="notify"> <span class="heartbit"></span></div>
       </a>
 

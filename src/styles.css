@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-
+@import '~bs-stepper/dist/css/bs-stepper.min.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 #themecolors .selector {
 

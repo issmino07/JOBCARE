@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 
 
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+import { UsuarioService } from './services/usuario.service';
 
 
 
@@ -27,21 +28,23 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     AppComponent,
     NopagefoundComponent,
  
- 
+  
 
 
   ],
 
   imports: [
+    PaginawebModule,
     BrowserModule,
     AppRoutingModule,
     PagesModule,
     AuthModule,
-    PaginawebModule
+    
+   
   
 
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

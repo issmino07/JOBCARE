@@ -10,6 +10,10 @@ import { Cajas2Component } from './cajas2/cajas2.component';
 import { FooterComponent } from './footer/footer.component';
 import { Home2Component } from './home2/home2.component';
 import { NineraComponent } from './ninera/ninera.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -27,10 +31,20 @@ import { NineraComponent } from './ninera/ninera.component';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgSelectModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
+      libraries: ['places']
+    })
+
   ],
   exports:[
     HeaderPaginaComponent,
+    NineraComponent
   ]
 })
 export class PaginawebModule { }
