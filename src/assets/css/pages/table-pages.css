@@ -61,7 +61,7 @@ Table-Layout
   background: #e9edf2; }
 
 .color-table.success-table thead th {
-  background-color: #06d79c;
+  background-color: #c4c3c3;
   color: #ffffff; }
 
 .color-table.info-table thead th {
@@ -103,9 +103,9 @@ Table-Layout
     color: #ffffff; }
 
 .color-bordered-table.success-bordered-table {
-  border: 2px solid #06d79c; }
+  border: 2px solid #c4c3c3; }
   .color-bordered-table.success-bordered-table thead th {
-    background-color: #06d79c;
+    background-color: #c4c3c3;
     color: #ffffff; }
 
 .color-bordered-table.info-bordered-table {
@@ -171,13 +171,13 @@ Table-Layout
 .full-color-table.full-success-table {
   background-color: #e8fdeb; }
   .full-color-table.full-success-table thead th {
-    background-color: #06d79c;
+    background-color: #c4c3c3;
     border: 0;
     color: #ffffff; }
   .full-color-table.full-success-table tbody td {
     border: 0; }
   .full-color-table.full-success-table tr:hover {
-    background-color: #06d79c;
+    background-color: #c4c3c3;
     color: #ffffff; }
 
 .full-color-table.full-info-table {

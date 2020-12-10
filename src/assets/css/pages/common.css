@@ -653,7 +653,7 @@ ul#themecolors li a.working:before {
 }
 
 .green-theme {
-  background: #06d79c;
+  background: #c4c3c3;
 }
 
 .yellow-theme {
@@ -691,14 +691,14 @@ ul#themecolors li a.working:before {
 .green-dark-theme {
   background: #263238;
   /* Old browsers */
-  background: -moz-linear-gradient(left, #263238 0%, #263238 23%, #06d79c 23%, #06d79c 99%);
+  background: -moz-linear-gradient(left, #263238 0%, #263238 23%, #c4c3c3 23%, #c4c3c3 99%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #00c292 23%, #06d79c 99%);
+  background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #00c292 23%, #c4c3c3 99%);
   /* Chrome10-25,Safari5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#263238), color-stop(23%, #263238), color-stop(23%, #06d79c), color-stop(99%, #06d79c));
-  background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #06d79c 23%, #06d79c 99%);
-  background: -o-linear-gradient(left, #263238 0%, #263238 23%, #06d79c 23%, #06d79c 99%);
-  background: linear-gradient(to right, #263238 0%, #263238 23%, #06d79c 23%, #06d79c 99%);
+  background: -webkit-gradient(linear, left top, right top, from(#263238), color-stop(23%, #263238), color-stop(23%, #c4c3c3), color-stop(99%, #c4c3c3));
+  background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #c4c3c3 23%, #c4c3c3 99%);
+  background: -o-linear-gradient(left, #263238 0%, #263238 23%, #c4c3c3 23%, #c4c3c3 99%);
+  background: linear-gradient(to right, #263238 0%, #263238 23%, #c4c3c3 23%, #c4c3c3 99%);
 }
 
 .yellow-dark-theme {
@@ -1041,7 +1041,7 @@ Notification page Jquery toaster
 }
 
 .jq-icon-success {
-  background-color: #06d79c;
+  background-color: #c4c3c3;
   color: #ffffff;
 }
 

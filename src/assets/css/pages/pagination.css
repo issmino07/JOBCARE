@@ -71,7 +71,7 @@ Pagination
 Pagination
 ******************/
 .pagination-circle li.active a {
-  background: #06d79c; }
+  background: #c4c3c3; }
 
 .pagination-circle li a {
   width: 40px;
@@ -83,7 +83,7 @@ Pagination
   .pagination-circle li a:first-child, .pagination-circle li a:last-child {
     border-radius: 100%; }
   .pagination-circle li a:hover {
-    background: #06d79c;
+    background: #c4c3c3;
     color: #ffffff; }
 
 .pagination-circle li.disabled a {

@@ -29,8 +29,8 @@ File: scss
   border-bottom: 0px; }
 
 .card-success {
-  background: #06d79c;
-  border-color: #06d79c; }
+  background: #c4c3c3;
+  border-color: #c4c3c3; }
 
 .card-danger {
   background: #ef5350;
@@ -105,10 +105,10 @@ File: scss
     border-color: #ffb22b; }
 
 .card-outline-success {
-  border-color: #06d79c; }
+  border-color: #c4c3c3; }
   .card-outline-success .card-header {
-    background: #06d79c;
-    border-color: #06d79c; }
+    background: #c4c3c3;
+    border-color: #c4c3c3; }
 
 .card-outline-danger {
   border-color: #ef5350; }

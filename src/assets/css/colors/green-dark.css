@@ -19,7 +19,7 @@ File: scss
 /*Top bar
 *******************/
 .topbar {
-  background: #06d79c; }
+  background: #c4c3c3; }
   .topbar .top-navbar .navbar-header .navbar-brand .dark-logo {
     display: none; }
   .topbar .top-navbar .navbar-header .navbar-brand .light-logo {
@@ -47,22 +47,22 @@ File: scss
   color: rgba(255, 255, 255, 0.8); }
 
 .hdr-nav-bar .navbar .navbar-nav > li.active > a {
-  border-color: #06d79c; }
+  border-color: #c4c3c3; }
 
 /*******************
 /*General Elements
 *******************/
 .lstick {
-  background: #06d79c; }
+  background: #c4c3c3; }
 
 a {
-  color: #06d79c; }
+  color: #c4c3c3; }
 
 a.link:hover, a.link:focus {
-  color: #06d79c !important; }
+  color: #c4c3c3 !important; }
 
 .bg-theme {
-  background-color: #06d79c !important; }
+  background-color: #c4c3c3 !important; }
 
 .pagination > .active > a,
 .pagination > .active > span,
@@ -70,40 +70,40 @@ a.link:hover, a.link:focus {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: #06d79c;
-  border-color: #06d79c; }
+  background-color: #c4c3c3;
+  border-color: #c4c3c3; }
 
 .right-sidebar .rpanel-title {
-  background: #06d79c; }
+  background: #c4c3c3; }
 
 .stylish-table tbody tr:hover, .stylish-table tbody tr.active {
-  border-left: 4px solid #06d79c; }
+  border-left: 4px solid #c4c3c3; }
 
 .text-themecolor {
-  color: #06d79c !important; }
+  color: #c4c3c3 !important; }
 
 .profile-tab li a.nav-link.active,
 .customtab li a.nav-link.active {
-  border-bottom: 2px solid #06d79c;
-  color: #06d79c; }
+  border-bottom: 2px solid #c4c3c3;
+  color: #c4c3c3; }
 
 .profile-tab li a.nav-link:hover,
 .customtab li a.nav-link:hover {
-  color: #06d79c; }
+  color: #c4c3c3; }
 
 /*******************
 /*Buttons
 *******************/
 .btn-themecolor,
 .btn-themecolor.disabled {
-  background: #06d79c;
+  background: #c4c3c3;
   color: #ffffff;
-  border: 1px solid #06d79c; }
+  border: 1px solid #c4c3c3; }
   .btn-themecolor:hover,
   .btn-themecolor.disabled:hover {
-    background: #06d79c;
+    background: #c4c3c3;
     opacity: 0.7;
-    border: 1px solid #06d79c; }
+    border: 1px solid #c4c3c3; }
   .btn-themecolor.active, .btn-themecolor:focus,
   .btn-themecolor.disabled.active,
   .btn-themecolor.disabled:focus {
@@ -133,11 +133,11 @@ a.link:hover, a.link:focus {
   background: #1c2128; }
 
 .label-themecolor {
-  background: #06d79c; }
+  background: #c4c3c3; }
 
 .sidebar-nav > ul > li.active > a {
   color: #ffffff;
-  border-color: #06d79c; }
+  border-color: #c4c3c3; }
   .sidebar-nav > ul > li.active > a i {
     color: #ffffff; }
 

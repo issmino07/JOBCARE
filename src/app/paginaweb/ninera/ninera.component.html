@@ -38,8 +38,7 @@
           <span class="bs-stepper-circle">3</span>
           <span class="bs-stepper-label"></span>
         </button>
-      </div>
-      <div class="line"></div>
+      </div>  <div class="line"></div>
       <div class="step" data-target="#test-l-4">
         <button class="step-trigger">
           <span class="bs-stepper-circle">4</span>
@@ -50,6 +49,41 @@
       <div class="step" data-target="#test-l-5">
         <button class="step-trigger">
           <span class="bs-stepper-circle">5</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-6">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">6</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-7">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">7</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-8">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">8</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-9">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">9</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-10">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">10</span>
           <span class="bs-stepper-label"></span>
         </button>
       </div>
@@ -114,8 +148,10 @@
         </div>
         <div id="test-l-2" class="content">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
+            <a class="nav-link  " [routerLink]="['/ninera']" routerLinkActive="router-link-active"> 
+              <button type="button" class="boton_personalizado "><i  [routerLink]="['/ninera']" routerLinkActive="router-link-active" class="icon-book-open" aria-hidden="true" ></i>CUANDO LO NECESITAS</button>
+                <div class="notify"> <span class="heartbit"></span></div>
+            </a>
           </div>
           <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
         </div>
@@ -133,7 +169,42 @@
           </div>
           <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
         </div>
-        <div id="test-l-5" class="content text-center">
+        <div id="test-l-5" class="content">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+          </div>
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+        <div id="test-l-6" class="content">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+          </div>
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+        <div id="test-l-7" class="content">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+          </div>
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+        <div id="test-l-8" class="content">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+          </div>
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+         <div id="test-l-9" class="content">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+          </div>
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+        <div id="test-l-10" class="content text-center">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />

@@ -43,7 +43,7 @@ Bootstrap Switch
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success {
   color: #ffffff;
-  background: #06d79c; }
+  background: #c4c3c3; }
 
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning {
@@ -74,7 +74,7 @@ Bootstrap Switch
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #06d79c;
+  border: 2px solid #c4c3c3;
   border-radius: 20px; }
 
 .onoffswitch-inner {
@@ -100,7 +100,7 @@ Bootstrap Switch
 .onoffswitch-inner:before {
   content: "ON";
   padding-left: 27px;
-  background-color: #06d79c;
+  background-color: #c4c3c3;
   color: #FFFFFF; }
 
 .onoffswitch-inner:after {
@@ -119,7 +119,7 @@ Bootstrap Switch
   top: 0;
   bottom: 0;
   right: 56px;
-  border: 2px solid #06d79c;
+  border: 2px solid #c4c3c3;
   border-radius: 20px;
   -webkit-transition: all 0.3s ease-in 0s;
   -o-transition: all 0.3s ease-in 0s;

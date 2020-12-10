@@ -45,7 +45,7 @@ Seach listing Page
         .search-listing li h3 a:hover {
           text-decoration: underline; }
     .search-listing li a {
-      color: #06d79c; }
+      color: #c4c3c3; }
 
 /*******************
 Gridstack Dragable portlet
@@ -95,7 +95,7 @@ Notification page Jquery toaster
   color: #ffffff; }
 
 .jq-icon-success {
-  background-color: #06d79c;
+  background-color: #c4c3c3;
   color: #ffffff; }
 
 .jq-icon-error {

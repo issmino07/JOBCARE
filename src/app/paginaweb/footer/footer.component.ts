@@ -12,20 +12,20 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  UrlInicio(){
-    window.location.href="#/inicio"; 
+  Urlhome(){
+    window.location.href="#/home"; 
     window.scrollTo(0, 0)
     location.reload()
   }
 
-  UrlServicio(){
-    window.location.href="#/"; 
+  Urlhome2(){
+    window.location.href="#/home2"; 
     window.scrollTo(0, 0)
     location.reload()
   }
 
-  UrlSobreNosotros(){
-    window.location.href="#/";
+  Urlcursos(){
+    window.location.href="#/cursos";
     window.scrollTo(0, 0);
     location.reload()
   }

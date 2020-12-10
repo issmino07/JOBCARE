@@ -214,32 +214,32 @@ ribbons page
   border-bottom-color: #56c2c6; }
 
 .ribbon-success {
-  background: #06d79c; }
+  background: #c4c3c3; }
 
 .ribbon-bookmark.ribbon-success:before {
-  border-color: #06d79c;
+  border-color: #c4c3c3;
   border-right-color: transparent; }
 
 .ribbon-bookmark.ribbon-right.ribbon-success:before {
-  border-right-color: #06d79c;
+  border-right-color: #c4c3c3;
   border-left-color: transparent; }
 
 .ribbon-bookmark.ribbon-vertical-l.ribbon-success:before,
 .ribbon-bookmark.ribbon-vertical-r.ribbon-success:before {
-  border-right-color: #06d79c;
+  border-right-color: #c4c3c3;
   border-bottom-color: transparent; }
 
 .ribbon-success.ribbon-corner:before {
-  border-top-color: #06d79c;
-  border-left-color: #06d79c; }
+  border-top-color: #c4c3c3;
+  border-left-color: #c4c3c3; }
 
 .ribbon-success.ribbon-corner.ribbon-right:before {
-  border-right-color: #06d79c;
+  border-right-color: #c4c3c3;
   border-left-color: transparent; }
 
 .ribbon-success.ribbon-corner.ribbon-bottom:before {
   border-top-color: transparent;
-  border-bottom-color: #06d79c; }
+  border-bottom-color: #c4c3c3; }
 
 .ribbon-info {
   background: #398bf7; }

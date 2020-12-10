@@ -39,7 +39,7 @@ File: scss
   border-bottom: 1px solid #ffb22b; }
 
 .floating-labels .has-success .form-control {
-  border-bottom: 1px solid #06d79c; }
+  border-bottom: 1px solid #c4c3c3; }
 
 .floating-labels .form-control:focus {
   outline: none;
@@ -110,7 +110,7 @@ File: scss
 
 .has-success .bar:before,
 .has-success .bar:after {
-  background: #06d79c; }
+  background: #c4c3c3; }
 
 .has-error .bar:before,
 .has-error .bar:after {
@@ -122,7 +122,7 @@ File: scss
 
 .has-success .form-control:focus ~ label,
 .has-success .form-control:valid ~ label {
-  color: #06d79c; }
+  color: #c4c3c3; }
 
 .has-error .form-control:focus ~ label,
 .has-error .form-control:valid ~ label {
@@ -135,7 +135,7 @@ File: scss
   border: 1px solid #ef5350; }
 
 .form-group.validate input, .form-group.validate select, .form-group.validate textarea {
-  border: 1px solid #06d79c; }
+  border: 1px solid #c4c3c3; }
 
 .form-group.error .help-block ul {
   padding: 0px;
