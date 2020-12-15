@@ -35,6 +35,7 @@ import { SpaComponent } from './spa/spa.component';
 import { SpaEmpleadorComponent } from './spa-empleador/spa-empleador.component';
 import { ProfesionalComponent } from './profesional/profesional.component';
 import { ProfesionalEmpleadorComponent } from './profesional-empleador/profesional-empleador.component';
+import { ModalesPaginaComponent } from './modales-pagina/modales-pagina.component';
 
 
 
@@ -69,7 +70,8 @@ import { ProfesionalEmpleadorComponent } from './profesional-empleador/profesion
     SpaComponent,
     SpaEmpleadorComponent,
     ProfesionalComponent,
-    ProfesionalEmpleadorComponent
+    ProfesionalEmpleadorComponent,
+    ModalesPaginaComponent
   ],
   imports: [
     CommonModule,
@@ -86,7 +88,8 @@ import { ProfesionalEmpleadorComponent } from './profesional-empleador/profesion
   ],
   exports:[
     HeaderPaginaComponent,
-    NineraComponent
+    NineraComponent,
+    ModalesPaginaComponent
   ]
 })
 export class PaginawebModule { }
