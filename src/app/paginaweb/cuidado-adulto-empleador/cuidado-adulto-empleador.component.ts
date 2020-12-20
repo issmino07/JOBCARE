@@ -4,6 +4,7 @@ import { Component, ElementRef, NgZone, OnInit, ViewChild, } from '@angular/core
 
 import Stepper from 'bs-stepper';
 import { MapsAPILoader } from '@agm/core';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,22 +14,28 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class CuidadoAdultoEmpleadorComponent implements OnInit {
 
+  votes: number;
+
+  mostarDatos: boolean;
+  mostarDatossemana: boolean;
+  mostarDatosmes: boolean;
+  mostarDatosfijo: boolean;
   latitude: number;
   longitude: number;
-  zoom:number;
+  zoom: number;
   address: string;
   private geoCoder;
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
-  
+
 
   //combo de la base de localidades
   ciuadadesOpcion: Ciudad[];
-  ciudad:Ciudad;
-//=================================
+  ciudad: Ciudad;
+  //=================================
 
-//pasos del formulario en una sola pantalla
+  //pasos del formulario en una sola pantalla
   private stepper: Stepper;
 
   next() {
@@ -39,15 +46,64 @@ export class CuidadoAdultoEmpleadorComponent implements OnInit {
     return false;
   }
 
+  // formulario de registro //
+  public formSubmitted = false;
 
+  public registerForm = this.fb.group({
+    usuario: ['', [Validators.required]],
+    telefono: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    password: ['', [Validators.required]],
+    provincia: ['', [Validators.required]],
+    ciudad: ['', [Validators.required]],
+    direccion: ['', [Validators.required]],
+   
+    lavado: ['',],
+    comida: ['',],
+    limpieza: ['', ],
+    tareas: ['',],
+    fecha: ['', [Validators.required]],
+   
+    experiencia:[''],
+    ninos: this.fb.array([])
+
+
+
+
+  })
+
+get ninos(){
+  return this.registerForm.get('ninos') as FormArray;
+
+}
+
+agregarninos(){
  
-
-
-
-
-  constructor( private ciudadOpcion: CiudadesService,  private mapsAPILoader: MapsAPILoader,
+  const ninosFormgroup =  this.fb.group({
+    nino:'',
+    masculino: '',
+    femenino:'',
+    edad:'',
   
-    private ngZone: NgZone) { }
+
+  });
+
+  this.ninos.push(ninosFormgroup);
+
+}
+
+removerninos(indice:number){
+
+  this.ninos.removeAt(indice)
+
+}
+
+
+  constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,
+
+    private ngZone: NgZone) {
+    this.votes = this.votes || 0;
+  }
 
   ngOnInit(): void {
 
@@ -74,7 +130,7 @@ export class CuidadoAdultoEmpleadorComponent implements OnInit {
       });
     });
 
-   
+
     this.getOpciones1();
     this.ciuadadesOpcion = new Array<Ciudad>();
     this.ciudad = new Ciudad();
@@ -86,29 +142,29 @@ export class CuidadoAdultoEmpleadorComponent implements OnInit {
   }
 
 
-    //metodo de las localidades taridas de la base 
-    getOpciones1() {
-      return this.ciudadOpcion.getOpciones()
-        .subscribe(
-          ciudades => {
+  //metodo de las localidades taridas de la base 
+  getOpciones1() {
+    return this.ciudadOpcion.getOpciones()
+      .subscribe(
+        ciudades => {
           //  console.log(ciudades);
-            this.ciuadadesOpcion = ciudades;
-            if(this.ciuadadesOpcion.length > 0){
-              this.ciudad = this.ciuadadesOpcion[0];
-            }
-            
-          });
+          this.ciuadadesOpcion = ciudades;
+          if (this.ciuadadesOpcion.length > 0) {
+            this.ciudad = this.ciuadadesOpcion[0];
+          }
 
-    }
+        });
 
-    selectProvincia(provincia){
-   
-      this.ciudad = this.ciuadadesOpcion.find(element => element.provincia == provincia);
-       
-    }
-   //==================================================================//
-   // Get Current Location Coordinates
-   private setCurrentLocation() {
+  }
+
+  selectProvincia(provincia) {
+
+    this.ciudad = this.ciuadadesOpcion.find(element => element.provincia == provincia);
+
+  }
+  //==================================================================//
+  // Get Current Location Coordinates
+  private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
@@ -143,5 +199,59 @@ export class CuidadoAdultoEmpleadorComponent implements OnInit {
     });
   }
 
+  activar() {
+
+    this.mostarDatos = true;
+    this.mostarDatossemana = false;
+    this.mostarDatosfijo = false;
+    this.mostarDatosmes = false;
+
+  }
+  activar2() {
+    this.mostarDatos = false;
+    this.mostarDatosmes = false;
+    this.mostarDatossemana = true;
+
+  }
+  activar3() {
+    this.mostarDatossemana = false;
+
+    this.mostarDatosfijo = false;
+    this.mostarDatosmes = true;
+
+  }
+  activar4() {
+    this.mostarDatosmes = false;
+    this.mostarDatos = false;
+    this.mostarDatosfijo = true;
+
+  }
+  desactivar() {
+
+    this.mostarDatos = false;
+    this.mostarDatossemana = false;
+    this.mostarDatosfijo = false;
+    this.mostarDatosmes = false;
+
+  }
+  voteUp(): void {
+    this.votes++;
+    this.agregarninos();
+  }
+
+  voteDown(): void {
+    this.votes--;
+    this.removerninos(0)
+  }
+
+
+
+  //====CREAR USUARIO==//
+
+ crearUsuario(){
+   this. formSubmitted = true;
+  console.log(this.registerForm.value)
+ }
+ 
 
 }

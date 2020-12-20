@@ -1,221 +1,316 @@
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="../../../assets/images/j-logoreco.png" alt="homepage" class="dark-logo">
-      <img src="../../../assets/images/text-logo.png" alt="homepage" class="dark-logo">
-    </a>
-  
-    <div>
-  
-      <img src="../../../assets/images/Banner2.jpg" alt="">
-  
-    </div>
-  </nav>
-  
-  <br>
-  <br>
-  
-  <div class="container ">
-  
-    <div id="stepper1" class="bs-stepper">
-      <div class="bs-stepper-header">
-        <div class="step" data-target="#test-l-1">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">1</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-2">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">2</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-3">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">3</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>  <div class="line"></div>
-        <div class="step" data-target="#test-l-4">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">4</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-5">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">5</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-6">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">6</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-7">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">7</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-8">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">8</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-9">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">9</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-10">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">10</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
+  <a class="navbar-brand" href="#">
+    <img src="../../../assets/images/j-logoreco.png" alt="homepage" class="dark-logo">
+    <img src="../../../assets/images/text-logo.png" alt="homepage" class="dark-logo">
+  </a>
+
+  <div>
+
+    <img src="../../../assets/images/Banner2.jpg" alt="">
+
+  </div>
+</nav>
+
+<br>
+<br>
+
+<div class="container ">
+
+  <div id="stepper1" class="bs-stepper">
+    <div class="bs-stepper-header">
+      <div class="step" data-target="#test-l-1">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">1</span>
+          <span class="bs-stepper-label"></span>
+        </button>
       </div>
-      <div class="bs-stepper-content">
-        <form (ngSubmit)="onSubmit()">
-          <div id="test-l-1" class="content">
-            <div class="form-group">
-              <label for="exampleInputEmail1">CIUDAD/TODOS</label>
-              <tr>
-                <td scope="col">Provincia &nbsp;</td>
-                <td scope="col">
-                  <select name="Provincia" class="browser-default custom-select"
-                    (change)="selectProvincia($event.target.value)">
-                    <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
-                      {{prov.provincia}}</option>
-                  </select>
-  
-                </td>
-  
-              </tr>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-2">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">2</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-3">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">3</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-4">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">4</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-5">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">5</span>
+          <span class="bs-stepper-label"></span>
+        </button>
+      </div>
+     
+    </div>
+
+
+    <!--AQUI EMPEZA EL FORMULARIO-->
+
+    <div class="bs-stepper-content">
+      <form (ngSubmit)="crearUsuario()" [formGroup]="registerForm">
+        <div id="test-l-1" class="content">
+          <div class="form-group">
+            <label for="exampleInputEmail1">CIUDAD/TODOS</label>
+            <tr>
+              <td scope="col">Provincia &nbsp;</td>
+              <td scope="col">
+                <select name="Provincia" class="browser-default custom-select form-control" formControlName="provincia"
+                  (change)="selectProvincia($event.target.value)">
+                  <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
+                    {{prov.provincia}}</option>
+                </select>
+    
+              </td>
+    
+            </tr>
+            <br>
+            <tr>
+              <td scope="col">Ciudad &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+              <td scope="col">
+                <select name="Ciudad" class="browser-default custom-select form-control" formControlName="ciudad">
+                  <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
+                    {{canton}}
+                  </option>
+                </select>
+    
+    
+              </td>
+    
+            </tr>
+            <br>
+            <br>
+            <div class="container">
+    
+    
+    
+              <div class="form-group">
+                <label>Mi Dirección</label>
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                  formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
+                  spellcheck="off" type="text" #search>
+              </div>
+    
+              <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                  (dragEnd)="markerDragEnd($event)"></agm-marker>
+              </agm-map>
               <br>
-              <tr>
-                <td scope="col">Ciudad &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-                <td scope="col">
-                  <select name="Ciudad" class="browser-default custom-select">
-                    <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
-                      {{canton}}
-                    </option>
-                  </select>
-  
-  
-                </td>
-  
-              </tr>
-              <br>
-              <br>
-              <div class="container">
-  
-       
-              
-                <div class="form-group">
-                  <label>Mi Dirección</label>
-                  <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+              <h5>Dirección: {{address}}</h5>
+              <div>Latitude: {{latitude}}</div>
+              <div>Longitude: {{longitude}}</div>
+            </div>
+          </div>
+    
+    
+    
+    
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+        <div id="test-l-3" class="content">
+          <div class="form-group">
+            <h2 align="center" (click)="desactivar()">CUANDO LO NECESITAS</h2>
+            <div>
+              <div class="row m-0 justify-content-center align-items-center vh-100">
+                <!-- Column -->
+    
+                <div>
+                  <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado "
+                    (click)="activar()"><i></i>Hoy</button>
+                  <div class="notify"> <span class=""></span></div>
+    
+                  <div *ngIf="mostarDatos">
+                    <br>
+                    <input type="datetime-local" id="meeting-time" name="meeting-time" class="form-control"
+                      formControlName="fecha">
+                  </div>
+    
                 </div>
+                &nbsp;&nbsp;
+                <div>
+                  <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado "
+                    (click)="activar2()"><i></i>Esta semanna</button>
+                  <div class="notify"> <span class=""></span></div>
+    
+                  <div *ngIf="mostarDatossemana">
+                    <br>
+                    <input type="week" name="semana" class="form-control" formControlName="fecha">
+                  </div>
+    
+                </div>
+                &nbsp;&nbsp;
+                <!-- Column -->
+                <div>
+                  <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado "
+                    (click)="activar3()"><i></i>Este mes</button>
+                  <div class="notify"> <span class=""></span></div>
+    
+                  <div *ngIf="mostarDatosmes">
+                    <br>
+                    <input type="month" name="mes" class="form-control" formControlName="fecha">
+                  </div>
+    
+                </div>
+                &nbsp;&nbsp;
+                <div>
+                  <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado "
+                    (click)="activar4()"><i></i>Fijo</button>
+                  <div class="notify"> <span class=""></span></div>
+    
+                  <div *ngIf="mostarDatosfijo">
+                    <br>
+                    <input type="date" name="Fecha de inicio" class="form-control" formControlName="fecha">
+                  </div>
+    
+                </div>
+    
+    
+    
+    
+              </div>
+    
+            </div>
+          </div>
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+        <div id="test-l-4" class="content">
+          <h2 align="center">¿Cuanta experiencia tienes?</h2>
+          <div class="form-group">
+            <div>
+              <div class="row m-0 justify-content-center align-items-center vh-100">
+    
+                <button (click)="voteDown()" class="btn btn-danger"min="1">
+                  -
+                </button> &nbsp;&nbsp;&nbsp;&nbsp; <h3 class="display-4">{{votes}}</h3> &nbsp;&nbsp;&nbsp;&nbsp; <button
+                  (click)="voteUp()" class="btn btn-primary">
+                  +
+                </button>
+    
+              </div>
+
+              <div formArrayName="ninos" *ngFor="let ninos of ninos.controls; let i = index">
+                <div [formGroupName]="i">
+                  <div class="form-group row">
+                    <label class="col-md-2" [attr.for]="'nino' + i">Experiencia &nbsp;&nbsp;</label>
+                    <div>
+                     
+                      <h3 type="number" [attr.id]="'nino' + i" class="form-control" >{{i +1}}</h3>
+                    </div>
+                    <label class="col-md-2" [attr.for]="'edad' + i">Años</label>
+                    <div>
+                    
+                    </div>
+                    &nbsp;&nbsp;
+                  
               
-                <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-                  <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
-                    (dragEnd)="markerDragEnd($event)"></agm-marker>
-                </agm-map>
-                 <br>
-                <h5>Dirección: {{address}}</h5>
-                <div>Latitude: {{latitude}}</div>
-                <div>Longitude: {{longitude}}</div>
+                   
+
+                  </div>
+
+               
+                </div>
+
+
+              </div>
+    
+    
+    
+            </div>
+            <!--div class="form-group" >
+              <label >Experiencia:&nbsp;&nbsp;</label> 
+            <input type="number" class="form-control col-6"  placeholder="Ingrese un número" formControlName="experiencia" />
+            </!--div-->
+
+          </div>
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+        <div id="test-l-2" class="content">
+          <div class="form-group">
+            <h2 align="center">Trabajos del hogar</h2>
+            <div class="form-group row m-0 justify-content-center align-items-center vh-100">
+    
+              <div class="input-group ">
+                <ul class="icheck-list" class="list">
+                  <li>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-1"formControlName="lavado">
+                    <label for="minimal-checkbox-1">Albañil</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-2"formControlName="comida">
+                    <label for="minimal-checkbox-2">Electricista</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <label for="minimal-checkbox-3">Plomero</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <label for="minimal-checkbox-3">Carpintero</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <label for="minimal-checkbox-3">Cerrajero</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <label for="minimal-checkbox-3">Jardinero</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <label for="minimal-checkbox-3">Servicio Tecnico</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <label for="minimal-checkbox-3">Otros</label>
+                  </li>
+               
+    
+                </ul>
+    
               </div>
             </div>
-  
-  
-  
-  
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
           </div>
-          <div id="test-l-2" class="content">
-            <div class="form-group">
-              <a class="nav-link  " [routerLink]="['/ninera']" routerLinkActive="router-link-active"> 
-                <button type="button" class="boton_personalizado "><i  [routerLink]="['/ninera']" routerLinkActive="router-link-active" class="icon-book-open" aria-hidden="true" ></i>CUANDO LO NECESITAS</button>
-                  <div class="notify"> <span class="heartbit"></span></div>
-              </a>
-            </div>
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+        </div>
+    
+    
+    
+    
+        <div id="test-l-5" class="content text-center">
+
+          <h2 align="center">Subscripción</h2>
+          <div class="form-group">
+            
+            <input type="text" class="form-control col-6"  placeholder="USUARIO"formControlName="usuario" />
           </div>
-          <div id="test-l-3" class="content">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+          <div class="form-group">
+            
+            <input type="text" class="form-control col-6"  placeholder="TELEFONO"formControlName="telefono" />
           </div>
-          <div id="test-l-4" class="content">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+          <div class="form-group">
+           
+            <input type="email" class="form-control col-6" id="exampleInputEmail1"  placeholder="EMAIL"formControlName="email" />
           </div>
-          <div id="test-l-5" class="content">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+          
+          <div class="form-group">
+           
+            <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CLAVE" formControlName="password" />
           </div>
-          <div id="test-l-6" class="content">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-          </div>
-          <div id="test-l-7" class="content">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-          </div>
-          <div id="test-l-8" class="content">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-          </div>
-           <div id="test-l-9" class="content">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-          </div>
-          <div id="test-l-10" class="content text-center">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button type="submit" class="btn btn-primary mt-5">REGISTRAR</button>
-          </div>
-        </form>
-      </div>
+          <button type="submit" class="btn btn-primary mt-5">REGISTRAR</button>
+        </div>
+      </form>
     </div>
-  </div>
+    </div>
+    </div>

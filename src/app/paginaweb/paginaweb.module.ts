@@ -89,6 +89,7 @@ import { ModalesPaginaComponent } from './modales-pagina/modales-pagina.componen
   exports:[
     HeaderPaginaComponent,
     NineraComponent,
+  
     ModalesPaginaComponent
   ]
 })
