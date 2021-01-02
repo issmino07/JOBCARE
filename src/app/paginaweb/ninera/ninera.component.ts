@@ -1,3 +1,5 @@
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { VerificacionService } from './../../services/verificacion.service';
 
 import { CiudadesService } from './../../services/ciudades.service';
 import { Ciudad } from './../../models/ciudad.model';
@@ -5,7 +7,10 @@ import { Component, ElementRef, NgZone, OnInit, ViewChild, } from '@angular/core
 
 import Stepper from 'bs-stepper';
 import { MapsAPILoader } from '@agm/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Usuario } from 'src/app/models/usuario.model';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ninera',
@@ -15,9 +20,14 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 export class NineraComponent implements OnInit {
 
 
-
+  msg;
+  validarEamil;
+  loading = false;
+  buttionText = "Submit";
+ Error;
   votes: number;
-
+  email: any;
+  
   mostarDatos: boolean;
   mostarDatossemana: boolean;
   mostarDatosmes: boolean;
@@ -31,7 +41,7 @@ export class NineraComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-
+  UsuarioModelo = new Usuario();
   //combo de la base de localidades
   ciuadadesOpcion: Ciudad[];
   ciudad: Ciudad;
@@ -56,17 +66,18 @@ export class NineraComponent implements OnInit {
     telefono: ['', [Validators.required]],
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
+    clave: ['', [Validators.required]],
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
-   
+    direccionmapa: ['', [Validators.required]],
     lavado: ['',],
     comida: ['',],
-    limpieza: ['', ],
+    limpieza: ['',],
     tareas: ['',],
     fecha: ['', [Validators.required]],
-   
-    experiencia:[''],
+
+    experiencia: ['', [Validators.required]],
     ninos: this.fb.array([])
 
 
@@ -74,36 +85,42 @@ export class NineraComponent implements OnInit {
 
   })
 
-get ninos(){
-  return this.registerForm.get('ninos') as FormArray;
+  get ninos() {
+    return this.registerForm.get('ninos') as FormArray;
 
-}
+  }
 
-agregarninos(){
- 
-  const ninosFormgroup =  this.fb.group({
-    nino:'',
-    masculino: '',
-    femenino:'',
-    edad:'',
-  
+  agregarninos() {
+    
+    const ninosFormgroup = this.fb.group({
+    
+      masculino:  ['', [Validators.required]],
+      femenino:  ['', [Validators.required]],
+      edad:  ['', [Validators.required]],
 
-  });
 
-  this.ninos.push(ninosFormgroup);
+    });
 
-}
+    this.ninos.push(ninosFormgroup);
 
-removerninos(indice:number){
+  }
 
-  this.ninos.removeAt(indice)
+  removerninos(indice: number) {
 
-}
+    this.ninos.removeAt(indice)
 
+  }
+
+
+  //Expresiones Regulares
+  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
   constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,
+    private verificar: VerificacionService, private usuarioService: UsuarioService,private router: Router,
 
     private ngZone: NgZone) {
+    this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
+   // this.to = new FormControl('', [Validators.required]);
     this.votes = this.votes || 0;
   }
 
@@ -144,6 +161,7 @@ removerninos(indice:number){
   }
 
 
+ 
   //metodo de las localidades taridas de la base 
   getOpciones1() {
     return this.ciudadOpcion.getOpciones()
@@ -237,23 +255,131 @@ removerninos(indice:number){
 
   }
   voteUp(): void {
+ 
     this.votes++;
+   
     this.agregarninos();
   }
 
   voteDown(): void {
+   
     this.votes--;
+
     this.removerninos(0)
   }
 
 
 
-  //====CREAR USUARIO==//
 
- crearUsuario(){
-   this. formSubmitted = true;
-  console.log(this.registerForm.value)
- }
+
+  verificarEmail() {
+
+    setTimeout(() => {
+      this.verificar.sendEmail("http://localhost:4500/codigo").subscribe(
+
+        res => {
+
+          this.msg = res['msg'];
+          console.log(this.msg)
+        }
+
+
+      );
+
+    }, 3000);
+
+  };
+  RevisandoEmail(){
+    this.formSubmitted = true;
+    let to = this.registerForm.value.email;
+    console.log(to)
+  this.verificar.Email("http://localhost:4500/send", this.registerForm.value).subscribe(
+  
+     
+    data => {
+     
+      this.validarEamil = data['data'];
+      console.log(data)
+     
+
+      if(this.validarEamil=="sent"){
+        Swal.fire("Email enviado a "+ to, "Se envío correo electrónico con su clave  Por favor revise la bandeja de entrada o spam!", "success")
+        console.log('verifico')
+      }
+    
+    });
  
+ 
+ 
+  this.verificarEmail()
+  }
+ /*
+  $(document).ready(function(){
+        var from,to,subject,text;
+        $("#send_email").click(function(){		
+            to=$("#to").val();		
+            $("#message").text("Enviando correo electrónico ... Espere");
+            $.get("http://localhost:4500/send",{to:to},function(data){
+            console.log(data)
+            if(data=="sent")
+            {
+                $("#message").empty().text("El correo electrónico con su clave se envió a "+to+" Por favor revise la bandeja de entrada o spam !");
+            }
+          
+    
+    });
+        });
+    });
+ */
+
+ //====CREAR USUARIO==//
+
+ verificando(){
+  if(this.registerForm.value.clave != this.msg){
+    Swal.fire('Calve', 'Invalida revise su email o verifique nuevamente!', 'error');
+   console.log('Error de clave')
+
+  //  document.getElementById("habilitarBoton").style.display ="inline";
+  }else{
+    Swal.fire("Codigo verificado con  exito", "", "success")
+    console.log('funciona la verificacion')
+    this.crearUsuario();
+  }
+}
+
+crearUsuario() {
+  this.formSubmitted = true;
+
+
+ setTimeout(() => {
+  console.log(this.registerForm.value)
+  this.registerForm.value.direccionmapa= this.address;
+  this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
+    resp =>{
+      Swal.fire("Registro  existoso", "", "success")
+      console.log(resp);
+      this.router.navigateByUrl('/login')
+    },(err) => {
+      // Si sucede un error
+     //  Swal.fire('Error', err['msg'], 'error' );
+     Swal.fire('Error', err.error.msg, 'error' );
+     this.router.navigateByUrl('/inicio')
+    }
+    
+  )
+  this.resetUsuario()
+  },4000)
+  setTimeout(() => {
+  
+},6000)
+}
+
+
+resetUsuario(){
+  this.registerForm.reset()
+}
+
+
+
 
 }

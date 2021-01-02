@@ -7,15 +7,15 @@
 
   <div>
 
-    <img src="../../../assets/images/Banner2.jpg" alt="">
+  
 
   </div>
 </nav>
-
+<img src="../../../assets/images/categoria/Niñeras.jpeg"  width="1520">
 <br>
 <br>
 
-<div class="container ">
+<div class="container">
 
   <div id="stepper1" class="bs-stepper">
     <div class="bs-stepper-header">
@@ -60,7 +60,7 @@
     <!--AQUI EMPEZA EL FORMULARIO-->
 
     <div class="bs-stepper-content">
-      <form (ngSubmit)="crearUsuario()" [formGroup]="registerForm">
+      <form  [formGroup]="registerForm"  >
         <div id="test-l-1" class="content">
           <div class="form-group">
             <label for="exampleInputEmail1">CIUDAD/TODOS</label>
@@ -108,7 +108,7 @@
                   (dragEnd)="markerDragEnd($event)"></agm-marker>
               </agm-map>
               <br>
-              <h5>Dirección: {{address}}</h5>
+              <h5 >Dirección: {{address}}</h5>
               <div>Latitude: {{latitude}}</div>
               <div>Longitude: {{longitude}}</div>
             </div>
@@ -290,14 +290,23 @@
           </div>
           <div class="form-group">
            
-            <input type="email" class="form-control col-6" id="exampleInputEmail1"  placeholder="EMAIL"formControlName="email" />
+            <input type="email" class="form-control col-6" id="to"  placeholder="EMAIL" formControlName="email" />
+            <br>
+            <button  class="btn btn-primary mt-5" (click)="RevisandoEmail()">Verificar Email</button>
+            <!--button id="send_email" class="btn btn-primary mt-5" (click)="verificarEmail()">Verificar Email</!--button><br>
+             <span-- id="message"></span-->
+            
+          </div>       
+           <div class="form-group">
+           
+            <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="password" formControlName="password" />
           </div>
           
           <div class="form-group">
            
-            <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CLAVE" formControlName="password" />
+            <input type="number" class="form-control col-6" id="exampleInputPassword1" placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
           </div>
-          <button type="submit" class="btn btn-primary mt-5">REGISTRAR</button>
+          <button type="submit" class="btn btn-primary mt-5"  (click)="verificando()"  >REGISTRAR</button>
         </div>
       </form>
     </div>

@@ -1,7 +1,7 @@
-import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component,  OnInit } from '@angular/core';
+import { NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuario.service';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,69 +10,47 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public formSubmitted = false;
-  public auth2: any;
-
-  public loginForm = this.fb.group({
-    email: [ localStorage.getItem('email') || '' , [ Validators.required, Validators.email ] ],
-    password: ['', Validators.required ],
-    remember: [false]
-  });
-
-
+  recuerdame: boolean = false;
+  email: string = '';
   constructor( private router: Router,
-               private fb: FormBuilder,
-               private usuarioService: UsuarioService,
-               private ngZone: NgZone ) { }
+ 
+  ) { }
 
-  ngOnInit(): void {
-   
-  }
-
-
-  login() {
-
-    this.usuarioService.login( this.loginForm.value )
-      .subscribe( resp => {
-        console.log(resp)
-
-        if ( this.loginForm.get('remember').value ){ 
-          localStorage.setItem('email', this.loginForm.get('email').value );
-        } else {
-          localStorage.removeItem('email');
-        }
-
-        // Navegar al Dashboard
-        this.router.navigateByUrl('/dashboard');
-
-      }, (err) => {
-        // Si sucede un error
-        Swal.fire('Error', err.error.msg, 'error' );
-      });
-
-  }
+  ngOnInit() {
   
-
-
-
-
-  attachSignin(element) {
-    
-    this.auth2.attachClickHandler( element, {},
-        (googleUser) => {
-            const id_token = googleUser.getAuthResponse().id_token;
-            // console.log(id_token);
-            this.usuarioService.loginGoogle( id_token )
-              .subscribe( resp => {
-                // Navegar al Dashboard
-                this.ngZone.run( () => {
-                  this.router.navigateByUrl('/');
-                })
-              });
-
-        }, (error) => {
-            alert(JSON.stringify(error, undefined, 2));
-        });
+    this.email = localStorage.getItem('email') || '';
   }
 
+
+  ingresar( form: NgForm ) {
+    if ( !form.valid ) {
+   
+
+      return;
+    }
+
+//    let usuario = new Usuario(
+  //    null,
+  //    form.value.email,
+   //   form.value.password
+//    );
+
+   /* this._usuarioService.login( usuario, form.value.recuerdame ).subscribe(res => {
+    
+      this.router.navigate(['/Inicio']);
+      Swal.fire('Login', `Hola  has iniciado sesión con éxito!`, 'success');
+    },
+    err => {
+      if (err.status = (409)) {
+        Swal.fire('Error Login', 'Usuario o clave incorrectas!', 'error');
+      }
+      console.log(err)
+    },
+    );
+  }
+  */
+
+
+
+}
 }

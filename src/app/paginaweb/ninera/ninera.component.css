@@ -56,3 +56,13 @@ agm-map {
   text-align: left;
   display:inline-block;
   }
+
+  #cabecera {
+    min-height: 400px;text-align: center;
+    color: #fff;
+    
+    background-image: url('../../../assets/images/categoria/Niñeras.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }

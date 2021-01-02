@@ -1,16 +1,22 @@
 
 export class Usuario {
 
-    constructor(
-        public nombre: string,
-        public email: string,
-        public password?: string,
-        public img?: string,
-     //  public google?: boolean,
-        public role?: string,
-        public uid?: string,
-        public ninos?: string,
-    ) {}
+
+    usuario: string;
+    telefono: string;
+    email: string;
+    password:string;
+    clave: String;
+    provincia?:string;
+    ciudad?:string;
+    direccion?:string;
+    direccionmapa?: string;
+    lavado?: boolean;
+    comida?: boolean;
+    limpieza?: boolean;
+    tareas?: boolean;
+    fecha?: Date;
+    ninos?: Array<any>
 
 
 }

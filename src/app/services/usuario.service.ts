@@ -10,10 +10,11 @@ import { environment } from '../../environments/environment';
 
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
+import { Usuario } from '../models/usuario.model';
 
 const base_url = environment.base_url;
 
-declare const gapi: any;
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,24 +27,11 @@ export class UsuarioService {
                 private router: Router,
                 private ngZone: NgZone ) {
 
-    this.googleInit();
+  
   }
 
 
-  googleInit() {
-
-    return new Promise( resolve => {
-      gapi.load('auth2', () => {
-        this.auth2 = gapi.auth2.init({
-          client_id: '1045072534136-oqkjcjvo449uls0bttgvl3aejelh22f5.apps.googleusercontent.com',
-          cookiepolicy: 'single_host_origin',
-        });
-
-        resolve();
-      });
-    })
-
-  }
+ 
 
   logout() {
     localStorage.removeItem('token');
@@ -75,12 +63,12 @@ export class UsuarioService {
   }
 
 
-  crearUsuario( formData: RegisterForm ) {
+  crearUsuario( formData: Usuario ) {
     
     return this.http.post(`${ base_url }/usuarios`, formData )
               .pipe(
                 tap( (resp: any) => {
-                  localStorage.setItem('token', resp.token )
+                //  localStorage.setItem('token', resp.token )
                 })
               )
 
@@ -97,16 +85,7 @@ export class UsuarioService {
 
   }
 
-  loginGoogle( token ) {
-    
-    return this.http.post(`${ base_url }/login/google`, { token } )
-                .pipe(
-                  tap( (resp: any) => {
-                    localStorage.setItem('token', resp.token )
-                  })
-                );
 
-  }
 
   
 

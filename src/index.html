@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <title>JOB & CARE</title>
@@ -158,5 +158,24 @@
       </script>
 </body>
 
+<!--script>
+    $(document).ready(function(){
+        var from,to,subject,text;
+        $("#send_email").click(function(){		
+            to=$("#to").val();		
+            $("#message").text("Enviando correo electrónico ... Espere");
+            $.get("http://localhost:4500/send",{to:to},function(data){
+            console.log(data)
+            if(data=="sent")
+            {
+                $("#message").empty().text("El correo electrónico con su clave se envió a "+to+" Por favor revise la bandeja de entrada o spam !");
+            }
+          
+    
+    });
+        });
+    });
+    </script-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk&libraries=places&language=es"></script>
+
 </html>
