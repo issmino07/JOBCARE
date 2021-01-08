@@ -29,6 +29,7 @@ import { SpaComponent } from './spa/spa.component';
 import { SpaEmpleadorComponent } from './spa-empleador/spa-empleador.component';
 import { ProfesionalComponent } from './profesional/profesional.component';
 import { ProfesionalEmpleadorComponent } from './profesional-empleador/profesional-empleador.component';
+import { OfertasEmpleoComponent } from './ofertas-empleo/ofertas-empleo.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent},
@@ -57,6 +58,8 @@ const routes: Routes = [
   { path: 'profesional', component: ProfesionalComponent},
   { path: 'profesionalEmpleador', component: ProfesionalEmpleadorComponent},
   { path: 'cursos', component: CursosComponent},
+  { path: 'ofertaEmpleo', component: OfertasEmpleoComponent},
+
 
 
 

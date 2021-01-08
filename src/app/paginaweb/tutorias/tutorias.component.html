@@ -1,307 +1,86 @@
-<!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="../../../assets/images/j-logoreco.png" alt="homepage" class="dark-logo">
-    <img src="../../../assets/images/text-logo.png" alt="homepage" class="dark-logo">
-  </a>
+<app-header-pagina></app-header-pagina>
 
-  <div>
-
-    <img src="../../../assets/images/Banner2.jpg" alt="">
-
-  </div>
-</nav>
-
+<img src="../../../assets/images/categoria/Tutorias Escolares.jpeg" alt=""width="1520">
 <br>
 <br>
 
 <div class="container ">
 
-  <div id="stepper1" class="bs-stepper">
-    <div class="bs-stepper-header">
-      <div class="step" data-target="#test-l-1">
-        <button class="step-trigger">
-          <span class="bs-stepper-circle">1</span>
-          <span class="bs-stepper-label"></span>
-        </button>
+
+
+
+  <!--AQUI EMPEZA EL FORMULARIO-->
+
+  <form  [formGroup]="registerForm">
+
+    <div class="content text-center">
+
+      <h2 align="center">Subscripción</h2>
+
+
+      <div class="form-group">
+
+        <input type="email" class="form-control col-6" id="exampleInputEmail1" placeholder="EMAIL"
+          formControlName="email" />
       </div>
-      <div class="line"></div>
-      <div class="step" data-target="#test-l-2">
-        <button class="step-trigger">
-          <span class="bs-stepper-circle">2</span>
-          <span class="bs-stepper-label"></span>
-        </button>
+
+      <div class="form-group">
+
+        <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CLAVE"
+          formControlName="password" />
       </div>
-      <div class="line"></div>
-      <div class="step" data-target="#test-l-3">
-        <button class="step-trigger">
-          <span class="bs-stepper-circle">3</span>
-          <span class="bs-stepper-label"></span>
-        </button>
+
+      <div class="form-group">
+        <input type="number" class="form-control col-6" id="exampleInputPassword1"
+          placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
       </div>
-      <div class="line"></div>
-      <div class="step" data-target="#test-l-4">
-        <button class="step-trigger">
-          <span class="bs-stepper-circle">4</span>
-          <span class="bs-stepper-label"></span>
-        </button>
+
+      <div class="form-group">
+
+        <h2 align="center">Como nos encontraste</h2>
+        <div class=" row m-0 justify-content-center align-items-center vh-100">
+          <div class="form-group">
+
+            <div class="input-group ">
+              <ul class="icheck-list" class="list">
+                <li>
+                  <input type="checkbox" class="check form-control" id="minimal-checkbox-1" formControlName="facebook">
+                  <label for="minimal-checkbox-1">Facebook</label>
+                </li>
+                <li>
+                  <input type="checkbox" class="check form-control" id="minimal-checkbox-2" formControlName="twitter">
+                  <label for="minimal-checkbox-2">Twitter</label>
+                </li>
+                <li>
+                  <input type="checkbox" class="check form-control" id="minimal-checkbox-3" formControlName="instagram">
+                  <label for="minimal-checkbox-3">Instagram</label>
+                </li>
+                <li>
+                  <input type="checkbox" class="check form-control" id="minimal-checkbox-4" formControlName="linkedin">
+                  <label for="minimal-checkbox-4">LinkedIn</label>
+                </li>
+
+
+              </ul>
+
+            </div>
+            <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button>
+            &nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary mt-5" (click)="verificando()">REGISTRAR</button>
+          </div>
+
+        </div>
+
+
       </div>
-      <div class="line"></div>
-      <div class="step" data-target="#test-l-5">
-        <button class="step-trigger">
-          <span class="bs-stepper-circle">5</span>
-          <span class="bs-stepper-label"></span>
-        </button>
-      </div>
-     
+
     </div>
+  </form>
 
 
-    <!--AQUI EMPEZA EL FORMULARIO-->
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#56c2c6" type="ball-clip-rotate-multiple">
+    <p style="font-size: 20px; color: #56c2c6">Jobandcare...</p>
+  </ngx-spinner>
+</div>
 
-    <div class="bs-stepper-content">
-      <form (ngSubmit)="crearUsuario()" [formGroup]="registerForm">
-        <div id="test-l-1" class="content">
-          <div class="form-group">
-            <label for="exampleInputEmail1">CIUDAD/TODOS</label>
-            <tr>
-              <td scope="col">Provincia &nbsp;</td>
-              <td scope="col">
-                <select name="Provincia" class="browser-default custom-select form-control" formControlName="provincia"
-                  (change)="selectProvincia($event.target.value)">
-                  <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
-                    {{prov.provincia}}</option>
-                </select>
-    
-              </td>
-    
-            </tr>
-            <br>
-            <tr>
-              <td scope="col">Ciudad &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-              <td scope="col">
-                <select name="Ciudad" class="browser-default custom-select form-control" formControlName="ciudad">
-                  <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
-                    {{canton}}
-                  </option>
-                </select>
-    
-    
-              </td>
-    
-            </tr>
-            <br>
-            <br>
-            <div class="container">
-    
-    
-    
-              <div class="form-group">
-                <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
-                  formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
-                  spellcheck="off" type="text" #search>
-              </div>
-    
-              <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
-                  (dragEnd)="markerDragEnd($event)"></agm-marker>
-              </agm-map>
-              <br>
-              <h5>Dirección: {{address}}</h5>
-              <div>Latitude: {{latitude}}</div>
-              <div>Longitude: {{longitude}}</div>
-            </div>
-          </div>
-    
-    
-    
-    
-          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-        </div>
-        <div id="test-l-2" class="content">
-          <div class="form-group">
-            <h2 align="center" (click)="desactivar()">CUANDO LO NECESITAS</h2>
-            <div>
-              <div class="row m-0 justify-content-center align-items-center vh-100">
-                <!-- Column -->
-    
-                <div>
-                  <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado "
-                    (click)="activar()"><i></i>Hoy</button>
-                  <div class="notify"> <span class=""></span></div>
-    
-                  <div *ngIf="mostarDatos">
-                    <br>
-                    <input type="datetime-local" id="meeting-time" name="meeting-time" class="form-control"
-                      formControlName="fecha">
-                  </div>
-    
-                </div>
-                &nbsp;&nbsp;
-                <div>
-                  <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado "
-                    (click)="activar2()"><i></i>Esta semanna</button>
-                  <div class="notify"> <span class=""></span></div>
-    
-                  <div *ngIf="mostarDatossemana">
-                    <br>
-                    <input type="week" name="semana" class="form-control" formControlName="fecha">
-                  </div>
-    
-                </div>
-                &nbsp;&nbsp;
-                <!-- Column -->
-                <div>
-                  <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado "
-                    (click)="activar3()"><i></i>Este mes</button>
-                  <div class="notify"> <span class=""></span></div>
-    
-                  <div *ngIf="mostarDatosmes">
-                    <br>
-                    <input type="month" name="mes" class="form-control" formControlName="fecha">
-                  </div>
-    
-                </div>
-                &nbsp;&nbsp;
-                <div>
-                  <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado "
-                    (click)="activar4()"><i></i>Fijo</button>
-                  <div class="notify"> <span class=""></span></div>
-    
-                  <div *ngIf="mostarDatosfijo">
-                    <br>
-                    <input type="date" name="Fecha de inicio" class="form-control" formControlName="fecha">
-                  </div>
-    
-                </div>
-    
-    
-    
-    
-              </div>
-    
-            </div>
-          </div>
-          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-        </div>
-        <div id="test-l-3" class="content">
-          <h2 align="center">¿Quiénes necesitan tutorias?</h2>
-          <div class="form-group">
-            <div>
-              <div class="row m-0 justify-content-center align-items-center vh-100">
-    
-                <button (click)="voteDown()" class="btn btn-danger"min="1">
-                  -
-                </button> &nbsp;&nbsp;&nbsp;&nbsp; <h3 class="display-4">{{votes}}</h3> &nbsp;&nbsp;&nbsp;&nbsp; <button
-                  (click)="voteUp()" class="btn btn-primary">
-                  +
-                </button>
-    
-              </div>
-
-              <div formArrayName="ninos" *ngFor="let ninos of ninos.controls; let i = index">
-                <div [formGroupName]="i">
-                  <div class="form-group row">
-                    <label class="col-md-1" [attr.for]="'nino' + i">Niños</label>
-                    <div>
-                     
-                      <h3 type="number" [attr.id]="'nino' + i" class="form-control" >{{i +1}}</h3>
-                    </div>
-                    <label class="col-md-1" [attr.for]="'edad' + i">Edad</label>
-                    <div>
-                     
-                      <input type="number" [attr.id]="'edad' + i" class="form-control" formControlName="edad" />
-                    </div>
-                    &nbsp;&nbsp;
-                  
-                     
-                     <input type="checkbox" class="check form-control" id="minimal-checkbox-5" formControlName="masculino" [attr.id]="'masculino' + i">
-                     <label    for="minimal-checkbox-5" [attr.for]="'masculino' + i">M</label>
-                     &nbsp;&nbsp;
-                     <input type="checkbox" class="check form-control" id="minimal-checkbox-6" formControlName="femenino" [attr.id]="'femenino' + i">
-                     <label  [attr.for]="'femenino' + i"  for="minimal-checkbox-6">F</label>
-                   
-
-                  </div>
-
-               
-                </div>
-
-
-              </div>
-    
-    
-    
-            </div>
-            
-
-            <div class="form-group">
-              <label >Experiencia:&nbsp;&nbsp;</label> 
-            <input type="number" class="form-control col-6"  placeholder="Ingrese un número" formControlName="experiencia" />
-            </div>
-
-          </div>
-          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-        </div>
-        <div id="test-l-4" class="content">
-          <div class="form-group">
-            <h2 align="center">Nivel que está cursando</h2>
-            <div class="form-group row m-0 justify-content-center align-items-center vh-100">
-    
-              <div class="input-group ">
-                <ul class="icheck-list" class="list">
-                  <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-1"formControlName="lavado">
-                    <label for="minimal-checkbox-1">Pre - Kínder</label>
-                  </li>
-                  <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-2"formControlName="comida">
-                    <label for="minimal-checkbox-2">Kínder</label>
-                  </li>
-                  <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
-                    <label for="minimal-checkbox-3">Escuela</label>
-                  </li>
-                  <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-4"formControlName="limpieza">
-                    <label for="minimal-checkbox-4">Colegio</label>
-                  </li>
-    
-                </ul>
-    
-              </div>
-            </div>
-          </div>
-          <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-        </div>
-    
-    
-    
-    
-        <div id="test-l-5" class="content text-center">
-
-          <h2 align="center">Subscripción</h2>
-          <div class="form-group">
-            
-            <input type="text" class="form-control col-6"  placeholder="USUARIO"formControlName="usuario" />
-          </div>
-          <div class="form-group">
-            
-            <input type="text" class="form-control col-6"  placeholder="TELEFONO"formControlName="telefono" />
-          </div>
-          <div class="form-group">
-           
-            <input type="email" class="form-control col-6" id="exampleInputEmail1"  placeholder="EMAIL"formControlName="email" />
-          </div>
-          
-          <div class="form-group">
-           
-            <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CLAVE" formControlName="password" />
-          </div>
-          <button type="submit" class="btn btn-primary mt-5">REGISTRAR</button>
-        </div>
-      </form>
-    </div>
-    </div>
-    </div>
+<app-footer></app-footer>

@@ -35,7 +35,10 @@ import { SpaComponent } from './spa/spa.component';
 import { SpaEmpleadorComponent } from './spa-empleador/spa-empleador.component';
 import { ProfesionalComponent } from './profesional/profesional.component';
 import { ProfesionalEmpleadorComponent } from './profesional-empleador/profesional-empleador.component';
-import { ModalesPaginaComponent } from './modales-pagina/modales-pagina.component';
+import { OfertasEmpleoComponent } from './ofertas-empleo/ofertas-empleo.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 
 
@@ -71,15 +74,18 @@ import { ModalesPaginaComponent } from './modales-pagina/modales-pagina.componen
     SpaEmpleadorComponent,
     ProfesionalComponent,
     ProfesionalEmpleadorComponent,
-    ModalesPaginaComponent
+    OfertasEmpleoComponent,
+   
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     FormsModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgSelectModule,
+    NgxSpinnerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
       libraries: ['places']
@@ -89,8 +95,8 @@ import { ModalesPaginaComponent } from './modales-pagina/modales-pagina.componen
   exports:[
     HeaderPaginaComponent,
     NineraComponent,
-  
-    ModalesPaginaComponent
+    HeaderPaginaComponent,
+ 
   ]
 })
 export class PaginawebModule { }

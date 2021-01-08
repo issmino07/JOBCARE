@@ -4,7 +4,13 @@ import { Component, ElementRef, NgZone, OnInit, ViewChild, } from '@angular/core
 
 import Stepper from 'bs-stepper';
 import { MapsAPILoader } from '@agm/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { VerificacionService } from 'src/app/services/verificacion.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Usuario } from 'src/app/models/usuario.model';
 
 
 @Component({
@@ -15,7 +21,13 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 export class SpaEmpleadorComponent implements OnInit {
 
 
-  votes: number;
+  msg;
+  validarEamil;
+  loading = false;
+  buttionText = "Submit";
+  Error;
+  votes: number = 0;
+  email: any;
 
   mostarDatos: boolean;
   mostarDatossemana: boolean;
@@ -27,10 +39,13 @@ export class SpaEmpleadorComponent implements OnInit {
   address: string;
   private geoCoder;
 
+  cate ='SPA';
+  rol ='EMPLEADOR_ROLE';
+
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-
+  UsuarioModelo = new Usuario();
   //combo de la base de localidades
   ciuadadesOpcion: Ciudad[];
   ciudad: Ciudad;
@@ -55,58 +70,48 @@ export class SpaEmpleadorComponent implements OnInit {
     telefono: ['', [Validators.required]],
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
+    clave: ['', [Validators.required]],
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
-   
-    lavado: ['',],
-    comida: ['',],
-    limpieza: ['', ],
-    tareas: ['',],
+    direccionmapa: ['', [Validators.required]],
+  
     fecha: ['', [Validators.required]],
-   
-    experiencia:[''],
-    ninos: this.fb.array([])
-
-
-
+    categorias:[''],
+    role:[''],
+    experiencia: ['', [Validators.required]],
+     
+    peluqueria:[''],
+    masajes:[''],
+    manicure:[''],
+    pedicura:[''],
+    maquillaje:[''],
+    otros:['']
 
   })
 
-get ninos(){
-  return this.registerForm.get('ninos') as FormArray;
-
-}
-
-agregarninos(){
  
-  const ninosFormgroup =  this.fb.group({
-    nino:'',
-    masculino: '',
-    femenino:'',
-    edad:'',
-  
-
-  });
-
-  this.ninos.push(ninosFormgroup);
-
-}
-
-removerninos(indice:number){
-
-  this.ninos.removeAt(indice)
-
-}
 
 
-  constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,
+
+
+  //Expresiones Regulares
+  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+  constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,private spinner: NgxSpinnerService,
+    private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
 
     private ngZone: NgZone) {
+    this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
+    // this.to = new FormControl('', [Validators.required]);
     this.votes = this.votes || 0;
   }
 
   ngOnInit(): void {
+
+   
+ 
+   
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -141,6 +146,7 @@ removerninos(indice:number){
       animation: true
     })
   }
+
 
 
   //metodo de las localidades taridas de la base 
@@ -235,24 +241,138 @@ removerninos(indice:number){
     this.mostarDatosmes = false;
 
   }
-  voteUp(): void {
-    this.votes++;
-    this.agregarninos();
+  voteUp(valor: number) {
+  if(this.votes >= 50 && valor >= 0){
+    return this.votes = 50;
+  }
+  //  this.votes++;
+  if(this.votes <= 0 && valor < 0){
+    return this.votes = 0;
+  }
+  
+   this.votes = this.votes + valor;
+
   }
 
-  voteDown(): void {
-    this.votes--;
-    this.removerninos(0)
+
+
+
+
+
+  verificarEmail() {
+
+    setTimeout(() => {
+      this.verificar.sendEmail("http://localhost:4500/codigo").subscribe(
+
+        res => {
+          
+          this.msg = res['msg'];
+          console.log(this.msg)
+        }
+
+
+      );
+
+    }, 3000);
+
+  };
+  RevisandoEmail() {
+    this.formSubmitted = true;
+    this.spinner.show();
+    let to = this.registerForm.value.email;
+    console.log(to)
+    this.verificar.Email("http://localhost:4500/send", this.registerForm.value).subscribe(
+
+
+      data => {
+        this.spinner.hide();
+        this.validarEamil = data['data'];
+        console.log(data)
+
+
+        if (this.validarEamil == "sent") {
+      
+          Swal.fire("Email enviado a " + to, "Se envío correo electrónico con su clave  Por favor revise la bandeja de entrada o spam!", "success")
+          console.log('verifico')
+        }
+
+      });
+
+
+
+    this.verificarEmail()
   }
-
-
+  /*
+   $(document).ready(function(){
+         var from,to,subject,text;
+         $("#send_email").click(function(){		
+             to=$("#to").val();		
+             $("#message").text("Enviando correo electrónico ... Espere");
+             $.get("http://localhost:4500/send",{to:to},function(data){
+             console.log(data)
+             if(data=="sent")
+             {
+                 $("#message").empty().text("El correo electrónico con su clave se envió a "+to+" Por favor revise la bandeja de entrada o spam !");
+             }
+           
+     
+     });
+         });
+     });
+  */
 
   //====CREAR USUARIO==//
 
- crearUsuario(){
-   this. formSubmitted = true;
-  console.log(this.registerForm.value)
- }
- 
+  verificando() {
+    if (this.registerForm.value.clave != this.msg) {
+      Swal.fire('Clave', 'Invalida revise su email o verifique nuevamente!', 'error');
+      console.log('Error de clave')
+
+      //  document.getElementById("habilitarBoton").style.display ="inline";
+    } else {
+   
+      Swal.fire("Codigo verificado con  exito", "", "success")
+      console.log('funciona la verificacion')
+      this.crearUsuario();
+    }
+  }
+
+  crearUsuario() {
+    this.formSubmitted = true;
+
+    this.spinner.show();
+    setTimeout(() => {
+      console.log(this.registerForm.value)
+      this.registerForm.value.direccionmapa = this.address;
+      this.registerForm.value.categorias = this.cate;
+      this.registerForm.value.role = this.rol;
+      this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
+        resp => {
+          this.spinner.hide();
+          Swal.fire("Registro  existoso", "", "success")
+          console.log(resp);
+          this.router.navigateByUrl('/login')
+        }, (err) => {
+          // Si sucede un error
+          //  Swal.fire('Error', err['msg'], 'error' );
+          Swal.fire('Error', err.error.msg, 'error');
+          this.router.navigateByUrl('/inicio')
+        }
+
+      )
+      this.resetUsuario()
+    }, 4000)
+    setTimeout(() => {
+
+    }, 6000)
+  }
+
+
+  resetUsuario() {
+    this.registerForm.reset()
+  }
+
+
+
 
 }

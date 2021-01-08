@@ -1,3 +1,6 @@
+import { CategoriasService } from './services/categorias.service';
+import { OfertaService } from 'src/app/services/oferta.service';
+import { SidebarService } from './services/sidebar.service';
 import { PagesModule } from './pages/pages.module';
 import { PaginawebModule } from './paginaweb/paginaweb.module';
 import { AuthModule } from './auth/auth.module';
@@ -17,7 +20,11 @@ import { AppComponent } from './app.component';
 
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { UsuarioService } from './services/usuario.service';
-
+import { PipesModule } from './pipes/pipes.module';
+import { SubirArchivoService } from './services/subir-archivo.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
@@ -39,12 +46,19 @@ import { UsuarioService } from './services/usuario.service';
     AppRoutingModule,
     PagesModule,
     AuthModule,
-    
-   
-  
-
+    PipesModule,
+    NgxPaginationModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
+ 
   ],
-  providers: [UsuarioService],
+  providers: [
+    UsuarioService,
+    SidebarService,
+    SubirArchivoService, 
+    OfertaService,
+    CategoriasService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

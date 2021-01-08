@@ -1,17 +1,8 @@
-<!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="../../../assets/images/j-logoreco.png" alt="homepage" class="dark-logo">
-    <img src="../../../assets/images/text-logo.png" alt="homepage" class="dark-logo">
-  </a>
+<app-header-pagina></app-header-pagina>
 
-  <div>
 
-    <img src="../../../assets/images/Banner2.jpg" alt="">
 
-  </div>
-</nav>
-
+<img src="../../../assets/images/categoria/Servicio Automotriz.jpeg" alt=""width="1520">
 <br>
 <br>
 
@@ -60,7 +51,7 @@
     <!--AQUI EMPEZA EL FORMULARIO-->
 
     <div class="bs-stepper-content">
-      <form (ngSubmit)="crearUsuario()" [formGroup]="registerForm">
+      <form  [formGroup]="registerForm">
         <div id="test-l-1" class="content">
           <div class="form-group">
             <label for="exampleInputEmail1">CIUDAD/TODOS</label>
@@ -191,38 +182,31 @@
             <div>
               <div class="row m-0 justify-content-center align-items-center vh-100">
     
-                <button (click)="voteDown()" class="btn btn-danger"min="1">
+                <button (click)="voteUp(-1)" class="btn btn-danger"min="1">
                   -
                 </button> &nbsp;&nbsp;&nbsp;&nbsp; <h3 class="display-4">{{votes}}</h3> &nbsp;&nbsp;&nbsp;&nbsp; <button
-                  (click)="voteUp()" class="btn btn-primary">
+                  (click)="voteUp(+1)" class="btn btn-primary">
                   +
                 </button>
     
               </div>
 
-              <div formArrayName="ninos" *ngFor="let ninos of ninos.controls; let i = index">
-                <div [formGroupName]="i">
-                  <div class="form-group row">
-                    <label class="col-md-2" [attr.for]="'nino' + i">Experiencia &nbsp;&nbsp;</label>
-                    <div>
-                     
-                      <h3 type="number" [attr.id]="'nino' + i" class="form-control" >{{i +1}}</h3>
-                    </div>
-                    <label class="col-md-2" [attr.for]="'edad' + i">Años</label>
-                    <div>
-                    
-                    </div>
-                    &nbsp;&nbsp;
-                  
-              
-                   
+              <div class="row m-0 justify-content-center align-items-center vh-100 ">
+                <div class="form-group col-6">
 
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button" (click)="voteUp(-1)">-</button>
+                    </span>
+
+                    <input [(ngModel)]="votes" type="number" class="form-control " placeholder="Años de experiencia"
+                      formControlName="experiencia" />
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button" (click)="voteUp(+1)">+</button>
+                    </span>
                   </div>
 
-               
                 </div>
-
-
               </div>
     
     
@@ -244,33 +228,33 @@
               <div class="input-group ">
                 <ul class="icheck-list" class="list">
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-1"formControlName="lavado">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-1"formControlName="grua">
                     <label for="minimal-checkbox-1">Grúa</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-2"formControlName="comida">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-2"formControlName="mecanico">
                     <label for="minimal-checkbox-2">Mecánico</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="electrico">
                     <label for="minimal-checkbox-3">Eléctrico</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
-                    <label for="minimal-checkbox-3">Lavado</label>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-4"formControlName="lavadoAuto">
+                    <label for="minimal-checkbox-4">Lavado</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
-                    <label for="minimal-checkbox-3">Chofer</label>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-5"formControlName="chofer">
+                    <label for="minimal-checkbox-5">Chofer</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
-                    <label for="minimal-checkbox-3">Cerrajero</label>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-6"formControlName="cerrajeroAutomotriz">
+                    <label for="minimal-checkbox-6">Cerrajero</label>
                   </li>
                
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
-                    <label for="minimal-checkbox-3">Otros</label>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-7"formControlName="otros">
+                    <label for="minimal-checkbox-7">Otros</label>
                   </li>
                
     
@@ -305,9 +289,27 @@
            
             <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CLAVE" formControlName="password" />
           </div>
-          <button type="submit" class="btn btn-primary mt-5">REGISTRAR</button>
+          <div class="form-group">
+          
+            <input type="number" class="form-control col-6" id="exampleInputPassword1"
+              placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
+          </div>
+          <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button>
+          &nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary mt-5" (click)="verificando()">REGISTRAR</button>
         </div>
       </form>
     </div>
     </div>
+    <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#56c2c6"
+    type="ball-clip-rotate-multiple"
+  >
+    <p style="font-size: 20px; color: #56c2c6">Jobandcare...</p>
+  </ngx-spinner>
     </div>
+
+
+    <app-footer></app-footer>

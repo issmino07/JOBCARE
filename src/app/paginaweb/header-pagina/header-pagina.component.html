@@ -1,110 +1,49 @@
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../../../assets/images/logoazul.jpg" alt="homepage" class="img-responsive" />
-                            <!-- Light Logo icon -->
-                            <!--img src="../../../assets/images/j-logoreco.png" alt="homepage" class="light-logo " /-->
-                        </b>
-               </a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto">
-                        <!-- This is  -->
-                        <!--li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </!--li>
-                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        <li-- class="nav-item hidden-sm-down"></li-->
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-            
-                        <!-- ============================================================== -->
-                        <!-- Comment -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown"[routerLink]="['/home']" routerLinkActive="router-link-active">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"[routerLink]="['/home']" routerLinkActive="router-link-active"> 
-                              <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-suitcase" [routerLink]="['/home']" routerLinkActive="router-link-active" ></i> &nbsp; ENCONTRAR EMPLEO</button>
-                                <div class="notify"> <span class=""></span></div>
-                            </a>
-                         
-                        </li>
+<nav class="navbar navbar-light bg-light  ">
+    <div >
+   
+    <img src="../../../assets/images/jobcare.png" alt="homepage" class="img-responsive" />
+    <a class="nav-link  waves-effect waves-dark" [routerLink]="['/ofertaEmpleo']" routerLinkActive="router-link-active">
+        <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-suitcase"
+                [routerLink]="['/ofertaEmpleo']" routerLinkActive="router-link-active"></i>&nbsp; VER OFERTAS</button>
+        <div class="notify"> <span class=""></span></div>
+    </a>
 
-                        <li class="nav-item dropdown"[routerLink]="['/home2']" routerLinkActive="router-link-active">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"[routerLink]="['/home2']" routerLinkActive="router-link-active"> 
-                              <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-suitcase" [routerLink]="['/home2']" routerLinkActive="router-link-active" ></i>&nbsp; PUBLICAR EMPLEO</button>
-                                <div class="notify"> <span class=""></span></div>
-                            </a>
-                         
-                        </li>
+    <a class="nav-link  waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false" [routerLink]="['/home']" routerLinkActive="router-link-active">
+    <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-suitcase"
+            [routerLink]="['/home']" routerLinkActive="router-link-active"></i> &nbsp; ENCONTRAR EMPLEO</button>
+    <div class="notify"> <span class=""></span></div>
+</a>
+<a class="nav-link  waves-effect waves-dark" [routerLink]="['/home2']" routerLinkActive="router-link-active">
+    <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-suitcase"
+            [routerLink]="['/home2']" routerLinkActive="router-link-active"></i>&nbsp; PUBLICAR EMPLEO</button>
+    <div class="notify"> <span class=""></span></div>
+</a>
+<a class="nav-link  waves-effect waves-dark" [routerLink]="['/cursos']" routerLinkActive="router-link-active">
+    <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-check"
+            [routerLink]="['/cursos']" routerLinkActive="router-link-active"></i>CAPACÍTATE</button>
+    <div class="notify"> <span class=""></span></div>
+</a>
+<a class="nav-link  waves-effect waves-dark" href="" id="2" data-toggle="modal" data-target="#exampleModal"
+data-whatever="@mdo">
 
-                        <li class="nav-item dropdown"[routerLink]="['/home']" routerLinkActive="router-link-active">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"[routerLink]="['/cursos']" routerLinkActive="router-link-active"> 
-                              <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-check" [routerLink]="['/cursos']" routerLinkActive="router-link-active" ></i>CAPACÍTATE</button>
-                                <div class="notify"> <span class=""></span></div>
-                            </a>
-                         
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- End Comment -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- Messages -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown" >
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >
-                              
-                              <button type="button" class="btn btn-rounded btn-outline-primary"><i class="icons mdi mdi-account-box-outline" id="icons" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" ></i>REGÍSTRATE </button>
-                                <div class="notify"> <span class=""></span> <span class=""></span> </div>
-                            </a>
-                         
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- End Messages -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- mega menu -->
-                        <!-- ============================================================== -->
-                       
-                        <!-- ============================================================== -->
-                        <!-- End mega menu -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- Language -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown"[routerLink]="['/login']" routerLinkActive="router-link-active" >
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"[routerLink]="['/login']" routerLinkActive="router-link-active" > 
-                              
-                              <button type="button" class="btn btn-rounded btn-outline-primary"><i class="icons mdi mdi-account" id="icons " [routerLink]="['/login']" routerLinkActive="router-link-active" ></i>Iniciar Sesión</button>
-                            </a>
-                      
-                        </li>
-                  
-                    </ul>
-                </div>
-            </nav>
-        </header>
+<button type="button" class="btn btn-rounded btn-outline-primary"(click)="activar()"><i
+        class="icons mdi mdi-account-box-outline" id="icons" data-toggle="modal" data-target="#exampleModal"
+        data-whatever="@mdo" (click)="activar()"></i>REGÍSTRATE </button>
+<div class="notify"> <span class=""></span> <span class=""></span> </div>
+</a>
+<a class="nav-link  waves-effect waves-dark" [routerLink]="['/login']" routerLinkActive="router-link-active">
+
+    <button type="button" class="btn btn-rounded btn-outline-primary"><i class="icons mdi mdi-account"
+            id="icons " [routerLink]="['/login']" routerLinkActive="router-link-active"></i>Iniciar
+        Sesión</button>
+</a>
+</div>
+</nav>
+     
         <!-- ============================================================== -->
         <!-- End Topbar header -->
-        <div class="col-md-4" align="center">
+        <div class="col-md-4" align="center" [ngStyle]="myStyles">
             <div class="card">
                 <div class="card-body">
                   
@@ -118,7 +57,7 @@
                                 <div class="modal-body">
                                   <li class=""[routerLink]="['/home']" routerLinkActive="router-link-active"data-dismiss="modal">
                                     <a   aria-expanded="false"[routerLink]="['/home']" routerLinkActive="router-link-active"data-dismiss="modal"> 
-                                      <button type="button" class="btn btn-rounded btn-outline-primary"data-dismiss="modal"><i data-dismiss="modal" class="fa fa-check" [routerLink]="['/home']" routerLinkActive="router-link-active" ></i>ENCONTRAR EMPLEO</button>
+                                      <button type="button" class="btn btn-rounded btn-outline-primary"data-dismiss="modal" ><i data-dismiss="modal" class="fa fa-check" [routerLink]="['/home']" routerLinkActive="router-link-active" ></i>ENCONTRAR EMPLEO</button>
                                         <div class="notify"data-dismiss="modal"> <span class=""data-dismiss="modal"></span></div>
                                     </a>
                                  
@@ -137,7 +76,7 @@
           
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                                   
                                 </div>
                             </div>

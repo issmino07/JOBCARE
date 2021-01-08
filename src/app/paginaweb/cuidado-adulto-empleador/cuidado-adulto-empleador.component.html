@@ -1,17 +1,6 @@
-<!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="../../../assets/images/j-logoreco.png" alt="homepage" class="dark-logo">
-    <img src="../../../assets/images/text-logo.png" alt="homepage" class="dark-logo">
-  </a>
+<app-header-pagina></app-header-pagina>
 
-  <div>
-
-    <img src="../../../assets/images/Banner2.jpg" alt="">
-
-  </div>
-</nav>
-
+<img src="../../../assets/images/categoria/Adulto mayor.jpg" alt=""width="1520">
 <br>
 <br>
 
@@ -60,7 +49,7 @@
     <!--AQUI EMPEZA EL FORMULARIO-->
 
     <div class="bs-stepper-content">
-      <form (ngSubmit)="crearUsuario()" [formGroup]="registerForm">
+      <form [formGroup]="registerForm">
         <div id="test-l-1" class="content">
           <div class="form-group">
             <label for="exampleInputEmail1">CIUDAD/TODOS</label>
@@ -200,7 +189,7 @@
     
               </div>
 
-              <div formArrayName="ninos" *ngFor="let ninos of ninos.controls; let i = index">
+              <div formArrayName="adulto" *ngFor="let ninos of adulto.controls; let i = index">
                 <div [formGroupName]="i">
                   <div class="form-group row">
                     <label class="col-md-2" [attr.for]="'nino' + i">#personas  &nbsp;&nbsp;</label>
@@ -250,24 +239,24 @@
               <div class="input-group ">
                 <ul class="icheck-list" class="list">
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-1"formControlName="lavado">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-1"formControlName="compania">
                     <label for="minimal-checkbox-1">Compañia</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-2"formControlName="comida">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-2"formControlName="alimentacion">
                     <label for="minimal-checkbox-2">Alimentación especial</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="actividades">
                     <label for="minimal-checkbox-3">Actividades</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-4"formControlName="limpieza">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-4"formControlName="paseo">
                     <label for="minimal-checkbox-4">Paseo</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-4"formControlName="limpieza">
-                    <label for="minimal-checkbox-4">Tareas menores de aseo y orden</label>
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-5"formControlName="tareas">
+                    <label for="minimal-checkbox-5">Tareas menores de aseo y orden</label>
                   </li>
     
                 </ul>
@@ -301,9 +290,28 @@
            
             <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CLAVE" formControlName="password" />
           </div>
-          <button type="submit" class="btn btn-primary mt-5">REGISTRAR</button>
+          <div class="form-group">
+
+            <input type="number" class="form-control col-6" id="exampleInputPassword1"
+              placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
+          </div>
+          <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button>
+          &nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary mt-5" (click)="verificando()">REGISTRAR</button>
         </div>
       </form>
     </div>
     </div>
+
+
+    <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#56c2c6"
+    type="ball-clip-rotate-multiple"
+  >
+    <p style="font-size: 20px; color: #56c2c6">Jobandcare...</p>
+  </ngx-spinner>
     </div>
+
+    <app-footer></app-footer>

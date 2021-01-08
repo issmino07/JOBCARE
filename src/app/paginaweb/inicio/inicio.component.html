@@ -1,3 +1,7 @@
+<!-- Image and text -->
+
+
+
 <app-header-pagina></app-header-pagina>
 
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -30,17 +34,17 @@
 <section   >
   <div  class="scrollmenu">
 
-    <a  data-toggle="modal" data-target="#ninera" data-whatever="@mdo" >Niñeras</a>
-    <a  data-toggle="modal" data-target="#cuidado" data-whatever="@mdo">Cuidado del adulto mayor</a>
-    <a  data-toggle="modal" data-target="#domestico" data-whatever="@mdo">Servicio Doméstico</a>
-    <a  data-toggle="modal" data-target="#mascota" data-whatever="@mdo">Cuidado de mascotas</a>
-    <a data-toggle="modal" data-target="#especiales" data-whatever="@mdo">Cuidados capacidades especiales</a>
-    <a data-toggle="modal" data-target="#tutor" data-whatever="@mdo">Tutorías escolares</a>
-    <a data-toggle="modal" data-target="#hogar" data-whatever="@mdo">Trabajos del hogar</a>
-    <a data-toggle="modal" data-target="#asistencia" data-whatever="@mdo">Asistencia automotriz</a>  
-    <a data-toggle="modal" data-target="#mensajeria" data-whatever="@mdo">Mensajería</a>
-    <a data-toggle="modal" data-target="#spa" data-whatever="@mdo">Spa</a>
-    <a data-toggle="modal" data-target="#profesional" data-whatever="@mdo">Profesionales Titulados </a>
+    <a  data-toggle="modal" data-target="#ninera" data-whatever="@mdo" (click)="activar()">Niñeras</a>
+    <a  data-toggle="modal" data-target="#cuidado" data-whatever="@mdo" (click)="activar()" >Cuidado del adulto mayor</a>
+    <a  data-toggle="modal" data-target="#domestico" data-whatever="@mdo" (click)="activar()">Servicio Doméstico</a>
+    <a  data-toggle="modal" data-target="#mascota" data-whatever="@mdo" (click)="activar()">Cuidado de mascotas</a>
+    <a data-toggle="modal" data-target="#especiales" data-whatever="@mdo" (click)="activar()">Cuidados capacidades especiales</a>
+    <a data-toggle="modal" data-target="#tutor" data-whatever="@mdo" (click)="activar()">Tutorías escolares</a>
+    <a data-toggle="modal" data-target="#hogar" data-whatever="@mdo" (click)="activar()">Trabajos del hogar</a>
+    <a data-toggle="modal" data-target="#asistencia" data-whatever="@mdo" (click)="activar()">Asistencia automotriz</a>  
+    <a data-toggle="modal" data-target="#mensajeria" data-whatever="@mdo" (click)="activar()">Mensajería</a>
+    <a data-toggle="modal" data-target="#spa" data-whatever="@mdo" (click)="activar()">Spa</a>
+    <a data-toggle="modal" data-target="#profesional" data-whatever="@mdo" (click)="activar()">Profesionales Titulados </a>
   
   </div>
 
@@ -97,7 +101,7 @@
             <div class="card-body">
             
                 <div class="row">
-                    <div class="col-lg-4 col-md-3"><img src="../../../assets/images/redi.jpg" class="img-fluid" /></div>
+                    <div class="col-lg-4 col-md-3"><img src="../../../assets/images/redi.jpg" class="img-responsive" /></div>
                     <div class="col-lg-8 col-md-9"  style="height: 500px;">
                      
                     
@@ -119,9 +123,14 @@
      
     </div>
 </div>
+
 </section>
+<app-footer></app-footer>
+
+
+
 <!--modal ninera-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -154,7 +163,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -167,7 +176,7 @@
 
 
 <!--modal2 -->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center"[ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -200,7 +209,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal"(click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -211,7 +220,7 @@
   </div>
 </div>
 <!--modal  3-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -244,7 +253,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal"(click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -255,7 +264,7 @@
   </div>
 </div>
 <!--modal  4-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -288,7 +297,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -299,7 +308,7 @@
   </div>
 </div>
 <!--modal  5-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -332,7 +341,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -344,7 +353,7 @@
 </div>
 
 <!--modal  6-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -377,7 +386,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -388,7 +397,7 @@
   </div>
 </div>
 <!--modal  7-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -421,7 +430,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -433,7 +442,7 @@
 </div>
 
 <!--modal  8-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -466,7 +475,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -478,7 +487,7 @@
 </div>
 
 <!--modal  9-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -511,7 +520,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -522,7 +531,7 @@
   </div>
 </div>
 <!--modal  10-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -555,7 +564,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -567,7 +576,7 @@
 </div>
 
 <!--modal  11-->
-<div class="col-md-4" align="center">
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
   <div class="card">
       <div class="card-body">
         
@@ -600,7 +609,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
                         
                       </div>
                   </div>
@@ -611,5 +620,5 @@
   </div>
 </div>
 
-<app-footer></app-footer>
+
 

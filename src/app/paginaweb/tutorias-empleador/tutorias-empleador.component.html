@@ -1,17 +1,6 @@
-<!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="../../../assets/images/j-logoreco.png" alt="homepage" class="dark-logo">
-    <img src="../../../assets/images/text-logo.png" alt="homepage" class="dark-logo">
-  </a>
+<app-header-pagina></app-header-pagina>
 
-  <div>
-
-    <img src="../../../assets/images/Banner2.jpg" alt="">
-
-  </div>
-</nav>
-
+<img src="../../../assets/images/categoria/Tutorias Escolares.jpeg" alt=""width="1520">
 <br>
 <br>
 
@@ -60,7 +49,7 @@
     <!--AQUI EMPEZA EL FORMULARIO-->
 
     <div class="bs-stepper-content">
-      <form (ngSubmit)="crearUsuario()" [formGroup]="registerForm">
+      <form  [formGroup]="registerForm">
         <div id="test-l-1" class="content">
           <div class="form-group">
             <label for="exampleInputEmail1">CIUDAD/TODOS</label>
@@ -191,10 +180,10 @@
             <div>
               <div class="row m-0 justify-content-center align-items-center vh-100">
     
-                <button (click)="voteDown()" class="btn btn-danger"min="1">
+                <button (click)="voteDown(-1)" class="btn btn-danger"min="1">
                   -
                 </button> &nbsp;&nbsp;&nbsp;&nbsp; <h3 class="display-4">{{votes}}</h3> &nbsp;&nbsp;&nbsp;&nbsp; <button
-                  (click)="voteUp()" class="btn btn-primary">
+                  (click)="voteUp(+1)" class="btn btn-primary">
                   +
                 </button>
     
@@ -252,19 +241,19 @@
               <div class="input-group ">
                 <ul class="icheck-list" class="list">
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-1"formControlName="lavado">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-1"formControlName="prekinder">
                     <label for="minimal-checkbox-1">Pre - Kínder</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-2"formControlName="comida">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-2"formControlName="kinder">
                     <label for="minimal-checkbox-2">Kínder</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="tareas">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-3"formControlName="escuela">
                     <label for="minimal-checkbox-3">Escuela</label>
                   </li>
                   <li>
-                    <input type="checkbox" class="check form-control" id="minimal-checkbox-4"formControlName="limpieza">
+                    <input type="checkbox" class="check form-control" id="minimal-checkbox-4"formControlName="colegio">
                     <label for="minimal-checkbox-4">Colegio</label>
                   </li>
     
@@ -299,9 +288,26 @@
            
             <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CLAVE" formControlName="password" />
           </div>
-          <button type="submit" class="btn btn-primary mt-5">REGISTRAR</button>
+          <div class="form-group">
+          
+            <input type="number" class="form-control col-6" id="exampleInputPassword1"
+              placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
+          </div>
+          <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button>
+          &nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary mt-5" (click)="verificando()">REGISTRAR</button>
         </div>
       </form>
     </div>
     </div>
+    <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#56c2c6"
+    type="ball-clip-rotate-multiple"
+  >
+    <p style="font-size: 20px; color: #56c2c6">Jobandcare...</p>
+  </ngx-spinner>
     </div>
+
+    <app-footer></app-footer>

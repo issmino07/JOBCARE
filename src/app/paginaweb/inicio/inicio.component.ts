@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalesPaginaComponent } from '../modales-pagina/modales-pagina.component';
+
 
 @Component({
   selector: 'app-inicio',
@@ -9,7 +9,9 @@ import { ModalesPaginaComponent } from '../modales-pagina/modales-pagina.compone
 export class InicioComponent implements OnInit {
 
 
-  @ViewChild(ModalesPaginaComponent,{static:false}) solicitar: ModalesPaginaComponent;
+ // @ViewChild(ModalesPaginaComponent,{static:false}) solicitar: ModalesPaginaComponent;
+
+ocultar = false
 
   constructor() { }
 
@@ -18,10 +20,26 @@ export class InicioComponent implements OnInit {
 
   }
 
-  nineramodal(){
+  activar(){
+    this.ocultar = true;
+    setTimeout(() => {
+    this.desactivar()
 
-  this.solicitar.modalninera()
-
+    },10000);
   }
+  desactivar(){
+    this.ocultar = false;
+
+   
+  }
+
+   get myStyles(): any {
+  
+        return {
+            'display' : this.ocultar ? '': 'none'
+           
+        }
+     
+    }
 
 }

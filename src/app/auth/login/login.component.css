@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* BASIC */
 
+html {
+  background-color: #56baed;
+}
+
 body {
-  font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: "Poppins", sans-serif;
   height: 100vh;
 }
 
@@ -33,8 +38,8 @@ h2 {
   flex-direction: column; 
   justify-content: center;
   width: 100%;
-  min-height: 100%;
-  padding: 100px;
+  min-height: 90%;
+  padding: 10px;
 }
 
 #formContent {
@@ -78,7 +83,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56c2c6;
+  background-color: #56baed;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -100,7 +105,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color:#56c2c6;
+  background-color: #39ace7;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -131,7 +136,6 @@ input[type=email] {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
-
 input[type=password] {
   background-color: #f6f6f6;
   border: none;
@@ -153,7 +157,12 @@ input[type=password] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type=email]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=password]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
@@ -179,8 +188,8 @@ input[type=text]:placeholder {
 @-webkit-keyframes fadeInDown {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, -90%, 0);
-    transform: translate3d(0, -90%, 0);
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
   }
   100% {
     opacity: 1;
@@ -253,7 +262,7 @@ input[type=text]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #56c2c6;
+  background-color: #56baed;
   content: "";
   transition: width 0.2s;
 }
@@ -280,4 +289,10 @@ input[type=text]:placeholder {
 
 * {
   box-sizing: border-box;
+}
+
+
+.img-responsive {
+  max-width: 5%;
+  height: auto;
 }

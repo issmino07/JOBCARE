@@ -67,3 +67,10 @@ h1{
 
   color:  #3f4444;
 }
+
+
+.img-responsive {
+  max-width: 110%;
+  height:75%;
+}
+

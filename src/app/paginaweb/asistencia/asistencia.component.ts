@@ -1,10 +1,12 @@
-import { CiudadesService } from './../../services/ciudades.service';
-import { Ciudad } from './../../models/ciudad.model';
-import { Component, ElementRef, NgZone, OnInit, ViewChild, } from '@angular/core';
 
-import Stepper from 'bs-stepper';
-import { MapsAPILoader } from '@agm/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Component,  OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import { VerificacionService } from 'src/app/services/verificacion.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Usuario } from 'src/app/models/usuario.model';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-asistencia',
@@ -13,33 +15,23 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 })
 export class AsistenciaComponent implements OnInit {
 
-  votes: number;
-
-  mostarDatos: boolean;
-  mostarDatossemana: boolean;
-  mostarDatosmes: boolean;
-  mostarDatosfijo: boolean;
-  latitude: number;
-  longitude: number;
-  zoom: number;
-  address: string;
-  private geoCoder;
-
-  @ViewChild('search')
-  public searchElementRef: ElementRef;
+  msg;
+  validarEamil;
+  Error;
+  email: any;
 
 
-  //combo de la base de localidades
-  ciuadadesOpcion: Ciudad[];
-  ciudad: Ciudad;
+
+  cate = 'ASISTENCIA AUTOMOTRIZ';
+  rol = 'EMPLEADO_ROLE';
+
+
+
+  UsuarioModelo = new Usuario();
+
   //=================================
 
-  //pasos del formulario en una sola pantalla
-  private stepper: Stepper;
 
-  next() {
-    this.stepper.next();
-  }
 
   onSubmit() {
     return false;
@@ -49,208 +41,139 @@ export class AsistenciaComponent implements OnInit {
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
-    usuario: ['', [Validators.required]],
-    telefono: ['', [Validators.required]],
+
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
-    provincia: ['', [Validators.required]],
-    ciudad: ['', [Validators.required]],
-    direccion: ['', [Validators.required]],
-   
-    lavado: ['',],
-    comida: ['',],
-    limpieza: ['', ],
-    tareas: ['',],
-    fecha: ['', [Validators.required]],
-   
-    experiencia:[''],
-    ninos: this.fb.array([])
+    clave: ['', [Validators.required]],
 
+
+
+
+    facebook: false,
+    twitter: false,
+    instagram: false,
+    linkedin: false,
 
 
 
   })
 
-get ninos(){
-  return this.registerForm.get('ninos') as FormArray;
-
-}
-
-agregarninos(){
- 
-  const ninosFormgroup =  this.fb.group({
-    nino:'',
-    masculino: '',
-    femenino:'',
-    edad:'',
-  
-
-  });
-
-  this.ninos.push(ninosFormgroup);
-
-}
-
-removerninos(indice:number){
-
-  this.ninos.removeAt(indice)
-
-}
 
 
-  constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,
 
-    private ngZone: NgZone) {
-    this.votes = this.votes || 0;
+
+
+  //Expresiones Regulares
+  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
+    private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
+  ) {
+    this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
+    // this.to = new FormControl('', [Validators.required]);
+
   }
 
   ngOnInit(): void {
 
-    this.mapsAPILoader.load().then(() => {
-      this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder;
-
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-
-          //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 48;
-        });
-      });
-    });
-
-
-    this.getOpciones1();
-    this.ciuadadesOpcion = new Array<Ciudad>();
-    this.ciudad = new Ciudad();
-
-    this.stepper = new Stepper(document.querySelector('#stepper1'), {
-      linear: false,
-      animation: true
-    })
   }
 
-
-  //metodo de las localidades taridas de la base 
-  getOpciones1() {
-    return this.ciudadOpcion.getOpciones()
-      .subscribe(
-        ciudades => {
-          //  console.log(ciudades);
-          this.ciuadadesOpcion = ciudades;
-          if (this.ciuadadesOpcion.length > 0) {
-            this.ciudad = this.ciuadadesOpcion[0];
-          }
-
-        });
-
-  }
-
-  selectProvincia(provincia) {
-
-    this.ciudad = this.ciuadadesOpcion.find(element => element.provincia == provincia);
-
-  }
   //==================================================================//
-  // Get Current Location Coordinates
-  private setCurrentLocation() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 15;
+  verificarEmail() {
+
+    setTimeout(() => {
+      this.verificar.sendEmail("http://localhost:4500/codigo").subscribe(
+
+        res => {
+
+          this.msg = res['msg'];
+          console.log(this.msg)
+        }
+
+
+      );
+
+    }, 3000);
+
+  };
+  RevisandoEmail() {
+    this.formSubmitted = true;
+    this.spinner.show();
+    let to = this.registerForm.value.email;
+    console.log(to)
+    this.verificar.Email("http://localhost:4500/send", this.registerForm.value).subscribe(
+
+
+      data => {
+        this.spinner.hide();
+        this.validarEamil = data['data'];
+        console.log(data)
+
+
+        if (this.validarEamil == "sent") {
+
+          Swal.fire("Email enviado a " + to, "Se envío correo electrónico con su clave  Por favor revise la bandeja de entrada o spam!", "success")
+          console.log('verifico')
+        }
+
       });
+
+
+
+    this.verificarEmail()
+  }
+
+
+  verificando() {
+    if (this.registerForm.value.clave != this.msg) {
+      Swal.fire('Clave', 'Invalida revise su email o verifique nuevamente!', 'error');
+      console.log('Error de clave')
+
+      //  document.getElementById("habilitarBoton").style.display ="inline";
+    } else {
+
+      Swal.fire("Codigo verificado con  exito", "", "success")
+      console.log('funciona la verificacion')
+      this.crearUsuario();
     }
   }
-  markerDragEnd($event: google.maps.MouseEvent) {
-    console.log($event);
-    this.latitude = $event.latLng.lat();
-    this.longitude = $event.latLng.lng();
-    this.getAddress(this.latitude, this.longitude);
-  }
 
-  getAddress(latitude, longitude) {
-    this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
-      console.log(status);
-      if (status === 'OK') {
-        if (results[0]) {
-          this.zoom = 28;
-          this.address = results[0].formatted_address;
-          console.log(this.address)
-        } else {
-          window.alert('No results found');
+  crearUsuario() {
+    this.formSubmitted = true;
+
+    this.spinner.show();
+    setTimeout(() => {
+      console.log(this.registerForm.value)
+
+      this.registerForm.value.categorias = this.cate;
+      this.registerForm.value.role = this.rol;
+      this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
+        resp => {
+          this.spinner.hide();
+          Swal.fire("Registro  existoso", "", "success")
+          console.log(resp);
+          this.router.navigateByUrl('/login')
+        }, (err) => {
+          // Si sucede un error
+          //  Swal.fire('Error', err['msg'], 'error' );
+          Swal.fire('Error', err.error.msg, 'error');
+          this.router.navigateByUrl('/inicio')
         }
-      } else {
-        window.alert('Geocoder failed due to: ' + status);
-      }
 
-    });
+      )
+      this.resetUsuario()
+    }, 4000)
+    setTimeout(() => {
+
+    }, 6000)
   }
 
-  activar() {
 
-    this.mostarDatos = true;
-    this.mostarDatossemana = false;
-    this.mostarDatosfijo = false;
-    this.mostarDatosmes = false;
-
-  }
-  activar2() {
-    this.mostarDatos = false;
-    this.mostarDatosmes = false;
-    this.mostarDatossemana = true;
-
-  }
-  activar3() {
-    this.mostarDatossemana = false;
-
-    this.mostarDatosfijo = false;
-    this.mostarDatosmes = true;
-
-  }
-  activar4() {
-    this.mostarDatosmes = false;
-    this.mostarDatos = false;
-    this.mostarDatosfijo = true;
-
-  }
-  desactivar() {
-
-    this.mostarDatos = false;
-    this.mostarDatossemana = false;
-    this.mostarDatosfijo = false;
-    this.mostarDatosmes = false;
-
-  }
-  voteUp(): void {
-    this.votes++;
-    this.agregarninos();
-  }
-
-  voteDown(): void {
-    this.votes--;
-    this.removerninos(0)
+  resetUsuario() {
+    this.registerForm.reset()
   }
 
 
 
-  //====CREAR USUARIO==//
-
- crearUsuario(){
-   this. formSubmitted = true;
-  console.log(this.registerForm.value)
- }
- 
 
 }
