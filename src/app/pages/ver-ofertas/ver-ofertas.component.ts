@@ -5,6 +5,8 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Ciudad } from 'src/app/models/ciudad.model';
+import { CiudadesService } from 'src/app/services/ciudades.service';
 
 @Component({
   selector: 'app-ver-ofertas',
@@ -20,13 +22,20 @@ export class VerOfertasComponent implements OnInit {
   totalRegistros: number = 1;
 
 
-  constructor(private _usuarioService: UsuarioService, private listainforme: OfertaService,private route: ActivatedRoute,) { }
+  
+
+  constructor(private _usuarioService: UsuarioService, private listainforme: OfertaService,private route: ActivatedRoute,
+    ) { }
   ngOnInit() {
 
    
     this.usuario = this._usuarioService.usuario;
     this.getFormulariosOfertas();
+ 
   }
+
+
+ 
 
   getFormulariosOfertas() {
 

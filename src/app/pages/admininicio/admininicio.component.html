@@ -1,212 +1,363 @@
 
- <div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header bg-primary">
-                <h4 class="m-b-0 text-white">FORMULARIO DE INSCRIPCIÓN</h4>
-            </div>
-            <div class="card-body">
-                <form [formGroup]="registerForm" >
-                    <div class="form-body">
-                     
-                        <hr>
-                        <div class="row p-t-20">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Título del Empleo</label>
-                                    <input formControlName="tituloEmpleo" type="text" id="firstName" class="form-control" placeholder="Título del Empleo">
-                                    <small class="form-control-feedback"></small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Breve descripción del empleo:
-                                        </label>
-                                    <textarea formControlName="descripcionEmpleo" type="text" id="lastName" class="form-control" placeholder="Breve descripción"></textarea>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group has-success">
-                                    <label class="control-label">Remuneración:</label>
-                                    <select formControlName="remuneracion" class="form-control custom-select">
-                                        <option value="Fija Mensual">Fija Mensual</option>
-                                        <option value="Eventual por Día">Eventual por Día</option>
-                                        <option value="Eventual por Hora">Eventual por Hora</option>
-                                    </select>
-                                    <small class="form-control-feedback"> </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Valor</label>
-                                    <input formControlName="valor" type="number" class="form-control" placeholder="$">
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                            <div class="form-group has-success">
-                                <label class="control-label">Horarios:</label>
-                                <select formControlName="horario" class="form-control custom-select">
-                                    <option value="Fijo">Fijo</option>
-                                    <option value="Una Vez">Una Vez</option>
-                            
-                                </select>
-                                <small class="form-control-feedback"> </small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label">Categoria</label>
-                                <select class="form-control custom-select" data-placeholder="CATEGORIAS" tabindex="1"formControlName="categorias">
-                                    <option *ngFor="let opcionesgenerales of opcionesGenerales" value="{{opcionesgenerales.categorias}}">{{opcionesgenerales.categorias}}</option>
-                                  
-                                </select>
-                            </div>
-                        </div>
-                        </div>
-                        <!--/row-->
-                        <div class="row">
-                       
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Mi Dirección</label>
-                                    <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
-                                      formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="on"
-                                      spellcheck="off" type="text" #search>
-                                  </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                       
-                     
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-primary"> <i class="fa fa-save"></i>GUARDAR </button>
-                        
-                    </div>
-                </form>
-            </div>
+
+
+
+<div class="container ">
+
+    <div id="stepper1" class="bs-stepper">
+      <div class="bs-stepper-header">
+        <div class="step" data-target="#test-l-1">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">1</span>
+            <span class="bs-stepper-label"></span>
+          </button>
         </div>
-    </div>
-</div>
-
-
-<!-- Large modal -->
-
-
-<div class="modal  fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header bg-primary">
-                        <h4 class="m-b-0 text-white" align="center">FORMULARIO DE INSCRIPCIÓN</h4>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-2">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">2</span>
+            <span class="bs-stepper-label"></span>
+          </button>
+        </div>
+      
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-3">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">3</span>
+            <span class="bs-stepper-label"></span>
+          </button>
+        </div>
+       
+      </div>
+  
+  
+      <!--AQUI EMPEZA EL FORMULARIO-->
+  
+      <div class="bs-stepper-content">
+        <form  [formGroup]="registerForm">
+          <div id="test-l-1" class="content">
+         
+            <div class="">
+                <div class="card-header bg-primary">
+                    <h4 class="m-b-0 text-white">FORMULARIO DE INSCRIPCIÓN</h4>
+                </div>
+                                      
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Título del Empleo</label>
+                            <input formControlName="tituloEmpleo" type="text" id="firstName"
+                                class="form-control" placeholder="Título del Empleo">
+                            <small class="form-control-feedback"></small>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <form [formGroup]="registerForm" >
-                            <div class="form-body">
-                             
-                                <hr>
-                                <div class="row p-t-20">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Título del Empleo</label>
-                                            <input [(ngModel)]="registerForm.value.tituloEmpleo" formControlName="tituloEmpleo" type="text" id="firstName" class="form-control" placeholder="Título del Empleo"disabled>
-                                            <small class="form-control-feedback"></small> </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Breve descripción del empleo:
-                                                </label>
-                                            <textarea [(ngModel)]="registerForm.value.descripcionEmpleo" formControlName="descripcionEmpleo" type="text" id="lastName" class="form-control" placeholder="Breve descripción"disabled></textarea>
-                                            <small class="form-control-feedback"> </small> </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group has-success">
-                                            <label class="control-label">Remuneración:</label>
-                                            <select [(ngModel)]="registerForm.value.remuneracion"  formControlName="remuneracion" class="form-control custom-select" disabled>
-                                                <option value="Fija Mensual">Fija Mensual</option>
-                                                <option value="Eventual por Día">Eventual por Día</option>
-                                                <option value="Eventual por Hora">Eventual por Hora</option>
-                                            </select>
-                                            <small class="form-control-feedback"> </small> </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Valor</label>
-                                            <input [(ngModel)]="registerForm.value.valor" formControlName="valor" type="number" class="form-control" placeholder="$"  disabled>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                    <div class="form-group has-success">
-                                        <label class="control-label">Horarios:</label>
-                                        <select  [(ngModel)]="registerForm.value.horario" formControlName="horario" class="form-control custom-select" disabled>
-                                            <option value="Fijo">Fijo</option>
-                                            <option value="Una Vez">Una Vez</option>
-                                    
-                                        </select>
-                                        <small class="form-control-feedback"> </small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Categoria</label>
-                                        <select  [(ngModel)]="registerForm.value.categorias" class="form-control custom-select" data-placeholder="CATEGORIAS" tabindex="1"formControlName="categorias" disabled>
-                                            <option *ngFor="let opcionesgenerales of opcionesGenerales" value="{{opcionesgenerales.categorias}}">{{opcionesgenerales.categorias}}</option>
-                                          
-                                        </select>
-                                    </div>
-                                </div>
-                                </div>
-                                <!--/row-->
-                                <div class="row">
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Breve descripción del empleo:
+                            </label>
+                            <textarea formControlName="descripcionEmpleo" type="text"
+                                id="lastName" class="form-control"
+                                placeholder="Breve descripción"></textarea>
+                            <small class="form-control-feedback"> </small>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group has-success">
+                            <label class="control-label">Remuneración:</label>
+                            <select formControlName="remuneracion"
+                                class="form-control custom-select">
+                                <option value="Fija Mensual">Fija Mensual</option>
+                                <option value="Eventual por Día">Eventual por Día</option>
+                                <option value="Eventual por Hora">Eventual por Hora</option>
+                            </select>
+                            <small class="form-control-feedback"> </small>
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Valor</label>
+                            <input formControlName="valor" type="number" class="form-control"
+                                placeholder="$">
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group has-success">
+                            <label class="control-label">Horarios:</label>
+                            <select formControlName="horario"
+                                class="form-control custom-select">
+                                <option value="Fijo">Fijo</option>
+                                <option value="Una Vez">Una Vez</option>
+
+                            </select>
+                            <small class="form-control-feedback"> </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Categoria</label>
+                            <select class="form-control custom-select"
+                                data-placeholder="CATEGORIAS" tabindex="1"
+                                formControlName="categorias">
+                                <option *ngFor="let opcionesgenerales of opcionesGenerales"
+                                    value="{{opcionesgenerales.categorias}}">
+                                    {{opcionesgenerales.categorias}}</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Provincias</label>
+                            <select name="Provincia" class="browser-default custom-select form-control" formControlName="provincia"
+                            (change)="selectProvincia($event.target.value)">
+                            <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
+                              {{prov.provincia}}</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Ciudad</label>
+                            <select name="Ciudad" class="browser-default custom-select form-control" formControlName="ciudad">
+                                <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
+                                  {{canton}}
+                                </option>
+                              </select>
+                  
+                        </div>
+                    </div>
+
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Mi Dirección</label>
+                            <input type="text" class="form-control"
+                                (keydown.enter)="$event.preventDefault()"
+                                formControlName="direccion" placeholder="Buscar mi ubicación"
+                                autocorrect="off" autocapitalize="on" spellcheck="off"
+                                type="text" #search>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+
+
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" hidden> <i
+                        class="fa fa-save"></i>GUARDAR </button>
+
+            </div>
+      
+      
+      
+            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+          </div>
+          <div id="test-l-2" class="content">
+            <div class=" container p-3 " class="col-sm">
+                <h1 align="center" id="color">OFERTA PARA PUBLICAR</h1>
+            </div>
+            
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <table  class="table table-bordered  table-responsive-md btn-table" id="tableColor" >
+                            <thead>
+                                <tr>
                                
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Mi Dirección</label>
-                                            <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
-                                              formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="on"
-                                              spellcheck="off" type="text" #search>
-                                          </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Estado de Oferta</label>
-                                           <p>{{estado}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/row-->
+                                    <th scope="col" COLSPAN=1 style="background: azure">TÍTULO EMPLEO</th>
+                                    <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
+                               
+                                    <th scope="col" COLSPAN=1 style="background: azure">REMUNERACIÓN</th>
+                                    <th scope="col" COLSPAN=1 style="background: azure">DESCRIPCIÓN EMPLEO</th>
+                                    <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
+                                    <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
+                            
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                  
+                                    <td>{{titulo}}</td>
+                                    <td>{{ciudadela}}</td>
+                                    <td>{{remu}}</td>
+                                    <td>{{descrip}}</td>
+                                    <td>{{estatus}}</td>
+                                    <td>{{fecha |date:'dd-MM-yyyy'}}</td>
                                
                              
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-primary"(click)="previo()"> <i class="fa fa-save"></i>GUARDAR </button>
-                    
-                            </div>
-                        </form>
+                                 
+                                </tr>                  
+                            </tbody>
+                        </table>
+                
                     </div>
                 </div>
             </div>
-        </div>
+            
+            
+           
+            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+            &nbsp;&nbsp;
+            <button (click)="previus()" class="btn btn-primary">ATRAS</button>
+          </div>
         
-    </div>
-  </div>
-</div>
+      
+      
+      
+      
+          <div id="test-l-3" class="content text-center">
 
+                 
+     <!-- Row -->
+       <div class="row m-0 justify-content-center align-items-center vh-100">
+        <!-- column -->
+        <div class="col-lg-3 col-md-6">
+            <!-- Card -->
+            <div class="card caja1">
+                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title text"align="center">Free</h4>
+                    <ul class="text">
+                        <li >
+                         	Acceso libre
+                        </li>
+                        <li>
+                        	Fecha libre de vigencia 
+                        </li>
+                        <li>
+                            Publicar N veces
+                        </li>
+                        <li>
+                            N anuncios
+                        </li>
+                        <br>
+                        <li>
+                            Acceso Master Class en todas las capacitaciones
+                        </li>
+                         <br>
+                         <br>
+                       
+                        <li hidden>
+                         espacio
+                        </li >
+                        <li hidden>
+                         espacio
+                        </li>
+                        <br>
+                         <h1 class="text">$ 0.00 </h1>
+                    </ul>
+                    <button class="btn btn-primary text-write " (click)="registrarPlan()">SUSCRIBIR</button>
+                </div>
+            </div>
+            <!-- Card -->
+        </div>
+        <!-- column -->
+        <!-- column -->
+        <div class="col-lg-3 col-md-6">
+            <!-- Card -->
+            <div class="card caja2">
+                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title text">Premium (3 meses)
+                        </h4>
+                   <ul class="text">
+                       <li>
+                        Publicidad Off
+                       </li>
+                       <li>
+                        Publicación Destacada  
+                       </li>
+                       <li>
+                        Descuento en todas las capacitaciones
+                       </li>
+                       <li>
+                        Ofertas confidenciales
+                       </li>
+                       <li>
+                        Aparición en las primeras posiciones de resultados
+                       </li>
+                        
+                       <h1 class="text">$ 5.99 </h1>
+                         
+                    
+                   </ul>
+                  
+                    <button class="btn btn-primary " >SUSCRIBIR</button>
+                
+                  
+                </div>
+            </div>
+            <!-- Card -->
+        </div>
+        <!-- column -->
+        <!-- column -->
+        <div class="col-lg-3 col-md-6">
+            <!-- Card -->
+            <div class="card caja3">
+                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title text">Premium (6 Meses)
+                        </h4>
+                        <ul class="text">
+                            <li >
+                             Publicidad Off
+                            </li>
+                            <li>
+                             Publicación Destacada  
+                            </li>
+                            <li>
+                             Descuento en todas las capacitaciones
+                            </li>
+                            <li>
+                             Ofertas confidenciales
+                            </li>
+                            <li>
+                             Aparición en las primeras posiciones de resultados
+                            </li>
+                            <h1 class="text">$ 9.99 </h1>
+                        </ul>
+                       
+                    <button  class="btn btn-primary ">SUSCRIBIR</button>
+                </div>
+            </div>
+            <!-- Card -->
+        </div>
+        <!-- column -->
+
+        <!-- column -->
+    </div>
+    <!-- Row -->
+  
+        
+            <button (click)="previus()" class="btn btn-primary mt-5">ATRAS</button>
+            
+            &nbsp;&nbsp;
+           
+            <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuario()" >GUARDAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+      
+    <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#56c2c6"
+    type="ball-clip-rotate-multiple"
+                                      >
+    <p style="font-size: 20px; color: #56c2c6">Jobandcare...</p>
+  </ngx-spinner>
+      </div>

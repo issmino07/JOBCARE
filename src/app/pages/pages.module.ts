@@ -14,6 +14,14 @@ import { VerOfertasComponent } from './ver-ofertas/ver-ofertas.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EditarOfertasComponent } from './editar-ofertas/editar-ofertas.component';
 import { PlanesComponent } from './planes/planes.component';
+import { NgxSlideModalModule } from 'ngx-slide-modal';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { HojavidaFormularioComponent } from './hojavida-formulario/hojavida-formulario.component';
+import { AgmCoreModule } from '@agm/core';
+import { EditarHojavidaComponent } from './editar-hojavida/editar-hojavida.component';
+import { VerHojavidaComponent } from './ver-hojavida/ver-hojavida.component';
+import { PlanEmpleadosComponent } from './plan-empleados/plan-empleados.component';
+
 
 
 
@@ -27,6 +35,10 @@ import { PlanesComponent } from './planes/planes.component';
     VerOfertasComponent,
     EditarOfertasComponent,
     PlanesComponent,
+    HojavidaFormularioComponent,
+    EditarHojavidaComponent,
+    VerHojavidaComponent,
+    PlanEmpleadosComponent,
     
 
   ],
@@ -36,6 +48,7 @@ import { PlanesComponent } from './planes/planes.component';
     PagesComponent,
     DashboardComponent,
     AccountSettingsComponent,
+    PlanesComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +59,12 @@ import { PlanesComponent } from './planes/planes.component';
     HttpClientModule,
     PipesModule,
     NgxPaginationModule,
+    NgxSlideModalModule,
+    NgxSpinnerModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
+      libraries: ['places']
+    })
   ]
 })
 

@@ -3,3 +3,9 @@
     height: auto;
 }
 
+
+nav.nav-responsive {
+    margin: auto;
+    display: block
+  }
+

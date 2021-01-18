@@ -12,11 +12,13 @@
                     <tr>
                         <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
                         <th scope="col" COLSPAN=1 style="background: azure">TÍTULO EMPLEO</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
-                   
-                        <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                         <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
+                   
+                   
+                        <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
+                     
+                   
                         <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
                     </tr>
@@ -25,16 +27,18 @@
                     <tr *ngFor="let form of  formularios| paginate: { itemsPerPage: 5, currentPage: totalRegistros }; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{form.tituloEmpleo}}</td>
-                        <td>${{form.valor}}</td>
+                        <td>{{form.categorias}}</td>
+                        <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
+                     
                         <td>{{form.horario}}</td>
                       
-                        <td>{{form.categorias}}</td>
-                        <td>{{form.fechaReporte}}</td>
-                        <td>{{form.estado}}</td>
+                     
+                     
+                        <td class="text" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
                         <td>
                             <button type="button" class="btn btn-outline-primary"
                                        style="width: 75px;height: 70;font-size: 50%;"
-                            [routerLink]="['/dashboard/editaroferta/',form._id]"><b>ABRIR </b></button>
+                            [routerLink]="['/dashboard/editaroferta/',form._id]"><b>EDITAR</b></button>
                         
                         </td>
                     </tr>                  

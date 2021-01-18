@@ -9,6 +9,10 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { VerOfertasComponent } from './ver-ofertas/ver-ofertas.component';
 import { EditarOfertasComponent } from './editar-ofertas/editar-ofertas.component';
 import { PlanesComponent } from './planes/planes.component';
+import { HojavidaFormularioComponent } from './hojavida-formulario/hojavida-formulario.component';
+import { EditarHojavidaComponent } from './editar-hojavida/editar-hojavida.component';
+import { VerHojavidaComponent } from './ver-hojavida/ver-hojavida.component';
+import { PlanEmpleadosComponent } from './plan-empleados/plan-empleados.component';
 
 
 
@@ -26,6 +30,11 @@ const routes: Routes = [
         { path: 'editaroferta', component: EditarOfertasComponent,  data:{ titulo: 'Editar Ofertas'} },
         { path: 'editaroferta/:id', component: EditarOfertasComponent,  data:{ titulo: 'Editar Ofertas'} },
         { path: 'planes', component: PlanesComponent,  data:{ titulo: 'Planes'} },
+        { path: 'planes/empleados', component: PlanEmpleadosComponent,  data:{ titulo: 'Planes'} },
+        { path: 'hojavida', component: HojavidaFormularioComponent },
+        { path: 'editarhojavida', component: EditarHojavidaComponent },
+        { path: 'editarhojavida/:id', component: EditarHojavidaComponent },
+        { path: 'verhoja', component: VerHojavidaComponent },
     ]
 },
 

@@ -11,6 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Usuario } from 'src/app/models/usuario.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profesional-empleador',
@@ -253,12 +254,12 @@ export class ProfesionalEmpleadorComponent implements OnInit {
 
 
 
-
+  private url = environment.base_url;
 
   verificarEmail() {
 
     setTimeout(() => {
-      this.verificar.sendEmail("http://localhost:4500/codigo").subscribe(
+      this.verificar.sendEmail(this.url +'/codigo').subscribe(
 
         res => {
           
@@ -277,7 +278,7 @@ export class ProfesionalEmpleadorComponent implements OnInit {
     this.spinner.show();
     let to = this.registerForm.value.email;
     console.log(to)
-    this.verificar.Email("http://localhost:4500/send", this.registerForm.value).subscribe(
+    this.verificar.Email(this.url+'/send', this.registerForm.value).subscribe(
 
 
       data => {
@@ -304,7 +305,7 @@ export class ProfesionalEmpleadorComponent implements OnInit {
          $("#send_email").click(function(){		
              to=$("#to").val();		
              $("#message").text("Enviando correo electrónico ... Espere");
-             $.get("http://localhost:4500/send",{to:to},function(data){
+             $.get(this.url+'/send',{to:to},function(data){
              console.log(data)
              if(data=="sent")
              {

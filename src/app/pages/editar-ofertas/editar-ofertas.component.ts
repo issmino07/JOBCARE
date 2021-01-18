@@ -9,6 +9,8 @@ import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
 import { Categoria } from 'src/app/models/categoria.model';
 import { CategoriasService } from 'src/app/services/categorias.service';
+import { Ciudad } from 'src/app/models/ciudad.model';
+import { CiudadesService } from 'src/app/services/ciudades.service';
 
 
 @Component({
@@ -30,6 +32,9 @@ export class EditarOfertasComponent implements OnInit {
   public searchElementRef: ElementRef;
 
 
+  ciuadadesOpcion: Ciudad[];
+  ciudad: Ciudad;
+
   public registerForm = this.fb.group({
     tituloEmpleo: ['', [Validators.required]],
     descripcionEmpleo: ['', [Validators.required]],
@@ -39,9 +44,9 @@ export class EditarOfertasComponent implements OnInit {
     direccion: ['', [Validators.required]],
     usuario:[''],
     estado:[''],
-    categorias:['']
-     //   provincia: ['', [Validators.required]],
-  //  ciudad: ['', [Validators.required]],
+    categorias:[''],
+     provincia: ['', [Validators.required]],
+   ciudad: ['', [Validators.required]],
   //  direccionmapa: ['', [Validators.required]],
   //  lavado: ['',],
   //  comida: ['',],
@@ -57,7 +62,8 @@ export class EditarOfertasComponent implements OnInit {
   })
 
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone, private route: ActivatedRoute,
-     private oferta : OfertaService, private opcionesServices : CategoriasService,  private location: Location) {
+     private oferta : OfertaService, private opcionesServices : CategoriasService,  private location: Location,
+     private ciudadOpcion: CiudadesService) {
 
 
       }
@@ -91,9 +97,33 @@ export class EditarOfertasComponent implements OnInit {
       });
     });
 
-   this.getOpciones1()
+   this.getOpciones1();
+   this.getOpciones2();
+   this.ciuadadesOpcion = new Array<Ciudad>();
+   this.ciudad = new Ciudad();
   }
 
+
+
+  getOpciones2() {
+    return this.ciudadOpcion.getOpciones()
+      .subscribe(
+        ciudades => {
+            console.log(ciudades);
+          this.ciuadadesOpcion = ciudades;
+          if (this.ciuadadesOpcion.length > 0) {
+            this.ciudad = this.ciuadadesOpcion[0];
+          }
+  
+        });
+  
+  }
+
+  selectProvincia(provincia) {
+
+    this.ciudad = this.ciuadadesOpcion.find(element => element.provincia == provincia);
+  
+  }
 
   getOpciones1() {
     return this.opcionesServices.getOpciones()

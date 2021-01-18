@@ -1,3 +1,5 @@
+import { HojavidaService } from './services/hojavida.service';
+import { Hojavida } from './models/hojavida';
 import { CategoriasService } from './services/categorias.service';
 import { OfertaService } from 'src/app/services/oferta.service';
 import { SidebarService } from './services/sidebar.service';
@@ -25,6 +27,7 @@ import { SubirArchivoService } from './services/subir-archivo.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxSlideModalModule } from 'ngx-slide-modal';
 
 
 
@@ -49,7 +52,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PipesModule,
     NgxPaginationModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxSlideModalModule
  
   ],
   providers: [
@@ -57,7 +61,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     SidebarService,
     SubirArchivoService, 
     OfertaService,
-    CategoriasService
+    CategoriasService,
+    HojavidaService
   ],
   bootstrap: [AppComponent]
 })

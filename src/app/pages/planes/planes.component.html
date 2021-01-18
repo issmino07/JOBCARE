@@ -21,7 +21,7 @@
                     <tr *ngFor="let form of  formularios ; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{form.tipoPlan}}</td>
-                        <td>{{form.fechaReporte}}</td>
+                        <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
                         <td>{{form.valor}}</td>
                    
                       
@@ -69,7 +69,7 @@
                         
                          <h1 class="text">$ 0.00 </h1>
                     </ul>
-                    <a class="btn btn-primary text-write " (click)="registrarPlan()">SUSCRIBIR</a>
+                    <button class="btn btn-primary text-write " (click)="registrarPlan()">ACTUALIZAR</button>
                 </div>
             </div>
             <!-- Card -->
@@ -105,7 +105,7 @@
                     
                    </ul>
                   
-                    <a class="btn btn-primary " >SUSCRIBIR</a>
+                    <button class="btn btn-primary " >ACTUALIZAR</button>
                 
                   
                 </div>
@@ -140,7 +140,7 @@
                             <h1 class="text">$ 9.99 </h1>
                         </ul>
                        
-                    <a  class="btn btn-primary ">SUSCRIBIR</a>
+                    <button  class="btn btn-primary ">ACTUALIZAR</button>
                 </div>
             </div>
             <!-- Card -->

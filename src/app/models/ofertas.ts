@@ -12,4 +12,7 @@ export class Ofertas {
  usuario:Usuario;
 estado: String;
 categorias: string;
+provincia:  string;
+
+ciudad: string;
 }

@@ -61,8 +61,14 @@ agm-map {
     min-height: 400px;text-align: center;
     color: #fff;
     
-    background-image: url('../../../assets/images/categoria/Niñeras.jpeg');
+    background-image: url('../../../assets/images/categoria/Nineras.jpeg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  }
+
+
+  img.img-responsive {
+    margin: auto;
+    display: block
   }

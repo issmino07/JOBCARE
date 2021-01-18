@@ -164,7 +164,7 @@
         $("#send_email").click(function(){		
             to=$("#to").val();		
             $("#message").text("Enviando correo electrónico ... Espere");
-            $.get("http://localhost:4500/send",{to:to},function(data){
+            $.get(this.url+'/send',{to:to},function(data){
             console.log(data)
             if(data=="sent")
             {

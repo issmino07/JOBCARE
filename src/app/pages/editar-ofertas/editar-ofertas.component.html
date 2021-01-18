@@ -70,6 +70,28 @@
                         </div>
                         <!--/row-->
                         <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Provincias</label>
+                                    <select  [(ngModel)]="ofertaModelo.provincia"  name="Provincia" class="browser-default custom-select form-control" formControlName="provincia"
+                                    (change)="selectProvincia($event.target.value)">
+                                    <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
+                                      {{prov.provincia}}</option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Ciudad</label>
+                                    <select  [(ngModel)]="ofertaModelo.ciudad"  name="Ciudad" class="browser-default custom-select form-control" formControlName="ciudad">
+                                        <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
+                                          {{canton}}
+                                        </option>
+                                      </select>
+                          
+                                </div>
+                            </div>
                        
                             <!--/span-->
                             <div class="col-md-6">
@@ -83,10 +105,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Estado de la oferta</label>
-                                    <select   [ngClass]="{'bg-primary text-white':ofertaModelo.estado=='PUBLICADO','bg-danger text-white':ofertaModelo.estado=='NO PUBLICADO'}" formControlName="estado"  class="form-control custom-select" data-placeholder="Sellecionar" tabindex="1"[(ngModel)]="ofertaModelo.estado"
+                                    <select   [ngClass]="{'bg-primary text-white':ofertaModelo.estado=='PUBLICADO','bg-danger text-white':ofertaModelo.estado=='NO PUBLICADO'}" formControlName="estado"  class="form-control custom-select text" data-placeholder="Sellecionar" tabindex="1"[(ngModel)]="ofertaModelo.estado"
                                     (change)="updateEstado()">
-                                        <option value="PUBLICADO">PUBLICADO</option>
-                                        <option  value="NO PUBLICADO">NO PUBLICADO</option>
+                                        <option class="text" value="PUBLICADO">PUBLICADO</option>
+                                        <option class="text"  value="NO PUBLICADO">NO PUBLICADO</option>
                                   
                                     </select>
                                 </div>

@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment.prod';
 
 import { Component,  OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
@@ -79,10 +80,12 @@ export class AsistenciaComponent implements OnInit {
   }
 
   //==================================================================//
+   private url = environment.base_url;
+
   verificarEmail() {
 
     setTimeout(() => {
-      this.verificar.sendEmail("http://localhost:4500/codigo").subscribe(
+      this.verificar.sendEmail( this.url+'/codigo').subscribe(
 
         res => {
 
@@ -101,7 +104,7 @@ export class AsistenciaComponent implements OnInit {
     this.spinner.show();
     let to = this.registerForm.value.email;
     console.log(to)
-    this.verificar.Email("http://localhost:4500/send", this.registerForm.value).subscribe(
+    this.verificar.Email(this.url+'/send', this.registerForm.value).subscribe(
 
 
       data => {

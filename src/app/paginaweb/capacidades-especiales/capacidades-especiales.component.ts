@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Usuario } from 'src/app/models/usuario.model';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-capacidades-especiales',
@@ -81,10 +82,13 @@ export class CapacidadesEspecialesComponent implements OnInit {
   }
 
   //==================================================================//
+
+  private url = environment.base_url; 
+
   verificarEmail() {
 
     setTimeout(() => {
-      this.verificar.sendEmail("http://localhost:4500/codigo").subscribe(
+      this.verificar.sendEmail(this.url +'/codigo').subscribe(
 
         res => {
 
@@ -103,7 +107,7 @@ export class CapacidadesEspecialesComponent implements OnInit {
     this.spinner.show();
     let to = this.registerForm.value.email;
     console.log(to)
-    this.verificar.Email("http://localhost:4500/send", this.registerForm.value).subscribe(
+    this.verificar.Email(this.url+'/send', this.registerForm.value).subscribe(
 
 
       data => {
