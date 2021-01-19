@@ -44,6 +44,8 @@ export class CapacidadesEspecialesComponent implements OnInit {
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
+    usuario: ['', [Validators.required]],
+    telefono: ['', [Validators.required]],
 
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
