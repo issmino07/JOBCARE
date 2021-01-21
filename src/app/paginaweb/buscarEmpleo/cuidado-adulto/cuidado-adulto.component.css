@@ -8,7 +8,7 @@ p {
 }
 
 .marca-de-agua {
-  background: rgba(247, 243, 243, 0.034) url(../../../assets/images/jobcare.png);
+  background: rgba(247, 243, 243, 0.034) url(../../../../assets/images/jobcare.png);
   width: 500px;
   height: 341px;
   margin: 0 auto;
