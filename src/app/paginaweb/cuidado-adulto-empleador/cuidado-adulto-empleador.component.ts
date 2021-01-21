@@ -1,5 +1,5 @@
-import { CiudadesService } from './../../services/ciudades.service';
-import { Ciudad } from './../../models/ciudad.model';
+import { CiudadesService } from '../../services/ciudades.service';
+import { Ciudad } from '../../models/ciudad.model';
 import { Component, ElementRef, NgZone, OnInit, ViewChild, } from '@angular/core';
 
 import Stepper from 'bs-stepper';
