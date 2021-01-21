@@ -1,7 +1,10 @@
 p {
   font-family: Lato;
 }
+.center {
+  text-align: center;
 
+}
 .marca-de-agua {
   background: rgba(247, 243, 243, 0.034) url(../../../assets/images/jobcare.png);
   width: 500px;

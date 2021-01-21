@@ -32,9 +32,9 @@ export class NineraComponent implements OnInit {
   UsuarioModelo = new Usuario();
 
   //=================================
-
-
-
+  //Expresiones Regulares
+  //textPattern = new RegExp(/^[A-Z]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚ&:;0-9.,-/\s]+$/);
+  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
   onSubmit() {
     return false;
   }
@@ -44,12 +44,12 @@ export class NineraComponent implements OnInit {
 
   public registerForm = this.fb.group({
 
-    usuario: ['', [Validators.required]],
-    telefono: ['', [Validators.required]],
+    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
-    email: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     password: ['', [Validators.required]],
-    clave: ['', [Validators.required]],
+    clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
 
 
 
@@ -68,8 +68,8 @@ export class NineraComponent implements OnInit {
 
 
 
-  //Expresiones Regulares
-  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+ 
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
