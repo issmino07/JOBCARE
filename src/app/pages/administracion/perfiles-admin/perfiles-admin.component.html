@@ -1,0 +1,61 @@
+
+<div class="row m-0 justify-content-center align-items-center vh-100">
+    <div class="col-10">
+        <div class="card">
+            <div class="card-body">
+
+
+
+
+
+                <div class="row el-element-overlay">
+                    <div class="col-md-12">
+                        <h4 class="card-title"></h4>
+                        <h6 class="card-subtitle m-b-20 text-muted"> </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-4"  *ngFor="let form of  formularios">
+                        <div class="card">
+
+                            <div class="el-card-item">
+                                <div class="el-card-avatar el-overlay-1"> <img [src]="form.usuario.img |imagen"
+                                        alt="user" />
+                                    <div class="el-overlay">
+                                        <ul class="el-info">
+                                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                                    href="{{form.usuario.img |imagen}}"><i
+                                                        class="icon-magnifier"></i></a></li>
+                                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i
+                                                        class="icon-link"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="el-card-content">
+                                    <h3 class="box-title">{{form.nombre}}</h3>
+                                    <br>
+                                    <h6>CATEGORIA</h6>
+                                    <small>{{form.categorias}}</small>
+                                    <br />
+
+                                    <ngx-star-rating class="btn default" [(ngModel)]="form.rating" [id]="'rating'"></ngx-star-rating>
+                                    <br>
+                                     <span>Calificación <b>{{form.rating}}</b> </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                  
+                             
+                    </div>
+              
+               
+                    
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

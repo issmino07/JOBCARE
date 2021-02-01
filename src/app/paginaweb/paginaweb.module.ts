@@ -14,30 +14,35 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AgmCoreModule } from '@agm/core';
 import { CursosComponent } from './cursos/cursos.component';
-import { NineraEmpleadorComponent } from './ninera-empleador/ninera-empleador.component';
+import { NineraEmpleadorComponent } from './publicarEmpleo/ninera-empleador/ninera-empleador.component';
 import { CuidadoAdultoComponent } from './buscarEmpleo/cuidado-adulto/cuidado-adulto.component';
-import { CuidadoAdultoEmpleadorComponent } from './cuidado-adulto-empleador/cuidado-adulto-empleador.component';
+import { CuidadoAdultoEmpleadorComponent } from './publicarEmpleo/cuidado-adulto-empleador/cuidado-adulto-empleador.component';
 import { DomesticoComponent } from './buscarEmpleo/domestico/domestico.component';
-import { DomesticoEmpleadorComponent } from './domestico-empleador/domestico-empleador.component';
+import { DomesticoEmpleadorComponent } from './publicarEmpleo/domestico-empleador/domestico-empleador.component';
 import { MascotaComponent } from './buscarEmpleo/mascota/mascota.component';
-import { MascotaEmpleadorComponent } from './mascota-empleador/mascota-empleador.component';
+import { MascotaEmpleadorComponent } from './publicarEmpleo/mascota-empleador/mascota-empleador.component';
 import { CapacidadesEspecialesComponent } from './buscarEmpleo/capacidades-especiales/capacidades-especiales.component';
-import { CapacidadesEspecialesEmpleadorComponent } from './capacidades-especiales-empleador/capacidades-especiales-empleador.component';
+import { CapacidadesEspecialesEmpleadorComponent } from './publicarEmpleo/capacidades-especiales-empleador/capacidades-especiales-empleador.component';
 import { TutoriasComponent } from './buscarEmpleo/tutorias/tutorias.component';
-import { TutoriasEmpleadorComponent } from './tutorias-empleador/tutorias-empleador.component';
+import { TutoriasEmpleadorComponent } from './publicarEmpleo/tutorias-empleador/tutorias-empleador.component';
 import { TrabajosComponent } from './buscarEmpleo/trabajos/trabajos.component';
-import { TrabajosEmpleadorComponent } from './trabajos-empleador/trabajos-empleador.component';
+import { TrabajosEmpleadorComponent } from './publicarEmpleo/trabajos-empleador/trabajos-empleador.component';
 import { AsistenciaComponent } from './buscarEmpleo/asistencia/asistencia.component';
-import { AsistenciaEmpleadorComponent } from './asistencia-empleador/asistencia-empleador.component';
+import { AsistenciaEmpleadorComponent } from './publicarEmpleo/asistencia-empleador/asistencia-empleador.component';
 import { MensajeriaComponent } from './buscarEmpleo/mensajeria/mensajeria.component';
-import { MensajeriaEmpleadorComponent } from './mensajeria-empleador/mensajeria-empleador.component';
+import { MensajeriaEmpleadorComponent } from './publicarEmpleo/mensajeria-empleador/mensajeria-empleador.component';
 import { SpaComponent } from './buscarEmpleo/spa/spa.component';
-import { SpaEmpleadorComponent } from './spa-empleador/spa-empleador.component';
+import { SpaEmpleadorComponent } from './publicarEmpleo/spa-empleador/spa-empleador.component';
 import { ProfesionalComponent } from './buscarEmpleo/profesional/profesional.component';
-import { ProfesionalEmpleadorComponent } from './profesional-empleador/profesional-empleador.component';
+import { ProfesionalEmpleadorComponent } from './publicarEmpleo/profesional-empleador/profesional-empleador.component';
 import { OfertasEmpleoComponent } from './ofertas-empleo/ofertas-empleo.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { PerfilEmpleadosComponent } from './perfil-empleados/perfil-empleados.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { BarRatingModule } from 'ngx-bar-rating';
+import { RatingModule } from 'ng-starrating';
 
 
 
@@ -75,6 +80,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ProfesionalComponent,
     ProfesionalEmpleadorComponent,
     OfertasEmpleoComponent,
+    PerfilEmpleadosComponent,
    
   ],
   imports: [
@@ -86,6 +92,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     NgSelectModule,
     NgxSpinnerModule,
+    NgxStarRatingModule,
+    PipesModule,
+    BarRatingModule,
+    RatingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
       libraries: ['places']

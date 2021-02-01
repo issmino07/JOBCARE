@@ -13,6 +13,8 @@ import { Login } from 'src/app/models/login';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  
   recuerdame: boolean = false;
   email: string = '';
   constructor( private router: Router, private _usuarioService : UsuarioService,

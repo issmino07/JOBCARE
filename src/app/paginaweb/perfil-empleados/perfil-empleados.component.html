@@ -1,0 +1,108 @@
+<app-header-pagina></app-header-pagina>
+
+
+
+<!--div class="row m-0 justify-content-center align-items-center vh-100">
+    <div class="col-10">
+        <div class="card">
+            <div class="card-body">
+
+
+
+
+
+                <div class="row el-element-overlay">
+                    <div class="col-md-12">
+                        <h4 class="card-title"></h4>
+                        <h6 class="card-subtitle m-b-20 text-muted"> </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-4"  *ngFor="let form of  formularios">
+                        <div class="card">
+
+                            <div class="el-card-item">
+                                <div class="el-card-avatar el-overlay-1"> <img [src]="form.usuario.img |imagen"
+                                        alt="user" />
+                                    <div class="el-overlay">
+                                        <ul class="el-info">
+                                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                                    href="{{form.usuario.img |imagen}}"><i
+                                                        class="icon-magnifier"></i></a></li>
+                                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i
+                                                        class="icon-link"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="el-card-content">
+                                    <h3 class="box-title">{{form.nombre}}</h3>
+                                    <br>
+                                    <h6>CATEGORIA</h6>
+                                    <small>{{form.categorias}}</small>
+                                    <br />
+
+                                    <ngx-star-rating class="btn default" [(ngModel)]="form.rating" [id]="'rating'"></ngx-star-rating>
+                                    <br>
+                                     <span>Calificación <b>{{form.rating}}</b> </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                  
+                             
+                    </div>
+              
+               
+                    
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div-->
+
+<div class="row m-0 justify-content-center align-items-center vh-100 " *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
+    <!-- .col -->
+    <div class="col-md-6 col-lg-6 col-xlg-4">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-4 col-lg-3 text-center">
+                    <a><img src="{{form.usuario.img |imagen}}" alt="user" class="img-circle img-responsive"></a>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <h3 class="box-title m-b-0">{{form.nombre}} {{form.apellido}}</h3> 
+                    <h6>CATEGORIA</h6>
+                    <small>{{form.categorias}}</small>
+                    <address>
+                        {{form.descripcion}}
+                        <br />
+                        <br />
+                        <small >Celular:</small> {{form.usuario.telefono}}
+                    </address>
+                    
+                    <div>
+                        <div id="cont">
+                            <div id="stars">
+                              <ngx-star-rating class="btn default" [(ngModel)]="form.rating" [id]="'rating'" ></ngx-star-rating >
+                            </div>
+                          
+                          </div>
+                          <br>
+                          <span>Calificación <b>{{form.rating}}</b> </span>
+                          <br>
+                   </div>
+                   
+                    <button type="button" class="btn btn-outline-primary"
+                    style="width: 140px;height: 75;font-size: 70%;" (click)="postular()"
+       ><b>Quieres contacatar</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
+
+<app-footer></app-footer>

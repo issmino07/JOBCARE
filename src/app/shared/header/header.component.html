@@ -10,15 +10,15 @@
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../../../assets/images/j-logoreco.png"  alt="homepage" class="dark-logo" >
+                            <img src="../../../assets/images/j-logoreco.png"  alt="homepage" class="dark-logo" (click)="activar()">
                         
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text --><span>
                          <!-- dark Logo text -->
-                         <img src="../../../assets/images/text-logo.png"  alt="homepage" class="dark-logo">
+                         <img src="../../../assets/images/text-logo.png"  alt="homepage" class="dark-logo" (click)="activar()">
                          <!-- Light Logo text -->    
-                         <img src="./assets/images/logo-icon.png" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="./assets/images/logo-icon.png" class="light-logo" alt="homepage" (click)="activar()" /></span> </a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -57,7 +57,7 @@
                                     </li>
                                     <li role="separator" class="divider"></li>
                                   
-                                    <li><a  [routerLink]="['/dashboard/account-settings']" routerLinkActive="router-link-active" ><i class="ti-settings"></i>Temas</a></li>
+                           <!--       <li><a  [routerLink]="['/dashboard/account-settings']" routerLinkActive="router-link-active" ><i class="ti-settings"></i>Temas</a></li>  -->  
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="fa fa-power-off" (click)="cerrarSesion()"></i> Cerrar Sesión</a></li>
                                 </ul>

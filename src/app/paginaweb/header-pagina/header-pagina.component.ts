@@ -17,10 +17,7 @@ export class HeaderPaginaComponent implements OnInit {
 
   activar(){
     this.ocultar = true;
-    setTimeout(() => {
-    this.desactivar()
-
-    },10000);
+  
   }
   desactivar(){
     this.ocultar = false;

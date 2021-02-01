@@ -2,6 +2,7 @@ import { OfertaService } from './../../services/oferta.service';
 import { Component, OnInit } from '@angular/core';
 import { Ofertas } from 'src/app/models/ofertas';
 import { Usuario } from 'src/app/models/usuario.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ofertas-empleo',
@@ -39,5 +40,32 @@ export class OfertasEmpleoComponent implements OnInit {
   
 
 }
+
+
+
+postular(){
+  console.log('estoy postulando')
+   Swal.fire({
+     title: '<strong>REGÍSTRATE EN UNA DE NUESTRAS CATEGORIAS</strong>',
+     icon: 'success',
+     html:
+      
+       '<a href="#/home">ENCONTAR EMPLEO</a>' 
+   
+       
+       ,
+     showCloseButton: true,
+     showCancelButton: true,
+     focusConfirm: false,
+     confirmButtonText:
+       '<i class="fa fa-thumbs-up"></i> <a href="#/home"><b style="color:#FBFBFB";> ENCONTAR EMPLEO </b></a>',
+     confirmButtonAriaLabel: 'Thumbs up, great!',
+     cancelButtonText:
+       '<i class="fa fa-thumbs-down"></i>',
+     cancelButtonAriaLabel: 'Thumbs down'
+   })
+ 
+ 
+ }
 
 }

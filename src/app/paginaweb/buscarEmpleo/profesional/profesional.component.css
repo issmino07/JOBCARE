@@ -59,3 +59,8 @@ background-color:lightgray;
 text-align: left;
 display:inline-block;
 }
+
+img.img-responsive {
+  margin: auto;
+  display: block
+}

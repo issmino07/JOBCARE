@@ -20,5 +20,6 @@ export class Hojavida {
       descripcionExperiencia: string;
       nivelEducacion: string;
       estado: string;
+      rating: number;
       usuario:Usuario;
 }

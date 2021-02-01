@@ -153,7 +153,7 @@ export class UsuarioService {
   }
 
   actualizarUsuario( usuario: Usuario ) {
-    let url = `${ environment.base_url }/usuario/${ usuario._id }`;
+    let url = `${ environment.base_url }/usuarios/${ usuario._id }`;
 
     return this.http.put(url, usuario).pipe(map((resp: any) => {
 
@@ -168,6 +168,31 @@ export class UsuarioService {
     }));
   }
   
+
+  cargarUsuarios1( desde: number = 0 ) {
+
+    let url = environment.base_url+ '/usuarios?desde=' + desde;
+    return this.http.get( url );
+
+  }
+
+  cargarUsuarios() {
+    let url = `${ environment.base_url }/usuario `;
+
+    return this.http.get( url ).pipe(map((resp: any) => resp));
+  }
+
+  buscarUsuarios( termino: string ) {
+    let url = `${ environment.base_url }/busqueda/coleccion/usuarios/${ termino }`;
+
+    return this.http.get( url ).pipe(map((resp: any) => resp.usuarios));
+  }
+
+  borrarUsuario( id: string ) {
+    let url = `${ environment.base_url }/usuarios/${ id }?token=${ this.token }`;
+
+    return this.http.delete( url ).pipe(map((resp: any) => resp.usuario));
+  }
   
 
 }

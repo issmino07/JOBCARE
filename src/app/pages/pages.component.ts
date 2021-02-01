@@ -12,7 +12,9 @@ declare function customInitFunctions();
 })
 export class PagesComponent implements OnInit {
 
-  constructor( setting:SettingsService) { }
+  constructor( setting:SettingsService) {
+    customInitFunctions();
+   }
 
   ngOnInit(): void {
 

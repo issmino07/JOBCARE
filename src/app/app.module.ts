@@ -28,6 +28,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxSlideModalModule } from 'ngx-slide-modal';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 
 
@@ -53,7 +55,9 @@ import { NgxSlideModalModule } from 'ngx-slide-modal';
     NgxPaginationModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    NgxSlideModalModule
+    NgxSlideModalModule,
+    NgxStarRatingModule,
+    BarRatingModule,
  
   ],
   providers: [

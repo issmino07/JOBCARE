@@ -1,88 +1,110 @@
 <nav class="navbar navbar-light bg-light nav-responsive  ">
-    <div >
-   
-    <img src="../../../assets/images/jobcare.png" alt="homepage" class="img-responsive" />
-    <a class="nav-link  waves-effect waves-dark" [routerLink]="['/ofertaEmpleo']" routerLinkActive="router-link-active">
-        <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-suitcase"
-                [routerLink]="['/ofertaEmpleo']" routerLinkActive="router-link-active"></i>&nbsp; VER OFERTAS</button>
-        <div class="notify"> <span class=""></span></div>
+    <div class="nav-responsive">
+
+        <img src="../../../assets/images/jobcare.png" alt="homepage" class="img-responsive"  [routerLink]="['/inicio']" routerLinkActive="router-link-active" />
+        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/ofertaEmpleo']"
+            routerLinkActive="router-link-active">
+            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-suitcase"
+                    [routerLink]="['/ofertaEmpleo']" routerLinkActive="router-link-active"></i>&nbsp; VER
+                OFERTAS</button>
+     
+        </a>
+        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/perfilEmpleados']"
+        routerLinkActive="router-link-active">
+        <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-suitcase"
+                [routerLink]="['/perfilEmpleados']" routerLinkActive="router-link-active"></i>&nbsp; PERFIL</button>
+ 
     </a>
 
-    <a class="nav-link  waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true"
-    aria-expanded="false" [routerLink]="['/home']" routerLinkActive="router-link-active">
-    <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-suitcase"
-            [routerLink]="['/home']" routerLinkActive="router-link-active"></i> &nbsp; ENCONTRAR EMPLEO</button>
-    <div class="notify"> <span class=""></span></div>
-</a>
-<a class="nav-link  waves-effect waves-dark" [routerLink]="['/home2']" routerLinkActive="router-link-active">
-    <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-suitcase"
-            [routerLink]="['/home2']" routerLinkActive="router-link-active"></i>&nbsp; PUBLICAR EMPLEO</button>
-    <div class="notify"> <span class=""></span></div>
-</a>
-<a class="nav-link  waves-effect waves-dark" [routerLink]="['/cursos']" routerLinkActive="router-link-active">
-    <button type="button" class="btn btn-rounded btn-outline-primary"><i class="fa fa-check"
-            [routerLink]="['/cursos']" routerLinkActive="router-link-active"></i>CAPACÍTATE</button>
-    <div class="notify"> <span class=""></span></div>
-</a>
-<a class="nav-link  waves-effect waves-dark" href="" id="2" data-toggle="modal" data-target="#exampleModal"
-data-whatever="@mdo">
+        <a class="nav-link  waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" [routerLink]="['/home']" routerLinkActive="router-link-active">
+            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-suitcase"
+                    [routerLink]="['/home']" routerLinkActive="router-link-active"></i>  ENCONTRAR EMPLEO</button>
+            <div class="notify"> <span class=""></span></div>
+        </a>
+        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/home2']" routerLinkActive="router-link-active">
+            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-suitcase"
+                    [routerLink]="['/home2']" routerLinkActive="router-link-active"></i> PUBLICAR EMPLEO</button>
+        
+        </a>
+        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/cursos']" routerLinkActive="router-link-active">
+            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-check"
+                    [routerLink]="['/cursos']" routerLinkActive="router-link-active"></i>CAPACÍTATE</button>
+       
+        </a>
+     <!--  <a class="nav-link  waves-effect waves-dark" href="" id="2" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">
 
-<button type="button" class="btn btn-rounded btn-outline-primary"(click)="activar()"><i
-        class="icons mdi mdi-account-box-outline" id="icons" data-toggle="modal" data-target="#exampleModal"
-        data-whatever="@mdo" (click)="activar()"></i>REGÍSTRATE </button>
-<div class="notify"> <span class=""></span> <span class=""></span> </div>
-</a>
-<a class="nav-link  waves-effect waves-dark" [routerLink]="['/login']" routerLinkActive="router-link-active">
+            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado" (click)="activar()"><i
+                    class="icons mdi mdi-account-box-outline" id="icons" data-toggle="modal" data-target="#exampleModal"
+                    data-whatever="@mdo" (click)="activar()"></i>REGÍSTRATE </button>
+         
+        </a>--> 
+        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/login']" routerLinkActive="router-link-active">
 
-    <button type="button" class="btn btn-rounded btn-outline-primary"><i class="icons mdi mdi-account"
-            id="icons " [routerLink]="['/login']" routerLinkActive="router-link-active"></i>Iniciar
-        Sesión</button>
-</a>
-</div>
+            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="icons mdi mdi-account"
+                    id="icons " [routerLink]="['/login']" routerLinkActive="router-link-active"></i>Iniciar
+                Sesión</button>
+        </a>
+    </div>
 </nav>
-     
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <div class="col-md-4" align="center" [ngStyle]="myStyles">
-            <div class="card">
-                <div class="card-body">
-                  
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel1">SELECCIONE UNA OPCIÓN</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                </div>
-                                <div class="modal-body">
-                                  <li class=""[routerLink]="['/home']" routerLinkActive="router-link-active"data-dismiss="modal">
-                                    <a   aria-expanded="false"[routerLink]="['/home']" routerLinkActive="router-link-active"data-dismiss="modal"> 
-                                      <button type="button" class="btn btn-rounded btn-outline-primary"data-dismiss="modal" ><i data-dismiss="modal" class="fa fa-check" [routerLink]="['/home']" routerLinkActive="router-link-active" ></i>ENCONTRAR EMPLEO</button>
-                                        <div class="notify"data-dismiss="modal"> <span class=""data-dismiss="modal"></span></div>
-                                    </a>
-                                 
-                                </li>
-                                <br>
-                                
-                                <li class=""[routerLink]="['/home2']" routerLinkActive="router-link-active"data-dismiss="modal">
-                                  <a   aria-expanded="false"[routerLink]="['/home2']" routerLinkActive="router-link-active"data-dismiss="modal"> 
-                                    <button type="button" class="btn btn-rounded btn-outline-primary"data-dismiss="modal"><i data-dismiss="modal" class="fa fa-check" [routerLink]="['/home2']" routerLinkActive="router-link-active" ></i>PUBLICAR EMPLEO</button>
-                                      <div class="notify"data-dismiss="modal"> <span class=""data-dismiss="modal"></span></div>
-                                  </a>
-                               
-                              </li>
-                             
-          
-          
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="desactivar()">CERRAR</button>
-                                  
-                                </div>
-                            </div>
+
+<!-- ============================================================== -->
+<!-- End Topbar header -->
+<div class="col-md-4" align="center" [ngStyle]="myStyles">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel1">SELECCIONE UNA OPCIÓN</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <li class="" [routerLink]="['/home']" routerLinkActive="router-link-active"
+                                data-dismiss="modal">
+                                <a aria-expanded="false" [routerLink]="['/home']" routerLinkActive="router-link-active"
+                                    data-dismiss="modal">
+                                    <button type="button" class="btn btn-rounded btn-outline-primary"
+                                        data-dismiss="modal"><i data-dismiss="modal" class="fa fa-check"
+                                            [routerLink]="['/home']" routerLinkActive="router-link-active"></i>ENCONTRAR
+                                        EMPLEO</button>
+                                    <div class="notify" data-dismiss="modal"> <span class=""
+                                            data-dismiss="modal"></span></div>
+                                </a>
+
+                            </li>
+                            <br>
+
+                            <li class="" [routerLink]="['/home2']" routerLinkActive="router-link-active"
+                                data-dismiss="modal">
+                                <a aria-expanded="false" [routerLink]="['/home2']" routerLinkActive="router-link-active"
+                                    data-dismiss="modal">
+                                    <button type="button" class="btn btn-rounded btn-outline-primary"
+                                        data-dismiss="modal"><i data-dismiss="modal" class="fa fa-check"
+                                            [routerLink]="['/home2']" routerLinkActive="router-link-active"></i>PUBLICAR
+                                        EMPLEO</button>
+                                    <div class="notify" data-dismiss="modal"> <span class=""
+                                            data-dismiss="modal"></span></div>
+                                </a>
+
+                            </li>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"
+                                (click)="desactivar()">CERRAR</button>
+
                         </div>
                     </div>
-                    <!-- /.modal -->
                 </div>
             </div>
-          </div>
+            <!-- /.modal -->
+        </div>
+    </div>
+</div>
