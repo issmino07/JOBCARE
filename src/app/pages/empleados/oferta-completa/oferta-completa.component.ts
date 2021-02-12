@@ -12,14 +12,12 @@ import { CategoriasService } from 'src/app/services/categorias.service';
 import { Ciudad } from 'src/app/models/ciudad.model';
 import { CiudadesService } from 'src/app/services/ciudades.service';
 
-
 @Component({
-  selector: 'app-editar-ofertas',
-  templateUrl: './editar-ofertas.component.html',
-  styleUrls: ['./editar-ofertas.component.css']
+  selector: 'app-oferta-completa',
+  templateUrl: './oferta-completa.component.html',
+  styleUrls: ['./oferta-completa.component.css']
 })
-export class EditarOfertasComponent implements OnInit {
-
+export class OfertaCompletaComponent implements OnInit {
   ofertaModelo= new Ofertas();
   opcionesGenerales: Categoria[]
   latitude: number;
@@ -39,7 +37,7 @@ export class EditarOfertasComponent implements OnInit {
     tituloEmpleo: ['', [Validators.required]],
     descripcionEmpleo: ['', [Validators.required]],
     remuneracion: ['', [Validators.required]],
-    valor: ['', [Validators.required]],
+    valor: ['$', [Validators.required]],
     horario: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
     usuario:[''],
@@ -47,6 +45,7 @@ export class EditarOfertasComponent implements OnInit {
     categorias:[''],
      provincia: ['', [Validators.required]],
    ciudad: ['', [Validators.required]],
+ 
   //  direccionmapa: ['', [Validators.required]],
   //  lavado: ['',],
   //  comida: ['',],
@@ -72,7 +71,10 @@ export class EditarOfertasComponent implements OnInit {
 
     const id = this.route.snapshot.paramMap.get('id');
     this.oferta.getOfertasId(id)
-      .subscribe(resp => this.ofertaModelo = resp);
+      .subscribe(resp =>{ 
+        this.ofertaModelo = resp
+       console.log(resp,'ID OFERTA')
+      });
     
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();

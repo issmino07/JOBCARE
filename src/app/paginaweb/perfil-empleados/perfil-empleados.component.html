@@ -2,107 +2,87 @@
 
 
 
-<!--div class="row m-0 justify-content-center align-items-center vh-100">
-    <div class="col-10">
+
+
+<div class="row animated fadeIn">
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
 
 
-
-
-
-                <div class="row el-element-overlay">
-                    <div class="col-md-12">
-                        <h4 class="card-title"></h4>
-                        <h6 class="card-subtitle m-b-20 text-muted"> </h6>
-                    </div>
-                    <div class="col-lg-3 col-md-4"  *ngFor="let form of  formularios">
+                <div class="row animated fadeIn m-0 justify-content-center align-items-center vh-100 ">
+                    <div class="col-10">
                         <div class="card">
-
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img [src]="form.usuario.img |imagen"
-                                        alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="el-info">
-                                            <li><a class="btn default btn-outline image-popup-vertical-fit"
-                                                    href="{{form.usuario.img |imagen}}"><i
-                                                        class="icon-magnifier"></i></a></li>
-                                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i
-                                                        class="icon-link"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h3 class="box-title">{{form.nombre}}</h3>
-                                    <br>
-                                    <h6>CATEGORIA</h6>
-                                    <small>{{form.categorias}}</small>
-                                    <br />
-
-                                    <ngx-star-rating class="btn default" [(ngModel)]="form.rating" [id]="'rating'"></ngx-star-rating>
-                                    <br>
-                                     <span>Calificación <b>{{form.rating}}</b> </span>
-                                </div>
-
+                            <div class="card-body">
+                
+                                <input #input (keyup)="buscarHoja( input.value )" type="text" class="form-control" placeholder="Buscar Perfiles...">
+                
                             </div>
-
                         </div>
-
-
-                  
-                             
                     </div>
-              
-               
-                    
                 </div>
-
-
-            </div>
-        </div>
-    </div>
-</div-->
-
-<div class="row m-0 justify-content-center align-items-center vh-100 " *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
-    <!-- .col -->
-    <div class="col-md-6 col-lg-6 col-xlg-4">
-        <div class="card card-body">
-            <div class="row">
-                <div class="col-md-4 col-lg-3 text-center">
-                    <a><img src="{{form.usuario.img |imagen}}" alt="user" class="img-circle img-responsive"></a>
+                
+                <div class=" container p-3 " class="col-sm">
+                    <h1 align="center" id="color">PERFILES PUBLICADOS</h1>
                 </div>
-                <div class="col-md-6 col-lg-6">
-                    <h3 class="box-title m-b-0">{{form.nombre}} {{form.apellido}}</h3> 
-                    <h6>CATEGORIA</h6>
-                    <small>{{form.categorias}}</small>
-                    <address>
-                        {{form.descripcion}}
-                        <br />
-                        <br />
-                        <small >Celular:</small> {{form.usuario.telefono}}
-                    </address>
-                    
-                    <div>
-                        <div id="cont">
-                            <div id="stars">
-                              <ngx-star-rating class="btn default" [(ngModel)]="form.rating" [id]="'rating'" ></ngx-star-rating >
-                            </div>
-                          
-                          </div>
-                          <br>
-                          <span>Calificación <b>{{form.rating}}</b> </span>
-                          <br>
-                   </div>
-                   
-                    <button type="button" class="btn btn-outline-primary"
+                
+                <div class="row animated fadeIn" *ngIf="cargando">
+                
+                    <div class="col-sm-12">
+                
+                        <div class="alert alert-warning text-center">
+                            <strong>Cargando</strong>
+                            <br>
+                            <i class="fa fa-refresh fa-spin fa-2x"></i>
+                            <br>
+                            <span>Espere por favor</span>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+                <table class="table table-hover"*ngIf="!cargando">
+                    <thead>
+                        <tr>
+                            <th>IMAGEN</th>
+                            <th>NOMBRE</th>
+                            <th>DESCRIPCIÓN</th>
+                            <th>TELÉFONO</th>
+                            <th>CALIFICACIÓN</th>
+                            <th>ACCIÓN</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr
+                            *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
+                            <td class="w70">
+                                <img [src]="form.usuario.img |imagen" class="img-50 img-circle pointer">
+                            </td>
+                            <td> {{form.nombre}} {{form.apellido}}</td>
+                            <td>{{form.descripcion}}</td>
+                            <td> {{form.usuario.telefono}} </td>
+                            <td>{{form.rating}}</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-primary"
                     style="width: 140px;height: 75;font-size: 70%;" (click)="postular()"
-       ><b>Quieres contacatar</b></button>
-                </div>
+                                              ><b>Quieres contacatar</b></button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+
+
+
             </div>
         </div>
     </div>
-
+    <pagination-controls (pageChange)="totalRegistros = $event"*ngIf="!cargando"></pagination-controls>
 </div>
-<pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
 
 <app-footer></app-footer>

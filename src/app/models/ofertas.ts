@@ -1,3 +1,4 @@
+import { Hojavida } from './hojavida';
 import { Usuario } from "./usuario.model";
 
 export class Ofertas {
@@ -14,5 +15,9 @@ estado: String;
 categorias: string;
 provincia:  string;
 
+
 ciudad: string;
+postulacion?:Array<Object>
+descripcion?:Hojavida;
+user?: Usuario;
 }

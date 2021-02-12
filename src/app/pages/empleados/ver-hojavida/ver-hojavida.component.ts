@@ -22,14 +22,20 @@ export class VerHojavidaComponent implements OnInit {
   
 
   constructor(private _usuarioService: UsuarioService, private listainforme: HojavidaService
-    ) { }
+    ) {
+
+
+
+      
+     }
   ngOnInit() {
 
    
     this.usuario = this._usuarioService.usuario;
     this.getFormulariosHoja();
- 
+   
   }
+
 
 
  
@@ -40,10 +46,11 @@ export class VerHojavidaComponent implements OnInit {
       this.listainforme.getHojavida(usuario._id).subscribe(
         result => { 
            this.formularios =  result 
+
+         //  localStorage.setItem("Hojavida",JSON.stringify(this.formularios) )
            console.log(this.formularios)
        });
+      }
 
-    
- 
-  }
+
 }

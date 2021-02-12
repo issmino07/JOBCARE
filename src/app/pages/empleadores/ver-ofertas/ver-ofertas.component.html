@@ -20,6 +20,7 @@
                      
                    
                         <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
+                     
                         <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
                     </tr>
                 </thead>
@@ -28,19 +29,23 @@
                         <td>{{i+1}}</td>
                         <td>{{form.tituloEmpleo}}</td>
                         <td>{{form.categorias}}</td>
-                        <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
+                        <td>{{form.fechaReporte | date:'dd-MM-yyyy'}}</td>
                      
                         <td>{{form.horario}}</td>
                       
-                     
+                   
                      
                         <td class="text" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
+
+                      
                         <td>
                             <button type="button" class="btn btn-outline-primary"
                                        style="width: 75px;height: 70;font-size: 50%;"
                             [routerLink]="['/dashboard/editaroferta/',form._id]"><b>EDITAR</b></button>
                         
                         </td>
+                   
+                      
                     </tr>                  
                 </tbody>
             </table>

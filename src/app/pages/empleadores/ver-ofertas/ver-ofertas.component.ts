@@ -2,11 +2,11 @@ import { OfertaService } from '../../../services/oferta.service';
 import { Component, OnInit } from '@angular/core';
 import { Ofertas } from 'src/app/models/ofertas';
 import { Usuario } from 'src/app/models/usuario.model';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import { ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2';
-import { Ciudad } from 'src/app/models/ciudad.model';
-import { CiudadesService } from 'src/app/services/ciudades.service';
+
+
+
+
+
 
 @Component({
   selector: 'app-ver-ofertas',
@@ -15,38 +15,28 @@ import { CiudadesService } from 'src/app/services/ciudades.service';
 })
 export class VerOfertasComponent implements OnInit {
 
-  usuario: Usuario;
+
+ formularios: Ofertas[];
+ totalRegistros: number = 1;
   
-  formularios: Ofertas[];
-  ofertaModelo= new Ofertas();
-  totalRegistros: number = 1;
-
-
-  
-
-  constructor(private _usuarioService: UsuarioService, private listainforme: OfertaService,private route: ActivatedRoute,
-    ) { }
-  ngOnInit() {
-
-   
-    this.usuario = this._usuarioService.usuario;
-    this.getFormulariosOfertas();
+ constructor( private listainforme: OfertaService) { }
+ 
+ 
+ ngOnInit() {
+     
+  this.getFormulariosOfertas();
  
   }
 
-
- 
-
-  getFormulariosOfertas() {
+      getFormulariosOfertas() {
 
       const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
       this.listainforme.getOfertas(usuario._id).subscribe(
         result => { 
-           this.formularios =  result 
-           console.log(this.formularios)
-       });
-
-    
- 
-  }
+           this.formularios =  result;
+           },error =>{
+       console.log(error,'Error')
+      //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
+      });
+}
 }

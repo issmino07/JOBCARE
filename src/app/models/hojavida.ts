@@ -8,6 +8,7 @@ export class Hojavida {
       refSalarial: string;
       fechaNacimiento: Date;
       edad: String;
+      img2: string
       genero:string;
       ocupacion: string;
       descripcion: string;
@@ -22,4 +23,23 @@ export class Hojavida {
       estado: string;
       rating: number;
       usuario:Usuario;
+      check: boolean;
+      user: Usuario;
+      //referencia1
+      nombreRef1:string;
+      cargoRef1: string;
+      empresaRef1:string;
+      telefonoRef1:string;
+           //referencia2
+           nombreRef2:string;
+           cargoRef2: string;
+           empresaRef2:string;
+           telefonoRef2:string;
+                //referencia3
+      nombreRef3:string;
+      cargoRef3: string;
+      empresaRef3:string;
+      telefonoRef3:string;
+    
+      postulacion:Array<Object>
 }

@@ -1,8 +1,10 @@
+import { Hojavida } from './../models/hojavida';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Hojavida } from '../models/hojavida';
+
+import { map } from 'rxjs/operators';
 
 
 
@@ -15,11 +17,25 @@ const httpOptions = {
 })
 export class HojavidaService {
 
+  hojavida: Hojavida;
+
+  private opcionesUrl2 =  environment.base_url + '/hojavida/insertar';
   private opcionesUrl1 =  environment.base_url + '/hojavida/todos';
   private opcionesUrl =  environment.base_url + '/hojavida';  // URL to web api
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+
+   
+   }
+
+
+
+
+
+
+
+
  
    getOpciones(): Observable<Hojavida[]> {
     return this.http.get<Hojavida[]>(this.opcionesUrl1)
@@ -35,9 +51,12 @@ export class HojavidaService {
   }
 
 
-
   addOpcion (proveedor: Hojavida): Observable<Hojavida> {
     return this.http.post<Hojavida>(this.opcionesUrl, proveedor, httpOptions);
+  }
+
+  addOpcion2 (proveedor: Hojavida): Observable<Hojavida> {
+    return this.http.post<Hojavida>(this.opcionesUrl2, proveedor, httpOptions);
   }
 
   deleteOpcion (opcion: Hojavida | string): Observable<Hojavida> {
@@ -51,5 +70,12 @@ export class HojavidaService {
     return this.http.put(this.opcionesUrl, proveedor, httpOptions);
   }
 
+
+  buscarHojavida( termino: string ) {
+    let url = `${ environment.base_url }/busqueda/coleccion/hojavida/${ termino }`;
+
+    return this.http.get( url ).pipe(map((resp: any) => resp.hojavida ));
+   
+  }
 
 }

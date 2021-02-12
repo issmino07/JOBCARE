@@ -1,0 +1,55 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+
+
+
+                <table class="table table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                       
+                            <th>TÍTULO EMPLEO</th>
+                            <th>REMUNERACIÓN</th>
+                            <th>SALARIO</th>
+                            <th>CONTACTO</th>
+                            <th>EMAIL</th>
+                            <th>HORARIO</th>
+                             <th>ACCIÓN</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr
+                            *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
+                          
+                            <td> {{form.postulacion.tituloEmpleo}} </td>
+                            <td>{{form.postulacion.remuneracion}}</td>
+                            <td> ${{form.postulacion.valor}}</td>
+                            <td> {{form.ofertante.telefono}} </td>
+                            <td> {{form.ofertante.email}} </td>
+                            <td>{{form.postulacion.horario}}</td>
+                           <td>
+                                <button type="button" class="btn btn-outline-primary"
+                    style="width: 140px;height: 75;font-size: 70%;" 
+                    [routerLink]="['/dashboard/ofertaCompleta/',form.postulacion._id]" ><b>VER OFERTA</b></button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
+</div>
+
+
+

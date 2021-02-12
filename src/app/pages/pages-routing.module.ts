@@ -16,7 +16,7 @@ import { PlanEmpleadosComponent } from './empleados/plan-empleados/plan-empleado
 import { AdministradorComponent } from './administracion/administrador/administrador.component';
 import { CrearCursosComponent } from './administracion/crear-cursos/crear-cursos.component';
 import { VerCursosComponent } from './administracion/ver-cursos/ver-cursos.component';
-import { PerfilEmpleadosComponent } from '../paginaweb/perfil-empleados/perfil-empleados.component';
+
 import { AdmininicioComponent } from './empleadores/admininicio/admininicio.component';
 import { PlanesComponent } from './empleadores/planes/planes.component';
 import { PerfilesComponent } from './empleadores/perfiles/perfiles.component';
@@ -26,6 +26,12 @@ import { OfertasAdminComponent } from './administracion/ofertas-admin/ofertas-ad
 import { EditarCursosComponent } from './administracion/editar-cursos/editar-cursos.component';
 import { CursosEmpleadosComponent } from './empleados/cursos-empleados/cursos-empleados.component';
 import { CursosEmpleadoresComponent } from './empleadores/cursos-empleadores/cursos-empleadores.component';
+import { HojavidaProfesionalComponent } from './profesionales/hojavida-profesional/hojavida-profesional.component';
+import { PostulacionesOfertasComponent } from './empleadores/postulaciones-ofertas/postulaciones-ofertas.component';
+import { OfertasPOstuladasComponent } from './empleados/ofertas-postuladas/ofertas-postuladas.component';
+import { OfertaCompletaComponent } from './empleados/oferta-completa/oferta-completa.component';
+import { TeContactaronComponent } from './empleados/te-contactaron/te-contactaron.component';
+import { PostulantesContactadosComponent } from './empleadores/postulantes-contactados/postulantes-contactados.component';
 
 
 
@@ -59,6 +65,14 @@ const routes: Routes = [
         { path: 'editarCursos/:id', component: EditarCursosComponent},
         { path: 'cursosEmpleados', component: CursosEmpleadosComponent},
         { path: 'cursosEmpleadores', component: CursosEmpleadoresComponent},
+        { path: 'hojavidaprofesional', component: HojavidaProfesionalComponent },
+
+        { path: 'postulacionOfertas', component: PostulacionesOfertasComponent },
+        { path: 'ofertasPostuladas', component: OfertasPOstuladasComponent },
+        { path: 'ofertaCompleta', component: OfertaCompletaComponent },
+        { path: 'ofertaCompleta/:id', component: OfertaCompletaComponent },
+        { path: 'teContactaron', component: TeContactaronComponent },
+        { path: 'postulantesContactados', component: PostulantesContactadosComponent }
       ]
 },
 

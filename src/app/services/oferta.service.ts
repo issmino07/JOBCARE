@@ -1,9 +1,10 @@
+import { Ofertas } from 'src/app/models/ofertas';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Ofertas } from '../models/ofertas';
 
+import { map } from 'rxjs/operators';
 
 
 const httpOptions = {
@@ -15,11 +16,26 @@ const httpOptions = {
 })
 export class OfertaService {
 
+Ofertas: Ofertas;
+private opcionesUrl3 =  environment.base_url + '/ofertas/crear';
+private opcionesUrl2 =  environment.base_url + '/ofertas/insertar';
   private opcionesUrl1 =  environment.base_url + '/ofertas/todos';
   private opcionesUrl =  environment.base_url + '/ofertas';  // URL to web api
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+
+
+   }
+
+
+
+ 
+
+  getOpcionesPrueba(): Observable<Ofertas[]> {
+    return this.http.get<Ofertas[]>(this.opcionesUrl1)
+  }
+
  
   getOpciones(): Observable<Ofertas[]> {
     return this.http.get<Ofertas[]>(this.opcionesUrl1)
@@ -34,10 +50,19 @@ export class OfertaService {
     return this.http.get<Ofertas[]>(this.opcionesUrl+'?usuario_id='+usuario_id)
   }
 
-
+  addOpcionOfer (proveedor: Ofertas): Observable<Ofertas> {
+    return this.http.post<Ofertas>(this.opcionesUrl3, proveedor, httpOptions);
+  }
 
   addOpcion (proveedor: Ofertas): Observable<Ofertas> {
-    return this.http.post<Ofertas>(this.opcionesUrl, proveedor, httpOptions);
+    return this.http.post<Ofertas>(this.opcionesUrl2, proveedor, httpOptions);
+  }
+
+
+ postu( id: string ) {
+    let url = `${ environment.base_url }/oe/${ id }`;
+
+    return this.http.post<Ofertas>(url, httpOptions);
   }
 
   deleteOpcion (opcion: Ofertas | string): Observable<Ofertas> {
@@ -51,6 +76,13 @@ export class OfertaService {
     return this.http.put(this.opcionesUrl, proveedor, httpOptions);
   }
 
+
+  buscarOfertas( termino: string ) {
+    let url = `${ environment.base_url }/busqueda/coleccion/ofertas/${ termino }`;
+
+    return this.http.get( url ).pipe(map((resp: any) => resp.ofertas ));
+   
+  }
 
 
 }

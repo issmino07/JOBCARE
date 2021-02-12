@@ -14,12 +14,12 @@ export class PerfilEmpleadosComponent implements OnInit {
 
   usuario: Usuario;
 
-  
+  cargando: boolean = true;
 
-  formularios: Hojavida[];
-  ofertaModelo= new Hojavida();
-  totalRegistros: number = 1;
-  constructor(private listainforme :HojavidaService,private fb: FormBuilder) { 
+  formularios: Hojavida[]=[];
+
+  totalRegistros: number = 0;
+  constructor(private listainforme :HojavidaService) { 
 
 
   
@@ -27,7 +27,7 @@ export class PerfilEmpleadosComponent implements OnInit {
 
  
   
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.getFormulariosOfertas()
   }
@@ -44,7 +44,7 @@ export class PerfilEmpleadosComponent implements OnInit {
          this.formularios =  result ;
       
       
-  
+         this.cargando = false;
          console.log(this.formularios)
      });
 
@@ -56,14 +56,10 @@ export class PerfilEmpleadosComponent implements OnInit {
 postular(){
   console.log('estoy postulando')
    Swal.fire({
-     title: '<strong>REGÍSTRATE EN UNA DE NUESTRAS CATEGORIAS</strong>',
+     title: '<strong>REGÍSTRATE </strong>',
+     text: 'Regístrate en una de nuestras categorias para contratar o publicar tu oferta',
      icon: 'success',
-     html:
-      
-       '<a href="#/home2">PUBLICAR EMPLEO</a>' 
-   
-       
-       ,
+    
      showCloseButton: true,
      showCancelButton: true,
      focusConfirm: false,
@@ -80,5 +76,27 @@ postular(){
 
 
 
+ buscarHoja( termino: string ) {
+
+  if ( termino.length <= 0 ) {
+    this.getFormulariosOfertas()
+    return;
+  }
+
+  this.cargando = true;
+
+  this.listainforme.buscarHojavida( termino )
+          .subscribe( (hojavida: Hojavida[]) => {
+
+            this.formularios = hojavida
+
+            console.log(this.formularios,'oe')
+            this.cargando = false;
+          });
 
 }
+
+}
+
+
+

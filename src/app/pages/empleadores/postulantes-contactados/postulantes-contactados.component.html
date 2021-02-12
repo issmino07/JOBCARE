@@ -1,0 +1,42 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+
+
+
+                <table class="table table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                       
+                            <th>NOMBRE</th>
+                            <th>CATEGORIA</th>
+                         
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr
+                            *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
+                          
+                            <td> {{form.postulacion.nombre}} {{form.postulacion.apellido}}</td>
+                             <td>
+                                 {{form.postulacion.categorias}}
+                             </td>
+                   
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
+</div>

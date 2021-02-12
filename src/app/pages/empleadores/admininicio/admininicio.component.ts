@@ -229,7 +229,7 @@ selectProvincia(provincia) {
     // Realizar el posteo
     this.registerForm.value.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado
-    this.oferta.addOpcion(this.registerForm.value).subscribe(
+    this.oferta.addOpcionOfer(this.registerForm.value).subscribe(
       resp => {
         Swal.fire("Registro  existoso", "", "success")
         console.log(resp);
@@ -265,7 +265,7 @@ selectProvincia(provincia) {
         Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
   
       })
-     this.activar()
+   
     }
 
 

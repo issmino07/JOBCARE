@@ -33,6 +33,11 @@ import { EditarCursosComponent } from './administracion/editar-cursos/editar-cur
 import { CursosEmpleadosComponent } from './empleados/cursos-empleados/cursos-empleados.component';
 import { CursosEmpleadoresComponent } from './empleadores/cursos-empleadores/cursos-empleadores.component';
 import { HojavidaProfesionalComponent } from './profesionales/hojavida-profesional/hojavida-profesional.component';
+import { PostulacionesOfertasComponent } from './empleadores/postulaciones-ofertas/postulaciones-ofertas.component';
+import { OfertasPOstuladasComponent } from './empleados/ofertas-postuladas/ofertas-postuladas.component';
+import { OfertaCompletaComponent } from './empleados/oferta-completa/oferta-completa.component';
+import { PostulantesContactadosComponent } from './empleadores/postulantes-contactados/postulantes-contactados.component';
+import { TeContactaronComponent } from './empleados/te-contactaron/te-contactaron.component';
 
 
 
@@ -62,6 +67,11 @@ import { HojavidaProfesionalComponent } from './profesionales/hojavida-profesion
     CursosEmpleadosComponent,
     CursosEmpleadoresComponent,
     HojavidaProfesionalComponent,
+    PostulacionesOfertasComponent,
+    OfertasPOstuladasComponent,
+    OfertaCompletaComponent,
+    PostulantesContactadosComponent,
+    TeContactaronComponent,
     
 
   ],

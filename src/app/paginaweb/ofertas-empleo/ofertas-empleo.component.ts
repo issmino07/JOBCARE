@@ -14,10 +14,12 @@ export class OfertasEmpleoComponent implements OnInit {
 
   
   usuario: Usuario;
+
+  cargando: boolean = true;
   
   formularios: Ofertas[];
-  ofertaModelo= new Ofertas();
-  totalRegistros: number = 1;
+  formularios2: Ofertas[];
+  totalRegistros: number = 0;
   constructor(private listainforme : OfertaService) { }
 
   ngOnInit(): void {
@@ -30,42 +32,58 @@ export class OfertasEmpleoComponent implements OnInit {
   
   getFormulariosOfertas() {
 
-  
+    this.cargando = true;
     this.listainforme.getOpciones().subscribe(
-      result => { 
-         this.formularios =  result 
-         console.log(this.formularios)
+     result => { 
+         this.formularios =  result
+
+         this.cargando = false;
+        
      });
-
-  
-
-}
+  }
 
 
 
 postular(){
   console.log('estoy postulando')
-   Swal.fire({
-     title: '<strong>REGÍSTRATE EN UNA DE NUESTRAS CATEGORIAS</strong>',
-     icon: 'success',
-     html:
-      
-       '<a href="#/home">ENCONTAR EMPLEO</a>' 
+  Swal.fire({
+    title: '<strong>REGÍSTRATE </strong>',
+    text: 'Regístrate en una de nuestras categorias para contratar o publicar tu oferta',
+    icon: 'success',
    
-       
-       ,
-     showCloseButton: true,
-     showCancelButton: true,
-     focusConfirm: false,
-     confirmButtonText:
-       '<i class="fa fa-thumbs-up"></i> <a href="#/home"><b style="color:#FBFBFB";> ENCONTAR EMPLEO </b></a>',
-     confirmButtonAriaLabel: 'Thumbs up, great!',
-     cancelButtonText:
-       '<i class="fa fa-thumbs-down"></i>',
-     cancelButtonAriaLabel: 'Thumbs down'
-   })
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText:
+      '<i class="fa fa-thumbs-up"></i> <a href="#/home"><b style="color:#FBFBFB";> ENCONTRAR EMPLEO</b></a>',
+    confirmButtonAriaLabel: 'Thumbs up, great!',
+    cancelButtonText:
+      '<i class="fa fa-thumbs-down"></i>',
+    cancelButtonAriaLabel: 'Thumbs down'
+  })
  
  
  }
+
+
+ buscarOferta( termino: string ) {
+
+  if ( termino.length <= 0 ) {
+    this.getFormulariosOfertas()
+    return;
+  }
+
+  this.cargando = true;
+
+  this.listainforme.buscarOfertas( termino )
+          .subscribe( (ofertas: Ofertas[]) => {
+
+            this.formularios = ofertas
+
+            console.log(this.formularios,'oe')
+            this.cargando = false;
+          });
+
+}
 
 }
