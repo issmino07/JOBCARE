@@ -88,6 +88,23 @@ export class HojavidaProfesionalComponent implements OnInit {
    estado:[''],
    usuario:[''],
  
+
+     //referencia1
+     nombreRef1: [''],
+     cargoRef1: [''],
+     empresaRef1: [''],
+     telefonoRef1: [''],
+     //referencia1
+     nombreRef2: [''],
+     cargoRef2: [''],
+     empresaRef2: [''],
+     telefonoRef2: [''],
+ 
+     //referencia1
+     nombreRef3: [''],
+     cargoRef3: [''],
+     empresaRef3: [''],
+     telefonoRef3: [''],
   
 
  //  lavado: ['',],

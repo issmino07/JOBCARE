@@ -24,9 +24,10 @@ export class HeaderComponent implements OnInit {
   }
 
   cerrarSesion(){
-  
-    this._usuarioService.logOut()
+   this._usuarioService.logOut()
   }
+
+  
 activar(){
   customInitFunctions();
 }

@@ -1,6 +1,6 @@
 import { Hojavida } from '../../../models/hojavida';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+
 import { Usuario } from 'src/app/models/usuario.model';
 import { HojavidaService } from 'src/app/services/hojavida.service';
 import { UsuarioService } from 'src/app/services/usuario.service';

@@ -6,6 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginHeaderComponent } from './login-header/login-header.component';
+import { RequestResetComponent } from './recuperarContraseña/request-reset/request-reset.component';
+import { ResponseResetComponent } from './recuperarContraseña/response-reset/response-reset.component';
 
 
 
@@ -15,7 +17,8 @@ import { LoginHeaderComponent } from './login-header/login-header.component';
     LoginComponent,
     RegisterComponent,
     LoginHeaderComponent,
-  
+    RequestResetComponent,
+    ResponseResetComponent
   ],
 
   exports: [

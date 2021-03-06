@@ -23,6 +23,7 @@
     "@ng-select/ng-select": "^5.0.9",
     "bs-stepper": "^1.7.0",
     "ng-starrating": "^1.0.20",
+    "ng2-tooltip-directive": "^2.9.22",
     "ngx-bar-rating": "^2.0.0",
     "ngx-pagination": "^5.0.0",
     "ngx-slide-modal": "^1.5.1",

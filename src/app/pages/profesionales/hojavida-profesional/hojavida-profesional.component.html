@@ -1,483 +1,603 @@
 <div class="container ">
 
     <div id="stepper1" class="bs-stepper">
-      <div class="bs-stepper-header">
-        <div class="step" data-target="#test-l-1">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">1</span>
-            <span class="bs-stepper-label"></span>
-          </button>
+        <div class="bs-stepper-header">
+            <div class="step" data-target="#test-l-1">
+                <button class="step-trigger">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label"></span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#test-l-2">
+                <button class="step-trigger">
+                    <span class="bs-stepper-circle" (click)="previo()">2</span>
+                    <span class="bs-stepper-label"></span>
+                </button>
+            </div>
+
+            <div class="line"></div>
+            <div class="step" data-target="#test-l-3">
+                <button class="step-trigger">
+                    <span class="bs-stepper-circle">3</span>
+                    <span class="bs-stepper-label"></span>
+                </button>
+            </div>
+
         </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-2">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle" (click)="previo()" >2</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-      
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-3">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">3</span>
-            <span class="bs-stepper-label"></span>
-          </button>
-        </div>
-       
-      </div>
-  
-  
-      <!--AQUI EMPEZA EL FORMULARIO-->
-  
-      <div class="bs-stepper-content">
-        <form  [formGroup]="registerForm">
-          <div id="test-l-1" class="content">
-         
-            <div class="">
-                <div class="card-header bg-primary">
-                    <h4 class="m-b-0 text-white">FORMULARIO</h4>
-                </div>
-                
 
 
-                
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Foto</h4>
-                              
-                                <img  *ngIf="!imagenTemporal" [src]="usuario.img |imagen" class="w150">
-                                <img  *ngIf="imagenTemporal" [src]="imagenTemporal" class="w150">
-                                <input (change)="seleccionaImagen($event.target.files[0])" type="file">
+        <!--AQUI EMPEZA EL FORMULARIO-->
+
+        <div class="bs-stepper-content">
+            <form [formGroup]="registerForm">
+                <div id="test-l-1" class="content">
+
+                    <div class="">
+                        <div class="card-header bg-primary">
+                            <h4 class="m-b-0 text-white">FORMULARIO</h4>
+                        </div>
+
+
+
+
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Foto</h4>
+
+                                        <img *ngIf="!imagenTemporal" [src]="usuario.img |imagen" class="w150">
+                                        <img *ngIf="imagenTemporal" [src]="imagenTemporal" class="w150">
+                                        <input (change)="seleccionaImagen($event.target.files[0])" type="file">
+                                        <br>
+                                        <br>
+                                        <button (click)="cambiarImagen()" type="button"
+                                            class="btn btn-primary waves-effect waves-light m-r-10">
+                                            <i class="fa fa-save"></i> Actualizar Foto</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">NOMBRES</label>
+                                    <input formControlName="nombre" type="text" id="firstName" class="form-control"
+                                        placeholder="NOMBRES">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">APELLIDOS</label>
+                                    <input formControlName="apellido" type="text" id="firstName" class="form-control"
+                                        placeholder="APELLIDOS">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">CEDULA</label>
+                                    <input formControlName="cedula" type="number" class="form-control"
+                                        placeholder="CEDULA DE IDENTIDAD">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">REFERENCIA SALARIAL</label>
+                                    <input formControlName="refSalarial" type="number" id="firstName"
+                                        class="form-control" placeholder="REFERENCIA SALARIAL">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">FECHA DE NACIMIENTO</label>
+                                    <input formControlName="fechaNacimiento" type="date" id="firstName"
+                                        class="form-control" placeholder="Fecha">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">EDAD</label>
+                                    <input formControlName="edad" type="number" id="firstName" class="form-control"
+                                        placeholder="EDAD">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group has-success">
+                                    <label class="control-label">GENERO:</label>
+                                    <select formControlName="genero" class="form-control custom-select">
+                                        <option value="MASCULINO">MASCULINO</option>
+                                        <option value="FEMENINO">FEMENINO</option>
+                                        <option value="OTROS">OTROS</option>
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">OCUPACIÓN</label>
+                                    <input formControlName="ocupacion" type="text" id="firstName" class="form-control"
+                                        placeholder="ocupacion">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Breve descripción :
+                                    </label>
+                                    <textarea formControlName="descripcion" type="text" id="lastName"
+                                        class="form-control" placeholder="Breve descripción"></textarea>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Categoria</label>
+                                    <select class="form-control custom-select" data-placeholder="CATEGORIAS"
+                                        tabindex="1" formControlName="categorias">
+                                        <option *ngFor="let opcionesgenerales of opcionesGenerales"
+                                            value="{{opcionesgenerales.categorias}}">
+                                            {{opcionesgenerales.categorias}}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Provincias</label>
+                                    <select name="Provincia" class="browser-default custom-select form-control"
+                                        formControlName="provincia" (change)="selectProvincia($event.target.value)">
+                                        <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
+                                            {{prov.provincia}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Ciudad</label>
+                                    <select name="Ciudad" class="browser-default custom-select form-control"
+                                        formControlName="ciudad">
+                                        <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
+                                            {{canton}}
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <!--/span-->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Mi Dirección</label>
+                                    <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                                        formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off"
+                                        autocapitalize="on" spellcheck="off" type="text" #search>
+                                </div>
+                                <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                                        (dragEnd)="markerDragEnd($event)"></agm-marker>
+                                </agm-map>
                                 <br>
-                                <br>
-                                <button (click)="cambiarImagen()" type="button" class="btn btn-primary waves-effect waves-light m-r-10">
-                                        <i class="fa fa-save"></i> Actualizar Foto</button>
+                                <h5>Dirección: {{address}}</h5>
+
+                            </div>
+                            <!--/span-->
+                            <div class="form-group col-6">
+                                <label>EXPERIENCIA LABORAL</label>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button" (click)="voteUp(-1)">-</button>
+                                    </span>
+
+                                    <input [(ngModel)]="votes" type="number" class="form-control "
+                                        placeholder="Años de experiencia" formControlName="experiencia" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button" (click)="voteUp(+1)">+</button>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Experiencia Laboral :
+                                    </label>
+                                    <textarea formControlName="descripcionExperiencia" type="text" id="lastName"
+                                        class="form-control" placeholder="Breve descripción"></textarea>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group has-success">
+                                    <label class="control-label">Nivel de Educación :</label>
+                                    <select formControlName="nivelEducacion" class="form-control custom-select">
+                                        <option value="Fijo">PRIMARIA</option>
+                                        <option value="Una Vez">SECUNDARIA</option>
+                                        <option value="Una Vez">SUPERIOR</option>
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
                             </div>
                         </div>
+                        <!--/row-->
+
+                        <h4>REFERENCIAS PERSONALES</h4>
+                        <br>
+                        <h5>Referencia 1</h5>
+                        <div class="row col-12">
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="nombreRef1" type="text" id="firstName" class="form-control"
+                                        placeholder="Nombre">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="cargoRef1" type="text" id="firstName" class="form-control"
+                                        placeholder="Cargo">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="empresaRef1" type="text" id="firstName" class="form-control"
+                                        placeholder="Empresa">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="telefonoRef1" type="text" id="firstName"
+                                        class="form-control" placeholder="Teléfono">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--Referencia 2-->
+
+                        <h5>Referencia 2</h5>
+                        <div class="row col-12">
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="nombreRef2" type="text" id="firstName" class="form-control"
+                                        placeholder="Nombre">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="cargoRef2" type="text" id="firstName" class="form-control"
+                                        placeholder="Cargo">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="empresaRef2" type="text" id="firstName" class="form-control"
+                                        placeholder="Empresa">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="telefonoRef2" type="text" id="firstName"
+                                        class="form-control" placeholder="Teléfono">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--Referencia 2-->
+
+                        <h5>Referencia 3</h5>
+                        <div class="row col-12">
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="nombreRef3" type="text" id="firstName" class="form-control"
+                                        placeholder="Nombre">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="cargoRef3" type="text" id="firstName" class="form-control"
+                                        placeholder="Cargo">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="empresaRef3" type="text" id="firstName" class="form-control"
+                                        placeholder="Empresa">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <input formControlName="telefonoRef3" type="text" id="firstName"
+                                        class="form-control" placeholder="Teléfono">
+                                    <small class="form-control-feedback"></small>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <br>
+
+
+
+                    <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
                 </div>
-                    
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">NOMBRES</label>
-                            <input formControlName="nombre" type="text" id="firstName"
-                                class="form-control" placeholder="NOMBRES">
-                            <small class="form-control-feedback"></small>
-                        </div>
+                <div id="test-l-2" class="content">
+                    <div class=" container p-3 " class="col-sm">
+                        <h1 align="center" id="color">HOJA DE VIDA PARA PUBLICAR</h1>
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">APELLIDOS</label>
-                            <input formControlName="apellido" type="text" id="firstName"
-                                class="form-control" placeholder="APELLIDOS">
-                            <small class="form-control-feedback"></small>
-                        </div>
-                    </div>
-                 
+                    <div class="row animated fadeIn">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">CEDULA</label>
-                            <input formControlName="cedula" type="number"
-                                class="form-control" placeholder="CEDULA DE IDENTIDAD">
-                            <small class="form-control-feedback"></small>
-                        </div>
-                    </div>
 
-                    
-            
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">REFERENCIA SALARIAL</label>
-                            <input formControlName="refSalarial" type="number" id="firstName"
-                                class="form-control" placeholder="REFERENCIA SALARIAL">
-                            <small class="form-control-feedback"></small>
-                        </div>
-                    </div>
-                    <!--/span-->
-                  
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">FECHA DE NACIMIENTO</label>
-                            <input formControlName="fechaNacimiento" type="date" id="firstName"
-                                class="form-control" placeholder="Fecha">
-                            <small class="form-control-feedback"></small>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">EDAD</label>
-                            <input formControlName="edad" type="number" id="firstName"
-                                class="form-control" placeholder="EDAD">
-                            <small class="form-control-feedback"></small>
-                        </div>
-                    </div>
 
-                    
-                    <div class="col-md-6">
-                        <div class="form-group has-success">
-                            <label class="control-label">GENERO:</label>
-                            <select formControlName="genero"
-                                class="form-control custom-select">
-                                <option value="Fijo">MASCULINO</option>
-                                <option value="Una Vez">FEMENINO</option>
-                                <option value="Una Vez">OTROS</option>
-                            </select>
-                            <small class="form-control-feedback"> </small>
-                        </div>
-                    </div>
-                    <!--/span-->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">OCUPACIÓN</label>
-                            <input formControlName="ocupacion" type="text" id="firstName"
-                                class="form-control" placeholder="ocupacion">
-                            <small class="form-control-feedback"></small>
-                        </div>
-                    </div>
-                </div>
-                <!--/row-->
-                <div class="row">
-                
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Breve descripción :
-                            </label>
-                            <textarea formControlName="descripcion" type="text"
-                                id="lastName" class="form-control"
-                                placeholder="Breve descripción"></textarea>
-                            <small class="form-control-feedback"> </small>
-                        </div>
-                    </div>
-                    <!--/span-->
-          
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Categoria</label>
-                            <select class="form-control custom-select"
-                                data-placeholder="CATEGORIAS" tabindex="1"
-                                formControlName="categorias">
-                                <option *ngFor="let opcionesgenerales of opcionesGenerales"
-                                    value="{{opcionesgenerales.categorias}}">
-                                    {{opcionesgenerales.categorias}}</option>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>IMAGEN</th>
+                                                <th>NOMBRE</th>
+                                                <th>DESCRIPCIÓN</th>
+                                                <th>TELÉFONO</th>
+                                                <th>REMUNERACIÓN</th>
+                                                <th>ESTADO</th>
+                                            </tr>
+                                        </thead>
 
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!--/row-->
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Provincias</label>
-                            <select name="Provincia" class="browser-default custom-select form-control" formControlName="provincia"
-                            (change)="selectProvincia($event.target.value)">
-                            <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
-                              {{prov.provincia}}</option>
-                          </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Ciudad</label>
-                            <select name="Ciudad" class="browser-default custom-select form-control" formControlName="ciudad">
-                                <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
-                                  {{canton}}
-                                </option>
-                              </select>
-                  
-                        </div>
-                    </div>
+                                        <tbody>
+                                            <tr>
+                                                <td class="w70">
+                                                    <img [src]="usuario.img |imagen" class="img-50 img-circle pointer">
+                                                </td>
+                                                <td> {{nombres}} {{apellidos}}</td>
+                                                <td>{{describir}}</td>
+                                                <td> {{usuario.telefono}} </td>
+                                                <td>{{remu}}</td>
+                                                <td [ngClass]="{'bg-danger text-white':estatus=='PENDIENTE'}">
+                                                    {{estatus}}
+                                                </td>
+                                            </tr>
 
-                    <!--/span-->
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Mi Dirección</label>
-                            <input type="text" class="form-control"
-                                (keydown.enter)="$event.preventDefault()"
-                                formControlName="direccion" placeholder="Buscar mi ubicación"
-                                autocorrect="off" autocapitalize="on" spellcheck="off"
-                                type="text" #search>
-                        </div>
-                        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-                            <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
-                              (dragEnd)="markerDragEnd($event)"></agm-marker>
-                          </agm-map>
-                          <br>
-                          <h5>Dirección: {{address}}</h5>
-                       
-                    </div>
-                    <!--/span-->
-                    <div class="form-group col-6">
-                        <label>EXPERIENCIA LABORAL</label>
-                        <div class="input-group">
-                          <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" (click)="voteUp(-1)">-</button>
-                          </span>
-      
-                          <input [(ngModel)]="votes" type="number" class="form-control " placeholder="Años de experiencia"
-                            formControlName="experiencia" />
-                          <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" (click)="voteUp(+1)">+</button>
-                          </span>
-                        </div>
-      
-                      </div>
-                          <!--/span-->
-                          <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label">Experiencia Laboral  :
-                                </label>
-                                <textarea formControlName="descripcionExperiencia" type="text"
-                                    id="lastName" class="form-control"
-                                    placeholder="Breve descripción"></textarea>
-                                <small class="form-control-feedback"> </small>
+                                        </tbody>
+
+                                    </table>
+
+
+
+
+
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="form-group has-success">
-                                <label class="control-label">Nivel de Educación :</label>
-                                <select formControlName="nivelEducacion"
-                                    class="form-control custom-select">
-                                    <option value="Fijo">PRIMARIA</option>
-                                    <option value="Una Vez">SECUNDARIA</option>
-                                    <option value="Una Vez">SUPERIOR</option>
-                                </select>
-                                <small class="form-control-feedback"> </small>
-                            </div>
-                        </div>
-                </div>
-                <!--/row-->
-          
-                   </div>
-           
-      <br>
-
-      
-      
-                <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-          </div>
-          <div id="test-l-2" class="content">
-            <div class=" container p-3 " class="col-sm">
-                <h1 align="center" id="color">HOJA DE VIDA PARA PUBLICAR</h1>
-            </div>
-            
-            <div class="row animated fadeIn">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-            
-            
-            
-            
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>IMAGEN</th>
-                                        <th>NOMBRE</th>
-                                        <th>DESCRIPCIÓN</th>
-                                        <th>TELÉFONO</th>
-                                        <th>REMUNERACIÓN</th>
-                                        <th>ESTADO</th>
-                                    </tr>
-                                </thead>
-            
-                                <tbody>
-                                    <tr>
-                                        <td class="w70">
-                                            <img [src]="usuario.img |imagen" class="img-50 img-circle pointer">
-                                        </td>
-                                        <td> {{nombres}} {{apellidos}}</td>
-                                        <td>{{describir}}</td>
-                                        <td> {{usuario.telefono}} </td>
-                                        <td>{{remu}}</td>
-                                        <td    [ngClass]="{'bg-danger text-white':estatus=='PENDIENTE'}" >
-                                          {{estatus}}
-                                        </td>
-                                    </tr>
-            
-                                </tbody>
-            
-                            </table>
-            
-            
-            
-            
-            
-                        </div>
                     </div>
-                </div>
-               
-            </div>
-            
-            
-           
-            <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
-            &nbsp;&nbsp;
-            <button (click)="previus()" class="btn btn-primary">ATRAS</button>
-          </div>
-        
-      
-      
-      
-      
-          <div id="test-l-3" class="content text-center">
 
-                 
-     <!-- Row -->
-       <div class="row m-0 justify-content-center align-items-center vh-100">
-        <!-- column -->
-        <div class="col-lg-3 col-md-6">
-            <!-- Card -->
-            <div class="card caja1">
-                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title text"align="center">Free</h4>
-                    <ul class="text">
-                        <li >
-                            Acceso libre a toda la Plataforma
-                        </li>
-                        <li>
-                        	Perfil Visible para todos los empleadores
-                        </li>
-                        <li>
-                            Acceso Masterclass
-                        </li>
-                       
-                        <br>
-                         <br>
-                         <br>
-                         <br>
-                         <br>
-                         <br>
-                         <h4>Job & Care</h4>
-                      
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                      
-                        <br>
-                         <h1 class="text">$ 0.00 </h1>
-                    </ul>
-                    <button class="btn btn-primary text-write "(click)="registrarPlan()" >SUSCRIBIR</button>
+
+
+                    <button (click)="next()" class="btn btn-primary">SIGUIENTE</button>
+                    &nbsp;&nbsp;
+                    <button (click)="previus()" class="btn btn-primary">ATRAS</button>
                 </div>
-            </div>
-            <!-- Card -->
+
+
+
+
+
+                <div id="test-l-3" class="content text-center">
+
+
+                    <!-- Row -->
+                    <div class="row m-0 justify-content-center align-items-center vh-100">
+                        <!-- column -->
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Card -->
+                            <div class="card caja1">
+                                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title text" align="center">Free</h4>
+                                    <ul class="text">
+                                        <li>
+                                            Acceso libre a toda la Plataforma
+                                        </li>
+                                        <li>
+                                            Perfil Visible para todos los empleadores
+                                        </li>
+                                        <li>
+                                            Acceso Masterclass
+                                        </li>
+
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <h4>Job & Care</h4>
+
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+
+                                        <br>
+                                        <h1 class="text">$ 0.00 </h1>
+                                    </ul>
+                                    <button class="btn btn-primary text-write "
+                                        (click)="registrarPlan()">SUSCRIBIR</button>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                        <!-- column -->
+                        <!-- column -->
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Card -->
+                            <div class="card caja2">
+                                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title text">Premium (3 meses)
+                                    </h4>
+                                    <ul class="text">
+                                        <li>
+                                            Publicidad Off
+                                        </li>
+                                        <li>
+                                            Perfil Destacado: Hacemos que tu perfil sea visible para quienes te buscan.
+                                        </li>
+                                        <li>
+                                            Descuento en todas las capacitaciones
+                                        </li>
+                                        <li>
+                                            Publicación en redes sociales
+                                        </li>
+                                        <li>
+                                            Recomendamos tu perfil a los empleadores
+                                        </li>
+
+                                        <li>
+                                            Acceso gratuito a nuestra capacitación (Entrevista de trabajo, como
+                                            superarla con éxito)
+                                        </li>
+
+
+
+                                        <h1 class="text">$ 5.99 </h1>
+
+
+                                    </ul>
+
+                                    <button class="btn btn-primary ">SUSCRIBIR</button>
+
+
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                        <!-- column -->
+                        <!-- column -->
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Card -->
+                            <div class="card caja3">
+                                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title text">Premium (6 Meses)
+                                    </h4>
+                                    <ul class="text">
+                                        <li>
+                                            Publicidad Off
+                                        </li>
+                                        <li>
+                                            Perfil Destacado: Hacemos que tu perfil sea visible para quienes te buscan.
+                                        </li>
+                                        <li>
+                                            Descuento en todas las capacitaciones
+                                        </li>
+                                        <li>
+                                            Publicación en redes sociales
+                                        </li>
+                                        <li>
+                                            Recomendamos tu perfil a los empleadores
+                                        </li>
+
+                                        <li>
+                                            Acceso gratuito a nuestra capacitación (Entrevista de trabajo, como
+                                            superarla con éxito)
+                                        </li>
+
+
+                                        <h1 class="text">$ 9.99 </h1>
+                                    </ul>
+
+                                    <button class="btn btn-primary ">SUSCRIBIR</button>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                        <!-- column -->
+
+                        <!-- column -->
+                    </div>
+                    <!-- Row -->
+
+
+                    <button (click)="previus()" class="btn btn-primary mt-5">ATRAS</button>
+
+                    &nbsp;&nbsp;
+
+                    <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuarioHoja()">GUARDAR</button>
+                </div>
+            </form>
         </div>
-        <!-- column -->
-        <!-- column -->
-        <div class="col-lg-3 col-md-6">
-            <!-- Card -->
-            <div class="card caja2">
-                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title text">Premium (3 meses)
-                        </h4>
-                   <ul class="text">
-                       <li>
-                        Publicidad Off
-                       </li>
-                       <li>
-                        Perfil Destacado: Hacemos que tu perfil sea visible para quienes te buscan. 
-                       </li>
-                       <li>
-                        Descuento en todas las capacitaciones
-                       </li>
-                       <li>
-                        Publicación en redes sociales
-                       </li>
-                       <li>
-                        Recomendamos tu perfil a los empleadores
-                       </li>
-
-                       <li>
-                        Acceso gratuito a nuestra capacitación   (Entrevista de trabajo, como superarla con éxito)
-                       </li>
-
-                     
-                        
-                       <h1 class="text">$ 5.99 </h1>
-                         
-                    
-                   </ul>
-                  
-                    <button class="btn btn-primary " >SUSCRIBIR</button>
-                
-                  
-                </div>
-            </div>
-            <!-- Card -->
-        </div>
-        <!-- column -->
-        <!-- column -->
-        <div class="col-lg-3 col-md-6">
-            <!-- Card -->
-            <div class="card caja3">
-                <img class="card-img-top img-responsive" src="../../../assets/images/jobcare.png" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title text">Premium (6 Meses)
-                        </h4>
-                        <ul class="text">
-                               <li>
-                                Publicidad Off
-                               </li>
-                               <li>
-                                Perfil Destacado: Hacemos que tu perfil sea visible para quienes te buscan. 
-                               </li>
-                               <li>
-                                Descuento en todas las capacitaciones
-                               </li>
-                               <li>
-                                Publicación en redes sociales
-                               </li>
-                               <li>
-                                Recomendamos tu perfil a los empleadores
-                               </li>
-        
-                               <li>
-                                Acceso gratuito a nuestra capacitación   (Entrevista de trabajo, como superarla con éxito)
-                               </li>
-        
-                      
-                            <h1 class="text">$ 9.99 </h1>
-                        </ul>
-                       
-                    <button  class="btn btn-primary ">SUSCRIBIR</button>
-                </div>
-            </div>
-            <!-- Card -->
-        </div>
-        <!-- column -->
-
-        <!-- column -->
     </div>
-    <!-- Row -->
-  
-        
-            <button (click)="previus()" class="btn btn-primary mt-5">ATRAS</button>
-            
-            &nbsp;&nbsp;
-           
-            <button type="submit" class="btn btn-primary mt-5"(click)="crearUsuarioHoja()" >GUARDAR</button>
-          </div>
-        </form>
-      </div>
-    </div>
-      
-    <ngx-spinner
-    bdColor="rgba(51,51,51,0.8)"
-    size="medium"
-    color="#56c2c6"
-    type="ball-clip-rotate-multiple"
-                                      >
-    <p style="font-size: 20px; color: #56c2c6">Jobandcare...</p>
-  </ngx-spinner>
-      </div>
+
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#56c2c6" type="ball-clip-rotate-multiple">
+        <p style="font-size: 20px; color: #56c2c6">Jobandcare...</p>
+    </ngx-spinner>
+</div>

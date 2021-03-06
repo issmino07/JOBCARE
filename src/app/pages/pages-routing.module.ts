@@ -32,47 +32,59 @@ import { OfertasPOstuladasComponent } from './empleados/ofertas-postuladas/ofert
 import { OfertaCompletaComponent } from './empleados/oferta-completa/oferta-completa.component';
 import { TeContactaronComponent } from './empleados/te-contactaron/te-contactaron.component';
 import { PostulantesContactadosComponent } from './empleadores/postulantes-contactados/postulantes-contactados.component';
+import { AdminGuard } from '../guards/admin.guard';
+import { EditarhojavidaProfesionalComponent } from './profesionales/editarhojavida-profesional/editarhojavida-profesional.component';
+import { VerhojavidaProfesionalComponent } from './profesionales/verhojavida-profesional/verhojavida-profesional.component';
 
 
 
 const routes: Routes = [
   { 
     path: 'dashboard', 
-    component: PagesComponent,
+    component: PagesComponent,canActivate:[AdminGuard],
     children: [
-        { path: '', component: DashboardComponent, data:{ titulo: 'Dashboard'} },
+        { path: '', component: DashboardComponent, data:{ titulo: 'Dashboard'},canActivate:[AdminGuard] },
         { path: 'admininico', component: AdmininicioComponent },
         { path: 'admininico/:id', component: AdmininicioComponent },
-        { path: 'account-settings', component: AccountSettingsComponent,  data:{ titulo: 'Temas'} },
+        { path: 'account-settings', component: AccountSettingsComponent,  data:{ titulo: 'Temas'},canActivate:[AdminGuard] },
         { path: 'perfil', component: PerfilComponent,  data:{ titulo: 'Perfil'} },
-        { path: 'verofertas', component: VerOfertasComponent,  data:{ titulo: 'Ver Ofertas'} },
-        { path: 'editaroferta', component: EditarOfertasComponent,  data:{ titulo: 'Editar Ofertas'} },
-        { path: 'editaroferta/:id', component: EditarOfertasComponent,  data:{ titulo: 'Editar Ofertas'} },
+        { path: 'verofertas', component: VerOfertasComponent,  data:{ titulo: 'Ver Ofertas'},canActivate:[AdminGuard] },
+        { path: 'editaroferta', component: EditarOfertasComponent,  data:{ titulo: 'Editar Ofertas'},canActivate:[AdminGuard] },
+        { path: 'editaroferta/:id', component: EditarOfertasComponent,  data:{ titulo: 'Editar Ofertas'},canActivate:[AdminGuard] },
         { path: 'planes', component: PlanesComponent,  data:{ titulo: 'Planes'} },
-        { path: 'planes/empleados', component: PlanEmpleadosComponent,  data:{ titulo: 'Planes'} },
-        { path: 'hojavida', component: HojavidaFormularioComponent },
-        { path: 'editarhojavida', component: EditarHojavidaComponent },
-        { path: 'editarhojavida/:id', component: EditarHojavidaComponent },
-        { path: 'verhoja', component: VerHojavidaComponent },
-        { path: 'administrador', component: AdministradorComponent },
-        { path: 'crearCurso', component: CrearCursosComponent },
-        { path: 'verCurso', component: VerCursosComponent },
-        { path: 'perfiles', component: PerfilesComponent},
-        { path: 'ofertasPublicadas', component: OfertasPublicadasComponent},
-        { path: 'perfilesAdmin', component: PerfilesAdminComponent},
-        { path: 'ofertasAdmin', component: OfertasAdminComponent},
-        { path: 'editarCursos', component: EditarCursosComponent},
-        { path: 'editarCursos/:id', component: EditarCursosComponent},
-        { path: 'cursosEmpleados', component: CursosEmpleadosComponent},
-        { path: 'cursosEmpleadores', component: CursosEmpleadoresComponent},
-        { path: 'hojavidaprofesional', component: HojavidaProfesionalComponent },
+        { path: 'planes/empleados', component: PlanEmpleadosComponent,  data:{ titulo: 'Planes'},canActivate:[AdminGuard] },
+        { path: 'hojavida', component: HojavidaFormularioComponent ,canActivate:[AdminGuard] },
+        { path: 'editarhojavida', component: EditarHojavidaComponent,canActivate:[AdminGuard] },
+        { path: 'editarhojavida/:id', component: EditarHojavidaComponent,canActivate:[AdminGuard] },
+        { path: 'verhoja', component: VerHojavidaComponent,canActivate:[AdminGuard] },
+        { path: 'administrador', component: AdministradorComponent,canActivate:[AdminGuard] },
+        { path: 'crearCurso', component: CrearCursosComponent,canActivate:[AdminGuard] },
+        { path: 'verCurso', component: VerCursosComponent,canActivate:[AdminGuard] },
+        { path: 'perfiles', component: PerfilesComponent,canActivate:[AdminGuard]},
+        { path: 'ofertasPublicadas', component: OfertasPublicadasComponent,canActivate:[AdminGuard]},
+        { path: 'perfilesAdmin', component: PerfilesAdminComponent,canActivate:[AdminGuard]},
+        { path: 'ofertasAdmin', component: OfertasAdminComponent,canActivate:[AdminGuard]},
+        { path: 'editarCursos', component: EditarCursosComponent,canActivate:[AdminGuard]},
+        { path: 'editarCursos/:id', component: EditarCursosComponent,canActivate:[AdminGuard]},
+        { path: 'cursosEmpleados', component: CursosEmpleadosComponent,canActivate:[AdminGuard]},
+        { path: 'cursosEmpleadores', component: CursosEmpleadoresComponent,canActivate:[AdminGuard]},
+        { path: 'hojavidaprofesional', component: HojavidaProfesionalComponent,canActivate:[AdminGuard] },
 
-        { path: 'postulacionOfertas', component: PostulacionesOfertasComponent },
-        { path: 'ofertasPostuladas', component: OfertasPOstuladasComponent },
-        { path: 'ofertaCompleta', component: OfertaCompletaComponent },
-        { path: 'ofertaCompleta/:id', component: OfertaCompletaComponent },
-        { path: 'teContactaron', component: TeContactaronComponent },
-        { path: 'postulantesContactados', component: PostulantesContactadosComponent }
+        { path: 'postulacionOfertas', component: PostulacionesOfertasComponent,canActivate:[AdminGuard] },
+        { path: 'ofertasPostuladas', component: OfertasPOstuladasComponent,canActivate:[AdminGuard] },
+        { path: 'ofertaCompleta', component: OfertaCompletaComponent,canActivate:[AdminGuard] },
+        { path: 'ofertaCompleta/:id', component: OfertaCompletaComponent,canActivate:[AdminGuard] },
+        { path: 'teContactaron', component: TeContactaronComponent,canActivate:[AdminGuard] },
+        { path: 'postulantesContactados', component: PostulantesContactadosComponent,canActivate:[AdminGuard] },
+        { path: 'editarhojavidaprofesional', component:EditarhojavidaProfesionalComponent,canActivate:[AdminGuard] },
+        { path: 'editarhojavidaprofesional/:id', component:EditarhojavidaProfesionalComponent,canActivate:[AdminGuard] },
+        { path: 'verhojaProfesional', component: VerhojavidaProfesionalComponent,canActivate:[AdminGuard] },
+
+
+        
+      
+
+        
       ]
 },
 

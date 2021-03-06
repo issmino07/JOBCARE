@@ -12,6 +12,9 @@ declare function customInitFunctions();
 })
 export class PagesComponent implements OnInit {
 
+
+  public linkTheme = document.querySelector('#theme');
+
   constructor( setting:SettingsService) {
     customInitFunctions();
    }
@@ -20,7 +23,10 @@ export class PagesComponent implements OnInit {
 
     customInitFunctions();
   
-  
+    const url = localStorage.getItem('theme') || './assets/css/colors/megna.css';
+    //const url = `./assets/css/colors/${theme}.css`;
+
+   this.linkTheme.setAttribute('href', url);
   //  href="./assets/css/colors/default-dark.css"
   }
 

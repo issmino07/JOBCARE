@@ -8,6 +8,8 @@
 * MIT License
 */
 
+
+
 if( typeof Tablesaw === "undefined" ) {
 	Tablesaw = {
 		i18n: {
@@ -1273,3 +1275,4 @@ if( Tablesaw.mustard ) {
 	});
 
 })( this, jQuery );
+

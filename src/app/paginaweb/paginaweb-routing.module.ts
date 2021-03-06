@@ -32,6 +32,7 @@ import { ProfesionalEmpleadorComponent } from './publicarEmpleo/profesional-empl
 import { OfertasEmpleoComponent } from './ofertas-empleo/ofertas-empleo.component';
 import { PerfilEmpleadosComponent } from './perfil-empleados/perfil-empleados.component';
 
+
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent},
   { path: 'home', component: HomeComponent},

@@ -43,6 +43,8 @@ import { PipesModule } from '../pipes/pipes.module';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { RatingModule } from 'ng-starrating';
+import { TooltipModule } from 'ng2-tooltip-directive';
+import { PaginawebComponent } from './paginaweb.component';
 
 
 
@@ -81,6 +83,7 @@ import { RatingModule } from 'ng-starrating';
     ProfesionalEmpleadorComponent,
     OfertasEmpleoComponent,
     PerfilEmpleadosComponent,
+    PaginawebComponent,
    
   ],
   imports: [
@@ -99,7 +102,8 @@ import { RatingModule } from 'ng-starrating';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
       libraries: ['places']
-    })
+    }),
+    TooltipModule
 
   ],
   exports:[

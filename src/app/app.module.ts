@@ -1,5 +1,5 @@
 import { HojavidaService } from './services/hojavida.service';
-import { Hojavida } from './models/hojavida';
+
 import { CategoriasService } from './services/categorias.service';
 import { OfertaService } from 'src/app/services/oferta.service';
 import { SidebarService } from './services/sidebar.service';
@@ -30,6 +30,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxSlideModalModule } from 'ngx-slide-modal';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { TooltipModule } from 'ng2-tooltip-directive';
+
 
 
 
@@ -39,6 +41,7 @@ import { BarRatingModule } from 'ngx-bar-rating';
   declarations: [
     AppComponent,
     NopagefoundComponent,
+   
  
   
 
@@ -58,6 +61,7 @@ import { BarRatingModule } from 'ngx-bar-rating';
     NgxSlideModalModule,
     NgxStarRatingModule,
     BarRatingModule,
+    TooltipModule
  
   ],
   providers: [

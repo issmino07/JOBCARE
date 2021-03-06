@@ -1,110 +1,195 @@
-<nav class="navbar navbar-light bg-light nav-responsive  ">
-    <div class="nav-responsive">
+<!--==========================
+  Header
+  ============================-->
 
-        <img src="../../../assets/images/jobcare.png" alt="homepage" class="img-responsive"  [routerLink]="['/inicio']" routerLinkActive="router-link-active" />
-        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/ofertaEmpleo']"
-            routerLinkActive="router-link-active">
-            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-suitcase"
-                    [routerLink]="['/ofertaEmpleo']" routerLinkActive="router-link-active"></i>&nbsp; VER
-                OFERTAS</button>
-     
-        </a>
-        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/perfilEmpleados']"
-        routerLinkActive="router-link-active">
-        <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-suitcase"
-                [routerLink]="['/perfilEmpleados']" routerLinkActive="router-link-active"></i>&nbsp; PERFIL</button>
- 
-    </a>
-
-        <a class="nav-link  waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" [routerLink]="['/home']" routerLinkActive="router-link-active">
-            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-suitcase"
-                    [routerLink]="['/home']" routerLinkActive="router-link-active"></i>  ENCONTRAR EMPLEO</button>
-            <div class="notify"> <span class=""></span></div>
-        </a>
-        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/home2']" routerLinkActive="router-link-active">
-            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-suitcase"
-                    [routerLink]="['/home2']" routerLinkActive="router-link-active"></i> PUBLICAR EMPLEO</button>
-        
-        </a>
-        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/cursos']" routerLinkActive="router-link-active">
-            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="fa fa-check"
-                    [routerLink]="['/cursos']" routerLinkActive="router-link-active"></i>CAPACÍTATE</button>
-       
-        </a>
-     <!--  <a class="nav-link  waves-effect waves-dark" href="" id="2" data-toggle="modal" data-target="#exampleModal"
-            data-whatever="@mdo">
-
-            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado" (click)="activar()"><i
-                    class="icons mdi mdi-account-box-outline" id="icons" data-toggle="modal" data-target="#exampleModal"
-                    data-whatever="@mdo" (click)="activar()"></i>REGÍSTRATE </button>
-         
-        </a>--> 
-        <a class="nav-link  waves-effect waves-dark" [routerLink]="['/login']" routerLinkActive="router-link-active">
-
-            <button type="button" class="btn btn-rounded btn-outline-primary boton_personalizado"><i class="icons mdi mdi-account"
-                    id="icons " [routerLink]="['/login']" routerLinkActive="router-link-active"></i>Iniciar
-                Sesión</button>
-        </a>
-    </div>
-</nav>
-
-<!-- ============================================================== -->
-<!-- End Topbar header -->
-<div class="col-md-4" align="center" [ngStyle]="myStyles">
-    <div class="card">
-        <div class="card-body">
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="exampleModalLabel1">SELECCIONE UNA OPCIÓN</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <li class="" [routerLink]="['/home']" routerLinkActive="router-link-active"
-                                data-dismiss="modal">
-                                <a aria-expanded="false" [routerLink]="['/home']" routerLinkActive="router-link-active"
-                                    data-dismiss="modal">
-                                    <button type="button" class="btn btn-rounded btn-outline-primary"
-                                        data-dismiss="modal"><i data-dismiss="modal" class="fa fa-check"
-                                            [routerLink]="['/home']" routerLinkActive="router-link-active"></i>ENCONTRAR
-                                        EMPLEO</button>
-                                    <div class="notify" data-dismiss="modal"> <span class=""
-                                            data-dismiss="modal"></span></div>
-                                </a>
-
-                            </li>
-                            <br>
-
-                            <li class="" [routerLink]="['/home2']" routerLinkActive="router-link-active"
-                                data-dismiss="modal">
-                                <a aria-expanded="false" [routerLink]="['/home2']" routerLinkActive="router-link-active"
-                                    data-dismiss="modal">
-                                    <button type="button" class="btn btn-rounded btn-outline-primary"
-                                        data-dismiss="modal"><i data-dismiss="modal" class="fa fa-check"
-                                            [routerLink]="['/home2']" routerLinkActive="router-link-active"></i>PUBLICAR
-                                        EMPLEO</button>
-                                    <div class="notify" data-dismiss="modal"> <span class=""
-                                            data-dismiss="modal"></span></div>
-                                </a>
-
-                            </li>
-
-
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"
-                                (click)="desactivar()">CERRAR</button>
-
-                        </div>
-                    </div>
-                </div>
+  <header id="header" class="fixed-top">
+    <!-- NAV -->
+    <div class="container" id="nav">
+      
+      <a href="#/inicio" (click)="UrlInicio()" >
+        <img src="../../../assets/images/jobcare.png"  id ="logo" class="img-responsive"></a>
+      <!-- Top Nav -->
+      <div id="nav-top">
+            
+          <!-- /logo -->
+        <div class="container">
+  
+          <!-- search & aside toggle -->
+          <div class="nav-btns">
+            <button class="aside-btn"><i class="fa fa-bars fa-2x"></i></button>
+            <div id="nav-search">
+              <!--<button class="nav-close search-close">
+                <span>X</span>
+              </button>-->
             </div>
-            <!-- /.modal -->
+          </div>
+          <!-- /search & aside toggle -->
         </div>
+      </div>
+      <!-- /Top Nav -->
+      <!-- Main Nav -->
+      <div id="nav-bottom" >
+        <div class="container" >
+  
+          
+          <!-- nav -->
+          <ul class="nav-menu">
+            <li><a id="activo" href="#/ofertaEmpleo" (click)="UrlOfertas()"  class="active">VER OFERTAS</a></li>
+            <li><a id="activo" href="#/perfilEmpleados" (click)="UrlPerfil()"  class="active">PERFILES</a></li>
+         
+            <li class="has-dropdown megamenu">
+              <a>CATEGORIAS</a>
+              <div class="dropdown">
+                <div class="dropdown-body">
+                  <div class="row" id="pruebaDiv">
+                    <div class="col-md-4">
+                      <h4 class="dropdown-heading">PUBLICAR EMPLEO</h4>
+                      <ul class="dropdown-list">
+                        <li *ngIf="servicioNav == true"><a href="#/nineraEmpleador"           >Niñera</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/cuidadoAdultoEmpleador"    >Cuidado del adulto mayor</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/domesticoEmpleador"        >Servicio Doméstico</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/mascotaEmpleador"          >Cuidado de mascotas</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/spaEmpleador"              >Spa</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/capacidadesEmpleador"      >Cuidados capacidades Especiales</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/tutoriasEmpleador"         >Tutorías escolares</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/trabajosEmpleador"         >Trabajos del hogar</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/asistenciaEmpleador"       >Asistencia automotriz</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/mensajeriaEmpleador"       >Mensajería</a></li>
+                        <li *ngIf="servicioNav == true"><a href="#/profesionalEmpleador"      >Profesionales Titulados</a></li>
+                         <!--DIVISION-->
+                        <li *ngIf="servicioNav == false"><a href="#/nineraEmpleador"         (click)="presionar()"   >Niñera</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/cuidadoAdultoEmpleador"  (click)="presionar1()"  >Cuidado del adulto mayor</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/domesticoEmpleador"(click)="presionar2()"   >Servicio Doméstico</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/mascotaEmpleador"(click)="presionar3()"  >Cuidado de mascotas</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/spaEmpleador" (click)="presionar4()"        >Spa</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/capacidadesEmpleador" (click)="presionar5()" >Cuidados capacidades Especiales</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/tutoriasEmpleador" (click)="presionar6()"    >Tutorías escolares</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/trabajosEmpleador"  (click)="presionar7()"   >Trabajos del hogar</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/asistenciaEmpleador"(click)="presionar8()"  >Asistencia automotriz</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/mensajeriaEmpleador"(click)="presionar9()"   >Mensajería</a></li>
+                        <li *ngIf="servicioNav == false"><a href="#/profesionalEmpleador"(click)="presionar10()"  >Profesionales Titulados</a></li>
+         
+                      </ul>
+                    </div>
+                    <div class="col-md-4">
+                      <h4 class="dropdown-heading">ENCONTRAR EMPLEO</h4>
+                      <ul class="dropdown-list">
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/ninera']" routerLinkActive="router-link-active" >Niñera</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/cuidadoAdulto']" routerLinkActive="router-link-active" >Cuidado del adulto mayor</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/domestico']" routerLinkActive="router-link-active" >Servicio Doméstico</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/mascota']" routerLinkActive="router-link-active" >Cuidado de mascotas</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/spa']" routerLinkActive="router-link-active" >Spa</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/capacidades']" routerLinkActive="router-link-active" >Cuidados capacidades Especiales</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/tutorias']" routerLinkActive="router-link-active" >Tutorías escolares</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/trabajos']" routerLinkActive="router-link-active" >Trabajos del hogar</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/asistencia']" routerLinkActive="router-link-active" >Asistencia automotriz</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/mensajeria']" routerLinkActive="router-link-active" >Mensajería</a></li>
+                        <li *ngIf="servicioNav == true"><a [routerLink]="['/profesional']" routerLinkActive="router-link-active" >Profesionales Titulados</a></li>
+                         <!--DIVISION-->
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/ninera']" routerLinkActive="router-link-active">Niñera</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/cuidadoAdulto']" routerLinkActive="router-link-active">Cuidado del adulto mayor</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/domestico']" routerLinkActive="router-link-active">Servicio Doméstico</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/mascota']" routerLinkActive="router-link-active">Cuidado de mascotas</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/spa']" routerLinkActive="router-link-active">Spa</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/capacidades']" routerLinkActive="router-link-active">Cuidados capacidades Especiales</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/tutorias']" routerLinkActive="router-link-active">Tutorías escolares</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/trabajos']" routerLinkActive="router-link-active">Trabajos del hogar</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/asistencia']" routerLinkActive="router-link-active">Asistencia automotriz</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/mensajeria']" routerLinkActive="router-link-active">Mensajería</a></li>
+                        <li *ngIf="servicioNav == false"><a  [routerLink]="['/profesional']" routerLinkActive="router-link-active">Profesionales Titulados</a></li>
+                      </ul>
+                    </div>
+                 
+                    <div class="col-md-3" >
+                      <br><br><br>
+                      <div class="post post-sm">
+                        <a class="post-img" [routerLink]=""><img src="../../../assets/images/jobcare.png"
+                            style="height: 200px"></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li><a [routerLink]="['/cursos']" routerLinkActive="router-link-active" >CAPACÍTATE</a></li>
+  
+  
+            <li class="has-dropdown">
+              <a>Iniciar Sesión</a>
+              <div class="dropdown">
+                <div class="dropdown-body" style="text-align: center">
+                  <h5 class="animated infinite pulse" style="color:#56c2c6; text-align: center">
+                    <i class="fas fa-users"></i> Ingresa a nuestra plataforma
+                  </h5>
+                  <ul class="dropdown-list">
+                    <li *ngIf="activeNav == true"><a [routerLink]="['/login']" routerLinkActive="router-link-active" >INGRESAR</a></li>
+     
+                  
+                  
+                  <!--  <li *ngIf="activeNav == true"><a href="https://admin.servirating.com/#/loginOperador">Login Analista</a></li>
+                    <li *ngIf="activeNav == true"><a href="https://admin.servirating.com/#/loginAdmin">Login Administrador</a></li>  -->
+                    <li *ngIf="activeNav == false"><a [routerLink]="['/login']" routerLinkActive="router-link-active" >INGRESAR</a></li>
+   
+                
+               <!--    <li *ngIf="activeNav == false"><a href="https://admin.servirating.com/#/loginOperador" (click)="presionar3()">Login Analistas</a></li>
+                    <li *ngIf="activeNav == false"><a href="https://admin.servirating.com/#/loginAdmin" (click)="presionar4()">Login Administrador</a></li>   --> 
+                  </ul>
+                </div>
+              </div>
+            </li>
+  
+          </ul>
+          <!-- /nav -->
+        </div>
+      </div>
+      <!-- /Main Nav -->
+  
+      <!-- Aside Nav -->
+      <div id="nav-aside">
+        <ul class="nav-aside-menu">
+          <li><a href="#/inicio" (click)="UrlInicio()" >INICIO</a></li>
+          <li><a href="#/ofertaEmpleo" (click)="UrlOfertas()">VER OFERTAS</a></li>
+          <li><a  href="#/perfilEmpleados" (click)="UrlPerfil()" >PERFILES</a></li>
+       
+          <li class="has-dropdown"><a onclick="desplazar()">ENCONTRAR EMPLEO</a>
+            <ul class="dropdown">  
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/ninera']" routerLinkActive="router-link-active">Niñera</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/cuidadoAdulto']" routerLinkActive="router-link-active">Cuidado del adulto mayor</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/domestico']" routerLinkActive="router-link-active">Servicio Doméstico</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/mascota']" routerLinkActive="router-link-active">Cuidado de mascotas</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/spa']" routerLinkActive="router-link-active">Spa</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/capacidades']" routerLinkActive="router-link-active">Cuidados capacidades Especiales</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/tutorias']" routerLinkActive="router-link-active">Tutorías escolares</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/trabajos']" routerLinkActive="router-link-active">Trabajos del hogar</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/asistencia']" routerLinkActive="router-link-active">Asistencia automotriz</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/mensajeria']" routerLinkActive="router-link-active">Mensajería</a></li>
+              <li *ngIf="servicioNav == false"><a  [routerLink]="['/profesional']" routerLinkActive="router-link-active">Profesionales Titulados</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown"><a onclick="desplazar()">PUBLICAR EMPLEO</a>
+            <ul class="dropdown">  
+              <li ><a href="#/nineraEmpleador"         (click)="presionar()"   >Niñera</a></li>
+              <li ><a href="#/cuidadoAdultoEmpleador"  (click)="presionar1()"  >Cuidado del adulto mayor</a></li>
+              <li ><a href="#/domesticoEmpleador"(click)="presionar2()"   >Servicio Doméstico</a></li>
+              <li ><a href="#/mascotaEmpleador"(click)="presionar3()"  >Cuidado de mascotas</a></li>
+              <li ><a href="#/spaEmpleador" (click)="presionar4()"        >Spa</a></li>
+              <li ><a href="#/capacidadesEmpleador" (click)="presionar5()" >Cuidados capacidades Especiales</a></li>
+              <li ><a href="#/tutoriasEmpleador" (click)="presionar6()"    >Tutorías escolares</a></li>
+              <li ><a href="#/trabajosEmpleador"  (click)="presionar7()"   >Trabajos del hogar</a></li>
+              <li ><a href="#/asistenciaEmpleador"(click)="presionar8()"  >Asistencia automotriz</a></li>
+              <li ><a href="#/mensajeriaEmpleador"(click)="presionar9()"   >Mensajería</a></li>
+              <li ><a href="#/profesionalEmpleador"(click)="presionar10()"  >Profesionales Titulados</a></li>
+            </ul>
+          </li>
+          <li><a href="#/contacto" (click)="UrlContacto()" >Contáctanos</a></li>
+        </ul>
+        <button class="nav-close nav-aside-close" onclick="quitar()"><span></span></button>
+      </div>
+      <!-- /Aside Nav --> 
     </div>
-</div>
+    <!-- /NAV -->
+  </header>
+  <!-- /HEADER -->
+  <br>
+  <br>
+  <br>

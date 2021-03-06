@@ -83,7 +83,7 @@ export class UsuarioService {
     localStorage.removeItem('usuario');
     localStorage.removeItem('itempages');
     localStorage.removeItem('menu');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/inicio']);
   }
 
   validarToken(): Observable<boolean> {

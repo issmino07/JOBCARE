@@ -38,6 +38,8 @@ import { OfertasPOstuladasComponent } from './empleados/ofertas-postuladas/ofert
 import { OfertaCompletaComponent } from './empleados/oferta-completa/oferta-completa.component';
 import { PostulantesContactadosComponent } from './empleadores/postulantes-contactados/postulantes-contactados.component';
 import { TeContactaronComponent } from './empleados/te-contactaron/te-contactaron.component';
+import { VerhojavidaProfesionalComponent } from './profesionales/verhojavida-profesional/verhojavida-profesional.component';
+import { EditarhojavidaProfesionalComponent } from './profesionales/editarhojavida-profesional/editarhojavida-profesional.component';
 
 
 
@@ -72,6 +74,8 @@ import { TeContactaronComponent } from './empleados/te-contactaron/te-contactaro
     OfertaCompletaComponent,
     PostulantesContactadosComponent,
     TeContactaronComponent,
+    VerhojavidaProfesionalComponent,
+    EditarhojavidaProfesionalComponent,
     
 
   ],

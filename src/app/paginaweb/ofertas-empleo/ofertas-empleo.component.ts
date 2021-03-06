@@ -4,6 +4,9 @@ import { Ofertas } from 'src/app/models/ofertas';
 import { Usuario } from 'src/app/models/usuario.model';
 import Swal from 'sweetalert2';
 
+declare function customInitFunctions();
+
+
 @Component({
   selector: 'app-ofertas-empleo',
   templateUrl: './ofertas-empleo.component.html',
@@ -20,14 +23,26 @@ export class OfertasEmpleoComponent implements OnInit {
   formularios: Ofertas[];
   formularios2: Ofertas[];
   totalRegistros: number = 0;
-  constructor(private listainforme : OfertaService) { }
+  constructor(private listainforme : OfertaService) {
+
+  
+   
+   }
 
   ngOnInit(): void {
-
+   
     this.getFormulariosOfertas()
+    customInitFunctions();
   }
 
+iniciar(){
 
+ 
+ // window.location.reload();
+ //reloadPage()
+  console.log('holaaa')
+
+}
 
   
   getFormulariosOfertas() {
@@ -40,6 +55,8 @@ export class OfertasEmpleoComponent implements OnInit {
          this.cargando = false;
         
      });
+
+     this.iniciar()
   }
 
 

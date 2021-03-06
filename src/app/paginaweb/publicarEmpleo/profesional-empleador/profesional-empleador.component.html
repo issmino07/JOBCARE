@@ -74,9 +74,10 @@
 
               <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"tooltip = " Este boton te permite llegar a la pantalla <b> Inicio </b> "theme="light" data-toggle="tooltip"
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
-                  spellcheck="off" type="text" #search>
+                  spellcheck="off" type="text" #search  >
+                  <button  tooltip = " Este boton te permite llegar a la pantalla <b> Inicio </b> "theme="light" data-toggle="tooltip" >?</button>
                   <div
                   *ngIf="registerForm.get('direccion').errors && registerForm.get('direccion').dirty">
                   <p class="text-danger center"

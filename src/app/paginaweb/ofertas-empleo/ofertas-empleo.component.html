@@ -35,10 +35,10 @@
 </div>
 
 
-<div class="container">
+<!--div class="container">
     <div class="row" *ngIf="!cargando">
         <div class="col-12">
-            <table class="table table-striped table-responsive-md btn-table"  class="table table-bordered" id="tableColor" >
+            <table class="table table-bordered  table-responsive btn-table "  class="table table-bordered" id="tableColor" >
                 <thead>
                     <tr>
                         <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
@@ -75,11 +75,45 @@
             <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
         </div>
     </div>
+</div-->
+
+
+
+<div class="card">
+    <div class="card-body">
+      
+        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe">
+            <thead>
+                <tr>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Nº</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">TÍTULO EMPLEO</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">VALOR</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"> HORARIO</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">CATEGORIA</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">ACCIÓN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let form of  formularios| paginate: { itemsPerPage: 10, currentPage: totalRegistros }; let i = index">
+                    <td class="title">
+                        {{i+1}}
+                    </td>
+                    <td>{{form.tituloEmpleo}}</td>
+                    <td>${{form.valor}}</td>
+                    <td>{{form.horario}}</td>
+                    <td>{{form.categorias}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary"
+                                   style="width: 85px;height: 75;font-size: 50%;" (click)="postular()"
+                      ><b>Quieres postular</b></button>
+                    
+             
+                    </td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
 </div>
-
-
-
-
 
 
 

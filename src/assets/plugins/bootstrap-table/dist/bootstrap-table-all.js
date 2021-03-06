@@ -4,6 +4,8 @@
  * https://github.com/wenzhixin/bootstrap-table/
  */
 
+
+
 !function ($) {
     'use strict';
 

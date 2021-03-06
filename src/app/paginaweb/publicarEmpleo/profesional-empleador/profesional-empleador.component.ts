@@ -106,6 +106,8 @@ export class ProfesionalEmpleadorComponent implements OnInit {
     this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
     // this.to = new FormControl('', [Validators.required]);
     this.votes = this.votes || 0;
+
+    
   }
 
   ngOnInit(): void {
