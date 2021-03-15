@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JoyrideService } from 'ngx-joyride';
 
 @Component({
   selector: 'app-home2',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Home2Component implements OnInit {
 
-  constructor() { }
+  constructor(private joyride: JoyrideService) { }
 
   ngOnInit(): void {
   }
 
+  home2(){
+    this.joyride.startTour(
+      { steps: ['one'],
+      customTexts: {
+        next: 'SIGUIENTE',
+        prev: 'ANTERIOR',
+        done: 'CERRAR'
+      }, themeColor: '#56c2c6',
+      stepDefaultPosition: 'center',
+    }
+    )
+  }
 }

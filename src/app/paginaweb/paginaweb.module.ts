@@ -45,6 +45,8 @@ import { BarRatingModule } from 'ngx-bar-rating';
 import { RatingModule } from 'ng-starrating';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { PaginawebComponent } from './paginaweb.component';
+import { JoyrideModule } from 'ngx-joyride';
+
 
 
 
@@ -99,6 +101,7 @@ import { PaginawebComponent } from './paginaweb.component';
     PipesModule,
     BarRatingModule,
     RatingModule,
+    JoyrideModule.forRoot(), 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
       libraries: ['places']

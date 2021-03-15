@@ -76,7 +76,7 @@ export class NineraEmpleadorComponent implements OnInit {
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     password: ['', [Validators.required]],
-    clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
+    //clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],

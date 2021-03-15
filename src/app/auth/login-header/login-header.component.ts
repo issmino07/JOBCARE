@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { JoyrideService } from 'ngx-joyride';
 
 @Component({
   selector: 'app-login-header',
@@ -19,7 +20,7 @@ export class LoginHeaderComponent implements OnInit {
     @Input() inicioNav: boolean;
   
     
-    constructor() {
+    constructor(private joyride: JoyrideService) {
       this.activeNav = false;
       this.servicioNav = false;
       this.experienciaNav = false;
@@ -32,6 +33,18 @@ export class LoginHeaderComponent implements OnInit {
     ngOnInit() {
   
     
+    }
+    tour2(){
+      this.joyride.startTour(
+        { steps: [],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'center',
+      }
+      )
     }
   
     UrlInicio(){

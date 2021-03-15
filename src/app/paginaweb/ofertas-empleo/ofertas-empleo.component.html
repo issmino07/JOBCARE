@@ -6,7 +6,8 @@
         <div class="card">
             <div class="card-body">
 
-                <input #input (keyup)="buscarOferta( input.value )" type="text" class="form-control" placeholder="Buscar ofertas...">
+                <input #input (keyup)="buscarOferta( input.value )" type="text" class="form-control"
+                    placeholder="Buscar ofertas...">
 
             </div>
         </div>
@@ -30,7 +31,7 @@
 </div>
 
 
-  <div class=" container p-3 " class="col-sm">
+<div class=" container p-3 " class="col-sm">
     <h1 align="center" id="color">OFERTAS PUBLICADAS</h1>
 </div>
 
@@ -81,12 +82,13 @@
 
 <div class="card">
     <div class="card-body">
-      
+
         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe">
             <thead>
                 <tr>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Nº</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">TÍTULO EMPLEO</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col
+                        data-tablesaw-priority="3">TÍTULO EMPLEO</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">VALOR</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"> HORARIO</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">CATEGORIA</th>
@@ -94,7 +96,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let form of  formularios| paginate: { itemsPerPage: 10, currentPage: totalRegistros }; let i = index">
+                <tr
+                    *ngFor="let form of  formularios| paginate: { itemsPerPage: 10, currentPage: totalRegistros }; let i = index">
                     <td class="title">
                         {{i+1}}
                     </td>
@@ -104,18 +107,19 @@
                     <td>{{form.categorias}}</td>
                     <td>
                         <button type="button" class="btn btn-outline-primary"
-                                   style="width: 85px;height: 75;font-size: 50%;" (click)="postular()"
-                      ><b>Quieres postular</b></button>
-                    
-             
+                            style="width: 85px;height: 75;font-size: 50%;" (click)="postular()"><b>Quieres
+                                postular</b></button>
+
+
                     </td>
                 </tr>
-              </tbody>
+            </tbody>
         </table>
     </div>
+    <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
 </div>
 
 
 
 
-  <app-footer></app-footer>
+<app-footer></app-footer>

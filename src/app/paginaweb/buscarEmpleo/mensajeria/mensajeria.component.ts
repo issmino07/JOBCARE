@@ -7,6 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Usuario } from 'src/app/models/usuario.model';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { JoyrideService } from 'ngx-joyride';
 
 @Component({
   selector: 'app-mensajeria',
@@ -49,7 +50,7 @@ export class MensajeriaComponent implements OnInit {
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     password: ['', [Validators.required]],
-    clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
+    //clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
 
 
 
@@ -69,7 +70,7 @@ export class MensajeriaComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
+  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,private joyride: JoyrideService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
   ) {
     this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
@@ -80,6 +81,20 @@ export class MensajeriaComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+    //mensaje guia ================================//
+    mensajeria(){
+      this.joyride.startTour(
+        { steps: ['p'],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'center',
+      }
+      )
+    }
 
   //==================================================================//
     

@@ -73,7 +73,7 @@ export class TutoriasEmpleadorComponent implements OnInit {
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     password: ['', [Validators.required]],
-    clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
+    //clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
@@ -387,6 +387,7 @@ export class TutoriasEmpleadorComponent implements OnInit {
         }, (err) => {
           // Si sucede un error
           //  Swal.fire('Error', err['msg'], 'error' );
+          this.spinner.hide();
           Swal.fire('Error', err.error.msg, 'error');
           this.router.navigateByUrl('/inicio')
         }

@@ -7,6 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Usuario } from 'src/app/models/usuario.model';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { JoyrideService } from 'ngx-joyride';
 
 
 @Component({
@@ -50,7 +51,7 @@ export class TrabajosComponent implements OnInit {
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     password: ['', [Validators.required]],
-    clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
+    //clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
 
 
 
@@ -71,7 +72,7 @@ export class TrabajosComponent implements OnInit {
 
  
 
-  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
+  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,private joyride: JoyrideService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
   ) {
     this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
@@ -82,6 +83,20 @@ export class TrabajosComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+    //mensaje guia ================================//
+    trabajos(){
+      this.joyride.startTour(
+        { steps: ['primor'],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'center',
+      }
+      )
+    }
 
   //==================================================================//
 

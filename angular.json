@@ -21,10 +21,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/plugins"
             ],
             "styles": [
               "src/styles.css"
+             
             ],
             "scripts": []
           },

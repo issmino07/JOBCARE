@@ -4,7 +4,7 @@
 
 
 
-<div class="row animated fadeIn m-0 justify-content-center align-items-center vh-100 ">
+
     <div class="col-12 ">
         <div class="card">
             <div class="card-body">
@@ -14,22 +14,23 @@
                     <div class="col-10">
                         <div class="card">
                             <div class="card-body">
-                
-                                <input #input (keyup)="buscarHoja( input.value )" type="text" class="form-control" placeholder="Buscar Perfiles...">
-                
+
+                                <input #input (keyup)="buscarHoja( input.value )" type="text" class="form-control"
+                                    placeholder="Buscar Perfiles...">
+
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class=" container p-3 " class="col-sm">
                     <h1 align="center" id="color">PERFILES PUBLICADOS</h1>
                 </div>
-                
+
                 <div class="row animated fadeIn" *ngIf="cargando">
-                
+
                     <div class="col-sm-12">
-                
+
                         <div class="alert alert-warning text-center">
                             <strong>Cargando</strong>
                             <br>
@@ -39,50 +40,45 @@
                         </div>
                     </div>
                 </div>
-                
-
-               
-                <table class="table table-hover table-responsive btn-table "  class="table table-bordered"*ngIf="!cargando">
-                    <thead>
-                        <tr>
-                            <th>IMAGEN</th>
-                            <th>NOMBRE</th>
-                            <th>DESCRIPCIÓN</th>
-                            <th>TELÉFONO</th>
-                            <th>CALIFICACIÓN</th>
-                            <th>ACCIÓN</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr
-                            *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
-                            <td class="w70">
-                                <img [src]="form.usuario.img |imagen" class="img-50 img-circle pointer">
-                            </td>
-                            <td> {{form.nombre}} {{form.apellido}}</td>
-                            <td>{{form.descripcion}}</td>
-                            <td> {{form.usuario.telefono}} </td>
-                            <td>{{form.rating}}</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-primary"
-                    style="width: 140px;height: 75;font-size: 70%;" (click)="postular()"
-                                              ><b>Quieres contacatar</b></button>
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-         
 
 
-
-
-            </div>
+  <div class="card">
+        <div class="card-body">
+    
+            <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe">
+                <thead>
+                    <tr>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Nº</th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col
+                            data-tablesaw-priority="3">IMAGEN</th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">NOMBRE</th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">DESCRIPCIÓN</th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">TELÉFONO</th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">CALIFICACIÓN</th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">ACCIÓN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                    *ngFor="let form of  formularios | paginate: { itemsPerPage: 10, currentPage: totalRegistros }; let i = index">
+                    <td>{{i+1}}</td>
+                    <td class="w70">
+                        <img [src]="form.usuario.img |imagen" class="img-50 img-circle pointer">
+                    </td>
+                    <td> {{form.nombre}} {{form.apellido}}</td>
+                    <td>{{form.descripcion}}</td>
+                    <td> {{form.usuario.telefono}} </td>
+                    <td>{{form.rating}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary"
+                            style="width: 140px;height: 75;font-size: 70%;" (click)="postular()"><b>Quieres
+                                contacatar</b></button>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
     </div>
-    <pagination-controls (pageChange)="totalRegistros = $event"*ngIf="!cargando"></pagination-controls>
-</div>
-
+    
 <app-footer></app-footer>

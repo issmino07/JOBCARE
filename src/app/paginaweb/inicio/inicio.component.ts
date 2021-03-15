@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { JoyrideService } from 'ngx-joyride';
 
 
 @Component({
@@ -13,12 +14,19 @@ export class InicioComponent implements OnInit {
 
 ocultar = false
 
-  constructor() { }
+  constructor(private joyride: JoyrideService) { 
+
+    
+  }
+
 
   ngOnInit(): void {
 
 
   }
+
+
+ 
 
   activar(){
     this.ocultar = true;

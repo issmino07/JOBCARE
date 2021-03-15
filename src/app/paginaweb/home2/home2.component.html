@@ -7,7 +7,7 @@
     <br>
   
     
-    <h2 align="center">¡Hola! ¿Selecciona una de nuestras categorias para publicar?</h2>
+    <h2 align="center" joyrideStep="one" title="Bienvenido" text="En esta sección seleccionas la categoria de tu preferencia para que puedas registrarte y publicar un empleo ">¡Hola! ¿Selecciona una de nuestras categorias para publicar?</h2>
 <br>
 
 <div class="row m-0 justify-content-center align-items-center vh-100" >
@@ -88,7 +88,9 @@
 
     <section>
 
-        <h3 align="center">¿Ya eres miembro? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Inicia sesión</a></h3>
+        <h3 align="center">¿Ya eres miembro? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Inicia sesión</a>&nbsp;&nbsp;
+          <button type="button" class="btn btn-success" (click)="home2()">?<i class="bi-patch-question"></i></button>
+        </h3>
 
     </section>
 

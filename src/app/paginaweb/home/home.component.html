@@ -4,7 +4,7 @@
   <br>
 
 
-  <h2 align="center">¡Hola! ¿Selecciona una de nuestras categorias?</h2>
+  <h2 align="center" joyrideStep="uno" title="Bienvenido" text="En esta sección seleccionas la categoria de tu preferencia para que puedas registrarte y encontrar empleo ">¡Hola! ¿Selecciona una de nuestras categorias?</h2>
   <br>
 
   <div>
@@ -125,7 +125,9 @@
 <section>
 
   <h3 align="center">¿Ya eres miembro? <a [routerLink]="['/login']" routerLinkActive="router-link-active">Inicia
-      sesión</a></h3>
+      sesión</a>&nbsp;&nbsp;
+      <button type="button" class="btn btn-success" (click)="home()">?<i class="bi bi-patch-question"></i></button>
+    </h3>
 
 </section>
 

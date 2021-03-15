@@ -41,7 +41,7 @@ import { VerhojavidaProfesionalComponent } from './profesionales/verhojavida-pro
 const routes: Routes = [
   { 
     path: 'dashboard', 
-    component: PagesComponent,canActivate:[AdminGuard],
+    component: PagesComponent,canActivate:[AdminGuard], 
     children: [
         { path: '', component: DashboardComponent, data:{ titulo: 'Dashboard'},canActivate:[AdminGuard] },
         { path: 'admininico', component: AdmininicioComponent },
@@ -61,7 +61,7 @@ const routes: Routes = [
         { path: 'crearCurso', component: CrearCursosComponent,canActivate:[AdminGuard] },
         { path: 'verCurso', component: VerCursosComponent,canActivate:[AdminGuard] },
         { path: 'perfiles', component: PerfilesComponent,canActivate:[AdminGuard]},
-        { path: 'ofertasPublicadas', component: OfertasPublicadasComponent,canActivate:[AdminGuard]},
+        { path: 'ofertasPublicadas', component: OfertasPublicadasComponent,canActivate:[AdminGuard] },
         { path: 'perfilesAdmin', component: PerfilesAdminComponent,canActivate:[AdminGuard]},
         { path: 'ofertasAdmin', component: OfertasAdminComponent,canActivate:[AdminGuard]},
         { path: 'editarCursos', component: EditarCursosComponent,canActivate:[AdminGuard]},

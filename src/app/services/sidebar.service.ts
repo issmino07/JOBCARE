@@ -30,6 +30,7 @@ constructor(
 
   cargarMenu() {
     this.menu = this._usuarioService.menu;
+   // window.location.reload();
   }
 
 }

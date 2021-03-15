@@ -14,7 +14,7 @@
 
   <div class="content text-center">
 
-    <h2 align="center">SUSCRIPCIÓN</h2>
+    <h2 align="center" joyrideStep="pri" title="Bienvenido" text="Estas en la categoria Cuidado capacidades especiales llena los cuatro campos para que te registres en nuestra plataforma ">SUSCRIPCIÓN</h2>
 
     <div class="form-group">
 
@@ -56,7 +56,7 @@
 
     <div class="form-group">
 
-      <input type="email" class="form-control col-6" id="exampleInputEmail1" placeholder="EMAIL"
+      <input type="email" class="form-control col-6" id="exampleInputEmail1" placeholder="CORREO ELECTRONICO"
         formControlName="email" />
 
       <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
@@ -75,10 +75,10 @@
 
     <div class="form-group">
 
-      <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="PASSWORD"
+      <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CONTRASEÑA"
         formControlName="password" />
     </div>
-
+<!--
     <div class="form-group">
       <input type="number" class="form-control col-6" id="exampleInputPassword1"
         placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
@@ -97,7 +97,7 @@
 
       </div>
     </div>
-
+-->
     <div class="form-group">
 
       <h2 align="center">Como nos encontraste</h2>
@@ -127,10 +127,15 @@
             </ul>
 
           </div>
-          <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button>
-          &nbsp;&nbsp;
+          <!--
+           <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button> 
+          -->
+       
+         
           <button type="submit" class="btn btn-primary mt-5" [disabled]="!registerForm.valid"
-            (click)="verificando()">REGISTRAR</button>
+            (click)="crearUsuario()">REGISTRAR</button>
+            &nbsp;&nbsp;
+            <button type="button" class="btn btn-success mt-5" (click)="capacidad()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
         </div>
 
       </div>

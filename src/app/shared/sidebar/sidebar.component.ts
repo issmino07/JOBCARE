@@ -29,4 +29,13 @@ export class SidebarComponent implements OnInit {
     this._usuarioService.logOut()
   }
 
+  pageRefresh() {
+
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000)
+   
+ }
+
 }
