@@ -44,7 +44,7 @@ export class PlanesComponent implements OnInit {
     this.listainforme.getPlan(usuario._id).subscribe(
       result => { 
          this.formularios =  result 
-         console.log(this.formularios)
+         console.log(this.formularios,'planess')
    
      });
 

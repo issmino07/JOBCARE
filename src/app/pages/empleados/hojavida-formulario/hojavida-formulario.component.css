@@ -5,17 +5,21 @@ agm-map {
         background-color: #f7f7f7;
         border: 2px solid #56c2c6;
         border-radius: 20px 20px;
+
+  
     }
     
     .caja2{
         background-color: #f7f7f7;
         border: 2px solid #56c2c6;
         border-radius: 20px 20px;
+     
     }
     .caja3{
         background-color:#f7f7f7;
         border: 2px solid #56c2c6;
         border-radius: 20px 20px;
+   
     }
     
     
@@ -24,4 +28,6 @@ agm-map {
     }
 
 
-
+.text2{
+    color: #ffffff;
+}

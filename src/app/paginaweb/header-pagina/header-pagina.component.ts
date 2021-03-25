@@ -57,6 +57,13 @@ export class HeaderPaginaComponent implements OnInit {
     location.reload();
   }
 
+  UrlLogingin() {
+    window.location.href = "#/login";
+    //  window.scrollTo(0, 0)
+    // location.reload()
+  //  location.reload();
+  }
+
   UrlOfertas() {
     window.location.href = "#/ofertaEmpleo";
     //  window.scrollTo(0, 0)

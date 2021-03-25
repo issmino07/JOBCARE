@@ -64,7 +64,7 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     NgxStarRatingModule,
     BarRatingModule,
     TooltipModule,
-   
+    
   ],
   providers: [
     UsuarioService,
@@ -72,7 +72,8 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     SubirArchivoService, 
     OfertaService,
     CategoriasService,
-    HojavidaService
+    HojavidaService,
+   
   ],
   bootstrap: [AppComponent]
 })

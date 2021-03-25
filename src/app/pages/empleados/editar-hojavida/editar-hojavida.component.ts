@@ -259,6 +259,29 @@ updateEstado(): void {
         Swal.fire("Actualización de Publicación existoso", "", "success")
       });
 }
+eliminar(){
+  Swal.fire({
+    title: 'Esta seguro de eliminar su hoja de vida?',
+    text: "¡No podrás revertir esto!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'CANCELAR',
+    confirmButtonText: 'Si, ELIMINAR'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.delete()
+      Swal.fire(
+        'Hoja de vida !',
+        'ha sido eliminada.',
+        'success'
+      )
+    }
+  })
+
+
+}
 
 delete(): void {
 //   this.submitted = true;

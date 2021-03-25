@@ -46,6 +46,7 @@ import { RatingModule } from 'ng-starrating';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { PaginawebComponent } from './paginaweb.component';
 import { JoyrideModule } from 'ngx-joyride';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -93,6 +94,7 @@ import { JoyrideModule } from 'ngx-joyride';
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgSelectModule,

@@ -30,12 +30,12 @@
         <!--AQUI EMPEZA EL FORMULARIO-->
 
         <div class="bs-stepper-content">
-            <form [formGroup]="registerForm">
+          
                 <div id="test-l-1" class="content">
-
+                    <form [formGroup]="registerForm">
                     <div class="">
                         <div class="card-header bg-primary">
-                            <h4 class="m-b-0 text-white">FORMULARIO DE INSCRIPCIÓN</h4>
+                            <h4 class="m-b-0 text-white">OFERTA DE EMPLEO</h4>
                         </div>
 
                         <div class="row p-t-20">
@@ -179,20 +179,24 @@
                             <!--/span-->
                         </div>
                         <!--/row-->
-
-
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary" hidden> <i class="fa fa-save"></i>GUARDAR
-                        </button>
+                        <div class="alert alert-primary " role="alert ">
+                            <em class="text2">Es necesario llenar todos los campos luego presionas el boton guardar para registrar tu oferta de empleo posteriormente para publicar es obligatorio suscribirse a uno de nuestros planes para que tu perfil sea visible.</em>
+                        </div>
+    
 
                     </div>
+                    <div class="form-actions row m-0 justify-content-center align-items-center vh-100">
+                       
+                        <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                        &nbsp;&nbsp;
+                        <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuario()"
+                        >GUARDAR</button>
 
+                    </div>
 
+                </form>
 
-                      <div class="row m-0 justify-content-center align-items-center vh-100">
-                <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
-              </div>
+             
                 </div>
                 <div id="test-l-2" class="content">
                     <div class=" container p-3 " class="col-sm">
@@ -330,7 +334,7 @@
 
                                     </ul>
 
-                                    <button class="btn btn-primary ">SUSCRIBIR</button>
+                                    <button class="btn btn-primary "(click)="producto1()">SUSCRIBIR</button>
 
 
                                 </div>
@@ -366,7 +370,7 @@
                                         <h1 class="text">$ 9.99 </h1>
                                     </ul>
 
-                                    <button class="btn btn-primary ">SUSCRIBIR</button>
+                                    <button class="btn btn-primary "(click)="producto2()">SUSCRIBIR</button>
                                 </div>
                             </div>
                             <!-- Card -->
@@ -376,16 +380,18 @@
                         <!-- column -->
                     </div>
                     <!-- Row -->
-
+                    <div class="alert alert-primary " role="alert ">
+                        <em class="text2">Es necesario  suscribirse a uno de nuestros planes para que tu perfil sea visible.</em>
+                    </div>
+<br>
 
                     <button (click)="previus()" class="btn btn-primary mt-5">ATRAS</button>
 
                     &nbsp;&nbsp;
 
-                    <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuario()"
-                      >GUARDAR</button>
+                
                 </div>
-            </form>
+         
         </div>
     </div>
 

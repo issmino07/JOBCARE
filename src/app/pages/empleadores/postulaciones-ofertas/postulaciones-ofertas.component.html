@@ -15,7 +15,7 @@
                         <th scope="col" COLSPAN=1 style="background: azure">EMAIL</th>
                         <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
+              
                     </tr>
                 </thead>
                 <tbody *ngFor="let form of  formularios">
@@ -24,11 +24,12 @@
                     
                     
                         <td>{{i+1}}</td>
-                        <td> {{post.descripcion.nombre }}</td> 
+                    
+                        <td> {{post.user.usuario }}</td> 
                         <td> {{post.user.email }}</td> 
                      
                         <td> {{post.user.telefono }}</td> 
-                        <td> {{post.descripcion.categorias }}</td> 
+                        <td> {{post.user.categorias }}</td> 
                        
                      
                     

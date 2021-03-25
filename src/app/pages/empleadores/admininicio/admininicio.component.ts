@@ -14,6 +14,7 @@ import { Ciudad } from 'src/app/models/ciudad.model';
 import { CiudadesService } from 'src/app/services/ciudades.service';
 import { Plan } from 'src/app/models/planes';
 import { PlanesService } from 'src/app/services/planes.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-admininicio',
   templateUrl: './admininicio.component.html',
@@ -23,13 +24,14 @@ export class AdmininicioComponent implements OnInit {
 
   opcionesGenerales: Categoria[]
    ofertaModelo= new Ofertas();
-  estado = 'PUBLICADO'
+  estado = 'NO PUBLICADO'
+  etsado2= 'PUBLICADO'
   latitude: number;
   longitude: number;
   zoom: number;
   address: string;
   private geoCoder;
-
+  OfertaModelo = new Ofertas();
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
@@ -85,16 +87,25 @@ export class AdmininicioComponent implements OnInit {
 
   })
 
+  urlTree
+  id
+  type
  
-
+IDOFERTA
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone,private spinner: NgxSpinnerService,
     private opcionesServices : CategoriasService,private ciudadOpcion: CiudadesService,private planes : PlanesService,
-     private oferta : OfertaService) { 
+     private oferta : OfertaService,  private router: Router,) { 
 
+      
+    this.urlTree = this.router.parseUrl(this.router.url);
+
+    this.id = this.urlTree.queryParams['id'];
+    this.type = this.urlTree.queryParams['clientTransactionId'];
+   
      }
 
   ngOnInit(): void {
-
+    this.confirmacionPago();
     this.getOpciones2();
     this.ciuadadesOpcion = new Array<Ciudad>();
     this.ciudad = new Ciudad();
@@ -216,6 +227,9 @@ selectProvincia(provincia) {
   this.estatus = 'PENDIENTE'
   this.descrip = this.registerForm.value.descripcionEmpleo;
   this.fecha = new Date();
+  this.IDOFERTA = localStorage.getItem('Idoferta')
+  console.log(this.IDOFERTA,'Aqui esta el ID')
+
  }
 
   crearUsuario() {
@@ -233,7 +247,12 @@ selectProvincia(provincia) {
       resp => {
         Swal.fire("Registro  existoso", "", "success")
         console.log(resp);
-   
+       this.ID =   resp._id 
+       this.ID = localStorage.setItem('Idoferta',this.ID)
+      
+
+       this.IDOFERTA = localStorage.getItem('Idoferta')
+       console.log(this.IDOFERTA,'Aqui esta el ID')
       }, (err) => {
         // Si sucede un error
         //  Swal.fire('Error', err['msg'], 'error' );
@@ -241,9 +260,23 @@ selectProvincia(provincia) {
   
       }
 
-    )
+      
+    )}
 
-
+     //=================Actualiza el estado de la publicacion de la hoja de vida una vez que se realiza el pago ===//
+ID
+  updateEstado(): void {
+    this.IDOFERTA = localStorage.getItem('Idoferta')
+    console.log(this.IDOFERTA,'Aqui esta el ID')
+    this.ofertaModelo._id = this.IDOFERTA
+    this.ofertaModelo.estado = this.etsado2
+    this.oferta.updateOpcion(this.ofertaModelo)
+      .subscribe(result => {
+       
+        console.log(result,'Aqui esta la ctualizacion')
+        Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "", "success")
+        // window.location.reload()
+      });
   }
 
 
@@ -284,5 +317,151 @@ selectProvincia(provincia) {
       }
    
   }
+
+    ///===================prueba botton de pagos========================================//
+
+    //https://jobandcare.com/
+    apiPay
+    rand
+    //
+    paquete = 'Premium (3 meses)'
+    producto1() {
+  
+      this.rand = Math.floor((Math.random() * 1000) + 60000);
+  
+      let parametros = {
+        amount: "599",
+        amountWithoutTax: "599",
+        clientTransactionID: this.rand,
+        responseUrl: "http://localhost:4200/#/dashboard/admininico",
+        cancellationUrl: "http://localhost:4200/#/dashboard/admininico"
+  
+      }
+      console.log(parametros.responseUrl)
+      this.planes.pagar(parametros).subscribe(resp => {
+  
+  
+        this.apiPay = resp.payWithCard;
+  
+        window.location.href = this.apiPay;
+      }, (err) => {
+  
+        Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
+  
+      })
+     
+    }
+  
+   paquete2= 'Premium (6 Meses)'
+    producto2() {
+  
+      this.rand = Math.floor((Math.random() * 1000) + 90000);
+      let parametros = {
+        amount: "999",
+        amountWithoutTax: "999",
+        clientTransactionID: this.rand,
+        responseUrl: "http://localhost:4200/#/dashboard/admininico",
+        cancellationUrl: "http://localhost:4200/#/dashboard/admininico"
+  
+      }
+      console.log(parametros)
+      this.planes.pagar(parametros).subscribe(resp => {
+  
+  
+        this.apiPay = resp.payWithCard;
+        window.location.href = this.apiPay;
+      }, (err) => {
+  
+        Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
+  
+      })
+  
+    }
+
+    valor1= '5.99'
+valor2= '9.99'  
+  registrarPlanGeneral() {
+
+    
+    // Realizar el posteo
+    this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.planModelo.amount= this.cantidad;
+    if(this.cantidad =="599"){
+      this.planModelo.tipoPlan = this.paquete
+      this.planModelo.valor = this.valor1
+      console.log(this.planModelo.tipoPlan,'PAQUETE')
+    }
+    else if (this.cantidad =="999"){
+      this.planModelo.tipoPlan = this.paquete2
+      this.planModelo.valor = this.valor2
+      console.log(this.planModelo.tipoPlan,'PAQUETE2')
+    }
+    this.planModelo.clientTransactionId =this.clientTId
+    this.planModelo.optionalParameter1  =this.parametro1
+     this.planModelo.optionalParameter2 =this.parametro2
+     this.planModelo.reference =this.referencia
+  //  this.planModelo.tipoPlan =
+    this.planes.addPlanPago(this.planModelo).subscribe(
+      resp => {
+
+        Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
+        console.log(resp);
+        this.updateEstado()
+      }, (err) => {
+
+        Swal.fire(this.planModelo.usuario.usuario,'Ya estas sucscrito a plan'+ err.error.msg, 'error');
+        this.updateEstado()
+      })
+
+  }
+
+  
+    //======================Confirmacion de pago para registro en la base =============//
+  
+    //variables de pago
+    cantidad
+    clientTId
+    parametro1
+    parametro2
+    referencia
+    confirmacionPago() {
+
+      this.IDOFERTA = localStorage.getItem('Idoferta')
+      console.log(this.IDOFERTA,'Aqui esta el ID')
+      let parametros = {
+        id: this.id,
+        clientTxId: this.type
+      }
+  
+      if (this.id == 0) {
+        Swal.fire('Transacción cancelada', 'vuelva intentar', 'error');
+        return false
+      } else {
+        this.planes.getPago(parametros).subscribe(resp => {
+         
+            this.cantidad = resp.amount
+            this.clientTId = resp.clientTransactionId
+            this.parametro1 = resp.optionalParameter1
+            this.parametro2 = resp.optionalParameter2
+            this.referencia = resp.reference
+          Swal.fire("Pago realizado con exito", resp.clientTransactionId, "success")
+          setTimeout(() => {
+  
+           this.updateEstado()
+            this.registrarPlanGeneral()
+          }, 3000);
+  
+  
+        }, (err) => {
+  
+          // Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
+  
+        })
+  
+      }
+  
+  
+    }
+  
 
 }

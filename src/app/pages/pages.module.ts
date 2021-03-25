@@ -40,6 +40,7 @@ import { PostulantesContactadosComponent } from './empleadores/postulantes-conta
 import { TeContactaronComponent } from './empleados/te-contactaron/te-contactaron.component';
 import { VerhojavidaProfesionalComponent } from './profesionales/verhojavida-profesional/verhojavida-profesional.component';
 import { EditarhojavidaProfesionalComponent } from './profesionales/editarhojavida-profesional/editarhojavida-profesional.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -90,6 +91,7 @@ import { EditarhojavidaProfesionalComponent } from './profesionales/editarhojavi
   imports: [
     CommonModule,
     SharedModule,
+    SweetAlert2Module,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

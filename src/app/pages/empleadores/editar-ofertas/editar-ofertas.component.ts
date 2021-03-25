@@ -193,6 +193,31 @@ export class EditarOfertasComponent implements OnInit {
         });
   }
 
+
+  eliminar(){
+    Swal.fire({
+      title: 'Esta seguro de eliminar su oferta de empleo?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'CANCELAR',
+      confirmButtonText: 'Si, ELIMINAR'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.delete()
+        Swal.fire(
+          'Oferta de empleo !',
+          'ha sido eliminada.',
+          'success'
+        )
+      }
+    })
+
+
+  }
+
   delete(): void {
  //   this.submitted = true;
     this.oferta.deleteOpcion(this.ofertaModelo._id)

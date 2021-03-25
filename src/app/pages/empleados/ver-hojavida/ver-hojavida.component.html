@@ -24,8 +24,8 @@
                         <th scope="col" COLSPAN=1 style="background: azure">EDITAR</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let form of  formularios| paginate: { itemsPerPage: 5, currentPage: totalRegistros }; let i = index">
+                <tbody *ngFor="let form of  formularios| paginate: { itemsPerPage: 5, currentPage: totalRegistros }; let i = index" >
+                    <tr *ngIf="(form.estado ==='PUBLICADO')">
                         <td>{{i+1}}</td>
                         <td>{{form.nombre}}</td>
                         <td>{{form.cedula}}</td>
