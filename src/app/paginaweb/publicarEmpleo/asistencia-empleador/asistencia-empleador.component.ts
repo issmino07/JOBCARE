@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Usuario } from 'src/app/models/usuario.model';
 import { environment } from 'src/environments/environment';
-
+import { JoyrideService } from 'ngx-joyride';
 @Component({
   selector: 'app-asistencia-empleador',
   templateUrl: './asistencia-empleador.component.html',
@@ -110,7 +110,7 @@ export class AsistenciaEmpleadorComponent implements OnInit {
  
 
   constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,private spinner: NgxSpinnerService,
-    private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
+    private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,private joyride: JoyrideService,
 
     private ngZone: NgZone) {
     this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
@@ -121,7 +121,7 @@ export class AsistenciaEmpleadorComponent implements OnInit {
   ngOnInit(): void {
 
    
- 
+   this.asistencia()
    
 
     this.mapsAPILoader.load().then(() => {
@@ -385,6 +385,69 @@ export class AsistenciaEmpleadorComponent implements OnInit {
   }
 
 
+  //mensaje guia ================================//
+  asistencia(){
+    this.joyride.startTour(
+      { steps: ['prota1', 'prota2'],
+      customTexts: {
+        next: 'SIGUIENTE',
+        prev: 'ANTERIOR',
+        done: 'CERRAR'
+      }, themeColor: '#56c2c6',
+      stepDefaultPosition: 'center',
+    }
+    )
+  }
 
+  asistencia2(){
+    this.joyride.startTour(
+      { steps: ['prota500', 'prota2'],
+      customTexts: {
+        next: 'SIGUIENTE',
+        prev: 'ANTERIOR',
+        done: 'CERRAR'
+      }, themeColor: '#56c2c6',
+      stepDefaultPosition: 'center',
+    }
+    )
+  }
+
+  asistencia3(){
+    this.joyride.startTour(
+      { steps: ['prota501'],
+      customTexts: {
+        next: 'SIGUIENTE',
+        prev: 'ANTERIOR',
+        done: 'CERRAR'
+      }, themeColor: '#56c2c6',
+      stepDefaultPosition: 'center',
+    }
+    )
+  }
+  asistencia4(){
+    this.joyride.startTour(
+      { steps: ['prota502'],
+      customTexts: {
+        next: 'SIGUIENTE',
+        prev: 'ANTERIOR',
+        done: 'CERRAR'
+      }, themeColor: '#56c2c6',
+      stepDefaultPosition: 'center',
+    }
+    )
+  }
+
+  asistencia5(){
+    this.joyride.startTour(
+      { steps: ['prota503'],
+      customTexts: {
+        next: 'SIGUIENTE',
+        prev: 'ANTERIOR',
+        done: 'CERRAR'
+      }, themeColor: '#56c2c6',
+      stepDefaultPosition: 'center',
+    }
+    )
+  }
 
 }

@@ -39,7 +39,7 @@
       <form [formGroup]="registerForm">
         <div id="test-l-1" class="content">
           <div class="form-group">
-            <label for="exampleInputEmail1">CIUDAD/TODOS</label>
+                     <label for="exampleInputEmail1" joyrideStep="prota1" title="Bienvenido" text="Estas en la categoria Profesionales selecciona provincia y ciudad donde vives"  >CIUDAD/TODOS</label>
             <tr>
               <td scope="col">Provincia &nbsp;</td>
               <td scope="col">
@@ -74,10 +74,10 @@
 
               <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"tooltip = " Este boton te permite llegar a la pantalla <b> Inicio </b> "theme="light" data-toggle="tooltip"
-                  formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                  formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia" 
                   spellcheck="off" type="text" #search  >
-                  <button  tooltip = " Este boton te permite llegar a la pantalla <b> Inicio </b> "theme="light" data-toggle="tooltip" >?</button>
+                 
                   <div
                   *ngIf="registerForm.get('direccion').errors && registerForm.get('direccion').dirty">
                   <p class="text-danger center"
@@ -100,21 +100,25 @@
 
 
 
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
         <div id="test-l-2" class="content">
           <div class="form-group">
-            <h2 align="center" (click)="desactivar()">CUANDO LO NECESITAS</h2>
+            <h2 align="center" (click)="desactivar()" joyrideStep="prota300" title="REGISTRO CLIENTE" text=" Selecciona la fecha en que necesitas a un profesional" >CUANDO LO NECESITAS</h2>
             <div class="form-group">
                   <label class="control-label">FECHA </label>
                   <input type="date" class="form-control" placeholder="dd/mm/yyyy"
                       formControlName="fecha">
               </div>
           </div>
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia2()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
 
@@ -124,7 +128,7 @@
 
         <div id="test-l-3" class="content text-center">
 
-          <h2 align="center">SUSCRIPCIÓN</h2>
+          <h2 align="center" joyrideStep="prota301" title="Bienvenido" text="Llena los 4 campos para terminar tu registro e iniciar sesión ">SUSCRIPCIÓN</h2>
           <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="USUARIO" formControlName="usuario" />
@@ -188,6 +192,8 @@
            <!--<button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button> -->
           &nbsp;&nbsp;
           <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuario()">REGISTRAR</button>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-success mt-5" (click)="asistencia3()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
         </div>
       </form>
     </div>

@@ -48,13 +48,13 @@
     </div>
 
 
-    <!--AQUI EMPEZA EL FORMULARIO-->
+    <!--AQUI EMPEZA EL FORMULARIO   tooltip = " Este boton te permite llegar a la pantalla <b> Inicio </b> "theme="light" data-toggle="tooltip"-->
 
     <div class="bs-stepper-content">
       <form [formGroup]="registerForm">
         <div id="test-l-1" class="content">
           <div class="form-group">
-            <label for="exampleInputEmail1">CIUDAD/TODOS</label>
+            <label for="exampleInputEmail1" joyrideStep="prota1" title="Bienvenido" text="Estas en la categoria Asistencia Automotriz selecciona provincia y ciudad donde vives"  >CIUDAD/TODOS</label>
             <tr>
               <td scope="col">Provincia &nbsp;</td>
               <td scope="col">
@@ -89,7 +89,7 @@
 
               <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"  
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
                   spellcheck="off" type="text" #search>
 
@@ -118,6 +118,8 @@
 
             <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
         <div id="test-l-3" class="content">
@@ -126,16 +128,19 @@
             <div>
               <div class="form-group">
                 <label class="control-label">FECHA </label>
-                <input type="date" class="form-control" placeholder="dd/mm/yyyy" formControlName="fecha">
+                <input type="date" class="form-control" placeholder="dd/mm/yyyy" joyrideStep="prota501" title="Bienvenido" text="Selecciona en la fecha que deseas el servicio solicitado" 
+                formControlName="fecha">
               </div>
             </div>
           </div>
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia3()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
         <div id="test-l-4" class="content">
-          <h2 align="center">¿Cuanta experiencia tienes?</h2>
+          <h2 align="center" joyrideStep="prota502" title="Bienvenido" text="Indica cuanta experiencia necesitas" >¿Cuanta experiencia tienes?</h2>
           <div class="form-group">
             <div>
               <div class="row m-0 justify-content-center align-items-center vh-100">
@@ -167,8 +172,10 @@
                 </div>
               </div>
 
-              <div class="row m-0 justify-content-center align-items-center vh-100">
+                 <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia4()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
             </div>
             <!--div class="form-group" >
@@ -181,7 +188,7 @@
         </div>
         <div id="test-l-2" class="content">
           <div class="form-group">
-            <h2 align="center">Asistencia Automotriz</h2>
+            <h2 align="center" joyrideStep="prota500" title="Bienvenido" text="Estas en la categoria Asistencia Automotriz selecciona los servicios que deseas" >Asistencia Automotriz</h2>
             <div class="form-group row m-0 justify-content-center align-items-center vh-100">
 
               <div class="input-group row m-0 justify-content-center align-items-center vh-100 ">
@@ -228,6 +235,8 @@
           </div>
           <div class="row m-0 justify-content-center align-items-center vh-100">
             <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+            &nbsp;&nbsp;
+            <button type="button" class="btn btn-success mt-5" (click)="asistencia2()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
           </div>
         </div>
 
@@ -236,7 +245,7 @@
 
         <div id="test-l-5" class="content text-center">
 
-          <h2 align="center">SUSCRIPCIÓN</h2>
+          <h2 align="center" joyrideStep="prota503" title="Bienvenido" text="Llena los 4 campos para terminar tu registro e iniciar sesión ">SUSCRIPCIÓN</h2>
           <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="USUARIO" formControlName="usuario" />
@@ -300,7 +309,9 @@
            <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button> -->
           &nbsp;&nbsp;
           <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuario()"
-            [disabled]="!registerForm.valid">REGISTRAR</button>
+           >REGISTRAR</button>
+           &nbsp;&nbsp;
+           <button type="button" class="btn btn-success mt-5" (click)="asistencia5()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
         </div>
       </form>
     </div>

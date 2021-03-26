@@ -309,6 +309,7 @@ export class HojavidaFormularioComponent implements OnInit {
   updateEstado(): void {
     this.hojaModelo._id = this.ID;
     this.hojaModelo.estado = this.estado2;
+    this.hojaModelo.tipoplan = this.PlanHoja;
     this._hojavida.updateOpcion(this.hojaModelo)
       .subscribe(result => {
        
@@ -360,6 +361,8 @@ export class HojavidaFormularioComponent implements OnInit {
 
 valor1= '5.99'
 valor2= '9.99'  
+
+PlanHoja
   registrarPlanGeneral() {
 
     
@@ -384,6 +387,8 @@ valor2= '9.99'
     this.planes2.addPlanPago(this.planModelo).subscribe(
       resp => {
 
+           this.PlanHoja = resp.tipoPlan
+
         Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
         console.log(resp);
 
@@ -394,10 +399,6 @@ valor2= '9.99'
       })
 
   }
-
-  
- 
-
 
   seleccionaImagen(archivo: File) {
 
@@ -418,8 +419,7 @@ valor2= '9.99'
     }
   }
 
-
-  cambiarImagen() {
+ cambiarImagen() {
 
     this._usuarioServices.cambiarImagen(this.imagenSubir, this.usuario._id)
   }

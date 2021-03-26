@@ -42,4 +42,6 @@ export class Hojavida {
       telefonoRef3:string;
     
       postulacion:Array<Object>
+
+      tipoplan:string
 }

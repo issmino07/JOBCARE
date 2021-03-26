@@ -52,7 +52,7 @@
       <form  [formGroup]="registerForm">
         <div id="test-l-1" class="content">
           <div class="form-group">
-            <label for="exampleInputEmail1">CIUDAD/TODOS</label>
+                     <label for="exampleInputEmail1" joyrideStep="prota1" title="Bienvenido" text="Estas en la categoria Tutorias escolares selecciona provincia y ciudad donde vives"  >CIUDAD/TODOS</label>
             <tr>
               <td scope="col">Provincia &nbsp;</td>
               <td scope="col">
@@ -85,18 +85,20 @@
     
     
     
-              <div class="form-group">
+            <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"  
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
                   spellcheck="off" type="text" #search>
-                  <div
-                  *ngIf="registerForm.get('direccion').errors && registerForm.get('direccion').dirty">
-                  <p class="text-danger center"
-                      *ngIf="registerForm.get('direccion').hasError('required')">
-                      <span size="2">Dirección es requerida</span>
+
+
+                <div *ngIf="registerForm.get('direccion').errors && registerForm.get('direccion').dirty">
+                  <p class="text-danger center" *ngIf="registerForm.get('direccion').hasError('required')">
+                    <span size="2">Dirección es requerida</span>
                   </p>
-              </div>
+
+
+                </div>
               </div>
     
               <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
@@ -112,8 +114,10 @@
     
     
     
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
         <div id="test-l-2" class="content">
@@ -130,7 +134,7 @@
                     <br>
                     <div class="form-group ">
                       <label class="control-label">FECHA </label>
-                      <input type="date" class="form-control" placeholder="dd/mm/yyyy"
+                      <input type="date" class="form-control" placeholder="dd/mm/yyyy"  joyrideStep="prota1200" title="Paso 2" text="En este paso 2 indica en que fecha necesitas"
                           formControlName="fecha">
                   </div>
                       <div
@@ -154,12 +158,14 @@
     
             </div>
           </div>
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia2()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
         <div id="test-l-3" class="content">
-          <h2 align="center">¿Quiénes necesitan tutorias?</h2>
+          <h2 align="center" joyrideStep="prota1201" title="Bienvenido" text="En este paso 3 indica quien necesita tutorias y cuantos niños son y cuanta experiencia tienes">¿Quiénes necesitan tutorias?</h2>
           <div class="form-group">
             <div>
               <div class="row m-0 justify-content-center align-items-center vh-100">
@@ -223,13 +229,16 @@
             </div>
 
           </div>
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia3()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
+                
               </div>
         </div>
         <div id="test-l-4" class="content">
           <div class="form-group">
-            <h2 align="center">Nivel que está cursando</h2>
+            <h2 align="center" joyrideStep="prota1202" title="Bienvenido" text="En este paso 4 Selecciona el curso o nivel" >Nivel que está cursando</h2>
             <div class="form-group row m-0 justify-content-center align-items-center vh-100">
     
               <div class="input-group row m-0 justify-content-center align-items-center vh-100">
@@ -256,8 +265,10 @@
               </div>
             </div>
           </div>
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia4()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
     
@@ -266,7 +277,7 @@
     
         <div id="test-l-5" class="content text-center">
 
-          <h2 align="center">SUSCRIPCIÓN</h2>
+          <h2 align="center" joyrideStep="prota1203" title="Bienvenido" text="Llena los 4 campos para terminar tu registro e iniciar sesión ">SUSCRIPCIÓN</h2>
           <div class="form-group">
             
             <input type="text" class="form-control col-6"  placeholder="USUARIO"formControlName="usuario" />
@@ -329,6 +340,8 @@
          <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button> -->
           &nbsp;&nbsp;
           <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuario()">REGISTRAR</button>
+          &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia5()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
         </div>
       </form>
     </div>

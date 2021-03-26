@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { NgxSpinnerService } from "ngx-spinner";
 import { environment } from 'src/environments/environment';
-
+import { JoyrideService } from 'ngx-joyride';
 
 @Component({
   selector: 'app-cuidado-adulto-empleador',
@@ -128,7 +128,7 @@ export class CuidadoAdultoEmpleadorComponent implements OnInit {
   
 
   constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,private spinner: NgxSpinnerService,
-    private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
+    private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,private joyride: JoyrideService,
 
     private ngZone: NgZone) {
     this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
@@ -411,6 +411,71 @@ export class CuidadoAdultoEmpleadorComponent implements OnInit {
   resetUsuario() {
     this.registerForm.reset()
   }
+  
+
+    //mensaje guia ================================//
+    asistencia(){
+      this.joyride.startTour(
+        { steps: ['prota1', 'prota2'],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'center',
+      }
+      )
+    }
+
+    asistencia2(){
+      this.joyride.startTour(
+        { steps: ['asi1', ],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'left',
+      }
+      )
+    }
+
+    asistencia3(){
+      this.joyride.startTour(
+        { steps: ['asi2', ],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'left',
+      }
+      )
+    }
+    asistencia4(){
+      this.joyride.startTour(
+        { steps: ['asi3', ],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'left',
+      }
+      )
+    }
+    asistencia5(){
+      this.joyride.startTour(
+        { steps: ['asi4', ],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'left',
+      }
+      )
+    }
 
 
 

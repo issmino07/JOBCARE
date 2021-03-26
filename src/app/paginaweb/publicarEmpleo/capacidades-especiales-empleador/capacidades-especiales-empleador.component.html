@@ -60,7 +60,7 @@
       <form [formGroup]="registerForm">
         <div id="test-l-1" class="content">
           <div class="form-group">
-            <label for="exampleInputEmail1">CIUDAD/TODOS</label>
+                     <label for="exampleInputEmail1" joyrideStep="prota1" title="Bienvenido" text="Estas en la categoria Cuidado de capacidades especiales selecciona provincia y ciudad donde vives"  >CIUDAD/TODOS</label>
             <tr>
               <td scope="col">Provincia &nbsp;</td>
               <td scope="col">
@@ -95,7 +95,7 @@
 
               <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"  joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia" 
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
                   spellcheck="off" type="text" #search>
                 <div *ngIf="registerForm.get('direccion').errors && registerForm.get('direccion').dirty">
@@ -120,8 +120,10 @@
 
 
 
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
         <div id="test-l-2" class="content">
@@ -129,43 +131,32 @@
             <h2 align="center" >CUANDO LO NECESITAS</h2>
             <div class="form-group">
                   <label class="control-label">FECHA </label>
-                  <input type="date" class="form-control" placeholder="dd/mm/yyyy"
+                  <input type="date" class="form-control" placeholder="dd/mm/yyyy" joyrideStep="asi1" title="Paso 2" text="En este paso 2 indica en que fecha necesitas el cuidado"
                       formControlName="fecha">
               </div>
           </div>
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia2()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
         <div id="test-l-3" class="content">
-          <h2 align="center">¿Cuanta experiencia tienes?</h2>
+          <h2 align="center"joyrideStep="asi2" title="Bienvenido" text="En este paso 3  cuanta experiencia necesitas">¿Cuanta experiencia tienes?</h2>
           <div class="form-group">
             <div>
-              <div class="row m-0 justify-content-center align-items-center vh-100">
-
-                <button (click)="voteUp(-1)" class="btn btn-danger" min="1">
-                  -
-                </button> &nbsp;&nbsp;&nbsp;&nbsp; <h3 class="display-4">{{votes}}</h3> &nbsp;&nbsp;&nbsp;&nbsp; <button
-                  (click)="voteUp(+1)" class="btn btn-primary">
-                  +
-                </button>
-
-              </div>
+            
 
 
               <div class="row m-0 justify-content-center align-items-center vh-100 ">
                 <div class="form-group col-6">
 
                   <div class="input-group">
-                    <span class="input-group-btn">
-                      <button class="btn btn-primary" type="button" (click)="voteUp(-1)">-</button>
-                    </span>
+                  
 
-                    <input [(ngModel)]="votes" type="number" class="form-control " placeholder="Años de experiencia"
+                    <input  type="text" class="form-control " placeholder="Años de experiencia"
                       formControlName="experiencia" />
-                    <span class="input-group-btn">
-                      <button class="btn btn-primary" type="button" (click)="voteUp(+1)">+</button>
-                    </span>
+                  
                   </div>
                   <div
                   *ngIf="registerForm.get('experiencia').errors && registerForm.get('experiencia').dirty">
@@ -186,13 +177,16 @@
             </!--div-->
 
           </div>
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia3()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
         <div id="test-l-4" class="content">
-          <div class="form-group">
-            <h2 align="center">Persona que necesita atención</h2>
+          <h2 align="center" joyrideStep="asi3" title="Bienvenido" text="En este paso 4 indica quien necesita atención ">Persona que necesita atención</h2>
+          <div class="form-group row m-0 justify-content-center align-items-center vh-100">
+          
             <div class="form-group row m-0 justify-content-center align-items-center vh-100">
 
               <div class="input-group ">
@@ -228,14 +222,16 @@
               </div>
             </div>
           </div>
-            <div class="row m-0 justify-content-center align-items-center vh-100">
+               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-success mt-5" (click)="asistencia4()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
 
 
         <div id="test-l-5" class="content">
-          <h2>Descripción breve de cuál es el tipo de capacidad </h2>
+          <h2 joyrideStep="asi4" title="Bienvenido" text="En este paso 5 Escribe una breve descripción de cuál es el tipo de capacidad ">Descripción breve de cuál es el tipo de capacidad </h2>
           <div class="form-group">
             <textarea align="center" class="form-control" formControlName="descripcion"></textarea>
             <div *ngIf="registerForm.get('descripcion').errors && registerForm.get('descripcion').dirty">
@@ -251,12 +247,17 @@
 
             </div>
           </div>
+          <div class="row m-0 justify-content-center align-items-center vh-100">
+            <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+            &nbsp;&nbsp;
+            <button type="button" class="btn btn-success mt-5" (click)="asistencia5()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
+          </div>
         </div>
-
+      
 
         <div id="test-l-6" class="content text-center">
 
-          <h2 align="center">SUSCRIPCIÓN</h2>
+          <h2 align="center" joyrideStep="asi5" title="Bienvenido" text="Llena los 4 campos para terminar tu registro e iniciar sesión ">SUSCRIPCIÓN</h2>
           <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="USUARIO" formControlName="usuario" />
@@ -321,6 +322,8 @@
            <!--<button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button> -->
           &nbsp;&nbsp;
           <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuario()" [disabled]="!registerForm.valid">REGISTRAR</button>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-success mt-5" (click)="asistencia6()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
         </div>
       </form>
     </div>
