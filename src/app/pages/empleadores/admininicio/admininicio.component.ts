@@ -15,6 +15,7 @@ import { CiudadesService } from 'src/app/services/ciudades.service';
 import { Plan } from 'src/app/models/planes';
 import { PlanesService } from 'src/app/services/planes.service';
 import { Router } from '@angular/router';
+import { URL_SERVICIOS } from 'src/app/config/config';
 @Component({
   selector: 'app-admininicio',
   templateUrl: './admininicio.component.html',
@@ -333,8 +334,8 @@ ID
         amount: "599",
         amountWithoutTax: "599",
         clientTransactionID: this.rand,
-        responseUrl: "http://localhost:4200/#/dashboard/admininico",
-        cancellationUrl: "http://localhost:4200/#/dashboard/admininico"
+        responseUrl: URL_SERVICIOS+"/#/dashboard/admininico",
+        cancellationUrl:URL_SERVICIOS+ "/#/dashboard/admininico"
   
       }
       console.log(parametros.responseUrl)
@@ -360,8 +361,8 @@ ID
         amount: "999",
         amountWithoutTax: "999",
         clientTransactionID: this.rand,
-        responseUrl: "http://localhost:4200/#/dashboard/admininico",
-        cancellationUrl: "http://localhost:4200/#/dashboard/admininico"
+        responseUrl:URL_SERVICIOS + "/#/dashboard/admininico",
+        cancellationUrl: URL_SERVICIOS+ "/#/dashboard/admininico"
   
       }
       console.log(parametros)

@@ -19,6 +19,7 @@ import { HojavidaService } from 'src/app/services/hojavida.service';
 import { Router } from '@angular/router';
 import { PlanEmpleadosService } from 'src/app/services/plan-empleados.service';
 import { Hojavida } from 'src/app/models/hojavida';
+import { URL_SERVICIOS } from 'src/app/config/config';
 
 @Component({
   selector: 'app-hojavida-formulario',
@@ -438,8 +439,8 @@ PlanHoja
       amount: "599",
       amountWithoutTax: "599",
       clientTransactionID: this.rand,
-      responseUrl: "http://localhost:4200/#/dashboard/hojavida",
-      cancellationUrl: "http://localhost:4200/#/dashboard/hojavida"
+      responseUrl: URL_SERVICIOS+"/#/dashboard/hojavida",
+      cancellationUrl:URL_SERVICIOS+ "/#/dashboard/hojavida"
 
     }
     console.log(parametros.responseUrl)
@@ -457,6 +458,7 @@ PlanHoja
    
   }
 
+ 
  paquete2= 'Premium (6 Meses)'
   producto2() {
 
@@ -465,8 +467,8 @@ PlanHoja
       amount: "999",
       amountWithoutTax: "999",
       clientTransactionID: this.rand,
-      responseUrl: "http://localhost:4200/#/dashboard/hojavida",
-      cancellationUrl: "http://localhost:4200/#/dashboard/hojavida"
+      responseUrl: URL_SERVICIOS+"/#/dashboard/hojavida",
+      cancellationUrl:URL_SERVICIOS+ "/#/dashboard/hojavida"
 
     }
     console.log(parametros)

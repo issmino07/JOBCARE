@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 declare function customInitFunctions();
 @Component({
   selector: 'app-dashboard',
@@ -7,12 +9,15 @@ declare function customInitFunctions();
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { 
-    customInitFunctions();
+
+
+  usuario: Usuario;
+  constructor(public _usuarioServices: UsuarioService,) { 
+    this.usuario = this._usuarioServices.usuario;
   }
 
   ngOnInit(): void {
-    customInitFunctions();
+ 
   }
 
 }

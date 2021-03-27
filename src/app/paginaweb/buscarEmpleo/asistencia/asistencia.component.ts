@@ -176,8 +176,9 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
         }, (err) => {
           // Si sucede un error
           //  Swal.fire('Error', err['msg'], 'error' );
-          Swal.fire('Error', err.error.msg, 'error');
           this.spinner.hide();
+          Swal.fire('Error', err.error.msg, 'error');
+     
           this.router.navigateByUrl('/inicio')
         }
 
@@ -192,6 +193,7 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
 
   resetUsuario() {
     this.registerForm.reset()
+    this.spinner.hide();
   }
 
 

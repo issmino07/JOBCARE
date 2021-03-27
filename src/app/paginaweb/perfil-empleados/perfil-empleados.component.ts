@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-
+import { JoyrideService } from 'ngx-joyride';
 @Component({
   selector: 'app-perfil-empleados',
   templateUrl: './perfil-empleados.component.html',
@@ -19,7 +19,7 @@ export class PerfilEmpleadosComponent implements OnInit {
   formularios: Hojavida[]=[];
 
   totalRegistros: number = 0;
-  constructor(private listainforme :HojavidaService) { 
+  constructor(private listainforme :HojavidaService, private joyride: JoyrideService,) { 
 
 
   
@@ -33,7 +33,7 @@ export class PerfilEmpleadosComponent implements OnInit {
   }
 
 
-
+ cate = []
   
   getFormulariosOfertas() {
 
@@ -42,10 +42,13 @@ export class PerfilEmpleadosComponent implements OnInit {
       result => { 
    
          this.formularios =  result ;
-      
+         
+         for(var c in result){
+            this.cate.push (result[c].categorias)
+         }
       
          this.cargando = false;
-         console.log(this.formularios)
+         console.log(this.formularios, this.cate)
      });
 
   
@@ -55,7 +58,7 @@ export class PerfilEmpleadosComponent implements OnInit {
 
 postular(){
   console.log('estoy postulando')
-   Swal.fire({
+  /* Swal.fire({
      title: '<strong>REGÍSTRATE </strong>',
      text: 'Regístrate en una de nuestras categorias para contratar o publicar tu oferta',
      icon: 'success',
@@ -69,8 +72,8 @@ postular(){
      cancelButtonText:
        '<i class="fa fa-thumbs-down"></i>',
      cancelButtonAriaLabel: 'Thumbs down'
-   })
- 
+   })  */
+
  
  }
 
@@ -95,6 +98,21 @@ postular(){
           });
 
 }
+
+
+  //mensaje guia ================================//
+  asistencia(){
+    this.joyride.startTour(
+      { steps: ['perfil'],
+      customTexts: {
+        next: 'SIGUIENTE',
+        prev: 'ANTERIOR',
+        done: 'CERRAR'
+      }, themeColor: '#56c2c6',
+      stepDefaultPosition: 'center',
+    }
+    )
+  }
 
 }
 
