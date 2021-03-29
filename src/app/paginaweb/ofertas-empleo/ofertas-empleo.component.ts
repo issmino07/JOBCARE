@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ofertas } from 'src/app/models/ofertas';
 import { Usuario } from 'src/app/models/usuario.model';
 import Swal from 'sweetalert2';
+import { JoyrideService } from 'ngx-joyride';
 
 declare function customInitFunctions();
 
@@ -23,7 +24,7 @@ export class OfertasEmpleoComponent implements OnInit {
   formularios: Ofertas[];
   formularios2: Ofertas[];
   totalRegistros: number = 0;
-  constructor(private listainforme : OfertaService) {
+  constructor(private listainforme : OfertaService, private joyride: JoyrideService,) {
 
   
    
@@ -102,5 +103,19 @@ postular(){
           });
 
 }
+
+  //mensaje guia ================================//
+  asistencia(){
+    this.joyride.startTour(
+      { steps: ['perfil'],
+      customTexts: {
+        next: 'SIGUIENTE',
+        prev: 'ANTERIOR',
+        done: 'CERRAR'
+      }, themeColor: '#56c2c6',
+      stepDefaultPosition: 'center',
+    }
+    )
+  }
 
 }

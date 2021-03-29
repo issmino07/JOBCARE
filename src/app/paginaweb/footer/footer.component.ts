@@ -37,7 +37,7 @@ export class FooterComponent implements OnInit {
   }
 
   UrlContacto(){
-    window.location.href="#/";
+    window.location.href="#/contacto";
     window.scrollTo(0, 0);
     location.reload()
   }

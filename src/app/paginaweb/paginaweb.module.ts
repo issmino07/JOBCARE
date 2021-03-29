@@ -47,6 +47,7 @@ import { TooltipModule } from 'ng2-tooltip-directive';
 import { PaginawebComponent } from './paginaweb.component';
 import { JoyrideModule } from 'ngx-joyride';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContactoComponent } from './contacto/contacto.component';
 
 
 
@@ -87,6 +88,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OfertasEmpleoComponent,
     PerfilEmpleadosComponent,
     PaginawebComponent,
+    ContactoComponent,
    
   ],
   imports: [

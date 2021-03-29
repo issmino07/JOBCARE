@@ -41,6 +41,8 @@ import { TeContactaronComponent } from './empleados/te-contactaron/te-contactaro
 import { VerhojavidaProfesionalComponent } from './profesionales/verhojavida-profesional/verhojavida-profesional.component';
 import { EditarhojavidaProfesionalComponent } from './profesionales/editarhojavida-profesional/editarhojavida-profesional.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { OfertasPremiumComponent } from './empleados/ofertas-premium/ofertas-premium.component';
+import { PerfilesPremiumComponent } from './empleadores/perfiles-premium/perfiles-premium.component';
 
 
 
@@ -77,6 +79,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     TeContactaronComponent,
     VerhojavidaProfesionalComponent,
     EditarhojavidaProfesionalComponent,
+    OfertasPremiumComponent,
+    PerfilesPremiumComponent,
     
 
   ],

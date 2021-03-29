@@ -33,7 +33,6 @@ export class PerfilEmpleadosComponent implements OnInit {
   }
 
 
- cate = []
   
   getFormulariosOfertas() {
 
@@ -41,14 +40,9 @@ export class PerfilEmpleadosComponent implements OnInit {
     this.listainforme.getOpciones().subscribe(
       result => { 
    
-         this.formularios =  result ;
+         this.formularios =  result;
          
-         for(var c in result){
-            this.cate.push (result[c].categorias)
-         }
-      
          this.cargando = false;
-         console.log(this.formularios, this.cate)
      });
 
   

@@ -97,7 +97,8 @@
                         data-tablesaw-priority="3">TÍTULO EMPLEO</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">VALOR</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"> HORARIO</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">CATEGORIA</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4"  joyrideStep="perfil" title="Bienvenido"
+                    text="Presiona el boton en la sección de categoria para que te redirija a la parte de registro y puedas ver estas ofertas en nuestra plataforma ">CATEGORIA</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">ACCIÓN</th>
                 </tr>
             </thead>
@@ -110,13 +111,59 @@
                     <td>{{form.tituloEmpleo}}</td>
                     <td>${{form.valor}}</td>
                     <td>{{form.horario}}</td>
-                    <td>{{form.categorias}}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary"
-                            style="width: 85px;height: 75;font-size: 50%;" (click)="postular()"><b>Quieres
-                                postular</b></button>
+                        <span *ngIf="(form.categorias ==='NIÑERAS')" #ruta>
+                            <a type="button" class="btn btn-outline-primary" href="#/ninera">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='CUIDADO ADULTO MAYOR')">
+                            <a type="button" class="btn btn-outline-primary"
+                                href="#/cuidadoAdulto"> {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='SERVICIO DOMESTICO')">
+                            <a type="button" class="btn btn-outline-primary" href="#/domestico">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='CUIDADO DE MASCOTAS')">
+                            <a type="button" class="btn btn-outline-primary" href="#/mascota">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='CUIDADOS CAPACIDADES ESPECIALES')">
+                            <a type="button" class="btn btn-outline-primary" href="#/capacidades">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='TUTORIAS ESCOLARES')">
+                            <a type="button" class="btn btn-outline-primary" href="#/tutorias">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='TRABAJOS DEL HOGAR')">
+                            <a type="button" class="btn btn-outline-primary" href="#/trabajos">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='ASISTENCIA AUTOMOTRIZ')">
+                            <a type="button" class="btn btn-outline-primary" href="#/asistencia">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='MENSAJERIA')">
+                            <a type="button" class="btn btn-outline-primary" href="#/mensajeria">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='SPA')">
+                            <a type="button" class="btn btn-outline-primary" href="#/spa">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='PROFESIONALES TITULADOS')">
+                            <a type="button" class="btn btn-outline-primary" href="#/profesional">
+                                {{form.categorias}}</a>
+                        </span>
 
 
+                    </td>
+                    <td>
+                    
+
+                                <button type="button" class="btn btn-success" (click)="asistencia()"   style="width: 85px;height: 75;font-size: 50%;"><i><img
+                                    src="../../../../assets/images/patch-question.svg" alt=""></i></button>
                     </td>
                 </tr>
             </tbody>

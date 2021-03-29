@@ -31,6 +31,7 @@ import { ProfesionalComponent } from './buscarEmpleo/profesional/profesional.com
 import { ProfesionalEmpleadorComponent } from './publicarEmpleo/profesional-empleador/profesional-empleador.component';
 import { OfertasEmpleoComponent } from './ofertas-empleo/ofertas-empleo.component';
 import { PerfilEmpleadosComponent } from './perfil-empleados/perfil-empleados.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 
 const routes: Routes = [
@@ -62,7 +63,7 @@ const routes: Routes = [
   { path: 'cursos', component: CursosComponent},
   { path: 'ofertaEmpleo', component: OfertasEmpleoComponent},
   { path: 'perfilEmpleados', component: PerfilEmpleadosComponent},
-
+  { path: 'contacto', component: ContactoComponent},
 
 
  
