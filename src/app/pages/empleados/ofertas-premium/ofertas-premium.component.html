@@ -1,1 +1,53 @@
-<p>ofertas-premium works!</p>
+
+
+
+
+
+<div class=" container p-3 " class="col-sm">
+    <h3 align="center" id="color">OFERTAS PREMIUM PUBLICADAS</h3>
+</div>
+
+
+<div class="container">
+    <div class="row" *ngIf="!cargando">
+        <div class="col-12">
+            <table class="table table-striped table-responsive btn-table"   id="tableColor" >
+                <thead>
+                    <tr>
+                        <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">TÍTULO EMPLEO</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
+                   
+                        <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
+                    
+                     
+                        <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let form of  formularios| paginate: { itemsPerPage: 10, currentPage: totalRegistros }; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{form.tituloEmpleo}}</td>
+                        <td>${{form.valor}}</td>
+                        <td>{{form.horario}}</td>
+                        <td>{{form.categorias}}</td>
+               
+                     
+                
+                        <td>
+                            <button type="button" class="btn btn-outline-primary"
+                                       style="width: 85px;height: 75;font-size: 50%;" (click)="ActulizarEstado(form._id, form.usuario)"
+                          ><b>Quieres postular</b></button>
+                        
+                 
+                        </td>
+                    </tr>                  
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+

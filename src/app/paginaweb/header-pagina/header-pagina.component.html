@@ -38,11 +38,11 @@
           <!-- nav -->
           <ul class="nav-menu">
             <li><a id="activo" (click)="tour()"  class="active">GUIA MENU</a></li>
-            <li><a joyrideStep="5" title="OFERTAS" text="En esta sección encuentras las ofertas disponibles en todas las categorias" id="activo" href="#/ofertaEmpleo" (click)="UrlOfertas()"  class="active">VER OFERTAS</a></li>
-            <li><a joyrideStep="4" title="PERFILES" text="En esta sección seleccionas algun perfil de empleado para contratar" id="activo" href="#/perfilEmpleados" (click)="UrlPerfil()"  class="active">PERFILES</a></li>
+            <li><a joyrideStep="6" title="OFERTAS" text="En esta sección encuentras las ofertas disponibles en todas las categorias" id="activo" href="#/ofertaEmpleo" (click)="UrlOfertas()"  class="active">VER OFERTAS</a></li>
+            <li><a joyrideStep="5" title="PERFILES" text="En esta sección seleccionas algun perfil de empleado para contratar" id="activo" href="#/perfilEmpleados" (click)="UrlPerfil()"  class="active">PERFILES</a></li>
          
             <li class="has-dropdown megamenu">
-              <a joyrideStep="3" title="Bienvenido" text="En esta sección seleccionas la categoria para encontrar empleo o publicar">CATEGORIAS</a>
+              <a joyrideStep="4" title="Bienvenido" text="En esta sección seleccionas la categoria para encontrar empleo o publicar">CATEGORIAS</a>
          
               <div class="dropdown">
                 <div class="dropdown-body">
@@ -116,33 +116,31 @@
                 </div>
               </div>
             </li>
-            <li><a [routerLink]="['/cursos']" routerLinkActive="router-link-active" joyrideStep="2" title="Cursos"text="En esta sección  encuentras los cursos disponibles" (click)="presionar11()">CAPACÍTATE</a></li>
-  
-  
+            <li><a [routerLink]="['/cursos']" routerLinkActive="router-link-active" joyrideStep="3" title="Cursos"text="En esta sección  encuentras los cursos disponibles" (click)="presionar11()">CAPACÍTATE</a></li>
             <li class="has-dropdown">
-              <a joyrideStep="1" title="Login"text="Si estas registrado puedes iniciar sesión">Iniciar Sesión</a>
+              <a joyrideStep="2" title="Login"text="Aqui puedes registrarte para publicar un empleo o buscar un empleo segun la categoria que necesites">REGISTRARSE</a>
               <div class="dropdown">
                 <div class="dropdown-body" style="text-align: center">
-                  <h5 class="animated infinite pulse" style="color:#56c2c6; text-align: center">
-                    <i class="fas fa-users"></i> Ingresa a nuestra plataforma
-                  </h5>
-                  <ul class="dropdown-list">
-                    <li *ngIf="activeNav == true"><a [routerLink]="['/login']" routerLinkActive="router-link-active" >INGRESAR</a></li>
-     
-                  
-                  
-                  <!--  <li *ngIf="activeNav == true"><a href="https://admin.servirating.com/#/loginOperador">Login Analista</a></li>
-                    <li *ngIf="activeNav == true"><a href="https://admin.servirating.com/#/loginAdmin">Login Administrador</a></li>  -->
-                    <li *ngIf="activeNav == false"><a [routerLink]="['/login']" routerLinkActive="router-link-active" >INGRESAR</a></li>
-   
                 
-               <!--    <li *ngIf="activeNav == false"><a href="https://admin.servirating.com/#/loginOperador" (click)="presionar3()">Login Analistas</a></li>
-                    <li *ngIf="activeNav == false"><a href="https://admin.servirating.com/#/loginAdmin" (click)="presionar4()">Login Administrador</a></li>   --> 
+                  <ul class="dropdown-list">
+                    <li *ngIf="activeNav == true"><a [routerLink]="['/home2']" routerLinkActive="router-link-active" >PUBLICAR EMPLEO</a></li>
+                    <li *ngIf="activeNav == true"><a [routerLink]="['/home']" routerLinkActive="router-link-active" >ENCONTRAR EMPLEO</a></li>
+                  
+                  
+                 
+                    <li *ngIf="activeNav == false"><a [routerLink]="['/home2']" routerLinkActive="router-link-active" >PUBLICAR EMPLEO</a></li>
+                    <li *ngIf="activeNav == false"><a [routerLink]="['/home']" routerLinkActive="router-link-active" >ENCONTRAR EMPLEO</a></li>
+                
+  
                   </ul>
                 </div>
               </div>
             </li>
   
+            <li><a [routerLink]="['/login']" routerLinkActive="router-link-active"  joyrideStep="1" title="Login"text="Si estas registrado puedes iniciar sesión" (click)="UrlLogingin() ">INGRESAR</a></li>
+              <!---->
+         
+
           </ul>
           <!-- /nav -->
         </div>

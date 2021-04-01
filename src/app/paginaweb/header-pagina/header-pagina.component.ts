@@ -39,7 +39,7 @@ export class HeaderPaginaComponent implements OnInit {
   tour() {
     this.joyride.startTour(
       {
-        steps: ['1', '2', '3', '4', '5'],
+        steps: ['1', '2', '3', '4', '5','6'],
         customTexts: {
           next: 'SIGUIENTE',
           prev: 'ANTERIOR',

@@ -1,1 +1,86 @@
-<p>perfiles-premium works!</p>
+
+
+
+
+
+
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row animated fadeIn">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                
+                
+                           
+                                
+                                <div class=" container p-3 " class="col-sm">
+                                    <h3 align="center" id="color">PERFILES PREMIUM PUBLICADOS</h3>
+                                </div>
+                                
+                                <div class="row animated fadeIn" *ngIf="cargando">
+                                
+                                    <div class="col-sm-12">
+                                
+                                        <div class="alert alert-warning text-center">
+                                            <strong>Cargando</strong>
+                                            <br>
+                                            <i class="fa fa-refresh fa-spin fa-2x"></i>
+                                            <br>
+                                            <span>Espere por favor</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                
+
+
+
+
+                <table class="table table-hover table-responsive"*ngIf="!cargando">
+                    <thead>
+                        <tr>
+                            <th>IMAGEN</th>
+                            <th>NOMBRE</th>
+                            <th>DESCRIPCIÓN</th>
+                            <th>CATEGORIA</th>
+                            <th>TELÉFONO</th>
+                            <th>CALIFICACIÓN</th>
+                            <th>ACCIÓN</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr
+                            *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
+                            <td class="w70">
+                                <img [src]="form.usuario.img |imagen" class="img-50 img-circle pointer">
+                            </td>
+                            <td> {{form.nombre}} {{form.apellido}}</td>
+                            <td>{{form.descripcion}}</td>
+                            <td>{{form.categorias}}</td>
+                            <td> {{form.usuario.telefono}} </td>
+                            <td>{{form.rating}}</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-primary"
+                    style="width: 140px;height: 75;font-size: 70%;" (click)="ActulizarEstado(form._id)"
+                                              ><b>Quieres contactar</b></button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
+</div>

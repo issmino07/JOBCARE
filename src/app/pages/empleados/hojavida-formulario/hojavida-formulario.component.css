@@ -5,7 +5,8 @@ agm-map {
         background-color: #f7f7f7;
         border: 2px solid #56c2c6;
         border-radius: 20px 20px;
-
+        width:235px;
+        height:900px;
   
     }
     
@@ -13,13 +14,15 @@ agm-map {
         background-color: #f7f7f7;
         border: 2px solid #56c2c6;
         border-radius: 20px 20px;
-     
+        width:235px;
+        height:900px;
     }
     .caja3{
         background-color:#f7f7f7;
         border: 2px solid #56c2c6;
         border-radius: 20px 20px;
-   
+        width:235px;
+        height:900px;
     }
     
     
