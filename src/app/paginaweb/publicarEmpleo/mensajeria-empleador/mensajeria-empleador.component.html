@@ -51,7 +51,7 @@
     <!--AQUI EMPEZA EL FORMULARIO-->
 
     <div class="bs-stepper-content">
-      <form [formGroup]="registerForm">
+      <form [formGroup]="registerForm" (ngSubmit)="crearUsuario()">
         <div id="test-l-1" class="content">
           <div class="form-group">
                      <label for="exampleInputEmail1" joyrideStep="prota1" title="Bienvenido" text="Estas en la categoria de Mensajeria selecciona provincia y ciudad donde vives"  >CIUDAD/TODOS</label>
@@ -308,8 +308,23 @@
               placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
           </div>  -->
            <!--<button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button> -->
+           <div class="row ">
+            <div class="col text-danger  ">
+               <p class="center" *ngIf="campoNoValido('provincia')">Debe seleccionar una provincia en el paso uno</p>
+               <p class="center" *ngIf="campoNoValido('ciudad')">Debe seleccionar una ciudad en el paso uno</p>
+               <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el market del mapa en el paso uno</p>
+               <p class="center" *ngIf="campoNoValido('fecha')">Debe seleccionar una fecha indicando cuando lo necesitas en el paso 4</p>
+  
+              
+                <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p>
+                <p class="center" *ngIf="campoNoValido('telefono')">Debe llenar el campo teléfono 10 caracteres ejemplo: 0900 000 000</p>
+                <p class="center" *ngIf="campoNoValido('email')">Debe llenar el campo email</p>
+                <p class="center" *ngIf="campoNoValido('password')">Debe poner una contraseña para completar el registro</p>
+            </div>
+ 
+           </div>
           &nbsp;&nbsp;
-          <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuario()">REGISTRAR</button>
+          <button type="submit" class="btn btn-primary mt-5" >REGISTRAR</button>
           &nbsp;&nbsp;
           <button type="button" class="btn btn-success mt-5" (click)="asistencia5()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
         </div>

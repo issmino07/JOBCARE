@@ -79,12 +79,12 @@ export class ProfesionalEmpleadorComponent implements OnInit {
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
-    direccionmapa: ['', [Validators.required]],
+    direccionmapa: [''],
   
     fecha: ['', [Validators.required]],
     categorias:[''],
     role:[''],
-    experiencia: ['', [Validators.required]],
+  //  experiencia: ['', [Validators.required]],
 
 
 
@@ -341,17 +341,20 @@ export class ProfesionalEmpleadorComponent implements OnInit {
   }
 
   crearUsuario() {
-    this.formSubmitted = true;
-
-    this.spinner.show();
-    setTimeout(() => {
-      console.log(this.registerForm.value)
+    
       this.registerForm.value.direccionmapa = this.address;
       this.registerForm.value.categorias = this.cate;
       this.registerForm.value.role = this.rol;
+
+      this.formSubmitted = true;
+
+    console.log(this.registerForm.value)
+    if (this.registerForm.invalid) {
+      return;
+    }
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-          this.spinner.hide();
+        
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -364,10 +367,7 @@ export class ProfesionalEmpleadorComponent implements OnInit {
 
       )
       this.resetUsuario()
-    }, 4000)
-    setTimeout(() => {
-
-    }, 6000)
+ 
   }
 
 
@@ -413,6 +413,17 @@ export class ProfesionalEmpleadorComponent implements OnInit {
       stepDefaultPosition: 'center',
     }
     )
+  }
+
+  campoNoValido(campo: string): boolean {
+
+    if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+
+      return true
+    } else {
+
+      return false;
+    }
   }
 
 }

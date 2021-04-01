@@ -80,7 +80,7 @@ export class NineraEmpleadorComponent implements OnInit {
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
-    direccionmapa: ['', [Validators.required]],
+    direccionmapa: [''],
     fecha: ['', [Validators.required]],
     categorias:[''],
   
@@ -108,8 +108,8 @@ export class NineraEmpleadorComponent implements OnInit {
 
     const ninosFormgroup = this.fb.group({
 
-      masculino: ['', [Validators.required]],
-      femenino: ['', [Validators.required]],
+      masculino: ['', ],
+      femenino: ['', ],
       edad: ['', [Validators.required]],
 
 
@@ -132,7 +132,7 @@ export class NineraEmpleadorComponent implements OnInit {
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router, private joyride: JoyrideService,
 
     private ngZone: NgZone) {
-    this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
+   // this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
     // this.to = new FormControl('', [Validators.required]);
     this.votes = this.votes || 0;
   }
@@ -236,6 +236,38 @@ export class NineraEmpleadorComponent implements OnInit {
     });
   }
 
+
+  crearUsuario() {
+   
+    console.log(this.registerForm.value)
+ 
+    
+      this.registerForm.value.direccionmapa = this.address;
+      this.registerForm.value.categorias = this.cate;
+      this.registerForm.value.role = this.rol;
+      this.formSubmitted = true;
+
+      if (this.registerForm.invalid) {
+        return;
+      }
+      this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
+        resp => {
+       
+          Swal.fire("Registro  existoso", "", "success")
+          console.log(resp);
+          this.router.navigateByUrl('/login')
+        }, (err) => {
+          // Si sucede un error
+          //  Swal.fire('Error', err['msg'], 'error' );
+          Swal.fire('Error', err.error.msg, 'error');
+          this.router.navigateByUrl('/inicio')
+        }
+
+      )
+      this.resetUsuario()
+
+ 
+  }
   activar() {
 
     this.mostarDatos = true;
@@ -375,39 +407,11 @@ export class NineraEmpleadorComponent implements OnInit {
    
       Swal.fire("Codigo verificado con  exito", "", "success")
       console.log('funciona la verificacion')
-      this.crearUsuario();
+     // this.crearUsuario();
     }
   }
 
-  crearUsuario() {
-    this.formSubmitted = true;
 
-    this.spinner.show();
-    setTimeout(() => {
-      console.log(this.registerForm.value)
-      this.registerForm.value.direccionmapa = this.address;
-      this.registerForm.value.categorias = this.cate;
-      this.registerForm.value.role = this.rol;
-      this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
-        resp => {
-          this.spinner.hide();
-          Swal.fire("Registro  existoso", "", "success")
-          console.log(resp);
-          this.router.navigateByUrl('/login')
-        }, (err) => {
-          // Si sucede un error
-          //  Swal.fire('Error', err['msg'], 'error' );
-          Swal.fire('Error', err.error.msg, 'error');
-          this.router.navigateByUrl('/inicio')
-        }
-
-      )
-      this.resetUsuario()
-    }, 4000)
-    setTimeout(() => {
-
-    }, 6000)
-  }
 
 
   resetUsuario() {
@@ -481,4 +485,15 @@ export class NineraEmpleadorComponent implements OnInit {
     )
   }
   //mensaje guia ================================//
+
+  campoNoValido(campo: string): boolean {
+
+    if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+
+      return true
+    } else {
+
+      return false;
+    }
+  }
 }

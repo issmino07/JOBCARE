@@ -79,7 +79,7 @@ export class TutoriasEmpleadorComponent implements OnInit {
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
-    direccionmapa: ['', [Validators.required]],
+    direccionmapa: [''],
    
     fecha: ['', [Validators.required]],
     categorias:[''],
@@ -104,8 +104,8 @@ export class TutoriasEmpleadorComponent implements OnInit {
 
     const ninosFormgroup = this.fb.group({
 
-      masculino: ['', [Validators.required]],
-      femenino: ['', [Validators.required]],
+      masculino: ['',],
+      femenino: [''],
       edad: ['', [Validators.required]],
 
 
@@ -374,9 +374,10 @@ export class TutoriasEmpleadorComponent implements OnInit {
   crearUsuario() {
     this.formSubmitted = true;
 
-    this.spinner.show();
-    setTimeout(() => {
-      console.log(this.registerForm.value)
+    console.log(this.registerForm.value)
+    if (this.registerForm.invalid) {
+      return;
+    }
       this.registerForm.value.direccionmapa = this.address;
       this.registerForm.value.categorias = this.cate;
       this.registerForm.value.role = this.rol;
@@ -396,10 +397,8 @@ export class TutoriasEmpleadorComponent implements OnInit {
 
       )
       this.resetUsuario()
-    }, 4000)
-    setTimeout(() => {
-
-    }, 6000)
+    
+  
   }
 
 
@@ -473,5 +472,16 @@ export class TutoriasEmpleadorComponent implements OnInit {
       stepDefaultPosition: 'left',
     }
     )
+  }
+
+  campoNoValido(campo: string): boolean {
+
+    if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+
+      return true
+    } else {
+
+      return false;
+    }
   }
 }

@@ -173,7 +173,7 @@ export class CuidadoAdultoComponent implements OnInit {
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-          this.spinner.hide();
+       
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -181,7 +181,7 @@ export class CuidadoAdultoComponent implements OnInit {
           // Si sucede un error
           //  Swal.fire('Error', err['msg'], 'error' );
           Swal.fire('Error', err.error.msg, 'error');
-          this.spinner.hide();
+          
           this.router.navigateByUrl('/inicio')
         }
 

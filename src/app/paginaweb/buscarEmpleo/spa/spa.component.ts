@@ -172,7 +172,7 @@ export class SpaComponent implements OnInit {
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-          this.spinner.hide();
+       
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
