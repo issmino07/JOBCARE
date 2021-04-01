@@ -1,6 +1,6 @@
 import { environment } from '../../../../environments/environment.prod';
 
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { VerificacionService } from 'src/app/services/verificacion.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -33,8 +33,8 @@ export class AsistenciaComponent implements OnInit {
 
   //=================================
 
-//Expresiones Regulares
-emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  //Expresiones Regulares
+  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
   onSubmit() {
     return false;
@@ -49,7 +49,7 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     password: ['', [Validators.required]],
-   // //clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
+    // //clave: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(4)]],
 
 
 
@@ -68,9 +68,9 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
 
 
 
-  
 
-  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,private joyride: JoyrideService,
+
+  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService, private joyride: JoyrideService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
   ) {
     this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
@@ -83,26 +83,27 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
   }
 
   //mensaje guia ================================//
-  asistencia(){
+  asistencia() {
     this.joyride.startTour(
-      { steps: ['primero'],
-      customTexts: {
-        next: 'SIGUIENTE',
-        prev: 'ANTERIOR',
-        done: 'CERRAR'
-      }, themeColor: '#56c2c6',
-      stepDefaultPosition: 'center',
-    }
+      {
+        steps: ['primero'],
+        customTexts: {
+          next: 'SIGUIENTE',
+          prev: 'ANTERIOR',
+          done: 'CERRAR'
+        }, themeColor: '#56c2c6',
+        stepDefaultPosition: 'center',
+      }
     )
   }
 
   //==================================================================//
-   private url = environment.base_url;
+  private url = environment.base_url;
 
   verificarEmail() {
 
     setTimeout(() => {
-      this.verificar.sendEmail( this.url+'/codigo').subscribe(
+      this.verificar.sendEmail(this.url + '/codigo').subscribe(
 
         res => {
 
@@ -121,7 +122,7 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
     this.spinner.show();
     let to = this.registerForm.value.email;
     console.log(to)
-    this.verificar.Email(this.url+'/send', this.registerForm.value).subscribe(
+    this.verificar.Email(this.url + '/send', this.registerForm.value).subscribe(
 
 
       data => {
@@ -161,42 +162,50 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
   crearUsuario() {
     this.formSubmitted = true;
 
-    this.spinner.show();
-    setTimeout(() => {
-      console.log(this.registerForm.value)
+    console.log(this.registerForm.value)
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.registerForm.value.categorias = this.cate;
+    this.registerForm.value.role = this.rol;
+    this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
+      resp => {
 
-      this.registerForm.value.categorias = this.cate;
-      this.registerForm.value.role = this.rol;
-      this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
-        resp => {
-          this.spinner.hide();
-          Swal.fire("Registro  existoso", "", "success")
-          console.log(resp);
-          this.router.navigateByUrl('/login')
-        }, (err) => {
-          // Si sucede un error
-          //  Swal.fire('Error', err['msg'], 'error' );
-          this.spinner.hide();
-          Swal.fire('Error', err.error.msg, 'error');
-     
-          this.router.navigateByUrl('/inicio')
-        }
+        Swal.fire("Registro  existoso", "", "success")
+        console.log(resp);
+        this.router.navigateByUrl('/login')
+      }, (err) => {
+        // Si sucede un error
+        //  Swal.fire('Error', err['msg'], 'error' );
 
-      )
-      this.resetUsuario()
-    }, 4000)
-    setTimeout(() => {
+        Swal.fire('Error', err.error.msg, 'error');
 
-    }, 6000)
+        this.router.navigateByUrl('/inicio')
+      }
+
+    )
+    this.resetUsuario()
+
+
   }
 
 
   resetUsuario() {
     this.registerForm.reset()
-    this.spinner.hide();
+  
   }
 
 
+  campoNoValido(campo: string): boolean {
+
+    if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+
+      return true
+    } else {
+
+      return false;
+    }
+  }
 
 
 }

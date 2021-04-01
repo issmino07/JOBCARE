@@ -161,9 +161,11 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
   crearUsuario() {
     this.formSubmitted = true;
 
-    this.spinner.show();
-    setTimeout(() => {
-      console.log(this.registerForm.value)
+    console.log(this.registerForm.value)
+    if (this.registerForm.invalid) {
+      return;
+    }
+
 
       this.registerForm.value.categorias = this.cate;
       this.registerForm.value.role = this.rol;
@@ -182,10 +184,8 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
 
       )
       this.resetUsuario()
-    }, 4000)
-    setTimeout(() => {
-
-    }, 6000)
+ 
+  
   }
 
 
@@ -193,7 +193,16 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
     this.registerForm.reset()
   }
 
+  campoNoValido(campo: string): boolean {
 
+    if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+
+      return true
+    } else {
+
+      return false;
+    }
+  }
 
 
 }

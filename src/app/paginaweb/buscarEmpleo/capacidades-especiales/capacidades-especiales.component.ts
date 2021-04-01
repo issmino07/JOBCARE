@@ -165,8 +165,13 @@ export class CapacidadesEspecialesComponent implements OnInit {
   crearUsuario() {
     this.formSubmitted = true;
 
-    this.spinner.show();
-    setTimeout(() => {
+ 
+
+    console.log(this.registerForm.value)
+    if (this.registerForm.invalid) {
+      return;
+    }
+ 
       console.log(this.registerForm.value)
 
       this.registerForm.value.categorias = this.cate;
@@ -186,17 +191,24 @@ export class CapacidadesEspecialesComponent implements OnInit {
 
       )
       this.resetUsuario()
-    }, 4000)
-    setTimeout(() => {
+  
 
-    }, 6000)
   }
 
 
   resetUsuario() {
     this.registerForm.reset()
   }
+  campoNoValido(campo: string): boolean {
 
+    if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+
+      return true
+    } else {
+
+      return false;
+    }
+  }
 
 
 
