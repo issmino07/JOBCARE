@@ -10,6 +10,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 
 
 import { HojavidaService } from 'src/app/services/hojavida.service';
+import { Mensaje } from 'src/app/models/mensaje';
 
 
 
@@ -32,7 +33,12 @@ export class OfertasPublicadasComponent implements OnInit {
   totalRegistros: number = 1;
   hoja;
   cargando = false;
+  
 
+  oferta:Ofertas;
+  usuarioLogueado: Usuario;
+  mensajes: Array<Mensaje>;
+  mensaje: Mensaje;
 
 
 
@@ -43,6 +49,10 @@ export class OfertasPublicadasComponent implements OnInit {
     this.usuario = this._usuarioServices.usuario;
 
     //  this.st();
+
+    this.mensajes = new Array<Mensaje>();
+    this.mensaje = new Mensaje();
+    this.usuarioLogueado = JSON.parse(localStorage.getItem('usuario')) as Usuario;
   }
 
   ngOnInit() {
@@ -170,6 +180,29 @@ export class OfertasPublicadasComponent implements OnInit {
             });
   
   }
+
+  registrarMensaje() {
+    this.mensaje.oferta = this.oferta;
+    this.mensaje.usuario = this.usuarioLogueado;
+    if (this.usuarioLogueado.role === 'EMPLEADOR_ROLE' || this.usuarioLogueado.role === 'EMPLEADO_ROLE'
+     ) {
+      this.mensaje.tipoUsuario = 'EMPLEADO_ROLE';
+    } else {
+      this.mensaje.tipoUsuario = 'EMPLEADOR_ROLE';
+    }
+   
+    this.listainforme.addmensaje( this.mensaje)
+      .subscribe(response => {
+        this.mensajes = response['data'];
+        this.mensaje.mensaje = '';
+        
+     
+      }, error => {
+       
+      //  swal.fire(this.servicio.obtenerMensaje(error.error.code));
+      });
+  }
+
 
 
 }

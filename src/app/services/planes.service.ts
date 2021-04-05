@@ -22,7 +22,7 @@ export class PlanesService {
 
   public notificacion = new EventEmitter<any>();
   private opcionesUrl =  environment.base_url + '/planes';  // URL to web api
-  private opcionesUrl2 =  environment.base_url + '/usuarios/plan';  // URL to web api
+ // private opcionesUrl2 =  environment.base_url + '/usuarios/plan';  // URL to web api
   private opcionesUrl3 =  environment.base_url + '/planes/pago';  // URL to web api
 
   private Url = "https://pay.payphonetodoesposible.com/api/button/Prepare"
@@ -44,8 +44,8 @@ export class PlanesService {
     return this.http.get<Plan[]>(this.opcionesUrl+'?usuario_id='+usuario_id)
   }
 
-  updateUsuario (proveedor: Usuario): Observable<any> {
-    return this.http.put(this.opcionesUrl2, proveedor, httpOptions);
+  updatePlan (proveedor: Plan): Observable<any> {
+    return this.http.put(this.opcionesUrl, proveedor, httpOptions);
   }
 
   pagar(data: any): Observable<any> {

@@ -41,13 +41,13 @@ export class PlanEmpleadosComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.getFormulariosOfertas()
+    this.getPlanOfertas() 
     this.confirmacionPago()
   }
 
 
 
-  getFormulariosOfertas() {
+  getPlanOfertas() {
 
     const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.listainforme.getPlan(usuario._id).subscribe(
@@ -56,10 +56,7 @@ export class PlanEmpleadosComponent implements OnInit {
         console.log(this.formularios)
 
       });
-
-
-
-  }
+   }
 
 
 

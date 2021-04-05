@@ -247,7 +247,7 @@ selectProvincia(provincia) {
   this._hojavida.updateOpcion(this.hojaModelo)
       .subscribe(result => {
         console.log(result)
-        Swal.fire("Actualización de oferta existoso", "", "success")
+        Swal.fire("Actualización de Hoja de vida existoso", "", "success")
       });
 }
 
@@ -256,7 +256,7 @@ updateEstado(): void {
   this._hojavida.updateOpcion(this.hojaModelo)
       .subscribe(result => {
         console.log(result)
-        Swal.fire("Actualización de Publicación existoso", "", "success")
+        Swal.fire("Actualización de estado existoso", "", "success")
       });
 }
 eliminar(){

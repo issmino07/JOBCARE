@@ -15,7 +15,7 @@ estado: String;
 categorias: string;
 provincia:  string;
 
-
+tipoPlan:string;
 ciudad: string;
 postulacion?:Array<Object>
 descripcion?:Hojavida;

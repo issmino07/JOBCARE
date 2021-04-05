@@ -23,6 +23,8 @@ import { URL_SERVICIOS } from 'src/app/config/config';
 })
 export class AdmininicioComponent implements OnInit {
 
+ plan :Plan[]
+  formularios: Ofertas[];
   opcionesGenerales: Categoria[]
    ofertaModelo= new Ofertas();
   estado = 'NO PUBLICADO'
@@ -35,7 +37,7 @@ export class AdmininicioComponent implements OnInit {
   OfertaModelo = new Ofertas();
   @ViewChild('search')
   public searchElementRef: ElementRef;
-
+  public formSubmitted = false;
   tipo = "Free";
   valor= "0.00";
 
@@ -73,7 +75,7 @@ export class AdmininicioComponent implements OnInit {
     categorias:[''],
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
-    TipoPlan: ['', [Validators.required]],
+    TipoPlan: [''],
   //  direccionmapa: ['', [Validators.required]],
   //  lavado: ['',],
   //  comida: ['',],
@@ -107,7 +109,9 @@ IDOFERTA
 
   ngOnInit(): void {
     this.confirmacionPago();
+    this.getPalnEmpeadores()
     this.getOpciones2();
+    this.getFormulariosOfertas()
     this.ciuadadesOpcion = new Array<Ciudad>();
     this.ciudad = new Ciudad();
     
@@ -144,13 +148,50 @@ IDOFERTA
   })
   }
 
+  
+
+  planRegistro
+  IDPLAN
+  getPalnEmpeadores() {
+
+    const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.planes.getPlan(usuario._id).subscribe(
+      result => { 
+         this.plan =  result 
+         for (var form in result) {
+          this.planRegistro = result[form].tipoPlan;
+          this.IDPLAN = result[form]._id
+          console.log( this.planRegistro,this.IDPLAN, 'QUE HACES')
+          this.updateEstado()
+         }
+         console.log(this.plan,'planess')
+   
+     });
+
+  
+
+}
+
+  getFormulariosOfertas() {
+
+    const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.oferta.getOfertas(usuario._id).subscribe(
+      result => { 
+         this.formularios =  result;
+         console.log(this.formularios,'LAS OFERTAS QUE TRAE')
+         },error =>{
+     console.log(error,'Error')
+    //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
+    });
+}
+
 //metodo  categorias
  //opciones generales
  getOpciones1() {
   return this.opcionesServices.getOpciones()
     .subscribe(
       opcionesGenerales => {
-        console.log(opcionesGenerales);
+    
         this.opcionesGenerales = opcionesGenerales
       }
     );
@@ -161,7 +202,7 @@ getOpciones2() {
   return this.ciudadOpcion.getOpciones()
     .subscribe(
       ciudades => {
-          console.log(ciudades);
+     
         this.ciuadadesOpcion = ciudades;
         if (this.ciuadadesOpcion.length > 0) {
           this.ciudad = this.ciuadadesOpcion[0];
@@ -189,7 +230,7 @@ selectProvincia(provincia) {
     }
   }
   markerDragEnd($event: google.maps.MouseEvent) {
-    console.log($event);
+  
     this.latitude = $event.latLng.lat();
     this.longitude = $event.latLng.lng();
     this.getAddress(this.latitude, this.longitude);
@@ -197,13 +238,12 @@ selectProvincia(provincia) {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
-      console.log(status);
+   
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 28;
           this.address = results[0].formatted_address;
-          console.log(this.address)
+       
         } else {
           window.alert('No results found');
         }
@@ -229,31 +269,35 @@ selectProvincia(provincia) {
   this.descrip = this.registerForm.value.descripcionEmpleo;
   this.fecha = new Date();
   this.IDOFERTA = localStorage.getItem('Idoferta')
-  console.log(this.IDOFERTA,'Aqui esta el ID')
+
 
  }
 
   crearUsuario() {
     
-    console.log( this.registerForm.value );
 
-  //  if ( this.registerForm.invalid ) {
-   //   return;
- //   }
+  
 
     // Realizar el posteo
     this.registerForm.value.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
-    this.registerForm.value.estado = this.estado
+    this.registerForm.value.estado = this.estado;
+    this.registerForm.value.tipoPlan = this.planRegistro
+    this.formSubmitted = true;
+
+
+    if (this.registerForm.invalid) {
+      return;
+    }
     this.oferta.addOpcionOfer(this.registerForm.value).subscribe(
       resp => {
         Swal.fire("Registro  existoso", "", "success")
-        console.log(resp);
+       
        this.ID =   resp._id 
        this.ID = localStorage.setItem('Idoferta',this.ID)
       
 
        this.IDOFERTA = localStorage.getItem('Idoferta')
-       console.log(this.IDOFERTA,'Aqui esta el ID')
+     
       }, (err) => {
         // Si sucede un error
         //  Swal.fire('Error', err['msg'], 'error' );
@@ -268,14 +312,15 @@ selectProvincia(provincia) {
 ID
   updateEstado(): void {
     this.IDOFERTA = localStorage.getItem('Idoferta')
-    console.log(this.IDOFERTA,'Aqui esta el ID')
+ 
     this.ofertaModelo._id = this.IDOFERTA
     this.ofertaModelo.estado = this.etsado2
+    this.ofertaModelo.tipoPlan = this.planRegistro
     this.oferta.updateOpcion(this.ofertaModelo)
       .subscribe(result => {
        
-        console.log(result,'Aqui esta la ctualizacion')
-        Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "", "success")
+        
+        Swal.fire("OFERTA PUBLICADA CON EXITO", "", "success")
         // window.location.reload()
       });
   }
@@ -283,7 +328,7 @@ ID
 
   registrarPlan() {
     
-    console.log( this.planModelo);
+
   // Realizar el posteo
     this.planModelo.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.planModelo.tipoPlan = this.tipo
@@ -292,7 +337,7 @@ ID
       resp => {
        
         Swal.fire("Suscrito a Plan Free", "", "success")
-        console.log(resp);
+      
        
       }, (err) => {
         
@@ -338,7 +383,7 @@ ID
         cancellationUrl:URL_SERVICIOS+ "/#/dashboard/admininico"
   
       }
-      console.log(parametros.responseUrl)
+   
       this.planes.pagar(parametros).subscribe(resp => {
   
   
@@ -365,7 +410,7 @@ ID
         cancellationUrl: URL_SERVICIOS+ "/#/dashboard/admininico"
   
       }
-      console.log(parametros)
+   
       this.planes.pagar(parametros).subscribe(resp => {
   
   
@@ -385,28 +430,29 @@ valor2= '9.99'
 
     
     // Realizar el posteo
-    this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+   // this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+   this.planModelo._id = this.IDPLAN;
     this.planModelo.amount= this.cantidad;
     if(this.cantidad =="599"){
       this.planModelo.tipoPlan = this.paquete
       this.planModelo.valor = this.valor1
-      console.log(this.planModelo.tipoPlan,'PAQUETE')
+ 
     }
     else if (this.cantidad =="999"){
       this.planModelo.tipoPlan = this.paquete2
       this.planModelo.valor = this.valor2
-      console.log(this.planModelo.tipoPlan,'PAQUETE2')
+   
     }
     this.planModelo.clientTransactionId =this.clientTId
     this.planModelo.optionalParameter1  =this.parametro1
      this.planModelo.optionalParameter2 =this.parametro2
      this.planModelo.reference =this.referencia
   //  this.planModelo.tipoPlan =
-    this.planes.addPlanPago(this.planModelo).subscribe(
+    this.planes.updatePlan(this.planModelo).subscribe(
       resp => {
 
         Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
-        console.log(resp);
+       
         this.updateEstado()
       }, (err) => {
 
@@ -428,7 +474,7 @@ valor2= '9.99'
     confirmacionPago() {
 
       this.IDOFERTA = localStorage.getItem('Idoferta')
-      console.log(this.IDOFERTA,'Aqui esta el ID')
+     
       let parametros = {
         id: this.id,
         clientTxId: this.type
@@ -446,23 +492,31 @@ valor2= '9.99'
             this.parametro2 = resp.optionalParameter2
             this.referencia = resp.reference
           Swal.fire("Pago realizado con exito", resp.clientTransactionId, "success")
+          this.registrarPlanGeneral()
           setTimeout(() => {
-  
+          
            this.updateEstado()
-            this.registrarPlanGeneral()
+           // this.registrarPlanGeneral()
           }, 3000);
   
   
         }, (err) => {
   
           // Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
-  
-        })
-  
-      }
-  
-  
-    }
+          }) }
+          }
+
+
+          campoNoValido(campo: string): boolean {
+
+            if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+        
+              return true
+            } else {
+        
+              return false;
+            }
+          }
   
 
 }

@@ -1,7 +1,7 @@
 import { Usuario } from "./usuario.model";
 
 export class Planempleados {
-
+    _id: string;
     tipoPlan: string;
     valor:string;
     usuario:Usuario;

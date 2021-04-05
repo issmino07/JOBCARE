@@ -1,3 +1,4 @@
+import { Mensaje } from 'src/app/models/mensaje';
 import { Ofertas } from 'src/app/models/ofertas';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -21,6 +22,9 @@ private opcionesUrl3 =  environment.base_url + '/ofertas/crear';
 private opcionesUrl2 =  environment.base_url + '/ofertas/insertar';
   private opcionesUrl1 =  environment.base_url + '/ofertas/todos';
   private opcionesUrl =  environment.base_url + '/ofertas';  // URL to web api
+
+  private opcionesUrl4 =  environment.base_url + '/ofertas/enviar/mensajes';  // URL to web api
+
   constructor(
     private http: HttpClient
   ) {
@@ -84,5 +88,10 @@ private opcionesUrl2 =  environment.base_url + '/ofertas/insertar';
    
   }
 
+  //====mensajes====================================
+ addmensaje(proveedor: Mensaje): Observable<Mensaje>{
+
+    return this.http.post<Mensaje>(this.opcionesUrl4, proveedor, httpOptions);
+ }
 
 }

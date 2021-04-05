@@ -30,7 +30,7 @@ export class ResponseResetComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.resetToken = params.token;
       console.log(this.resetToken);
-      this.VerifyToken();
+     // this.VerifyToken();
     });
   }
 

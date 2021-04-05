@@ -44,8 +44,8 @@ export class PlanEmpleadosService {
     return this.http.get<Planempleados[]>(this.opcionesUrl+'?usuario_id='+usuario_id)
   }
 
-  updateUsuario (proveedor: Usuario): Observable<any> {
-    return this.http.put(this.opcionesUrl2, proveedor, httpOptions);
+  updatePlan (proveedor: Planempleados): Observable<any> {
+    return this.http.put(this.opcionesUrl, proveedor, httpOptions);
   }
 
 

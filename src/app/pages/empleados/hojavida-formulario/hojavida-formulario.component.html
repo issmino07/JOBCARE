@@ -32,7 +32,7 @@
         <div class="bs-stepper-content">
            
                 <div id="test-l-1" class="content">
-                    <form [formGroup]="registerForm">
+                    <form [formGroup]="registerForm" (ngSubmit)="crearUsuarioHoja()">
                     <div class="">
                         <div class="card-header bg-primary">
                             <h4 class="m-b-0 text-white">FORMULARIO</h4>
@@ -209,17 +209,13 @@
                             </div>
                             <!--/span-->
                             <div class="form-group col-6">
-                                <label>EXPERIENCIA LABORAL</label>
+                                <label>AÑOS DE EXPERIENCIA LABORAL</label>
                                 <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="button" (click)="voteUp(-1)">-</button>
-                                    </span>
+                                
 
-                                    <input [(ngModel)]="votes" type="number" class="form-control "
+                                    <input  type="text" class="form-control "
                                         placeholder="Años de experiencia" formControlName="experiencia" />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="button" (click)="voteUp(+1)">+</button>
-                                    </span>
+                                 
                                 </div>
 
                             </div>
@@ -375,18 +371,42 @@
                     </div>
 
                     <div class="alert alert-primary " role="alert ">
-                        <em class="text2">Es necesario llenar todos los campos para registrar tu hoja de vida posteriormente para publicar es obligatorio suscribirse a uno de nuestros planes para que tu perfil sea visible.</em>
+                        <em class="text2">Es necesario llenar todos los campos para registrar tu hoja de vida posteriormente para publicar es obligatorio suscribirse a uno de nuestros planes para que tu perfil sea visible en el paso 3 estan nuestros planes.</em>
                     </div>
 
                     <br>
+                    <div class="row ">
+                        <div class="col text-danger  ">
+                           <p class="center" *ngIf="campoNoValido('nombre')">Debe llenar el campo nombre</p>
+                           <p class="center" *ngIf="campoNoValido('apellido')">Debe llenar el campo apellido</p>
+                           <p class="center" *ngIf="campoNoValido('cedula')">Debe llenar el campo cedula con sus 10 digitos</p>
+                           <p class="center" *ngIf="campoNoValido('refSalarial')">Debe llenar el campo de referencia salarial cuanto aspira a ganar</p>
+                           <p class="center" *ngIf="campoNoValido('fechaNacimiento')">Debe seleccionar su fecha de nacimiento</p>
+                          
+                            <p class="center" *ngIf="campoNoValido('edad')">Debe indicar su edad </p>
+                            <p class="center" *ngIf="campoNoValido('genero')">Debe seleccionar un genero </p>
+                            <p class="center" *ngIf="campoNoValido('ocupacion')">Debe escribir su ocupación</p>
+                            <p class="center" *ngIf="campoNoValido('descripcion')">Debe poner una descripción</p>
+                            <p class="center" *ngIf="campoNoValido('categorias')">Debe seleccionar una categoria </p>
 
+                            <p class="center" *ngIf="campoNoValido('provincia')">Debe seleccionar una provincia en el paso uno</p>
+                            <p class="center" *ngIf="campoNoValido('ciudad')">Debe seleccionar una ciudad en el paso uno</p>
+                            <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el market del mapa en el paso uno</p>
+                            <p class="center" *ngIf="campoNoValido('experiencia')">Debe poner los años de experiencia</p>
+                            <p class="center" *ngIf="campoNoValido('descripcionExperiencia')">Debe poner una descripción de su experincia</p>
+
+                            <p class="center" *ngIf="campoNoValido('nivelEducacion')">Debe seleccionar nivel de educación </p>
+                       
+                        </div>
+              
+                       </div>
 
 
                     <div class="row m-0 justify-content-center align-items-center vh-100">
                         <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
                         &nbsp;&nbsp;
 
-                        <button type="submit" class="btn btn-primary mt-5" (click)="crearUsuarioHoja()">REGISTRAR HOJA DE VIDA</button>
+                        <button type="submit" class="btn btn-primary mt-5">REGISTRAR HOJA DE VIDA</button>
                     </div>
             
                 </form>
