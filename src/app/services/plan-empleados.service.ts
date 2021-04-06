@@ -24,7 +24,7 @@ export class PlanEmpleadosService {
 
 
   private opcionesUrl =  environment.base_url + '/planempleados';  // URL to web api
-  private opcionesUrl2 =  environment.base_url + '/usuarios/planempleados';  // URL to web api
+//  private opcionesUrl2 =  environment.base_url + '/usuarios/planempleados';  // URL to web api
   private opcionesUrl3 =  environment.base_url + '/planempleados/pagos';
   private Url = "https://pay.payphonetodoesposible.com/api/button/Prepare"
   private UrlPago = " https://pay.payphonetodoesposible.com/api/button/V2/Confirm"

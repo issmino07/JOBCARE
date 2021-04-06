@@ -274,10 +274,6 @@ selectProvincia(provincia) {
  }
 
   crearUsuario() {
-    
-
-  
-
     // Realizar el posteo
     this.registerForm.value.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado;
@@ -305,8 +301,23 @@ selectProvincia(provincia) {
   
       }
 
+    
+    )
+    this.resetUsuario()
+  }
+
+
+    resetUsuario() {
+      this.registerForm.reset()
+    
+     // this.getFormulariosHoja();
+  
+     setTimeout(() => {
+      window.location.reload()
+   },3000);
+    
       
-    )}
+    }
 
      //=================Actualiza el estado de la publicacion de la hoja de vida una vez que se realiza el pago ===//
 ID
@@ -432,6 +443,7 @@ valor2= '9.99'
     // Realizar el posteo
    // this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
    this.planModelo._id = this.IDPLAN;
+   console.log(this.IDPLAN)
     this.planModelo.amount= this.cantidad;
     if(this.cantidad =="599"){
       this.planModelo.tipoPlan = this.paquete

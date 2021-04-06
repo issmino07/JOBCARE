@@ -1,6 +1,11 @@
 <app-header-pagina></app-header-pagina>
 
 
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
 <div class="row animated fadeIn m-0 justify-content-center align-items-center vh-100 ">
     <div class="col-10">
         <div class="card">
@@ -42,21 +47,24 @@
 </div>
 
 
-<!--div class="container">
+<div class="container">
     <div class="row" *ngIf="!cargando">
         <div class="col-12">
-            <table class="table table-bordered  table-responsive btn-table "  class="table table-bordered" id="tableColor" >
+            <table class="table table-hover table-responsive" id="tableColor" >
                 <thead>
                     <tr>
-                        <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">TÍTULO EMPLEO</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
+                        <th >Nº</th>
+                        <th >TÍTULO EMPLEO</th>
+                        <th >VALOR</th>
                    
-                        <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
+                        <th >HORARIO</th>
+                        <th >CIUDAD</th>
+                        <th >REMUNERACIÓN</th>
+                        <th  joyrideStep="perfil" title="Bienvenido"
+                        text="Presiona el boton en la sección de categoria para que te redirija a la parte de registro y puedas ver estas ofertas en nuestra plataforma " >CATEGORIA</th>
                     
                      
-                        <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
+                        <th >ACCIÓN</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,27 +73,75 @@
                         <td>{{form.tituloEmpleo}}</td>
                         <td>${{form.valor}}</td>
                         <td>{{form.horario}}</td>
-                        <td>{{form.categorias}}</td>
+                        <td>{{form.ciudad}}</td>
+                        <td>{{form.remuneracion}}</td>
+                       <td>
+                        <span *ngIf="(form.categorias ==='NIÑERAS')" #ruta>
+                            <a type="button" class="btn btn-outline-primary" href="#/ninera">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='CUIDADO ADULTO MAYOR')">
+                            <a type="button" class="btn btn-outline-primary"
+                                href="#/cuidadoAdulto"> {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='SERVICIO DOMESTICO')">
+                            <a type="button" class="btn btn-outline-primary" href="#/domestico">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='CUIDADO DE MASCOTAS')">
+                            <a type="button" class="btn btn-outline-primary" href="#/mascota">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='CUIDADOS CAPACIDADES ESPECIALES')">
+                            <a type="button" class="btn btn-outline-primary" href="#/capacidades">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='TUTORIAS ESCOLARES')">
+                            <a type="button" class="btn btn-outline-primary" href="#/tutorias">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='TRABAJOS DEL HOGAR')">
+                            <a type="button" class="btn btn-outline-primary" href="#/trabajos">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='ASISTENCIA AUTOMOTRIZ')">
+                            <a type="button" class="btn btn-outline-primary" href="#/asistencia">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='MENSAJERIA')">
+                            <a type="button" class="btn btn-outline-primary" href="#/mensajeria">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='SPA')">
+                            <a type="button" class="btn btn-outline-primary" href="#/spa">
+                                {{form.categorias}}</a>
+                        </span>
+                        <span *ngIf="(form.categorias ==='PROFESIONALES TITULADOS')">
+                            <a type="button" class="btn btn-outline-primary" href="#/profesional">
+                                {{form.categorias}}</a>
+                        </span>
+
+
+                    </td>
                         
                      
                 
                         <td>
-                            <button type="button" class="btn btn-outline-primary"
-                                       style="width: 85px;height: 75;font-size: 50%;" (click)="postular()"
-                          ><b>Quieres postular</b></button>
-                        
-                 
-                        </td>
+                    
+
+                                <button type="button" class="btn btn-success" (click)="asistencia()"   style="width: 85px;height: 75;font-size: 50%;"><i><img
+                                    src="../../../../assets/images/patch-question.svg" alt=""></i></button>
+                    </td>
                     </tr>                  
                 </tbody>
             </table>
             <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
         </div>
     </div>
-</div-->
+</div>
 
 
-
+<!--
 <div class="card">
     <div class="card-body">
 
@@ -171,8 +227,12 @@
     </div>
     <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
 </div>
+-->
 
+</div>
 
-
+</div>
+</div>
+</div>
 
 <app-footer></app-footer>
