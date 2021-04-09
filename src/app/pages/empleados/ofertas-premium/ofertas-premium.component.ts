@@ -91,7 +91,7 @@ export class OfertasPremiumComponent implements OnInit {
 
   getFormulariosOfertas() {
    
-     this.listainforme.getOpciones().subscribe(
+     this.listainforme.getOpcionesPremium().subscribe(
       result => {
         this.formularios = result
 

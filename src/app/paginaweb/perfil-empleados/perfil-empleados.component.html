@@ -61,7 +61,8 @@
                                             <th>DESCRIPCIÓN</th>
 
                                             <th>TELÉFONO</th>
-
+                                            <th>CIUDAD</th>
+                                            <th>OCUPACIÓN</th>
                                             <th joyrideStep="perfil" title="Bienvenido"
                                                 text="Presiona el boton en la sección de categoria para que te redirija a la parte de registro y puedas ver estas ofertas en nuestra plataforma ">
                                                 CATEGORIA</th>
@@ -80,7 +81,8 @@
                                             <td>{{form.descripcion}}</td>
 
                                             <td> {{form.usuario.telefono}} </td>
-
+                                            <td>{{form.ciudad}}</td>
+                                            <td>{{form.ocupacion}}</td>
                                             <td>
                                                 <span *ngIf="(form.categorias ==='NIÑERAS')" #ruta>
                                                     <a type="button" class="btn btn-outline-primary"

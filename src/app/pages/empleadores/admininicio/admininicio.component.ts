@@ -178,9 +178,9 @@ IDOFERTA
     this.oferta.getOfertas(usuario._id).subscribe(
       result => { 
          this.formularios =  result;
-         console.log(this.formularios,'LAS OFERTAS QUE TRAE')
+     
          },error =>{
-     console.log(error,'Error')
+
     //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
     });
 }

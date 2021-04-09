@@ -199,18 +199,18 @@ export class HojavidaFormularioComponent implements OnInit {
     this.planes2.getPlan(usuario._id).subscribe(
       result => {
         this.formu = result
-        console.log(this.formu,'que es esto')
+ 
         for (var form in result) {
           this.planRegistro = result[form].tipoPlan;
           this.IDPLAN = result[form]._id
           console.log( this.planRegistro,'QUE HACES')
-          if(this.planRegistro =='Free'||this.planRegistro  == 'Premium (3 meses)'||this.planRegistro  == 'Premium (6 meses)'){
+         
             this.updateEstado()
-          //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
-          }else{
+        //   Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
+   
           
-            Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes", "warning")
-          }
+         //   Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes", "warning")
+          
         }
 
     
@@ -310,10 +310,10 @@ export class HojavidaFormularioComponent implements OnInit {
         Swal.fire("Registro  existoso", "", "success")
       
        // this.getFormulariosHoja();
-       if(this.planregistrado =='Free'|| this.planregistrado == 'Premium (3 meses)'||this.planregistrado == 'Premium (6 meses)'){
+       if(this.planRegistro =='Free'|| this.planRegistro == 'Premium (3 meses)'||this.planRegistro == 'Premium (6 meses)'){
         this.updateEstado()
       //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
-      }else if (this.planregistrado == "") {
+      }else if (this.planRegistro == null) {
         Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
       }
    
@@ -356,20 +356,18 @@ export class HojavidaFormularioComponent implements OnInit {
       result => {
         this.notificacion.emit( result );
         this.formularios = result
-        this.ID = this.formularios['_id']
+     
         //  localStorage.setItem("Hojavida",JSON.stringify(this.formularios) )
          console.log(this.formularios,'esto llega')
         for (var form in result) {
           this.ID = result[form]._id
+          console.log(this.ID,'Este es el id de la hoja de vida')
           this.planregistrado= result[form].tipoplan
           
-          if(this.planRegistro =='Free'||this.planRegistro == 'Premium (3 meses)'||this.planRegistro == 'Premium (6 meses)'){
-            console.log(this.planRegistro,'GGGGG')
+         
             this.updateEstado()
           //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
-          }else if (this.planregistrado == "") {
-            Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
-          }
+         
         }
 
       

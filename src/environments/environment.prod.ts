@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  base_url: 'https://vmi336691.contaboserver.net/api'
+  base_url: 'https://softlutions.ec/api'
 
   
 };
