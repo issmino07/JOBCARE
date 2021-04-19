@@ -16,11 +16,14 @@ import { CiudadesService } from 'src/app/services/ciudades.service';
 
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { HojavidaService } from 'src/app/services/hojavida.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlanEmpleadosService } from 'src/app/services/plan-empleados.service';
 import { Hojavida } from 'src/app/models/hojavida';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import { Planempleados } from 'src/app/models/planEmpleados';
+import { DomSanitizer } from '@angular/platform-browser';
+import { DragdropService } from 'src/app/services/dragdrop.service';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-hojavida-formulario',
@@ -28,6 +31,18 @@ import { Planempleados } from 'src/app/models/planEmpleados';
   styleUrls: ['./hojavida-formulario.component.css']
 })
 export class HojavidaFormularioComponent implements OnInit {
+
+
+
+
+  urlPDF: string;
+
+  fileArr = [];
+  imgArr = [];
+  fileObj = [];
+
+  msg: string;
+  progress: number = 0;
 
   votes: number = 0;
   usuario: Usuario;
@@ -87,7 +102,7 @@ export class HojavidaFormularioComponent implements OnInit {
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
-    direccionmapa: ['', ],
+    direccionmapa: ['',],
     experiencia: ['', [Validators.required]],
     descripcionExperiencia: ['', [Validators.required]],
 
@@ -112,7 +127,10 @@ export class HojavidaFormularioComponent implements OnInit {
     cargoRef3: [''],
     empresaRef3: [''],
     telefonoRef3: [''],
-    tipoplan:['']
+    tipoplan: [''],
+
+    avatar: [null],
+    urlPdf: ['']
     //  lavado: ['',],
     //  comida: ['',],
     //  limpieza: ['',],
@@ -132,8 +150,9 @@ export class HojavidaFormularioComponent implements OnInit {
 
   public notificacion = new EventEmitter<any>();
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone, private spinner: NgxSpinnerService,
-    private opcionesServices: CategoriasService, private ciudadOpcion: CiudadesService,  public _usuarioServices: UsuarioService,
-    private _hojavida: HojavidaService, private router: Router, private planes2: PlanEmpleadosService,) {
+    private opcionesServices: CategoriasService, private ciudadOpcion: CiudadesService, public _usuarioServices: UsuarioService,
+    private _hojavida: HojavidaService, private router: Router, private planes2: PlanEmpleadosService, private sanitizer: DomSanitizer, private route: ActivatedRoute,
+    public dragdropService: DragdropService) {
     this.usuario = this._usuarioServices.usuario;
 
     this.urlTree = this.router.parseUrl(this.router.url);
@@ -141,14 +160,16 @@ export class HojavidaFormularioComponent implements OnInit {
     this.id = this.urlTree.queryParams['id'];
     this.type = this.urlTree.queryParams['clientTransactionId'];
 
-  
+
   }
 
   ngOnInit(): void {
 
+
+   this.cf()
     this.getPlanOfertas()
     this.getFormulariosHoja()
-   
+
     this.confirmacionPago();
 
     this.getOpciones2();
@@ -187,7 +208,7 @@ export class HojavidaFormularioComponent implements OnInit {
       animation: true
     })
 
- 
+
   }
 
   //====================traer los planes registrados para verificar la publicacion =======//
@@ -199,25 +220,29 @@ export class HojavidaFormularioComponent implements OnInit {
     this.planes2.getPlan(usuario._id).subscribe(
       result => {
         this.formu = result
- 
+
         for (var form in result) {
           this.planRegistro = result[form].tipoPlan;
           this.IDPLAN = result[form]._id
-          console.log( this.planRegistro,'QUE HACES')
-         
+          console.log(this.planRegistro, 'QUE HACES')
+
+          if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
             this.updateEstado()
-        //   Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
-   
-          
-         //   Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes", "warning")
-          
+            //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
+          } else if (this.planRegistro == null) {
+            Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
+          }
+
+
+          //   Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes", "warning")
+
         }
 
-    
-       
+
+
 
       });
-   }
+  }
 
   //metodo  categorias
   //opciones generales
@@ -225,7 +250,7 @@ export class HojavidaFormularioComponent implements OnInit {
     return this.opcionesServices.getOpciones()
       .subscribe(
         opcionesGenerales => {
-       
+
           this.opcionesGenerales = opcionesGenerales
         }
       );
@@ -236,7 +261,7 @@ export class HojavidaFormularioComponent implements OnInit {
     return this.ciudadOpcion.getOpciones()
       .subscribe(
         ciudades => {
-       
+
           this.ciuadadesOpcion = ciudades;
           if (this.ciuadadesOpcion.length > 0) {
             this.ciudad = this.ciuadadesOpcion[0];
@@ -264,7 +289,7 @@ export class HojavidaFormularioComponent implements OnInit {
     }
   }
   markerDragEnd($event: google.maps.MouseEvent) {
- 
+
     this.latitude = $event.latLng.lat();
     this.longitude = $event.latLng.lng();
     this.getAddress(this.latitude, this.longitude);
@@ -272,12 +297,12 @@ export class HojavidaFormularioComponent implements OnInit {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-    
+
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 28;
           this.address = results[0].formatted_address;
-       
+
         } else {
           window.alert('No results found');
         }
@@ -292,12 +317,12 @@ export class HojavidaFormularioComponent implements OnInit {
 
   crearUsuarioHoja() {
 
- 
+
     this.registerForm.value.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado
     this.registerForm.value.img2 = this.usuario.img;
     this.registerForm.value.tipoPlan = this.planRegistro
-  
+    this.registerForm.value.urlPdf = this.urlPDF;
     this.formSubmitted = true;
 
 
@@ -306,17 +331,17 @@ export class HojavidaFormularioComponent implements OnInit {
     }
     this._hojavida.addOpcion(this.registerForm.value).subscribe(
       resp => {
-        
+
         Swal.fire("Registro  existoso", "", "success")
-      
-       // this.getFormulariosHoja();
-       if(this.planRegistro =='Free'|| this.planRegistro == 'Premium (3 meses)'||this.planRegistro == 'Premium (6 meses)'){
-        this.updateEstado()
-      //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
-      }else if (this.planRegistro == null) {
-        Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
-      }
-   
+
+        // this.getFormulariosHoja();
+        if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
+          this.updateEstado()
+          //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
+        } else if (this.planRegistro == null) {
+          Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
+        }
+
 
 
       }, (err) => {
@@ -327,69 +352,61 @@ export class HojavidaFormularioComponent implements OnInit {
       }
 
     )
-    this.resetUsuario()
+     this.resetUsuario()
 
   }
   resetUsuario() {
-    this.registerForm.reset()
-    this.notificacion.subscribe(resp =>{
-      this.getFormulariosHoja();
-      console.log(resp,'emiter')
-    
-    })
-   // this.getFormulariosHoja();
+     this.registerForm.reset()
+     this.notificacion.subscribe(resp => {
+       this.getFormulariosHoja();
+       console.log(resp, 'emiter')
+ 
+     })
+     // this.getFormulariosHoja();
+ 
+     setTimeout(() => {
+       window.location.reload()
+     }, 5000);
+ 
+ 
+   }  
 
-   setTimeout(() => {
-    window.location.reload()
- },5000);
-  
-    
+
+  update(): void {
+    //this.submitted = true;
+    this.hojaModelo.urlPdf = this.urlPDF;
+    this._hojavida.updateOpcion(this.hojaModelo)
+      .subscribe(result => {
+        console.log(result)
+        Swal.fire("Actualización de Hoja de vida existoso", "", "success")
+      });
   }
 
-//========================Trae la Hoja de Vida Guardada y muestra el previo en el steper==============================//
-  ID
+  //========================Trae la Hoja de Vida Guardada y muestra el previo en el steper==============================//
+ public ID;
   planregistrado
   getFormulariosHoja() {
 
     const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this._hojavida.getHojavida(usuario._id).subscribe(
       result => {
-        this.notificacion.emit( result );
+        this.notificacion.emit(result);
         this.formularios = result
-     
+
         //  localStorage.setItem("Hojavida",JSON.stringify(this.formularios) )
-         console.log(this.formularios,'esto llega')
+        console.log(this.formularios, 'esto llega')
         for (var form in result) {
           this.ID = result[form]._id
-          console.log(this.ID,'Este es el id de la hoja de vida')
-          this.planregistrado= result[form].tipoplan
-          
-         
-            this.updateEstado()
-          //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
-         
-        }
-
       
-
-      });
+          localStorage.setItem("idHoja",JSON.stringify(this.ID) )
+          this.planregistrado = result[form].tipoplan
+//  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
+}});
   }
 
   //=================Actualiza el estado de la publicacion de la hoja de vida una vez que se realiza el pago ===//
 
-  updateEstado(): void {
-    this.hojaModelo._id = this.ID;
-    this.hojaModelo.estado = this.estado2;
-    this.hojaModelo.tipoplan = this.planRegistro;
-  
-    this._hojavida.updateOpcion(this.hojaModelo)
-      .subscribe(result => {
-       
-
-    Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "", "success")
-        // window.location.reload()
-      });
-  }
+ 
 
   actualizarpagina() {
     window.location.reload()
@@ -412,37 +429,47 @@ export class HojavidaFormularioComponent implements OnInit {
 
   registrarPlan() {
 
- 
-    // Realizar el posteo
     this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
-    this.planModelo.tipoPlan = this.tipo
-    this.planModelo.valor = this.valor
+
+    this.planModelo.amount = this.cantidad;
+    if (this.cantidad == "599") {
+      this.planModelo.tipoPlan = this.paquete
+      this.planModelo.valor = this.valor1
+      this.planModelo.fecha1 = new Date ()
+      this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+    }
+    if (this.cantidad == "0.00") {
+      this.planModelo.tipoPlan = this.tipo
+      this.planModelo.valor = this.valor
+    }
+    else if (this.cantidad == "999") {
+      this.planModelo.tipoPlan = this.paquete2
+      this.planModelo.valor = this.valor2
+      this.planModelo.fecha1 = new Date ()
+      this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+
+    }
+    this.planModelo.clientTransactionId = this.clientTId
+    this.planModelo.optionalParameter1 = this.parametro1
+    this.planModelo.optionalParameter2 = this.parametro2
+    this.planModelo.reference = this.referencia
+
     this.planes2.addPlan(this.planModelo).subscribe(
       resp => {
 
-        Swal.fire("Suscrito a Plan Free", "", "success")
+        Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
 
 
         setTimeout(() => {
-      
-            this.updateEstado()
-         
+
+          this.updateEstado()
+
         }, 3000);
-        
-      
-       
+        // this.getFormulariosHoja();
 
-
-        this.notificacion.subscribe(resp =>{
-          this.getFormulariosHoja();
-          console.log(resp,'emiter')
-        
-        })
-       // this.getFormulariosHoja();
-    
-       setTimeout(() => {
-        window.location.reload()
-     },3000);
+        setTimeout(() => {
+          window.location.reload()
+        }, 3000);
 
       }, (err) => {
 
@@ -450,45 +477,49 @@ export class HojavidaFormularioComponent implements OnInit {
 
       })
 
+
+
   }
 
-valor1= '5.99'
-valor2= '9.99'  
+  valor1 = '5.99'
+  valor2 = '9.99'
 
-PlanHoja
+  PlanHoja
   registrarPlanGeneral() {
 
-    
+
     // Realizar el posteo
-   // this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
-   this.planModelo._id = this.IDPLAN;
-    this.planModelo.amount= this.cantidad;
-    if(this.cantidad =="599"){
+    // this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.planModelo._id = this.IDPLAN;
+    this.planModelo.amount = this.cantidad;
+    if (this.cantidad == "599") {
       this.planModelo.tipoPlan = this.paquete
       this.planModelo.valor = this.valor1
-   
+      this.planModelo.fecha1 = new Date ()
+      this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
     }
-    else if (this.cantidad =="999"){
+    else if (this.cantidad == "999") {
       this.planModelo.tipoPlan = this.paquete2
       this.planModelo.valor = this.valor2
-
+      this.planModelo.fecha1 = new Date ()
+      this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
     }
-    this.planModelo.clientTransactionId =this.clientTId
-    this.planModelo.optionalParameter1  =this.parametro1
-     this.planModelo.optionalParameter2 =this.parametro2
-     this.planModelo.reference =this.referencia
-  //  this.planModelo.tipoPlan =
-    this.planes2.updatePlan (this.planModelo).subscribe(
+    this.planModelo.clientTransactionId = this.clientTId
+    this.planModelo.optionalParameter1 = this.parametro1
+    this.planModelo.optionalParameter2 = this.parametro2
+    this.planModelo.reference = this.referencia
+    //  this.planModelo.tipoPlan =
+    this.planes2.updatePlan(this.planModelo).subscribe(
       resp => {
 
-           this.PlanHoja = resp.tipoPlan
+        this.PlanHoja = resp.tipoPlan
 
         Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
-       
+
 
       }, (err) => {
 
-        Swal.fire(this.planModelo.usuario.usuario,'Ya estas sucscrito a plan'+ err.error.msg, 'error');
+        Swal.fire(this.planModelo.usuario.usuario, 'Ya estas sucscrito a plan' + err.error.msg, 'error');
 
       })
 
@@ -502,7 +533,7 @@ PlanHoja
     }
 
     this.imagenSubir = archivo;
-    
+
 
     let reader = new FileReader();
     let urlImagenTemp = reader.readAsDataURL(archivo);
@@ -513,12 +544,12 @@ PlanHoja
     }
   }
 
- cambiarImagen() {
+  cambiarImagen() {
 
     this._usuarioServices.cambiarImagen(this.imagenSubir, this.usuario._id)
   }
 
- 
+
   ///===================prueba botton de pagos========================================//
   apiPay
   rand
@@ -532,8 +563,8 @@ PlanHoja
       amount: "599",
       amountWithoutTax: "599",
       clientTransactionID: this.rand,
-      responseUrl: URL_SERVICIOS+"/#/dashboard/hojavida",
-      cancellationUrl:URL_SERVICIOS+ "/#/dashboard/hojavida"
+      responseUrl: URL_SERVICIOS + "/#/dashboard/hojavida",
+      cancellationUrl: URL_SERVICIOS + "/#/dashboard/hojavida"
 
     }
 
@@ -548,11 +579,11 @@ PlanHoja
       Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
 
     })
-   
+
   }
 
- 
- paquete2= 'Premium (6 Meses)'
+
+  paquete2 = 'Premium (6 Meses)'
   producto2() {
 
     this.rand = Math.floor((Math.random() * 1000) + 90000);
@@ -560,8 +591,8 @@ PlanHoja
       amount: "999",
       amountWithoutTax: "999",
       clientTransactionID: this.rand,
-      responseUrl: URL_SERVICIOS+"/#/dashboard/hojavida",
-      cancellationUrl:URL_SERVICIOS+ "/#/dashboard/hojavida"
+      responseUrl: URL_SERVICIOS + "/#/dashboard/hojavida",
+      cancellationUrl: URL_SERVICIOS + "/#/dashboard/hojavida"
 
     }
 
@@ -597,17 +628,22 @@ PlanHoja
       return false
     } else {
       this.planes2.getPago(parametros).subscribe(resp => {
-       
-          this.cantidad = resp.amount
-          this.clientTId = resp.clientTransactionId
-          this.parametro1 = resp.optionalParameter1
-          this.parametro2 = resp.optionalParameter2
-          this.referencia = resp.reference
+
+        this.cantidad = resp.amount
+        this.clientTId = resp.clientTransactionId
+        this.parametro1 = resp.optionalParameter1
+        this.parametro2 = resp.optionalParameter2
+        this.referencia = resp.reference
         Swal.fire("Pago realizado con exito", resp.clientTransactionId, "success")
         setTimeout(() => {
 
           this.updateEstado()
+
           this.registrarPlanGeneral()
+          if (this.planregistrado == "") {
+            this.registrarPlan()
+          }
+
         }, 3000);
 
 
@@ -616,7 +652,7 @@ PlanHoja
         // Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
 
       })
-     }
+    }
 
 
   }
@@ -632,4 +668,89 @@ PlanHoja
     }
   }
 
+
+  //=======================subir archivos===========================//
+
+
+  upload(e) {
+    const fileListAsArray = Array.from(e);
+    fileListAsArray.forEach((item, i) => {
+      const file = (e as HTMLInputElement);
+      const url = URL.createObjectURL(file[i]);
+      this.imgArr.push(url);
+      this.fileArr.push({ item, url: url });
+    })
+
+    this.fileArr.forEach((item) => {
+      this.fileObj.push(item.item)
+    })
+
+    // Set files form control
+    this.registerForm.patchValue({
+      avatar: this.fileObj
+    })
+
+    this.registerForm.get('avatar').updateValueAndValidity()
+
+    // Upload to server
+    this.registerForm.value.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.dragdropService.addFiles(this.registerForm.value.avatar)
+
+
+      .subscribe((event: HttpEvent<any>) => {
+        switch (event.type) {
+          case HttpEventType.Sent:
+            console.log('Request has been made!');
+            break;
+          case HttpEventType.ResponseHeader:
+            console.log('Response header has been received!');
+            break;
+          case HttpEventType.UploadProgress:
+            this.progress = Math.round(event.loaded / event.total * 100);
+            console.log(`Uploaded! ${this.progress}%`);
+            break;
+          case HttpEventType.Response:
+            console.log('Documento cargado exitosamente!', event.body);
+            this.urlPDF = event.body.userCreated.avatar[0];
+            console.log(this.urlPDF, 'aquie se inserto')
+            setTimeout(() => {
+              this.progress = 0;
+              this.fileArr = [];
+              this.fileObj = [];
+              this.msg = "Documento cargado exitosamente!"
+            }, 3000);
+        }
+      })
+  }
+
+  // Clean Url for showing image preview
+  sanitize(url: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+
+  updateEstado() {
+    this.hojaModelo._id = JSON.parse(localStorage.getItem('idHoja')) ;
+
+    this.hojaModelo.estado = this.estado2;
+    this.hojaModelo.tipoplan = this.planRegistro;
+   
+ 
+    this._hojavida.updateOpcion(this.hojaModelo)
+      .subscribe(result => {
+
+          console.log(result,'UPDATE')
+        Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "", "success")
+        // window.location.reload()
+      });
+  }
+
+date
+fecha2
+  cf(){
+    this.date = new Date();
+    console.log(this.date,'FECHA1')
+   this.fecha2 =(this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+   console.log(this.fecha2,'FECHA2')
+  }
 }

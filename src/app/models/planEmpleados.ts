@@ -5,7 +5,8 @@ export class Planempleados {
     tipoPlan: string;
     valor:string;
     usuario:Usuario;
-
+    fecha1:Date
+    fecha2:string
        //==========PLAN 1 ===========//
        amount: string;
        clientTransactionId:string;

@@ -39,7 +39,7 @@ export class AdmininicioComponent implements OnInit {
   public searchElementRef: ElementRef;
   public formSubmitted = false;
   tipo = "Free";
-  valor= "0.00";
+  valor = "0.00";
 
   planModelo = new Plan();
   ciuadadesOpcion: Ciudad[];
@@ -50,7 +50,7 @@ export class AdmininicioComponent implements OnInit {
 
    next() {
      this.stepper.next();
-     this.previo()
+
    }
 
    previus(){
@@ -94,7 +94,7 @@ export class AdmininicioComponent implements OnInit {
   id
   type
  
-IDOFERTA
+  IDOFERTA
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone,private spinner: NgxSpinnerService,
     private opcionesServices : CategoriasService,private ciudadOpcion: CiudadesService,private planes : PlanesService,
      private oferta : OfertaService,  private router: Router,) { 
@@ -108,6 +108,8 @@ IDOFERTA
      }
 
   ngOnInit(): void {
+
+    this.cf()
     this.confirmacionPago();
     this.getPalnEmpeadores()
     this.getOpciones2();
@@ -150,7 +152,7 @@ IDOFERTA
 
   
 
-  planRegistro
+  planregistrado
   IDPLAN
   getPalnEmpeadores() {
 
@@ -159,12 +161,17 @@ IDOFERTA
       result => { 
          this.plan =  result 
          for (var form in result) {
-          this.planRegistro = result[form].tipoPlan;
+          this.planregistrado = result[form].tipoPlan;
           this.IDPLAN = result[form]._id
-          console.log( this.planRegistro,this.IDPLAN, 'QUE HACES')
-          this.updateEstado()
+          console.log(this.planregistrado, 'QUE HACES')
+          if (this.planregistrado == 'Free' || this.planregistrado == 'Premium (3 meses)' || this.planregistrado == 'Premium (6 meses)') {
+            this.updateEstado()
+            //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
+          } else if (this.planregistrado == null) {
+            Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
+          }
          }
-         console.log(this.plan,'planess')
+        
    
      });
 
@@ -178,6 +185,13 @@ IDOFERTA
     this.oferta.getOfertas(usuario._id).subscribe(
       result => { 
          this.formularios =  result;
+
+         for (var form in result) {
+          this.ID = result[form]._id
+          localStorage.setItem("Idoferta",JSON.stringify(this.ID) )
+          this.planregistrado= result[form].tipoPlan
+
+         }
      
          },error =>{
 
@@ -254,30 +268,14 @@ selectProvincia(provincia) {
     });
   }
 
-  titulo;
-  ciudadela;
-  remu;
-  descrip;
-  estatus;
-  fecha;
- previo(){
-
-  this.titulo =  this.registerForm.value.tituloEmpleo;
-  this.ciudadela = this.registerForm.value.ciudad;
-  this.remu = this.registerForm.value.remuneracion;
-  this.estatus = 'PENDIENTE'
-  this.descrip = this.registerForm.value.descripcionEmpleo;
-  this.fecha = new Date();
-  this.IDOFERTA = localStorage.getItem('Idoferta')
 
 
- }
 
   crearUsuario() {
     // Realizar el posteo
     this.registerForm.value.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado;
-    this.registerForm.value.tipoPlan = this.planRegistro
+    this.registerForm.value.tipoPlan = this.planregistrado
     this.formSubmitted = true;
 
 
@@ -287,12 +285,20 @@ selectProvincia(provincia) {
     this.oferta.addOpcionOfer(this.registerForm.value).subscribe(
       resp => {
         Swal.fire("Registro  existoso", "", "success")
+
+        if (this.planregistrado == 'Free' || this.planregistrado == 'Premium (3 meses)' || this.planregistrado == 'Premium (6 meses)') {
+          this.updateEstado()
+          //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
+        } else if (this.planregistrado == null) {
+          Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
+        }
+
        
-       this.ID =   resp._id 
-       this.ID = localStorage.setItem('Idoferta',this.ID)
+      // this.ID =   resp._id 
+     //  this.ID = localStorage.setItem('Idoferta',this.ID)
       
 
-       this.IDOFERTA = localStorage.getItem('Idoferta')
+    //  this.IDOFERTA = localStorage.getItem('Idoferta')
      
       }, (err) => {
         // Si sucede un error
@@ -322,11 +328,11 @@ selectProvincia(provincia) {
      //=================Actualiza el estado de la publicacion de la hoja de vida una vez que se realiza el pago ===//
 ID
   updateEstado(): void {
-    this.IDOFERTA = localStorage.getItem('Idoferta')
+    this.IDOFERTA =JSON.parse(localStorage.getItem('Idoferta')) 
  
     this.ofertaModelo._id = this.IDOFERTA
     this.ofertaModelo.estado = this.etsado2
-    this.ofertaModelo.tipoPlan = this.planRegistro
+    this.ofertaModelo.tipoPlan = this.planregistrado
     this.oferta.updateOpcion(this.ofertaModelo)
       .subscribe(result => {
        
@@ -337,28 +343,7 @@ ID
   }
 
 
-  registrarPlan() {
-    
-
-  // Realizar el posteo
-    this.planModelo.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
-    this.planModelo.tipoPlan = this.tipo
-    this.planModelo.valor = this.valor
-    this.planes.addPlan(this.planModelo).subscribe(
-      resp => {
-       
-        Swal.fire("Suscrito a Plan Free", "", "success")
-      
-       
-      }, (err) => {
-        
-        Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
   
-      })
-   
-    }
-
-
     activar(){
       this.ocultar = true;
      
@@ -435,8 +420,8 @@ ID
   
     }
 
-    valor1= '5.99'
-valor2= '9.99'  
+public valor1= '5.99'
+public  valor2= '9.99'  
   registrarPlanGeneral() {
 
     
@@ -448,12 +433,14 @@ valor2= '9.99'
     if(this.cantidad =="599"){
       this.planModelo.tipoPlan = this.paquete
       this.planModelo.valor = this.valor1
- 
+      this.planModelo.fecha1 = new Date ()
+      this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
     }
     else if (this.cantidad =="999"){
       this.planModelo.tipoPlan = this.paquete2
       this.planModelo.valor = this.valor2
-   
+      this.planModelo.fecha1 = new Date ()
+      this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
     }
     this.planModelo.clientTransactionId =this.clientTId
     this.planModelo.optionalParameter1  =this.parametro1
@@ -492,7 +479,7 @@ valor2= '9.99'
         clientTxId: this.type
       }
   
-      if (this.id == 0) {
+      if (this.id == 0 || this.id == '') {
         Swal.fire('Transacción cancelada', 'vuelva intentar', 'error');
         return false
       } else {
@@ -508,7 +495,13 @@ valor2= '9.99'
           setTimeout(() => {
           
            this.updateEstado()
-           // this.registrarPlanGeneral()
+           this.registrarPlanGeneral()
+
+           this.registrarPlanGeneral()
+           if (this.planregistrado == "") {
+             this.registrarPlan()
+             console.log(this.planregistrado,'PORQUE NO REGISTRA EL PLAN')
+           }
           }, 3000);
   
   
@@ -529,6 +522,61 @@ valor2= '9.99'
               return false;
             }
           }
-  
+          date
+          fecha2
+            cf(){
+              this.date = new Date();
+              console.log(this.date,'FECHA1')
+             this.fecha2 =(this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+             console.log(this.fecha2,'FECHA2')
+            }
+
+
+            registrarPlan() {
+    
+
+              // Realizar el posteo
+                this.planModelo.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
+            
+                this.planModelo.amount = this.cantidad;
+
+                this.planModelo.fecha1 = new Date ()
+                this.planModelo.tipoPlan = this.tipo
+                this.planModelo.valor = this.valor
+           
+                if (this.cantidad == "599") {
+                  this.planModelo.tipoPlan = this.paquete
+                  this.planModelo.valor = this.valor1
+                  this.planModelo.fecha1 = new Date ()
+                  this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+                }
+             
+                else if (this.cantidad == "999") {
+                  this.planModelo.tipoPlan = this.paquete2
+                  this.planModelo.valor = this.valor2
+                  this.planModelo.fecha1 = new Date ()
+                  this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+            
+                }
+                this.planModelo.clientTransactionId = this.clientTId
+                this.planModelo.optionalParameter1 = this.parametro1
+                this.planModelo.optionalParameter2 = this.parametro2
+                this.planModelo.reference = this.referencia
+                console.log(this.planModelo,'Que es lo que se va')
+                this.planes.addPlan(this.planModelo).subscribe(
+                  resp => {
+                   console.log(resp,'RESPUESTA')
+                    Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
+                  
+                   
+                  }, (err) => {
+                    
+                    Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
+              
+                  })
+               
+                }
+            
+            
 
 }

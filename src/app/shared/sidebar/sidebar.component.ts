@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
    
     this._sidebar.cargarMenu();
     customInitFunctions();
-    this.asistencia()
+ 
   }
 
   cerrarSesion(){

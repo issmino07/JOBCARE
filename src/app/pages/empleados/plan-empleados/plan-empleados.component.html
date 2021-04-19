@@ -1,6 +1,6 @@
 
 <div class=" container p-3 " class="col-sm">
-    <h1 align="center" id="color">PLANES DE SUSCRIPCIÓN</h1>
+    <h1 align="center" id="color">PLANES DE SUCRIPCIÓN</h1>
 </div>
 
 
@@ -12,7 +12,8 @@
                     <tr>
                         <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
                         <th scope="col" COLSPAN=1 style="background: azure">TÍPO DE PLAN</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">FECHA SUSCRIPCIÓN</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">FECHA SUCRIPCIÓN</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">FECHA VENCIMIENTO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
                    
            
@@ -22,7 +23,8 @@
                     <tr *ngFor="let form of  formularios ; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{form.tipoPlan}}</td>
-                        <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
+                        <td>{{form.fecha1 |date:'dd-MM-yyyy'}}</td>
+                        <td>{{form.fecha2 |date:'dd-MM-yyyy'}}</td>
                         <td>{{form.valor}}</td>
                    
                       

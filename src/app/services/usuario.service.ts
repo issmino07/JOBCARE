@@ -117,7 +117,7 @@ export class UsuarioService {
 
   login( usuario: Login, recuerdame: boolean = false ) {
     if ( !recuerdame ) {
-      localStorage.setItem('email', usuario.email);
+      localStorage.setItem('email', usuario.usuario);
      
     } else {
       localStorage.removeItem('email');

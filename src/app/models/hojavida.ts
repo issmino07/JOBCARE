@@ -1,7 +1,7 @@
 
 import { Usuario } from './usuario.model';
 export class Hojavida {
-    _id : string;
+      _id : string;
       nombre: String;
       apellido: String;
       cedula: String;
@@ -42,6 +42,6 @@ export class Hojavida {
       telefonoRef3:string;
     
       postulacion:Array<Object>
-
+      urlPdf:string
       tipoplan:string
 }

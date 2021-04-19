@@ -6,9 +6,10 @@ export class Login {
 
     constructor(
       
-        public email: string,
+       // public email: string,
+       public usuario: string,
         public password: string,
-    //    public usuario: string,
+      
     //    public telefono: string,
     //    public _id: string,
     //    public clave: String,

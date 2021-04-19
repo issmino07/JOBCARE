@@ -22,8 +22,8 @@
             <form ngNativeValidate #f="ngForm" class="form-horizontal form-material" (ngSubmit)="ingresar( f )">
                           <a href="javascript:void(0)" class="text-center db"></a>
                           <div class="form-group m-t-40">
-                              <div class="col-xs-12">
-                                  <input [ngModel]="email" name="email" class="form-control" type="email" required placeholder="Correo del usuario">
+                              <div class="col-xs-12" >
+                                  <input   [ngModel]="usuario" name="usuario" class="form-control text-center db"  tipe="text" required placeholder="Ingrese su usuario " align="center">
                               </div>
                           </div>
                           <div class="form-group">
@@ -40,10 +40,13 @@
                                   
                                   <a href="javascript:void(0)" id="to-recover" class="text-dark pull" [routerLink]="['/request-reset-password']" routerLinkActive="router-link-active" ><i class="fa fa-lock m-r-5"></i> Olvide contraseña?</a> </div>
                           </div>
-                          <div class="form-group text-center m-t-20">
-                              <div class="col-xs-12">
-                                  <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded " type="submit" >Ingresar</button>
+                          <div class="form-group text-center ">
+                              <div class="col-xs-6">
+                                  <button class="btn btn-info  text-uppercase btn-rounded " type="submit" >Ingresar</button>
+                                  &nbsp; &nbsp; 
+                                  <button class="btn btn-info  text-uppercase btn-rounded "data-toggle="modal" data-target="#ninera" data-whatever="@mdo">Regístrarse</button>
                               </div>
+                              
                           </div>
                           <div class="row">
                               <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
@@ -60,3 +63,46 @@
       </div>
     </section>
 
+    <div class="col-md-4" align="center">
+        <div class="card">
+            <div class="card-body">
+              
+                <div class="modal fade" id="ninera" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel2">SELECCIONE UNA OPCIÓN</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                              <li class=""[routerLink]="['/ninera']" routerLinkActive="router-link-active"data-dismiss="modal">
+                                <a   aria-expanded="false"[routerLink]="['/home']" routerLinkActive="router-link-active"data-dismiss="modal"> 
+                                  <button type="button" class="btn btn-rounded btn-outline-primary "data-dismiss="modal"><i data-dismiss="modal" class="" [routerLink]="['/home']" routerLinkActive="router-link-active" ></i>ENCONTRAR EMPLEO</button>
+                                    <div class=""data-dismiss="modal"> <span class=""data-dismiss="modal"></span></div>
+                                </a>
+                             
+                            </li>
+                            <br>
+                            
+                            <li class=""[routerLink]="['/home2']" routerLinkActive="router-link-active"data-dismiss="modal">
+                              <a   aria-expanded="false"[routerLink]="['/home2']" routerLinkActive="router-link-active"data-dismiss="modal"> 
+                                <button type="button" class="btn btn-rounded btn-outline-primary "data-dismiss="modal"><i data-dismiss="modal" class="" [routerLink]="['/home2']" routerLinkActive="router-link-active" ></i>PUBLICAR EMPLEO</button>
+                                  <div class=""data-dismiss="modal"> <span class=""data-dismiss="modal"></span></div>
+                              </a>
+                           
+                          </li>
+                         
+      
+      
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" >CERRAR</button>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+      </div>

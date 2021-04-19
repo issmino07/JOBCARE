@@ -20,6 +20,8 @@ export class HojavidaService {
   hojavida: Hojavida;
 
   private opcionesUrl2 =  environment.base_url + '/hojavida/insertar';
+  
+  private opcionesUrl3 =  environment.base_url + '/hojavida/premium';
   private opcionesUrl1 =  environment.base_url + '/hojavida/todos';
   private opcionesUrl =  environment.base_url + '/hojavida';  // URL to web api
   constructor(
@@ -41,6 +43,9 @@ export class HojavidaService {
     return this.http.get<Hojavida[]>(this.opcionesUrl1)
   }  
 
+  getOpcionesPremium(): Observable<Hojavida[]> {
+    return this.http.get<Hojavida[]>(this.opcionesUrl1)
+  }  
   getHojavidaId(id: string): Observable<Hojavida> {
     const url = `${this.opcionesUrl}/${id}`;
     return this.http.get<Hojavida>(url);

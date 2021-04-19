@@ -35,6 +35,8 @@ import { PostulantesContactadosComponent } from './empleadores/postulantes-conta
 import { AdminGuard } from '../guards/admin.guard';
 import { EditarhojavidaProfesionalComponent } from './profesionales/editarhojavida-profesional/editarhojavida-profesional.component';
 import { VerhojavidaProfesionalComponent } from './profesionales/verhojavida-profesional/verhojavida-profesional.component';
+import { IdhojavidaPrevioComponent } from './empleados/idhojavida-previo/idhojavida-previo.component';
+
 
 
 
@@ -79,8 +81,9 @@ const routes: Routes = [
         { path: 'editarhojavidaprofesional', component:EditarhojavidaProfesionalComponent,canActivate:[AdminGuard] },
         { path: 'editarhojavidaprofesional/:id', component:EditarhojavidaProfesionalComponent,canActivate:[AdminGuard] },
         { path: 'verhojaProfesional', component: VerhojavidaProfesionalComponent,canActivate:[AdminGuard] },
-
-
+        { path: 'hoja', component: IdhojavidaPrevioComponent,canActivate:[AdminGuard] },
+        { path: 'hoja/:id', component: IdhojavidaPrevioComponent,canActivate:[AdminGuard] },
+       
         
       
 

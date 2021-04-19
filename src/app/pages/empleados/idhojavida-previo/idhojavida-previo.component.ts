@@ -1,34 +1,30 @@
-import { Categoria } from '../../../models/categoria.model';
-import { CategoriasService } from '../../../services/categorias.service';
-
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import Swal from 'sweetalert2';
-import Stepper from 'bs-stepper';
-
-import { Usuario } from 'src/app/models/usuario.model';
-import { Location } from '@angular/common';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Ciudad } from 'src/app/models/ciudad.model';
-import { CiudadesService } from 'src/app/services/ciudades.service';
-import { Plan } from 'src/app/models/planes';
-import { PlanesService } from 'src/app/services/planes.service';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import { HojavidaService } from 'src/app/services/hojavida.service';
-import { Hojavida } from 'src/app/models/hojavida';
-import { ActivatedRoute } from '@angular/router';
-import { DragdropService } from 'src/app/services/dragdrop.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import Stepper from 'bs-stepper';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Categoria } from 'src/app/models/categoria.model';
+import { Ciudad } from 'src/app/models/ciudad.model';
+import { Hojavida } from 'src/app/models/hojavida';
+import { Plan } from 'src/app/models/planes';
+import { Usuario } from 'src/app/models/usuario.model';
+import { CategoriasService } from 'src/app/services/categorias.service';
+import { CiudadesService } from 'src/app/services/ciudades.service';
+import { DragdropService } from 'src/app/services/dragdrop.service';
+import { HojavidaService } from 'src/app/services/hojavida.service';
+import { PlanesService } from 'src/app/services/planes.service';
+import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
-  selector: 'app-editar-hojavida',
-  templateUrl: './editar-hojavida.component.html',
-  styleUrls: ['./editar-hojavida.component.css']
+  selector: 'app-idhojavida-previo',
+  templateUrl: './idhojavida-previo.component.html',
+  styleUrls: ['./idhojavida-previo.component.css']
 })
-export class EditarHojavidaComponent implements OnInit {
-
+export class IdhojavidaPrevioComponent implements OnInit {
 
   urlPDF: string;
 

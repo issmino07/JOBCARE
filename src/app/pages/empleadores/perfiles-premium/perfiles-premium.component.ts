@@ -40,7 +40,7 @@ export class PerfilesPremiumComponent implements OnInit {
 
   getFormulariosOfertas() {
     
-    this.listainforme.getOpciones().subscribe(
+    this.listainforme.getOpcionesPremium().subscribe(
       result => { 
         this.formularios =  result ;
          console.log(this.formularios)

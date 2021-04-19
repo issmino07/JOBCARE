@@ -16,14 +16,14 @@ export class LoginComponent implements OnInit {
 
   
   recuerdame: boolean = false;
-  email: string = '';
+  usuario: string = '';
   constructor( private router: Router, private _usuarioService : UsuarioService,
  
   ) { }
 
   ngOnInit() {
   
-    this.email = localStorage.getItem('email') || '';
+    this.usuario= localStorage.getItem('email') || '';
   }
 
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
     let usuario = new Login(
     
-      form.value.email,
+      form.value.usuario,
       form.value.password,
     
      
