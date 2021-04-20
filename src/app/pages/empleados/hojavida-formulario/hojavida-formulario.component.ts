@@ -24,6 +24,7 @@ import { Planempleados } from 'src/app/models/planEmpleados';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DragdropService } from 'src/app/services/dragdrop.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-hojavida-formulario',
@@ -130,7 +131,8 @@ export class HojavidaFormularioComponent implements OnInit {
     tipoplan: [''],
 
     avatar: [null],
-    urlPdf: ['']
+    urlPdf: [''],
+    emailHoja:['']
     //  lavado: ['',],
     //  comida: ['',],
     //  limpieza: ['',],
@@ -152,15 +154,15 @@ export class HojavidaFormularioComponent implements OnInit {
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone, private spinner: NgxSpinnerService,
     private opcionesServices: CategoriasService, private ciudadOpcion: CiudadesService, public _usuarioServices: UsuarioService,
     private _hojavida: HojavidaService, private router: Router, private planes2: PlanEmpleadosService, private sanitizer: DomSanitizer, private route: ActivatedRoute,
-    public dragdropService: DragdropService) {
+    public dragdropService: DragdropService, private toastr: ToastrService) {
     this.usuario = this._usuarioServices.usuario;
 
     this.urlTree = this.router.parseUrl(this.router.url);
 
     this.id = this.urlTree.queryParams['id'];
     this.type = this.urlTree.queryParams['clientTransactionId'];
-
-
+    this.planRegistro
+    this.getPlanOfertas()
   }
 
   ngOnInit(): void {
@@ -228,7 +230,7 @@ export class HojavidaFormularioComponent implements OnInit {
 
           if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
             this.updateEstado()
-            //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
+              Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
           } else if (this.planRegistro == null) {
             Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
           }
@@ -320,6 +322,7 @@ export class HojavidaFormularioComponent implements OnInit {
 
     this.registerForm.value.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado
+    this.registerForm.value.emailHoja= this.usuario.email
     this.registerForm.value.img2 = this.usuario.img;
     this.registerForm.value.tipoPlan = this.planRegistro
     this.registerForm.value.urlPdf = this.urlPDF;
@@ -749,8 +752,12 @@ date
 fecha2
   cf(){
     this.date = new Date();
-    console.log(this.date,'FECHA1')
+ 
    this.fecha2 =(this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
-   console.log(this.fecha2,'FECHA2')
+
+  }
+
+  show() {
+    this.toastr.info('Si ya estas suscrito a un plan en este paso esta el boton de publicar !', 'Hola');
   }
 }

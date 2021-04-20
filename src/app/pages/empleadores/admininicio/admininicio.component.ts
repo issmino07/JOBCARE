@@ -16,6 +16,7 @@ import { Plan } from 'src/app/models/planes';
 import { PlanesService } from 'src/app/services/planes.service';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from 'src/app/config/config';
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'app-admininicio',
   templateUrl: './admininicio.component.html',
@@ -76,6 +77,7 @@ export class AdmininicioComponent implements OnInit {
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     TipoPlan: [''],
+    emailEmpleador:['']
   //  direccionmapa: ['', [Validators.required]],
   //  lavado: ['',],
   //  comida: ['',],
@@ -95,11 +97,12 @@ export class AdmininicioComponent implements OnInit {
   type
  
   IDOFERTA
+  usuario: Usuario;
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone,private spinner: NgxSpinnerService,
-    private opcionesServices : CategoriasService,private ciudadOpcion: CiudadesService,private planes : PlanesService,
+    private opcionesServices : CategoriasService,private ciudadOpcion: CiudadesService,private planes : PlanesService,public _usuarioServices: UsuarioService,
      private oferta : OfertaService,  private router: Router,) { 
 
-      
+    this.usuario = this._usuarioServices.usuario;
     this.urlTree = this.router.parseUrl(this.router.url);
 
     this.id = this.urlTree.queryParams['id'];
@@ -275,6 +278,7 @@ selectProvincia(provincia) {
     // Realizar el posteo
     this.registerForm.value.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado;
+    this.registerForm.value.emailEmpleador = this.usuario.email;
     this.registerForm.value.tipoPlan = this.planregistrado
     this.formSubmitted = true;
 
@@ -498,10 +502,10 @@ public  valor2= '9.99'
            this.registrarPlanGeneral()
 
            this.registrarPlanGeneral()
-           if (this.planregistrado == "") {
+        
              this.registrarPlan()
              console.log(this.planregistrado,'PORQUE NO REGISTRA EL PLAN')
-           }
+        
           }, 3000);
   
   

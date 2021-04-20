@@ -44,6 +44,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { OfertasPremiumComponent } from './empleados/ofertas-premium/ofertas-premium.component';
 import { PerfilesPremiumComponent } from './empleadores/perfiles-premium/perfiles-premium.component';
 import { IdhojavidaPrevioComponent } from './empleados/idhojavida-previo/idhojavida-previo.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -106,6 +107,7 @@ import { IdhojavidaPrevioComponent } from './empleados/idhojavida-previo/idhojav
     NgxSlideModalModule,
     NgxSpinnerModule,
     NgxStarRatingModule,
+    ToastrModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
       libraries: ['places']

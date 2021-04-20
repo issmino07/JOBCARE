@@ -44,4 +44,5 @@ export class Hojavida {
       postulacion:Array<Object>
       urlPdf:string
       tipoplan:string
+      emailHoja:string
 }

@@ -11,7 +11,7 @@
             <div class="line"></div>
             <div class="step" data-target="#test-l-2">
                 <button class="step-trigger">
-                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-circle" (click)="show()">2</span>
                     <span class="bs-stepper-label"></span>
                 </button>
             </div>
@@ -482,6 +482,7 @@
                                         <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">SALARIO</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">EDITAR</th>
+                                        <th scope="col" COLSPAN=1 style="background: azure">PUBLICAR</th>
 
 
 
@@ -502,6 +503,12 @@
                                             <button type="button" class="btn btn-outline-primary"
                                                        style="width: 75px;height: 70;font-size: 50%;"
                                             [routerLink]="['/dashboard/hoja/',form._id]"><b>EDITAR</b></button>
+                                        
+                                        </td>
+                                        <td  *ngFor="let plan of formu" >
+                                            <button type="button" class="btn btn-outline-primary"*ngIf="(plan.tipoPlan != null)"
+                                                       style="width: 75px;height: 70;font-size: 50%;"   (click)="updateEstado()"
+                                            ><b>PUBLICAR</b></button>
                                         
                                         </td>
 

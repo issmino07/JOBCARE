@@ -82,7 +82,7 @@ export class OfertasPremiumComponent implements OnInit {
            console.log(this.formulariosPostulacion ,'historial de mis postulaciones')
            },error =>{
        console.log(error,'Error')
-      //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
+        Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
       });
 }
 
@@ -119,7 +119,7 @@ export class OfertasPremiumComponent implements OnInit {
 
       }, (err) => {
 
-        //  Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
+      Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
 
       })
     

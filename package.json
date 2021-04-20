@@ -1,6 +1,6 @@
 {
   "name": "jobandcare",
-  "version": "0.0.0",
+  "version": "0.0.7",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -32,6 +32,7 @@
     "ngx-slide-modal": "^1.5.1",
     "ngx-spinner": "^10.0.1",
     "ngx-star-rating": "0.0.1",
+    "ngx-toastr": "^13.2.1",
     "ngx-tour-core": "^4.2.0",
     "ngx-tour-ngx-bootstrap": "^4.3.0",
     "rxjs": "~6.6.0",
