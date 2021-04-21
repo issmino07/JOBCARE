@@ -45,9 +45,9 @@
                         <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                     
-                     
-                        <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
                         <th scope="col" COLSPAN=1 style="background: azure">VER OFERTA</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
+   
                     </tr>
                 </thead>
                 <tbody>
@@ -57,17 +57,7 @@
                         <td>${{form.valor}}</td>
                         <td>{{form.horario}}</td>
                         <td>{{form.categorias}}</td>
-               
-                     
-                
-                        <td>
-                            <button type="button" class="btn btn-outline-primary"
-                                       style="width: 85px;height: 75;font-size: 50%;" (click)="ActulizarEstado(form._id, form.usuario)"
-                          ><b>Quieres postular</b></button>
-                        
-                 
-                        </td>
-
+                      
                         <td>
                             <button type="button" class="btn btn-outline-primary"
                                        style="width: 75px;height: 70;font-size: 50%;"
@@ -75,6 +65,16 @@
                            ><b>VER OFERTA</b></button>
                         
                         </td> 
+                
+                        <td >
+                            <button type="button" class="btn btn-outline-primary" 
+                                       style="width: 85px;height: 75;font-size: 50%;" (click)="ActulizarEstado(form._id, form.usuario)"
+                          ><b>Quieres postular</b></button>
+                        
+                 
+                        </td>
+
+                      
                     </tr>                  
                 </tbody>
             </table>

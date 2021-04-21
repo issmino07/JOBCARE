@@ -232,5 +232,7 @@ export class EditarOfertasComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
+  atras(): void {
+    this.location.back();
+  }
 }

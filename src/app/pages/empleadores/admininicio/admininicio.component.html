@@ -11,7 +11,7 @@
             <div class="line"></div>
             <div class="step" data-target="#test-l-2">
                 <button class="step-trigger">
-                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-circle" (click)="show()">2</span>
                     <span class="bs-stepper-label"></span>
                 </button>
             </div>
@@ -208,7 +208,7 @@
                     </div>
                     <div class="form-actions row m-0 justify-content-center align-items-center vh-100">
 
-                        <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                        <button (click)="next();show()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
                         &nbsp;&nbsp;
                         <button type="submit" class="btn btn-primary mt-5">GUARDAR</button>
 
@@ -236,9 +236,12 @@
                                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
 
-                                        <th scope="col" COLSPAN=1 style="background: azure">DESCRIPCIÓN</th>
+     
                                         <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
+                                        <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
+                                        <th scope="col" COLSPAN=1 style="background: azure">EDITAR</th>
+                                        <th scope="col" COLSPAN=1 style="background: azure">PUBLICAR</th>
                                         <!--
                         <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
                  -->
@@ -250,11 +253,22 @@
                                         <td>{{form.tituloEmpleo}}</td>
                                         <td>{{form.categorias}}</td>
                                         <td>{{form.fechaReporte | date:'dd-MM-yyyy'}}</td>
-                                        <td>{{form.descripcionEmpleo}}</td>
+                                      
                                         <td>{{form.horario}}</td>
                                         <td>{{form.ciudad}}</td>
-
-
+                                        <td class="text3" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-primary"
+                                                       style="width: 75px;height: 70;font-size: 50%;"
+                                            [routerLink]="['/dashboard/editaroferta/',form._id]"><b>EDITAR</b></button>
+                                        
+                                        </td>
+                                        <td  *ngFor="let plan of plan" >
+                                            <button type="button" class="btn btn-outline-primary"*ngIf="(plan.tipoPlan != null)"
+                                                       style="width: 75px;height: 70;font-size: 50%;"   (click)="updateEstado1()"
+                                            ><b>PUBLICAR</b></button>
+                                        
+                                        </td>
                                         <!--
                         <td class="text2" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
                       -->
@@ -410,8 +424,8 @@
                 </div>
                 <!-- Row -->
                 <div class="alert alert-primary " role="alert ">
-                    <em class="text2">Es necesario suscribirse a uno de nuestros planes para que tu perfil sea
-                        visible.</em>
+                    <em class="text2">Es necesario suscribirse a uno de nuestros planes para que tus ofertas sean
+                        visibles.</em>
                 </div>
                 <br>
 

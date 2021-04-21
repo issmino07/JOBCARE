@@ -17,6 +17,7 @@ import { PlanesService } from 'src/app/services/planes.service';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admininicio',
   templateUrl: './admininicio.component.html',
@@ -100,7 +101,7 @@ export class AdmininicioComponent implements OnInit {
   usuario: Usuario;
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone,private spinner: NgxSpinnerService,
     private opcionesServices : CategoriasService,private ciudadOpcion: CiudadesService,private planes : PlanesService,public _usuarioServices: UsuarioService,
-     private oferta : OfertaService,  private router: Router,) { 
+     private oferta : OfertaService,  private router: Router,private toastr: ToastrService) { 
 
     this.usuario = this._usuarioServices.usuario;
     this.urlTree = this.router.parseUrl(this.router.url);
@@ -340,9 +341,25 @@ ID
     this.oferta.updateOpcion(this.ofertaModelo)
       .subscribe(result => {
        
-        
-        Swal.fire("OFERTA PUBLICADA CON EXITO", "", "success")
+        this.toastr.info('Si ya estas suscrito a un plan puedes publicar las ofertas que desees !', 'Hola 😃');
+       //  Swal.fire("OFERTA PUBLICADA CON EXITO", "", "success")
         // window.location.reload()
+      });
+  }
+
+  updateEstado1(): void {
+    this.IDOFERTA =JSON.parse(localStorage.getItem('Idoferta')) 
+ 
+    this.ofertaModelo._id = this.IDOFERTA
+    this.ofertaModelo.estado = this.etsado2
+    this.ofertaModelo.tipoPlan = this.planregistrado
+    this.oferta.updateOpcion(this.ofertaModelo)
+      .subscribe(result => {
+       
+      //  this.toastr.info('Si ya estas suscrito a un plan puedes publicar las ofertas que desees !', 'Hola 😃');
+      
+        Swal.fire("OFERTA PUBLICADA CON EXITO", "", "success")
+      window.location.reload()
       });
   }
 
@@ -581,6 +598,8 @@ public  valor2= '9.99'
                
                 }
             
-            
+                show() {
+                  this.toastr.info('Si ya estas suscrito a un plan en este paso esta el boton de publicar !', 'Hola');
+                }
 
 }

@@ -6,6 +6,7 @@ export class Postulacion {
     postulacion: string;
     usuario:Usuario;
     ofertante:string
+    estado:string ="POSTULADO";
 }
 
 

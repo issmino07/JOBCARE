@@ -89,9 +89,9 @@ export class OfertasPublicadasComponent implements OnInit {
         result => { 
            this.formulariosPostulacion =  result;
 
-       
+    
 
-           console.log(this.formulariosPostulacion ,'historial de mis postulaciones')
+           console.log(this.formulariosPostulacion ,'historial de mis postulaciones',)
            },error =>{
        console.log(error,'Error')
       //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
@@ -107,7 +107,7 @@ export class OfertasPublicadasComponent implements OnInit {
       result => {
         this.formularios = result
 
-        console.log(this.formularios)
+        console.log(this.formularios,'las postulaciones')
                 //  localStorage.setItem("result",JSON.stringify(this.formularios) )
       });
   }
@@ -121,6 +121,7 @@ export class OfertasPublicadasComponent implements OnInit {
     // Realizar el posteo
     this.postulacionModelo.ofertante = usuario;
     this.postulacionModelo.postulacion = id;
+    this.postulacionModelo.estado = this.postulando
     this.postulacionModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
   
        this._postular.addPostulacion(this.postulacionModelo).subscribe(
@@ -140,11 +141,12 @@ export class OfertasPublicadasComponent implements OnInit {
 
 
 
-
+ post= "POSTULADO"
   ActulizarEstado(id, usuario) {
     
     this.ofertaModelo._id = id;
-    this.ofertaModelo.descripcion = this.ID
+    this.ofertaModelo.descripcion = this.ID;
+    this.ofertaModelo.estatus = this.post;
     this.ofertaModelo.user = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.listainforme.addOpcion(this.ofertaModelo).subscribe(
         resp => {
