@@ -63,6 +63,8 @@ export class OfertasPublicadasComponent implements OnInit {
   }
 
   ID
+  urlPdf
+  nom
   getFormulariosHoja() {
 
     const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
@@ -76,6 +78,8 @@ export class OfertasPublicadasComponent implements OnInit {
          for(var HojaVida in result ){
             
          this.ID = result[HojaVida]._id
+         this.urlPdf = result[HojaVida].urlPdf
+         this.nom = result[HojaVida].nombre
       //   console.log(this.ID)
          }
      });
@@ -91,7 +95,6 @@ export class OfertasPublicadasComponent implements OnInit {
 
     
 
-           console.log(this.formulariosPostulacion ,'historial de mis postulaciones',)
            },error =>{
        console.log(error,'Error')
       //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
@@ -116,12 +119,16 @@ export class OfertasPublicadasComponent implements OnInit {
 
 
   postulando = "POSTULADO"
-  postular(id, usuario) {
+  postular(id, usuario,email) {
     console.log('estoy postulando')
     // Realizar el posteo
+    this.postulacionModelo.emailOfertante = email
     this.postulacionModelo.ofertante = usuario;
     this.postulacionModelo.postulacion = id;
     this.postulacionModelo.estado = this.postulando
+    this.postulacionModelo.urlPdf = this.urlPdf
+    this.postulacionModelo.nombre = this.nom
+    this.postulacionModelo.telefono = this.usuario.telefono
     this.postulacionModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
   
        this._postular.addPostulacion(this.postulacionModelo).subscribe(
@@ -142,7 +149,7 @@ export class OfertasPublicadasComponent implements OnInit {
 
 
  post= "POSTULADO"
-  ActulizarEstado(id, usuario) {
+  ActulizarEstado(id, usuario,email) {
     
     this.ofertaModelo._id = id;
     this.ofertaModelo.descripcion = this.ID;
@@ -160,7 +167,7 @@ export class OfertasPublicadasComponent implements OnInit {
 
       })
 
-   this.postular(id,usuario)
+   this.postular(id,usuario,email)
   }
 
   buscarOferta( termino: string ) {
@@ -177,34 +184,12 @@ export class OfertasPublicadasComponent implements OnInit {
   
               this.formularios = ofertas
   
-              console.log(this.formularios,'oe')
               this.cargando = false;
             });
   
   }
 
-  registrarMensaje() {
-    this.mensaje.oferta = this.oferta;
-    this.mensaje.usuario = this.usuarioLogueado;
-    if (this.usuarioLogueado.role === 'EMPLEADOR_ROLE' || this.usuarioLogueado.role === 'EMPLEADO_ROLE'
-     ) {
-      this.mensaje.tipoUsuario = 'EMPLEADO_ROLE';
-    } else {
-      this.mensaje.tipoUsuario = 'EMPLEADOR_ROLE';
-    }
-   
-    this.listainforme.addmensaje( this.mensaje)
-      .subscribe(response => {
-        this.mensajes = response['data'];
-        this.mensaje.mensaje = '';
-        
-     
-      }, error => {
-       
-      //  swal.fire(this.servicio.obtenerMensaje(error.error.code));
-      });
-  }
-
+ 
 
 
 }

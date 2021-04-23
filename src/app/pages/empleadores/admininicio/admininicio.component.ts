@@ -112,7 +112,7 @@ export class AdmininicioComponent implements OnInit {
      }
 
   ngOnInit(): void {
-
+    this.show1()
     this.cf()
     this.confirmacionPago();
     this.getPalnEmpeadores()
@@ -167,13 +167,13 @@ export class AdmininicioComponent implements OnInit {
          for (var form in result) {
           this.planregistrado = result[form].tipoPlan;
           this.IDPLAN = result[form]._id
-          console.log(this.planregistrado, 'QUE HACES')
-          if (this.planregistrado == 'Free' || this.planregistrado == 'Premium (3 meses)' || this.planregistrado == 'Premium (6 meses)') {
+         
+        /*  if (this.planregistrado == 'Free' || this.planregistrado == 'Premium (3 meses)' || this.planregistrado == 'Premium (6 meses)') {
             this.updateEstado()
             //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
           } else if (this.planregistrado == null) {
             Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
-          }
+          } */
          }
         
    
@@ -291,12 +291,12 @@ selectProvincia(provincia) {
       resp => {
         Swal.fire("Registro  existoso", "", "success")
 
-        if (this.planregistrado == 'Free' || this.planregistrado == 'Premium (3 meses)' || this.planregistrado == 'Premium (6 meses)') {
+       /* if (this.planregistrado == 'Free' || this.planregistrado == 'Premium (3 meses)' || this.planregistrado == 'Premium (6 meses)') {
           this.updateEstado()
           //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
         } else if (this.planregistrado == null) {
           Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
-        }
+        }  */
 
        
       // this.ID =   resp._id 
@@ -601,5 +601,12 @@ public  valor2= '9.99'
                 show() {
                   this.toastr.info('Si ya estas suscrito a un plan en este paso esta el boton de publicar !', 'Hola');
                 }
+                
+                show1() {
+                  this.toastr.info('Cuando ingrese sus datos presione guardar si esta seguro de que su información es correcta  y luego puede presionar 2 o siguiente!', 'Hola ✋',{
+                    timeOut: 7000,
+                  });
+                }
+
 
 }

@@ -29,7 +29,7 @@ export class PostulantesContactadosComponent implements OnInit {
          result => { 
             this.formularios =  result;
 
-            console.log(this.formularios,'historial de mis contactos')
+        
             },error =>{
         console.log(error,'Error')
        //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');

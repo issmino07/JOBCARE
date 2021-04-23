@@ -228,12 +228,12 @@ export class HojavidaFormularioComponent implements OnInit {
           this.IDPLAN = result[form]._id
           console.log(this.planRegistro, 'QUE HACES')
 
-          if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
+      /*    if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
             this.updateEstado()
               Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
           } else if (this.planRegistro == null) {
             Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
-          }
+          }  */
 
 
           //   Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes", "warning")
@@ -338,12 +338,12 @@ export class HojavidaFormularioComponent implements OnInit {
         Swal.fire("Registro  existoso", "", "success")
 
         // this.getFormulariosHoja();
-        if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
+  /*    if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
           this.updateEstado()
           //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
         } else if (this.planRegistro == null) {
           Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
-        }
+        }  */
 
 
 

@@ -70,7 +70,7 @@ export class PerfilesComponent implements OnInit {
   
         }, (err) => {
   
-          //  Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
+         Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
   
         })
       

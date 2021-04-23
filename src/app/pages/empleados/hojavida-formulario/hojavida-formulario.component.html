@@ -479,8 +479,9 @@
                                         <th scope="col" COLSPAN=1 style="background: azure">CEDULA</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
-                                        <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
+                                     
                                         <th scope="col" COLSPAN=1 style="background: azure">SALARIO</th>
+                                        <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">EDITAR</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">PUBLICAR</th>
 
@@ -496,9 +497,9 @@
                                         <td>{{form.cedula}}</td>
                                         <td>{{form.categorias}}</td>
                                         <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
-                                        <td>{{form.ciudad}}</td>
+                                     
                                         <td>{{form.refSalarial}}</td>
-
+                                        <td class="text3" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
                                         <td>
                                             <button type="button" class="btn btn-outline-primary"
                                                        style="width: 75px;height: 70;font-size: 50%;"
