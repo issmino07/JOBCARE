@@ -54,10 +54,13 @@ export class PerfilesPremiumComponent implements OnInit {
 
 
     postulando = "POSTULADO"
-    postular(id) {
+    postular(id,email) {
       console.log('estoy postulando')
       // Realizar el posteo
-  
+      this.postulacionModelo.emailEmpleador= this.usuario.email;  
+      this.postulacionModelo.emailPostulante = email
+      this.postulacionModelo.nombre = this.usuario.usuario
+      this.postulacionModelo.telefono = this.usuario.telefono
       this.postulacionModelo.postulacion = id;
       this.postulacionModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     
@@ -69,14 +72,14 @@ export class PerfilesPremiumComponent implements OnInit {
   
         }, (err) => {
   
-          //  Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
+        Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
   
         })
       
     }
 
 
-    ActulizarEstado(id) {
+    ActulizarEstado(id,email) {
     
       this.ofertaModelo._id = id;
     //  this.ofertaModelo.descripcion = this.ID
@@ -93,7 +96,7 @@ export class PerfilesPremiumComponent implements OnInit {
   
         })
   
-     this.postular(id)
+     this.postular(id,email)
     }
   
 

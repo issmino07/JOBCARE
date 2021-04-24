@@ -3,6 +3,7 @@ import { OfertaService } from '../../../services/oferta.service';
 import { Component, OnInit } from '@angular/core';
 import { Ofertas } from 'src/app/models/ofertas';
 import { Usuario } from 'src/app/models/usuario.model';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -59,5 +60,15 @@ export class PostulacionesOfertasComponent implements OnInit {
 
     
  
+  }
+
+  nohay(){
+    Swal.fire(
+  
+      'NO HAY',
+      'ADJUNTOS EN ESTA HOJA DE VIDA',
+      'warning'
+    );
+  
   }
 }

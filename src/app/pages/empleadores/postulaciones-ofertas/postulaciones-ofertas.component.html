@@ -15,7 +15,7 @@
                         <th scope="col" COLSPAN=1 style="background: azure">EMAIL</th>
                         <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
-              
+                        <th scope="col" COLSPAN=1 style="background: azure">VER HOJA DE VIDA</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let form of  formularios">
@@ -30,7 +30,14 @@
                      
                         <td> {{post.user.telefono }}</td> 
                         <td> {{post.user.categorias }}</td> 
-                       
+                       <td >
+                      
+
+                        <a type="button" class="btn btn-outline-primary"*ngIf="post.descripcion.urlPdf != null" href="{{post.descripcion.urlPdf}}"
+                        style="width: 100px;height: 70;font-size: 50%;"   
+                                                          ><b>VER HOJA DE VIDA</b></a>
+                      
+                       </td>
                      
                     
                     

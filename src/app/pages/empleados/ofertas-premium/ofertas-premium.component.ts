@@ -51,6 +51,8 @@ export class OfertasPremiumComponent implements OnInit {
   }
 
   ID
+  urlPdf
+  nom
   getFormulariosHoja() {
 
     const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
@@ -64,6 +66,8 @@ export class OfertasPremiumComponent implements OnInit {
          for(var HojaVida in result ){
             
          this.ID = result[HojaVida]._id
+         this.urlPdf = result[HojaVida].urlPdf
+         this.nom = result[HojaVida].nombre
       //   console.log(this.ID)
          }
      });
@@ -102,13 +106,17 @@ export class OfertasPremiumComponent implements OnInit {
 
   
 
-
   postulando = "POSTULADO"
-  postular(id, usuario) {
+  postular(id, usuario,email) {
     console.log('estoy postulando')
     // Realizar el posteo
+    this.postulacionModelo.emailOfertante = email
     this.postulacionModelo.ofertante = usuario;
     this.postulacionModelo.postulacion = id;
+    this.postulacionModelo.estado = this.postulando
+    this.postulacionModelo.urlPdf = this.urlPdf
+    this.postulacionModelo.nombre = this.nom
+    this.postulacionModelo.telefono = this.usuario.telefono
     this.postulacionModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
   
        this._postular.addPostulacion(this.postulacionModelo).subscribe(
@@ -119,7 +127,7 @@ export class OfertasPremiumComponent implements OnInit {
 
       }, (err) => {
 
-      Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
+          Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
 
       })
     
@@ -128,11 +136,12 @@ export class OfertasPremiumComponent implements OnInit {
 
 
 
-
-  ActulizarEstado(id, usuario) {
+ post= "POSTULADO"
+  ActulizarEstado(id, usuario,email) {
     
     this.ofertaModelo._id = id;
-    this.ofertaModelo.descripcion = this.ID
+    this.ofertaModelo.descripcion = this.ID;
+    this.ofertaModelo.estatus = this.post;
     this.ofertaModelo.user = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.listainforme.addOpcion(this.ofertaModelo).subscribe(
         resp => {
@@ -146,7 +155,7 @@ export class OfertasPremiumComponent implements OnInit {
 
       })
 
-   this.postular(id,usuario)
+   this.postular(id,usuario,email)
   }
 
   buscarOferta( termino: string ) {
