@@ -165,14 +165,14 @@ export class HojavidaFormularioComponent implements OnInit {
     this.getPlanOfertas()
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
 
    this.cf()
     this.getPlanOfertas()
     this.getFormulariosHoja()
 
-    this.confirmacionPago();
+ 
 
     this.getOpciones2();
     this.ciuadadesOpcion = new Array<Ciudad>();
@@ -210,7 +210,11 @@ export class HojavidaFormularioComponent implements OnInit {
       animation: true
     })
 
-
+    if ( this.id == null) {
+      return false
+      }else{
+        this.confirmacionPago();
+      }
   }
 
   //====================traer los planes registrados para verificar la publicacion =======//

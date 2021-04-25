@@ -12,7 +12,7 @@
                     <tr>
                         <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
                         <th scope="col" COLSPAN=1 style="background: azure">NOMBRE</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">EMAIL</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">CORREO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                         <th scope="col" COLSPAN=1 style="background: azure">VER HOJA DE VIDA</th>
@@ -30,11 +30,11 @@
                      
                         <td> {{post.user.telefono }}</td> 
                         <td> {{post.user.categorias }}</td> 
-                       <td >
+                       <td align="center">
                       
 
                         <a type="button" class="btn btn-outline-primary"*ngIf="post.descripcion.urlPdf != null" href="{{post.descripcion.urlPdf}}"
-                        style="width: 100px;height: 70;font-size: 50%;"   
+                        style="width: 100px;height: 70;font-size: 50%;"   target="_blank"
                                                           ><b>VER HOJA DE VIDA</b></a>
                       
                        </td>

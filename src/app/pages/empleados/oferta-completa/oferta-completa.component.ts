@@ -210,4 +210,9 @@ export class OfertaCompletaComponent implements OnInit {
     this.location.back();
   }
 
+  atras(): void {
+    this.location.back();
+  }
 }
+
+

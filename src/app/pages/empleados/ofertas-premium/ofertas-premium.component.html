@@ -20,7 +20,7 @@
                    
                         <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
-                    
+                        <th scope="col" COLSPAN=1 style="background: azure">VER OFERTA</th>
                      
                         <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
                     </tr>
@@ -33,7 +33,13 @@
                         <td>{{form.horario}}</td>
                         <td>{{form.categorias}}</td>
                
-                     
+                        <td>
+                            <button type="button" class="btn btn-outline-primary"
+                                       style="width: 75px;height: 70;font-size: 50%;"
+                                       [routerLink]="['/dashboard/ofertaCompleta/',form._id]" 
+                           ><b>VER OFERTA</b></button>
+                        
+                        </td> 
                 
                         <td>
                             <button type="button" class="btn btn-outline-primary"

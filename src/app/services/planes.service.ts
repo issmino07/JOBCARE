@@ -22,6 +22,8 @@ export class PlanesService {
 
   public notificacion = new EventEmitter<any>();
   private opcionesUrl =  environment.base_url + '/planes';  // URL to web api
+
+  private opcionesUrl1 =  environment.base_url + '/planes/todos';
  // private opcionesUrl2 =  environment.base_url + '/usuarios/plan';  // URL to web api
   private opcionesUrl3 =  environment.base_url + '/planes/pago';  // URL to web api
 
@@ -40,6 +42,10 @@ export class PlanesService {
     return this.http.post<Plan>(this.opcionesUrl3, proveedor, httpOptions);
   }
 
+
+  getPlanesTodos(): Observable<Plan[]> {
+    return this.http.get<Plan[]>(this.opcionesUrl1)
+  }
   getPlan (usuario_id:string): Observable<Plan[]> {
     return this.http.get<Plan[]>(this.opcionesUrl+'?usuario_id='+usuario_id)
   }

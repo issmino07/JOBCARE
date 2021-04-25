@@ -38,11 +38,15 @@ export class PlanEmpleadosComponent implements OnInit {
     console.log(this.id, this.type, 'ESTOS SON LOS PARAMETROS')
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
 
 
     this.getPlanOfertas() 
-    this.confirmacionPago()
+    if ( this.id == null) {
+      return false
+      }else{
+        this.confirmacionPago();
+      }
   }
 
 

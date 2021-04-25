@@ -15,6 +15,8 @@
                             <th>CÉDULA</th>
                             <th>CIUDAD</th>
                             <th>DIRECCIÓN</th>
+                            <th>TELÉFONO</th>
+                            <th>VER HOJA DE VIDA</th>
                         </tr>
                     </thead>
 
@@ -35,6 +37,19 @@
                             <td>
                                 {{form.postulacion.direccion}}
                             </td>
+                            <td>
+                                {{form.telefono}}
+                            </td>
+
+                            <td align="center" >
+                      
+
+                                <a type="button" class="btn btn-outline-primary"*ngIf="form.postulacion.urlPdf != null" href="{{form.postulacion.urlPdf}}"
+                                style="width: 100px;height: 70;font-size: 50%;"   target="_blank"
+                                                                  ><b>VER HOJA DE VIDA</b></a>
+                                  <span *ngIf="form.postulacion.urlPdf == null">NO HAY HOJA DE VIDA</span>
+                               </td>
+                             
                         </tr>
 
                     </tbody>

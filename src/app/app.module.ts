@@ -44,6 +44,7 @@ import { TooltipModule } from 'ng2-tooltip-directive';
   declarations: [
     AppComponent,
     NopagefoundComponent,
+
   
    
  

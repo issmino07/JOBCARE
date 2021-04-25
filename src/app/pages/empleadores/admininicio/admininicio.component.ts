@@ -111,10 +111,10 @@ export class AdmininicioComponent implements OnInit {
    
      }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.show1()
     this.cf()
-    this.confirmacionPago();
+
     this.getPalnEmpeadores()
     this.getOpciones2();
     this.getFormulariosOfertas()
@@ -152,6 +152,12 @@ export class AdmininicioComponent implements OnInit {
     linear: false,
     animation: true
   })
+
+  if ( this.id == null) {
+    return false
+    }else{
+      this.confirmacionPago();
+    }
   }
 
   

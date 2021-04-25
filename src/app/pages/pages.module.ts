@@ -45,6 +45,11 @@ import { OfertasPremiumComponent } from './empleados/ofertas-premium/ofertas-pre
 import { PerfilesPremiumComponent } from './empleadores/perfiles-premium/perfiles-premium.component';
 import { IdhojavidaPrevioComponent } from './empleados/idhojavida-previo/idhojavida-previo.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CursosCompradosempleadoComponent } from './empleados/cursos-compradosempleado/cursos-compradosempleado.component';
+import { CursosCompradosempleadorComponent } from './empleadores/cursos-compradosempleador/cursos-compradosempleador.component';
+import { CursosCompradosComponent } from './administracion/cursos-comprados/cursos-comprados.component';
+import { SuscripcionesEmpleadoresComponent } from './administracion/suscripciones-empleadores/suscripciones-empleadores.component';
+import { SuscripcionesEmpleadosComponent } from './administracion/suscripciones-empleados/suscripciones-empleados.component';
 
 
 
@@ -83,8 +88,13 @@ import { ToastrModule } from 'ngx-toastr';
     EditarhojavidaProfesionalComponent,
     OfertasPremiumComponent,
     PerfilesPremiumComponent,
-    IdhojavidaPrevioComponent
-
+    IdhojavidaPrevioComponent,
+    CursosCompradosempleadoComponent,
+    CursosCompradosempleadorComponent,
+    CursosCompradosComponent,
+    SuscripcionesEmpleadoresComponent,
+    SuscripcionesEmpleadosComponent,
+  
   ],
 
   exports: [

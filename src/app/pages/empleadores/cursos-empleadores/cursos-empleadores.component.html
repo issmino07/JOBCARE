@@ -13,6 +13,7 @@
                           <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
                           <th scope="col" COLSPAN=1 style="background: azure">TÍTULO CURSO</th>
                           <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
+                          <th scope="col" COLSPAN=1 style="background: azure">DESCRIPCIÓN</th>
                           <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
                      
                      
@@ -26,16 +27,20 @@
                           <td>{{i+1}}</td>
                           <td>{{form.tituloCurso}}</td>
                           <td>{{form.categorias}}</td>
+                          <td>{{form.descripcionCurso}}</td>
                           <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
                        
-                          <td>{{form.valor}}</td>
+                          <td >{{form.valor |currency:'USD'}}</td>
                         
                        
                        
                        
                           <td>
-                            
-                          </td>
+                            <button type="button" class="btn btn-outline-primary"
+                                       style="width: 75px;height: 70;font-size: 50%;" (click)="multi(form.valor);producto();datosCurso(form.tituloCurso,form.categorias,form.descripcionCurso,form.valor)"
+                           ><b>COMPRAR</b></button>
+                        
+                        </td>
                       </tr>                  
                   </tbody>
               </table>

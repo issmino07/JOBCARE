@@ -46,7 +46,7 @@ export class TeContactaronComponent implements OnInit {
       this.listainforme.getHojavida(usuario._id).subscribe(
         result => { 
            this.formularios =  result
-           console.log(this.formularios,'TODO')
+           console.log(this.formularios,'TODO contacto')
        
        },error =>{
        console.log(error,'Error')

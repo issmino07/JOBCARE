@@ -22,7 +22,7 @@ const httpBearer ={
 })
 export class PlanEmpleadosService {
 
-
+  private opcionesUrl1 =  environment.base_url + '/planempleados/todos';
   private opcionesUrl =  environment.base_url + '/planempleados';  // URL to web api
 //  private opcionesUrl2 =  environment.base_url + '/usuarios/planempleados';  // URL to web api
   private opcionesUrl3 =  environment.base_url + '/planempleados/pagos';
@@ -38,6 +38,10 @@ export class PlanEmpleadosService {
   }
   addPlanPago (proveedor: Planempleados): Observable<Planempleados> {
     return this.http.post<Planempleados>(this.opcionesUrl3, proveedor, httpOptions);
+  }
+
+  getPlanesTodos(): Observable<Planempleados[]> {
+    return this.http.get<Planempleados[]>(this.opcionesUrl1)
   }
 
   getPlan (usuario_id:string): Observable<Planempleados[]> {

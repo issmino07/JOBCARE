@@ -1,5 +1,5 @@
 <div class=" container p-3 " class="col-sm">
-    <h1 align="center" id="color">CURSOS PARA PUBLICAR</h1>
+    <h1 align="center" id="color">CURSOS COMPRADOS</h1>
 </div>
 
 
@@ -12,14 +12,16 @@
                         <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
                         <th scope="col" COLSPAN=1 style="background: azure">TÍTULO CURSO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">FECHA COMPRA</th>
                    
                    
                         <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
                      
                    
-                        <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
+                    
+                        <th scope="col" COLSPAN=1 style="background: azure">CORREO</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">ROL USUARIO</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,16 +32,9 @@
                         <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
                      
                         <td>{{form.valor |currency:'USD'}}</td>
-                      
-                     
-                     
-                        <td class="text" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary"
-                                       style="width: 75px;height: 70;font-size: 50%;"
-                            [routerLink]="['/dashboard/editarCursos/',form._id]"><b>EDITAR</b></button>
-                        
-                        </td>
+                        <td>{{form.usuario.email}}</td>
+                        <td>{{form.usuario.telefono}}</td>
+                        <td>{{form.usuario.role}}</td>
                     </tr>                  
                 </tbody>
             </table>

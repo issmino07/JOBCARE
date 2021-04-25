@@ -36,6 +36,11 @@ import { AdminGuard } from '../guards/admin.guard';
 import { EditarhojavidaProfesionalComponent } from './profesionales/editarhojavida-profesional/editarhojavida-profesional.component';
 import { VerhojavidaProfesionalComponent } from './profesionales/verhojavida-profesional/verhojavida-profesional.component';
 import { IdhojavidaPrevioComponent } from './empleados/idhojavida-previo/idhojavida-previo.component';
+import { CursosCompradosempleadoComponent } from './empleados/cursos-compradosempleado/cursos-compradosempleado.component';
+import { CursosCompradosempleadorComponent } from './empleadores/cursos-compradosempleador/cursos-compradosempleador.component';
+import { CursosCompradosComponent } from './administracion/cursos-comprados/cursos-comprados.component';
+import { SuscripcionesEmpleadoresComponent } from './administracion/suscripciones-empleadores/suscripciones-empleadores.component';
+import { SuscripcionesEmpleadosComponent } from './administracion/suscripciones-empleados/suscripciones-empleados.component';
 
 
 
@@ -83,10 +88,17 @@ const routes: Routes = [
         { path: 'verhojaProfesional', component: VerhojavidaProfesionalComponent,canActivate:[AdminGuard] },
         { path: 'hoja', component: IdhojavidaPrevioComponent,canActivate:[AdminGuard] },
         { path: 'hoja/:id', component: IdhojavidaPrevioComponent,canActivate:[AdminGuard] },
-       
-        
+        { path: 'cursosComprados', component: CursosCompradosempleadoComponent,canActivate:[AdminGuard] },
+        { path: 'cursosCompradosEmpleador', component: CursosCompradosempleadorComponent,canActivate:[AdminGuard] },
       
 
+        { path: 'suscripcionesEmpleadores', component: SuscripcionesEmpleadoresComponent,canActivate:[AdminGuard] },
+        { path: 'suscripcionesEmpleados', component: SuscripcionesEmpleadosComponent,canActivate:[AdminGuard] },
+        { path: 'cursosCompradosT', component: CursosCompradosComponent,canActivate:[AdminGuard] },
+        
+    
+        
+        
         
       ]
 },

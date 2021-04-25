@@ -7,6 +7,7 @@ import { HojavidaService } from 'src/app/services/hojavida.service';
 import { Hojavida } from 'src/app/models/hojavida';
 import Swal from 'sweetalert2';
 import { Contacto } from 'src/app/models/contactoPOstulante';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-perfiles-premium',
@@ -22,9 +23,9 @@ export class PerfilesPremiumComponent implements OnInit {
   formularios: Hojavida[];
   ofertaModelo= new Hojavida();
   totalRegistros: number = 1;
-  constructor(private listainforme :HojavidaService, private _contacto: ContactoPostulanteService) { 
+  constructor(private listainforme :HojavidaService, private _contacto: ContactoPostulanteService, public _usuarioServices: UsuarioService,) { 
 
-
+    this.usuario = this._usuarioServices.usuario;
   
   }
 
@@ -55,7 +56,7 @@ export class PerfilesPremiumComponent implements OnInit {
 
     postulando = "POSTULADO"
     postular(id,email) {
-      console.log('estoy postulando')
+    
       // Realizar el posteo
       this.postulacionModelo.emailEmpleador= this.usuario.email;  
       this.postulacionModelo.emailPostulante = email

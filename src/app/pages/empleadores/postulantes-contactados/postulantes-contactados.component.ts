@@ -28,7 +28,7 @@ export class PostulantesContactadosComponent implements OnInit {
        this.listainforme.getContacto(usuario._id).subscribe(
          result => { 
             this.formularios =  result;
-
+           console.log(this.formularios,'contactados')
         
             },error =>{
         console.log(error,'Error')
