@@ -1,13 +1,13 @@
 
   <div class=" container p-3 " class="col-sm">
-    <h1 align="center" id="color">POSTULACIÓN OFERTAS</h1>
+    <h3 align="center" id="color">POSTULACIÓN OFERTAS</h3>
 </div>
 
 
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <table class="table table-responsive btn-table  table-bordered"  id="tableColor" >
+            <table class="table table-responsive btn-table table-hover  table-bordered tabla"  id="tableColor" >
                 <thead>
                     <tr>
                         <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
@@ -45,6 +45,8 @@
                     </tr>                  
                 </tbody>
             </table>
+            <br>
+            <br>
             <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
         </div>
     </div>

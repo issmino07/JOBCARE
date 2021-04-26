@@ -1,11 +1,9 @@
 /*
-Template Name: Admin Pro Admin
-Author: Wrappixel
-Email: niravjoshi87@gmail.com
-File: js
+
 */
 
-function customInitFunctions  () {
+function customInitFunctions( ){ 
+
     $(function() {
         "use strict";
         $(function() {
@@ -82,6 +80,23 @@ function customInitFunctions  () {
         }).trigger('blur');
     
         // ============================================================== 
+        // Auto select left navbar
+        // ============================================================== 
+        $(function() {
+            var url = window.location;
+            var element = $('ul#sidebarnav a').filter(function() {
+                return this.href == url;
+            }).addClass('active').parent().addClass('active');
+            while (true) {
+                if (element.is('li')) {
+                    element = element.parent().addClass('in').parent().addClass('active');
+                } else {
+                    break;
+                }
+            }
+    
+        });
+        // ============================================================== 
         //tooltip
         // ============================================================== 
         $(function() {
@@ -140,8 +155,25 @@ function customInitFunctions  () {
         });
     
     });
-
+    $(document).ready(function() {
     
-
-}
-
+        if ($("#mymce").length > 0) {
+            tinymce.init({
+                selector: "textarea#mymce",
+                theme: "modern",
+                height: 300,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+    
+            });
+        }
+    });
+    
+    
+    
+    
+    }

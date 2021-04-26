@@ -1,4 +1,6 @@
+<h3 align="center" id="color">PERFILES CONTACTADOS</h3>
 <div class="row animated fadeIn">
+    
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -6,17 +8,17 @@
 
 
 
-                <table class="table table-hover table-responsive btn-table ">
+                <table class="table table-hover table-responsive btn-table tabla ">
                     <thead>
                         <tr>
                        
-                            <th>NOMBRE</th>
-                            <th>CATEGORIA</th>
-                            <th>CÉDULA</th>
-                            <th>CIUDAD</th>
-                            <th>DIRECCIÓN</th>
-                            <th>TELÉFONO</th>
-                            <th>VER HOJA DE VIDA</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">NOMBRE</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">CÉDULA</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">DIRECCIÓN</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">VER HOJA DE VIDA</th>
                         </tr>
                     </thead>
 
@@ -63,5 +65,7 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
     <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
 </div>

@@ -64,8 +64,21 @@ export class CursosComponent implements OnInit {
 
   postular(){
 
-    Swal.fire("COMPRAR", "", "success")
-
+    Swal.fire({
+      title: '<strong>ES NECESARIO REGISTRARSE</strong>',
+      icon: 'info',
+      html:
+     
+        '<a href="#/home2"><button class="btn btn-outline-primary" >PUBLICAR EMPLEO</button></a><br>  '+ 
+        '<br> <a href="#/home"><button class="btn btn-outline-primary" >ENCONTRAR EMPLEO</button></a> ',
+      showCloseButton: true,
+   
+      focusConfirm: false,
+      confirmButtonText:
+        '<i class="fa fa-thumbs-up"></i> OK',
+      confirmButtonAriaLabel: 'Thumbs up, great!',
+    
+    })
 
 
   }

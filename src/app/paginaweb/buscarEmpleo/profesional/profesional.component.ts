@@ -178,11 +178,11 @@ export class ProfesionalComponent implements OnInit {
           // Si sucede un error
           //  Swal.fire('Error', err['msg'], 'error' );
           Swal.fire('Error', err.error.msg, 'error');
-          this.router.navigateByUrl('/inicio')
+          //this.router.navigateByUrl('/inicio')
         }
 
       )
-      this.resetUsuario()
+     // this.resetUsuario()
  
    
   }

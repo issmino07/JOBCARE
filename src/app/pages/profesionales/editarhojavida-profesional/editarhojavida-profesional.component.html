@@ -365,6 +365,10 @@
                      </div>
 
                 </div>
+                <div>
+                    <a   *ngIf="hojaModelo.urlPdf != null" href="{{hojaModelo.urlPdf}}" class="btn btn-primary" target="_blank">VER HOJA DE VIDA</a>
+                    <a   *ngIf="hojaModelo.urlPdf == null" class="btn btn-warning"  (click)="nohay()">NO HAY HOJA DE VIDA ADJUNTADA</a>
+                </div>
 
                 <br>
 
@@ -373,6 +377,46 @@
 
             </div>
 
+             <!-- Fin cambio de diseño -->
+             <div class="container fileUploadWrapper">
+                <div class="row">
+                    <!-- Progress Bar -->
+                    <div class="col-md-12" *ngIf="progress">
+                        <div class="progress form-group">
+                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                [style.width.%]="progress">
+                            </div>
+                        </div>
+                    </div>
+                 
+                    <div class="col-md-12">
+                        <label class="text-danger" for="tipoDeArchivp">Por favor su hoja de vida debe ser
+                            adjuntada en formato ".pdf" </label>
+                        <div class="fileupload" appDragDropFileUpload (click)="fileField.click()"
+                            (fileDropped)="upload($event)">
+                            <span class="ddinfo">Presione aqui para subir y actualizar tu hoja de vida</span>
+                            <input type="file" accept=".pdf" name="avatars" #fileField
+                                (change)="upload($event.target.files)" hidden multiple>
+
+                        </div>
+
+                       
+
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="image-list" *ngFor="let file of fileArr; let i = index">
+                            <div class="profile">
+                                <img [src]="sanitize(file['url'])" alt="">
+                            </div>
+                            <p>{{file.item.name}}</p>
+                        </div>
+                        <p class="message">{{msg}}</p>
+                    </div>
+                </div>
+            </div>
+               <!--/row-->
 
 
 
@@ -382,7 +426,7 @@
             <button type="submit" class="btn btn-primary" (click)="update()"><i
                     class="fa fa-save"></i>ACTUALIZAR</button>
             &nbsp;&nbsp;
-            <button type="submit" class="btn btn-danger" (click)="delete()"> <i
+            <button type="submit" class="btn btn-danger" (click)="eliminar()"> <i
                     class="fa fa-check"></i>ELIMINAR</button>
 
         </form>

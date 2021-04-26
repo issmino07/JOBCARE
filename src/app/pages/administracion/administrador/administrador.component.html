@@ -31,18 +31,17 @@
         <div class="card">
             <div class="card-body">
 
-                <h3 class="card-title">Usuarios registrados ( <small>{{totalRegistros }}</small> )</h3>
+                <h3 align="center" class="card-title">Usuarios registrados ( <small>{{totalRegistros }}</small> )</h3>
 
 
-                <table class="table table-hover table-responsive btn-table  table-bordered">
+                <table class="table table-hover table-responsive btn-table  table-bordered tabla">
                     <thead>
                         <tr>
-                            <th>Imagen</th>
-                            <th>Correo</th>
-                            <th>Usuario</th>
-                            <th>Role</th>
-                         
-                            <th></th>
+                            <th scope="col" COLSPAN=1 style="background: azure">Imagen</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">Correo</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">Usuario</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">Role</th>
+                            <th scope="col" COLSPAN=1 style="background: azure"></th>
                         </tr>
                     </thead>
 
@@ -72,7 +71,7 @@
                                 <button (click)="guardarUsuario( usuario )" class="btn btn-primary">
                                 <i class="fa fa-save"></i>
                               </button>
-
+                              &nbsp;
                                 <button (click)="borrarUsuario( usuario )" class="btn btn-danger">
                                   <i class="fa fa-trash-o"></i>
                                 </button>
@@ -82,11 +81,12 @@
                     </tbody>
 
                 </table>
-
+<br>
+<br>
                 <button (click)="cambiarDesde(-20)" class="btn btn-secondary">
                   Anteriores
                 </button>
-
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button (click)="cambiarDesde(20)" class="btn btn-secondary">
                     Siguientes
                 </button>

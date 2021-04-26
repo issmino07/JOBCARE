@@ -28,7 +28,7 @@
                                 </div>
                                 
                                 <div class=" container p-3 " class="col-sm">
-                                    <h1 align="center" id="color">PERFILES PUBLICADOS</h1>
+                                    <h3 align="center" id="color">PERFILES PUBLICADOS</h3>
                                 </div>
                                 
                                 <div class="row animated fadeIn" *ngIf="cargando">
@@ -50,16 +50,16 @@
 
 
 
-                <table class="table table-hover table-responsive"*ngIf="!cargando">
+                <table class="table table-hover table-responsive tabla"*ngIf="!cargando">
                     <thead>
                         <tr>
-                            <th>IMAGEN</th>
-                            <th>NOMBRE</th>
-                            <th>DESCRIPCIÓN</th>
-                            <th>CATEGORIA</th>
-                            <th>TELÉFONO</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">IMAGEN</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">NOMBRE</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">DESCRIPCIÓN</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
                       
-                            <th>ACCIÓN</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
                         </tr>
                     </thead>
 

@@ -18,12 +18,26 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { HojavidaService } from 'src/app/services/hojavida.service';
 import { Hojavida } from 'src/app/models/hojavida';
 import { ActivatedRoute } from '@angular/router';
+import { DragdropService } from 'src/app/services/dragdrop.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
+
 @Component({
   selector: 'app-editarhojavida-profesional',
   templateUrl: './editarhojavida-profesional.component.html',
   styleUrls: ['./editarhojavida-profesional.component.css']
 })
 export class EditarhojavidaProfesionalComponent implements OnInit {
+
+  urlPDF: string;
+
+  fileArr = [];
+  imgArr = [];
+  fileObj = [];
+
+  msg: string;
+  progress: number = 0;
+
 
   votes: number = 0;
   usuario :Usuario;
@@ -106,7 +120,8 @@ export class EditarhojavidaProfesionalComponent implements OnInit {
      cargoRef3: [''],
      empresaRef3: [''],
      telefonoRef3: [''],
- 
+     avatar: [null],
+     urlPdf:['']
   
 
  //  lavado: ['',],
@@ -126,7 +141,8 @@ export class EditarhojavidaProfesionalComponent implements OnInit {
 
  constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone,private spinner: NgxSpinnerService,
    private opcionesServices : CategoriasService,private ciudadOpcion: CiudadesService,private planes : PlanesService,public _usuarioServices: UsuarioService,
-    private _hojavida : HojavidaService, private route: ActivatedRoute,private location: Location) { 
+    private _hojavida : HojavidaService, private route: ActivatedRoute,private location: Location, private sanitizer: DomSanitizer,
+    public dragdropService: DragdropService) { 
       this.usuario = this._usuarioServices.usuario;
 
     }
@@ -242,10 +258,11 @@ selectProvincia(provincia) {
 
  update(): void {
   //this.submitted = true;
+  this.hojaModelo.urlPdf = this.urlPDF;
   this._hojavida.updateOpcion(this.hojaModelo)
       .subscribe(result => {
         console.log(result)
-        Swal.fire("Actualización de oferta existoso", "", "success")
+        Swal.fire("Actualización de Hoja de vida existoso", "", "success")
       });
 }
 
@@ -254,8 +271,31 @@ updateEstado(): void {
   this._hojavida.updateOpcion(this.hojaModelo)
       .subscribe(result => {
         console.log(result)
-        Swal.fire("Actualización de Publicación existoso", "", "success")
+        Swal.fire("Actualización de estado existoso", "", "success")
       });
+}
+eliminar(){
+  Swal.fire({
+    title: 'Esta seguro de eliminar su hoja de vida?',
+    text: "¡No podrás revertir esto!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'CANCELAR',
+    confirmButtonText: 'Si, ELIMINAR'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.delete()
+      Swal.fire(
+        'Hoja de vida !',
+        'ha sido eliminada.',
+        'success'
+      )
+    }
+  })
+
+
 }
 
 delete(): void {
@@ -337,11 +377,75 @@ goBack(): void {
 }
 
 
+  //=======================subir archivos===========================//
 
 
+  upload(e) {
+    const fileListAsArray = Array.from(e);
+    fileListAsArray.forEach((item, i) => {
+      const file = (e as HTMLInputElement);
+      const url = URL.createObjectURL(file[i]);
+      this.imgArr.push(url);
+      this.fileArr.push({ item, url: url });
+    })
+
+    this.fileArr.forEach((item) => {
+      this.fileObj.push(item.item)
+    })
+
+    // Set files form control
+    this.registerForm.patchValue({
+      avatar: this.fileObj
+    })
+
+    this.registerForm.get('avatar').updateValueAndValidity()
+
+    // Upload to server
+    this.registerForm.value.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.dragdropService.addFiles(this.registerForm.value.avatar)
 
 
+      .subscribe((event: HttpEvent<any>) => {
+        switch (event.type) {
+          case HttpEventType.Sent:
+            console.log('Request has been made!');
+            break;
+          case HttpEventType.ResponseHeader:
+            console.log('Response header has been received!');
+            break;
+          case HttpEventType.UploadProgress:
+            this.progress = Math.round(event.loaded / event.total * 100);
+            console.log(`Uploaded! ${this.progress}%`);
+            break;
+          case HttpEventType.Response:
+            console.log('Documento cargado exitosamente!', event.body);
+            this.urlPDF = event.body.userCreated.avatar[0];
+            console.log(this.urlPDF, 'aquie se inserto')
+            setTimeout(() => {
+              this.progress = 0;
+              this.fileArr = [];
+              this.fileObj = [];
+              this.msg = "Documento cargado exitosamente!"
+            }, 3000);
+        }
+      })
+  }
+
+  // Clean Url for showing image preview
+  sanitize(url: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+
+  nohay(){
+    Swal.fire(
+  
+      'NO HAY',
+      'ADJUNTOS EN ESTA HOJA DE VIDA',
+      'warning'
+    );
+  
+  }
 
 
 }
-

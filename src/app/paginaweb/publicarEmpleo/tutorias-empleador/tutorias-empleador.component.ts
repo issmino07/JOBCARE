@@ -392,11 +392,11 @@ export class TutoriasEmpleadorComponent implements OnInit {
           //  Swal.fire('Error', err['msg'], 'error' );
           this.spinner.hide();
           Swal.fire('Error', err.error.msg, 'error');
-          this.router.navigateByUrl('/inicio')
+          //this.router.navigateByUrl('/inicio')
         }
 
       )
-      this.resetUsuario()
+   //   this.resetUsuario()
     
   
   }

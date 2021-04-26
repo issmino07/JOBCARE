@@ -4,7 +4,7 @@
 <br>
 <br>
 <div class=" container p-3 " class="col-sm">
-  <h1 align="center" id="color">CURSOS DISPONIBLES</h1>
+  <h3 align="center" id="color">CURSOS DISPONIBLES</h3>
 </div>
 <br>
 <br>
@@ -60,16 +60,15 @@
 <div class="card">
   <div class="card-body">
 
-      <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe">
+      <table class="tablesaw table-responsive table-bordered table-hover table tabla">
           <thead>
               <tr>
-                  <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Nº</th>
-                  <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col
-                      data-tablesaw-priority="3">TÍTULO CURSO</th>
-                  <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">CATEGORIA</th>
-                  <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">FECHA CREACIÓN</th>
-                  <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">VALOR</th>
-                  <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">COMPRAR</th>
+                  <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
+                  <th scope="col" COLSPAN=1 style="background: azure">TÍTULO CURSO</th>
+                  <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
+                  <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
+                  <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
+                  <th scope="col" COLSPAN=1 style="background: azure">REGISTRARSE</th>
               </tr>
           </thead>
           <tbody>
@@ -89,7 +88,7 @@
       
                   <td>
                     <button type="button" class="btn btn-outline-primary" style="width: 85px;height: 75;font-size: 50%;"
-                      (click)="postular()"><b>COMPRAR</b></button>
+                      (click)="postular()"><b>REGISTRARSE</b></button>
       
       
                   </td>
@@ -100,7 +99,7 @@
   <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
 
   <div class="alert alert-primary " role="alert ">
-    <em class="text2">Aqui puedes ver nuestros cursos disponibles.</em>
+    <em class="text2">Aqui puedes ver nuestros cursos disponibles para acceder a uno de nuestros cursos es necesario registrarse para que la compra sea segura dentro de nuestra plataforma.</em>
 </div>
 </div>
 

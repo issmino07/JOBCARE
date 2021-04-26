@@ -368,11 +368,11 @@ export class CapacidadesEspecialesEmpleadorComponent implements OnInit {
         
           Swal.fire('Error', err.error.msg, 'error');
          
-          this.router.navigateByUrl('/inicio')
+          //this.router.navigateByUrl('/inicio')
         }
 
       )
-      this.resetUsuario()
+    //  this.resetUsuario()
   
 
   }
