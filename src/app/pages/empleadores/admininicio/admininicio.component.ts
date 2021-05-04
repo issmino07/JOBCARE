@@ -1,7 +1,7 @@
 import { Categoria } from '../../../models/categoria.model';
 import { CategoriasService } from '../../../services/categorias.service';
 import { OfertaService } from '../../../services/oferta.service';
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, NgZone, OnInit, ViewChild } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -99,6 +99,8 @@ export class AdmininicioComponent implements OnInit {
  
   IDOFERTA
   usuario: Usuario;
+
+  public notificacion = new EventEmitter<any>();
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone,private spinner: NgxSpinnerService,
     private opcionesServices : CategoriasService,private ciudadOpcion: CiudadesService,private planes : PlanesService,public _usuarioServices: UsuarioService,
      private oferta : OfertaService,  private router: Router,private toastr: ToastrService) { 
@@ -117,7 +119,15 @@ export class AdmininicioComponent implements OnInit {
     this.show1()
     this.cf()
 
+    this.notificacion.subscribe(
+      resp =>
+      this.getFormulariosOfertas()
+    )
     this.getPalnEmpeadores()
+    this.notificacion.subscribe(
+      resp =>
+      this.getPalnEmpeadores()
+    )
     this.getOpciones2();
     this.getFormulariosOfertas()
     this.ciuadadesOpcion = new Array<Ciudad>();
@@ -299,6 +309,7 @@ selectProvincia(provincia) {
       resp => {
         Swal.fire("Registro  existoso", "", "success")
 
+        this.notificacion.emit(resp);
        /* if (this.planregistrado == 'Free' || this.planregistrado == 'Premium (3 meses)' || this.planregistrado == 'Premium (6 meses)') {
           this.updateEstado()
           //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
@@ -332,7 +343,7 @@ selectProvincia(provincia) {
      // this.getFormulariosHoja();
   
      setTimeout(() => {
-      window.location.reload()
+    //  window.location.reload()
       this.next()
    },3000);
     
@@ -366,13 +377,12 @@ ID
       .subscribe(result => {
        
       //  this.toastr.info('Si ya estas suscrito a un plan puedes publicar las ofertas que desees !', 'Hola 😃');
-      
+      this.notificacion.emit(result);
         Swal.fire("OFERTA PUBLICADA CON EXITO", "", "success")
-      window.location.reload()
-      setTimeout(() => {
-    
-         this.next()
-         }, 3000);
+
+       
+    //  window.location.reload()
+   
       
       });
   }
@@ -484,10 +494,14 @@ public  valor2= '9.99'
   //  this.planModelo.tipoPlan =
     this.planes.updatePlan(this.planModelo).subscribe(
       resp => {
-
+        this.notificacion.emit(resp);
         Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
-       
+        setTimeout(() => {
+    
+          this.next()
+          }, 2000);
         this.updateEstado()
+
       }, (err) => {
 
         Swal.fire(this.planModelo.usuario.usuario,'Ya estas sucscrito a plan'+ err.error.msg, 'error');
@@ -526,8 +540,9 @@ public  valor2= '9.99'
             this.parametro2 = resp.optionalParameter2
             this.referencia = resp.reference
           Swal.fire("Pago realizado con exito", resp.clientTransactionId, "success")
+          this.registrarPlan()
           this.registrarPlanGeneral()
-
+         
           this.urlTree.removeEmptyProps['id']
           this.urlTree.removeEmptyProps['clientTransactionId']
           setTimeout(() => {
@@ -539,7 +554,7 @@ public  valor2= '9.99'
         
              this.registrarPlan()
              console.log(this.planregistrado,'PORQUE NO REGISTRA EL PLAN')
-          
+           this.next()
           }, 3000);
   
   
@@ -603,9 +618,12 @@ public  valor2= '9.99'
                 console.log(this.planModelo,'Que es lo que se va')
                 this.planes.addPlan(this.planModelo).subscribe(
                   resp => {
-                   console.log(resp,'RESPUESTA')
+                    this.notificacion.emit(resp);
                     Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
-                  
+                    setTimeout(() => {
+    
+                      this.next()
+                      }, 2000);
                    
                   }, (err) => {
                     

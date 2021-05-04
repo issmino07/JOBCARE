@@ -169,6 +169,15 @@ export class HojavidaFormularioComponent implements OnInit {
 
 
    this.cf()
+
+   this.notificacion.subscribe(
+    resp =>
+    this.getFormulariosHoja()
+  )
+  this.notificacion.subscribe(
+    resp =>
+    this.getPlanOfertas()
+  )
     this.getPlanOfertas()
     this.getFormulariosHoja()
 
@@ -338,6 +347,8 @@ export class HojavidaFormularioComponent implements OnInit {
     }
     this._hojavida.addOpcion(this.registerForm.value).subscribe(
       resp => {
+
+        this.notificacion.emit( resp );
 
         Swal.fire("Registro  existoso", "", "success")
 
