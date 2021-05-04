@@ -105,8 +105,14 @@ export class HojavidaProfesionalComponent implements OnInit {
     direccionmapa: ['',],
     experiencia: ['', [Validators.required]],
     descripcionExperiencia: ['', [Validators.required]],
+    cambioCiudad:['' ,[Validators.required]],
+    dispoViaje:['' ,[Validators.required]],
+  
+
 
     nivelEducacion: [''],
+    idioma:[''],
+    nivelIdioma:[''],
     estado: [''],
     usuario: [''],
     img2: [''],
@@ -128,7 +134,7 @@ export class HojavidaProfesionalComponent implements OnInit {
     empresaRef3: [''],
     telefonoRef3: [''],
     tipoplan: [''],
-
+   
     avatar: [null],
     urlPdf: [''],
     emailHoja:['']

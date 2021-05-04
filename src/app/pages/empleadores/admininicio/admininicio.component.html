@@ -140,8 +140,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Provincias</label>
-                                    <select name="Provincia" class="browser-default custom-select form-control"
+                                    <select name="Provincia" class="browser-default custom-select form-control"[(ngModel)]="opcion" (change)="capturar()"
                                         formControlName="provincia" (change)="selectProvincia($event.target.value)">
+                                        <option value="0">SELECCIONE UNA PROVINCIA</option>
                                         <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
                                             {{prov.provincia}}</option>
                                     </select>
@@ -151,7 +152,8 @@
                                 <div class="form-group">
                                     <label class="control-label">Ciudad</label>
                                     <select name="Ciudad" class="browser-default custom-select form-control"
-                                        formControlName="ciudad">
+                                        formControlName="ciudad" [(ngModel)]="opcion1" (change)="capturar1()">
+                                        <option value="0">SELECCIONE UNA CIUDAD</option>
                                         <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
                                             {{canton}}
                                         </option>
@@ -196,8 +198,8 @@
                                 </p>
                                 <p class="center" *ngIf="campoNoValido('horario')">Debe seleccionar un horario</p>
                                 <p class="center" *ngIf="campoNoValido('categorias')">Debe seleccionar una categoria</p>
-                                <p class="center" *ngIf="campoNoValido('provincia')">Debe seleccionar una provincia </p>
-                                <p class="center" *ngIf="campoNoValido('ciudad')">Debe seleccionar una ciudad</p>
+                                <p class="center" *ngIf="campoNoValido('provincia')|| opcion == '0' ">Debe seleccionar una provincia</p>
+                                <p class="center" *ngIf="campoNoValido('ciudad')|| opcion1 == '0'" >Debe seleccionar una ciudad</p>
                                 <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección </p>
 
 
@@ -207,10 +209,11 @@
 
                     </div>
                     <div class="form-actions row m-0 justify-content-center align-items-center vh-100">
-
-                        <button (click)="next();show()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
-                        &nbsp;&nbsp;
                         <button type="submit" class="btn btn-primary mt-5">GUARDAR</button>
+                        &nbsp;&nbsp;
+                        <button (click)="next();show()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
+                        
+                     
 
                     </div>
 

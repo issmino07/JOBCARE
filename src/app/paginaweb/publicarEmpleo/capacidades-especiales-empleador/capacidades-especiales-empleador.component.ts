@@ -470,6 +470,15 @@ export class CapacidadesEspecialesEmpleadorComponent implements OnInit {
       return false;
     }
   }
-
+  verSeleccion: string = '';
+  public opcion : string = '0'
+  capturar(){
+    this.verSeleccion = this.opcion;
+  }
+  verSeleccion1: string = '';
+  public opcion1 : string = '0'
+  capturar1(){
+    this.verSeleccion1 = this.opcion1;
+  }
 
 }

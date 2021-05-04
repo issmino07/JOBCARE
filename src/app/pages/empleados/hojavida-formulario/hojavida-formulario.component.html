@@ -172,7 +172,8 @@
                                 <div class="form-group">
                                     <label class="control-label">Provincias</label>
                                     <select name="Provincia" class="browser-default custom-select form-control"
-                                        formControlName="provincia" (change)="selectProvincia($event.target.value)">
+                                        formControlName="provincia" (change)="selectProvincia($event.target.value)" [(ngModel)]="opcion" (change)="capturar()">
+                                        <option value="0">SELECCIONE UNA PROVINCIA</option>
                                         <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
                                             {{prov.provincia}}</option>
                                     </select>
@@ -182,7 +183,8 @@
                                 <div class="form-group">
                                     <label class="control-label">Ciudad</label>
                                     <select name="Ciudad" class="browser-default custom-select form-control"
-                                        formControlName="ciudad">
+                                        formControlName="ciudad" [(ngModel)]="opcion" (change)="capturar()">
+                                        <option value="0">SELECCIONE UNA CIUDAD</option>
                                         <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
                                             {{canton}}
                                         </option>
@@ -234,9 +236,9 @@
                                 <div class="form-group has-success">
                                     <label class="control-label">Nivel de Educación :</label>
                                     <select formControlName="nivelEducacion" class="form-control custom-select">
-                                        <option value="Fijo">PRIMARIA</option>
-                                        <option value="Una Vez">SECUNDARIA</option>
-                                        <option value="Una Vez">SUPERIOR</option>
+                                        <option value="PRIMARIA">PRIMARIA</option>
+                                        <option value="SECUNDARIA">SECUNDARIA</option>
+                                        <option value="SUPERIOR">SUPERIOR</option>
                                     </select>
                                     <small class="form-control-feedback"> </small>
                                 </div>
@@ -435,19 +437,13 @@
                             <p class="center" *ngIf="campoNoValido('descripcion')">Debe poner una descripción</p>
                             <p class="center" *ngIf="campoNoValido('categorias')">Debe seleccionar una categoria </p>
 
-                            <p class="center" *ngIf="campoNoValido('provincia')">Debe seleccionar una provincia en el
-                                paso uno</p>
-                            <p class="center" *ngIf="campoNoValido('ciudad')">Debe seleccionar una ciudad en el paso uno
-                            </p>
-                            <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el
-                                market del mapa en el paso uno</p>
-                            <p class="center" *ngIf="campoNoValido('experiencia')">Debe poner los años de experiencia
-                            </p>
-                            <p class="center" *ngIf="campoNoValido('descripcionExperiencia')">Debe poner una descripción
-                                de su experincia</p>
+                            <p class="center" *ngIf="campoNoValido('provincia')|| opcion == '0' ">Debe seleccionar una provincia</p>
+                            <p class="center" *ngIf="campoNoValido('ciudad')|| opcion1 == '0'" >Debe seleccionar una ciudad</p>
+                            <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el marker del mapa </p>
+                            <p class="center" *ngIf="campoNoValido('experiencia')">Debe poner los años de experiencia</p>
+                            <p class="center" *ngIf="campoNoValido('descripcionExperiencia')">Debe poner una descripción de su experincia</p>
 
-                            <p class="center" *ngIf="campoNoValido('nivelEducacion')">Debe seleccionar nivel de
-                                educación </p>
+                            <p class="center" *ngIf="campoNoValido('nivelEducacion')">Debe seleccionar nivel de educación </p>
 
                         </div>
 

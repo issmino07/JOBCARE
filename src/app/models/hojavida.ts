@@ -45,4 +45,9 @@ export class Hojavida {
       urlPdf:string
       tipoplan:string
       emailHoja:string
+
+      cambioCiudad:string
+      dispoViaje:string
+      idioma:string
+      nivelIdioma:string
 }

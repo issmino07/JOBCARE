@@ -31,6 +31,7 @@ import { NgxSlideModalModule } from 'ngx-slide-modal';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -67,6 +68,7 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     NgxStarRatingModule,
     BarRatingModule,
     TooltipModule,
+    NgbModule,
     
   ],
   providers: [

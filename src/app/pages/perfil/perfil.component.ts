@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -15,7 +16,7 @@ export class PerfilComponent implements OnInit {
   imagenSubir: File;
   imagenTemporal: any;
   
-    constructor(public _usuarioServices: UsuarioService ) {
+    constructor(public _usuarioServices: UsuarioService,  private router: Router, ) {
      this.usuario = this._usuarioServices.usuario;
      }
   
@@ -62,5 +63,15 @@ export class PerfilComponent implements OnInit {
     this._usuarioServices.cambiarImagen(this.imagenSubir, this.usuario._id)
    }
   
+
+
+   guardarUsuario( usuario: Usuario ) {
+
+    this._usuarioServices.actualizarUsuario( usuario )
+            .subscribe();
+
+            this.router.navigate(['/login']);
+
+  }
   }
   

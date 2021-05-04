@@ -108,6 +108,8 @@ export class AdmininicioComponent implements OnInit {
 
     this.id = this.urlTree.queryParams['id'];
     this.type = this.urlTree.queryParams['clientTransactionId'];
+
+
    
      }
 
@@ -331,6 +333,7 @@ selectProvincia(provincia) {
   
      setTimeout(() => {
       window.location.reload()
+      this.next()
    },3000);
     
       
@@ -366,6 +369,11 @@ ID
       
         Swal.fire("OFERTA PUBLICADA CON EXITO", "", "success")
       window.location.reload()
+      setTimeout(() => {
+    
+         this.next()
+         }, 3000);
+      
       });
   }
 
@@ -519,6 +527,9 @@ public  valor2= '9.99'
             this.referencia = resp.reference
           Swal.fire("Pago realizado con exito", resp.clientTransactionId, "success")
           this.registrarPlanGeneral()
+
+          this.urlTree.removeEmptyProps['id']
+          this.urlTree.removeEmptyProps['clientTransactionId']
           setTimeout(() => {
           
            this.updateEstado()
@@ -528,7 +539,7 @@ public  valor2= '9.99'
         
              this.registrarPlan()
              console.log(this.planregistrado,'PORQUE NO REGISTRA EL PLAN')
-        
+          
           }, 3000);
   
   
@@ -612,6 +623,18 @@ public  valor2= '9.99'
                   this.toastr.info('Cuando ingrese sus datos presione guardar si esta seguro de que su información es correcta  y luego puede presionar 2 o siguiente!', 'Hola ✋',{
                     timeOut: 7000,
                   });
+                }
+
+
+                verSeleccion: string = '';
+                public opcion : string = '0'
+                capturar(){
+                  this.verSeleccion = this.opcion;
+                }
+                verSeleccion1: string = '';
+                public opcion1 : string = '0'
+                capturar1(){
+                  this.verSeleccion1 = this.opcion1;
                 }
 
 

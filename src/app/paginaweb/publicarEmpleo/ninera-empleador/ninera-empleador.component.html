@@ -56,8 +56,9 @@
             <tr>
               <td scope="col">Provincia &nbsp;</td>
               <td scope="col">
-                <select name="Provincia" class="browser-default custom-select form-control" formControlName="provincia"
+                <select name="Provincia" class="browser-default custom-select form-control" formControlName="provincia"[(ngModel)]="opcion" (change)="capturar()"
                   (change)="selectProvincia($event.target.value)">
+                  <option value="0">SELECCIONE UNA PROVINCIA</option>
                   <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
                     {{prov.provincia}}</option>
                 </select>
@@ -69,7 +70,8 @@
             <tr>
               <td scope="col">Ciudad &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
               <td scope="col">
-                <select name="Ciudad" class="browser-default custom-select form-control" formControlName="ciudad">
+                <select name="Ciudad" class="browser-default custom-select form-control" formControlName="ciudad" [(ngModel)]="opcion1" (change)="capturar1()">
+                  <option value="0">SELECCIONE UNA CIUDAD</option>
                   <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
                     {{canton}}
                   </option>
@@ -319,8 +321,8 @@
 
            <div class="row ">
             <div class="col text-danger  ">
-               <p class="center" *ngIf="campoNoValido('provincia')">Debe seleccionar una provincia en el paso uno</p>
-               <p class="center" *ngIf="campoNoValido('ciudad')">Debe seleccionar una ciudad en el paso uno</p>
+              <p class="center" *ngIf="campoNoValido('provincia')|| opcion == '0' ">Debe seleccionar una provincia en el paso uno</p>
+              <p class="center" *ngIf="campoNoValido('ciudad')|| opcion1 == '0'" >Debe seleccionar una ciudad en el paso uno</p>
                <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el market del mapa en el paso uno</p>
                <p class="center" *ngIf="campoNoValido('fecha')">Debe seleccionar una fecha indicando cuando lo necesitas en el paso 2</p>
                <p class="center" *ngIf="campoNoValido('experiencia')">Debe escribir cuanta experiencia necesitas en el paso 3</p>

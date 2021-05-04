@@ -234,15 +234,58 @@
                                 <div class="form-group has-success">
                                     <label class="control-label">Nivel de Educación :</label>
                                     <select formControlName="nivelEducacion" class="form-control custom-select">
-                                        <option value="Fijo">PRIMARIA</option>
-                                        <option value="Una Vez">SECUNDARIA</option>
-                                        <option value="Una Vez">SUPERIOR</option>
+                                        <option value="PRIMARIA">PRIMARIA</option>
+                                        <option value="SECUNDARIA">SECUNDARIA</option>
+                                        <option value="SUPERIOR">SUPERIOR</option>
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group has-success">
+                                    <label class="control-label">Opción de residir en otra ciudad  :</label>
+                                    <select formControlName="cambioCiudad" class="form-control custom-select">
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                   
                                     </select>
                                     <small class="form-control-feedback"> </small>
                                 </div>
                             </div>
 
+                            <div class="col-md-6">
+                                <div class="form-group has-success">
+                                    <label class="control-label">Disponibilidad para viajar :</label>
+                                    <select formControlName="dispoViaje" class="form-control custom-select">
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                   
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Idioma</label>
+                                <div class="input-group">
 
+
+                                    <input type="text" class="form-control " placeholder="Idioma"
+                                        formControlName="idioma" />
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group has-success">
+                                    <label class="control-label">Nivel idioma:</label>
+                                    <select formControlName="dispoViaje" class="form-control custom-select">
+                                        <option value="BÁSICO">BÁSICO</option>
+                                        <option value="INTERMEDIO">INTERMEDIO</option>
+                                        <option value="AVANZADO">AVANZADO</option>
+                                    </select>
+                                    <small class="form-control-feedback"> </small>
+                                </div>
+                            </div>
 
                         </div>
                         <!--/row-->

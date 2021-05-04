@@ -19,7 +19,7 @@
           </div>
       
           <!-- Login Form -->
-            <form ngNativeValidate #f="ngForm" class="form-horizontal form-material" (ngSubmit)="ingresar( f )">
+            <form ngNativeValidate #f="ngForm" class="form-horizontal form-material">
                           <a href="javascript:void(0)" class="text-center db"></a>
                           <div class="form-group m-t-40">
                               <div class="col-xs-12" >
@@ -42,9 +42,10 @@
                           </div>
                           <div class="form-group text-center ">
                               <div class="col-xs-6">
-                                <button class="btn btn-info  text-uppercase btn-rounded "data-toggle="modal" data-target="#ninera" data-whatever="@mdo">Registrar</button>
+                                  
+                                <button class="btn btn-info  text-uppercase btn-rounded "(click)="registro()">Registrar</button>
                                 &nbsp; &nbsp; 
-                                  <button class="btn btn-info  text-uppercase btn-rounded " type="submit" >Ingresar</button>
+                                  <button class="btn btn-info  text-uppercase btn-rounded " (click)="ingresar(f)" >Ingresar</button>
                                 
                          
                               </div>

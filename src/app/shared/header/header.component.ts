@@ -21,6 +21,10 @@ export class HeaderComponent implements OnInit {
 
     this.usuario= this._usuarioService.usuario;
     customInitFunctions();
+    setTimeout(() => {
+    
+      this._usuarioService.logOut()
+       }, 900000);
   }
 
   cerrarSesion(){

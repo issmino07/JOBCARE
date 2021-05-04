@@ -57,4 +57,33 @@ export class LoginComponent implements OnInit {
     );
   }
 
+
+
+  registro(){
+
+    Swal.fire({
+      title: '<strong>REGISTRARSE</strong>',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'info',
+      html:
+     
+        '<a href="#/home2"><button class="btn btn-outline-primary" >PUBLICAR EMPLEO</button></a><br>  '+ 
+        '<br> <a href="#/home"><button class="btn btn-outline-primary" >ENCONTRAR EMPLEO</button></a> ',
+      showCloseButton: true,
+   
+      focusConfirm: false,
+      confirmButtonText:
+        '<i class="fa fa-thumbs-up"></i> OK',
+      confirmButtonAriaLabel: 'Thumbs up, great!',
+    
+    })
+
+
+  }
+
 }

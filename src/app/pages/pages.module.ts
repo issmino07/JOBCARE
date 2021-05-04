@@ -50,6 +50,7 @@ import { CursosCompradosempleadorComponent } from './empleadores/cursos-comprado
 import { CursosCompradosComponent } from './administracion/cursos-comprados/cursos-comprados.component';
 import { SuscripcionesEmpleadoresComponent } from './administracion/suscripciones-empleadores/suscripciones-empleadores.component';
 import { SuscripcionesEmpleadosComponent } from './administracion/suscripciones-empleados/suscripciones-empleados.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 
 
@@ -94,7 +95,7 @@ import { SuscripcionesEmpleadosComponent } from './administracion/suscripciones-
     CursosCompradosComponent,
     SuscripcionesEmpleadoresComponent,
     SuscripcionesEmpleadosComponent,
-  
+   
   ],
 
   exports: [
@@ -117,6 +118,7 @@ import { SuscripcionesEmpleadosComponent } from './administracion/suscripciones-
     NgxSlideModalModule,
     NgxSpinnerModule,
     NgxStarRatingModule,
+    BarRatingModule,
     ToastrModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',

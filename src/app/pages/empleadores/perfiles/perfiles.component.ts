@@ -24,6 +24,8 @@ export class PerfilesComponent implements OnInit {
   formularios: Hojavida[];
   ofertaModelo= new Hojavida();
   totalRegistros: number = 1;
+  rate = 5;
+
   constructor(private listainforme :HojavidaService, private _contacto: ContactoPostulanteService, public _usuarioServices: UsuarioService,) { 
 
     this.usuario = this._usuarioServices.usuario;

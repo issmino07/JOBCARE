@@ -230,7 +230,7 @@ export class HojavidaFormularioComponent implements OnInit {
         for (var form in result) {
           this.planRegistro = result[form].tipoPlan;
           this.IDPLAN = result[form]._id
-          console.log(this.planRegistro, 'QUE HACES')
+         
 
       /*    if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
             this.updateEstado()
@@ -363,21 +363,16 @@ export class HojavidaFormularioComponent implements OnInit {
 
   }
   resetUsuario() {
-     this.registerForm.reset()
-     this.notificacion.subscribe(resp => {
-       this.getFormulariosHoja();
-       console.log(resp, 'emiter')
- 
-     })
-     // this.getFormulariosHoja();
- 
-     setTimeout(() => {
-       window.location.reload()
-     }, 5000);
- 
- 
-   }  
+    this.registerForm.reset()
+  
+   // this.getFormulariosHoja();
 
+   setTimeout(() => {
+    window.location.reload()
+    this.next()
+ },3000);
+ 
+  }
 
   update(): void {
     //this.submitted = true;
@@ -435,58 +430,49 @@ export class HojavidaFormularioComponent implements OnInit {
 
 
   registrarPlan() {
+    
 
-    this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    // Realizar el posteo
+      this.planModelo.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
+  
+      this.planModelo.amount = this.cantidad;
 
-    this.planModelo.amount = this.cantidad;
-    if (this.cantidad == "599") {
-      this.planModelo.tipoPlan = this.paquete
-      this.planModelo.valor = this.valor1
       this.planModelo.fecha1 = new Date ()
-      this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
-    }
-    if (this.cantidad == "0.00") {
       this.planModelo.tipoPlan = this.tipo
       this.planModelo.valor = this.valor
-    }
-    else if (this.cantidad == "999") {
-      this.planModelo.tipoPlan = this.paquete2
-      this.planModelo.valor = this.valor2
-      this.planModelo.fecha1 = new Date ()
-      this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
-
-    }
-    this.planModelo.clientTransactionId = this.clientTId
-    this.planModelo.optionalParameter1 = this.parametro1
-    this.planModelo.optionalParameter2 = this.parametro2
-    this.planModelo.reference = this.referencia
-
-    this.planes2.addPlan(this.planModelo).subscribe(
-      resp => {
-
-        Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
-
-
-        setTimeout(() => {
-
-          this.updateEstado()
-
-        }, 3000);
-        // this.getFormulariosHoja();
-
-        setTimeout(() => {
-          window.location.reload()
-        }, 3000);
-
-      }, (err) => {
-
-        Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
-
-      })
-
-
-
-  }
+ 
+      if (this.cantidad == "599") {
+        this.planModelo.tipoPlan = this.paquete
+        this.planModelo.valor = this.valor1
+        this.planModelo.fecha1 = new Date ()
+        this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+      }
+   
+      else if (this.cantidad == "999") {
+        this.planModelo.tipoPlan = this.paquete2
+        this.planModelo.valor = this.valor2
+        this.planModelo.fecha1 = new Date ()
+        this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+  
+      }
+      this.planModelo.clientTransactionId = this.clientTId
+      this.planModelo.optionalParameter1 = this.parametro1
+      this.planModelo.optionalParameter2 = this.parametro2
+      this.planModelo.reference = this.referencia
+      console.log(this.planModelo,'Que es lo que se va')
+      this.planes2.addPlan(this.planModelo).subscribe(
+        resp => {
+         console.log(resp,'RESPUESTA')
+          Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
+        
+         
+        }, (err) => {
+          
+          Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
+    
+        })
+     
+      }
 
   valor1 = '5.99'
   valor2 = '9.99'
@@ -642,14 +628,15 @@ export class HojavidaFormularioComponent implements OnInit {
         this.parametro2 = resp.optionalParameter2
         this.referencia = resp.reference
         Swal.fire("Pago realizado con exito", resp.clientTransactionId, "success")
+        this.registrarPlanGeneral()
         setTimeout(() => {
 
           this.updateEstado()
 
           this.registrarPlanGeneral()
-          if (this.planregistrado == "") {
+         
             this.registrarPlan()
-          }
+          
 
         }, 3000);
 
@@ -763,5 +750,17 @@ fecha2
 
   show() {
     this.toastr.info('Si ya estas suscrito a un plan en este paso esta el boton de publicar !', 'Hola');
+  }
+
+
+  verSeleccion: string = '';
+  public opcion : string = '0'
+  capturar(){
+    this.verSeleccion = this.opcion;
+  }
+  verSeleccion1: string = '';
+  public opcion1 : string = '0'
+  capturar1(){
+    this.verSeleccion1 = this.opcion1;
   }
 }
