@@ -162,7 +162,17 @@ export class HojavidaFormularioComponent implements OnInit {
     this.id = this.urlTree.queryParams['id'];
     this.type = this.urlTree.queryParams['clientTransactionId'];
     this.planRegistro
+ 
+    this.notificacion.subscribe(
+      resp =>
+      this.getFormulariosHoja()
+      
+    )
     this.getPlanOfertas()
+    this.notificacion.subscribe(
+      resp =>
+      this.getPlanOfertas()
+    )
   }
 
   ngOnInit() {
@@ -170,14 +180,7 @@ export class HojavidaFormularioComponent implements OnInit {
 
    this.cf()
 
-   this.notificacion.subscribe(
-    resp =>
-    this.getFormulariosHoja()
-  )
-  this.notificacion.subscribe(
-    resp =>
-    this.getPlanOfertas()
-  )
+ 
     this.getPlanOfertas()
     this.getFormulariosHoja()
 
@@ -348,10 +351,10 @@ export class HojavidaFormularioComponent implements OnInit {
     this._hojavida.addOpcion(this.registerForm.value).subscribe(
       resp => {
 
-        this.notificacion.emit( resp );
+     
 
         Swal.fire("Registro  existoso", "", "success")
-
+           this.notificacion.emit( resp );
         // this.getFormulariosHoja();
   /*    if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
           this.updateEstado()
@@ -379,7 +382,7 @@ export class HojavidaFormularioComponent implements OnInit {
    // this.getFormulariosHoja();
 
    setTimeout(() => {
-    window.location.reload()
+  //  window.location.reload()
     this.next()
  },3000);
  
@@ -403,7 +406,7 @@ export class HojavidaFormularioComponent implements OnInit {
     const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this._hojavida.getHojavida(usuario._id).subscribe(
       result => {
-        this.notificacion.emit(result);
+      //  this.notificacion.emit(result);
         this.formularios = result
 
         //  localStorage.setItem("Hojavida",JSON.stringify(this.formularios) )
@@ -475,8 +478,11 @@ export class HojavidaFormularioComponent implements OnInit {
         resp => {
          console.log(resp,'RESPUESTA')
           Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
-        
-         
+          this.notificacion.emit(resp);
+          setTimeout(() => {
+    
+            this.next()
+            }, 2000);
         }, (err) => {
           
           Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
@@ -515,11 +521,14 @@ export class HojavidaFormularioComponent implements OnInit {
     //  this.planModelo.tipoPlan =
     this.planes2.updatePlan(this.planModelo).subscribe(
       resp => {
-
+        this.notificacion.emit(resp);
         this.PlanHoja = resp.tipoPlan
 
         Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
-
+        setTimeout(() => {
+    
+          this.next()
+          }, 2000);
 
       }, (err) => {
 
@@ -745,6 +754,7 @@ export class HojavidaFormularioComponent implements OnInit {
       .subscribe(result => {
 
           console.log(result,'UPDATE')
+          this.notificacion.emit(result);
         Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "", "success")
         // window.location.reload()
       });

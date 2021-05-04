@@ -112,13 +112,6 @@ export class AdmininicioComponent implements OnInit {
     this.type = this.urlTree.queryParams['clientTransactionId'];
 
 
-   
-     }
-
-  ngOnInit(){
-    this.show1()
-    this.cf()
-
     this.notificacion.subscribe(
       resp =>
       this.getFormulariosOfertas()
@@ -128,6 +121,13 @@ export class AdmininicioComponent implements OnInit {
       resp =>
       this.getPalnEmpeadores()
     )
+     }
+
+  ngOnInit(){
+    this.show1()
+    this.cf()
+
+   
     this.getOpciones2();
     this.getFormulariosOfertas()
     this.ciuadadesOpcion = new Array<Ciudad>();

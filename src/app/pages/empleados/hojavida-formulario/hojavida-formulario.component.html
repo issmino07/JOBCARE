@@ -183,7 +183,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Ciudad</label>
                                     <select name="Ciudad" class="browser-default custom-select form-control"
-                                        formControlName="ciudad" [(ngModel)]="opcion" (change)="capturar()">
+                                        formControlName="ciudad" [(ngModel)]="opcion1" (change)="capturar1()">
                                         <option value="0">SELECCIONE UNA CIUDAD</option>
                                         <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
                                             {{canton}}
