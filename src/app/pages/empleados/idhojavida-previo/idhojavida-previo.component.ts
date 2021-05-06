@@ -443,6 +443,8 @@ goBack(): void {
     );
   
   }
-
+  atras(): void {
+    this.location.back();
+  }
 
 }

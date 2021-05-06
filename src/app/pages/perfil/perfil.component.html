@@ -27,8 +27,7 @@
                             <select  (change)="guardarUsuario( usuario )" [(ngModel)]="usuario.role" name="role" class="form-control" [ngClass]="{'bg-danger text-white':usuario.role=='INACTIVO'}">
                                 <option value="EMPLEADOR_ROLE">EMPLEADOR</option>
                                 <option value="EMPLEADO_ROLE">EMPLEADO</option>
-                             <option value="PROFESIONAL_ROLE">PROFESIONAL</option>
-                                <option value="INACTIVO">INACTIVO</option> 
+                        
                             </select>
                         </div>
                     </div>

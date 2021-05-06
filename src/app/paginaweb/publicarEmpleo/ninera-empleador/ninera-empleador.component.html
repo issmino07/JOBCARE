@@ -89,9 +89,9 @@
 
               <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                <input type="address" class="form-control" (keydown.enter)="$event.preventDefault()"
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia" 
-                  spellcheck="off" type="text" #search>
+                  spellcheck="off"  #search>
 
 
                 <div *ngIf="registerForm.get('direccion').errors && registerForm.get('direccion').dirty">

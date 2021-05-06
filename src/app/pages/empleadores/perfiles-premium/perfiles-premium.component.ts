@@ -55,9 +55,10 @@ export class PerfilesPremiumComponent implements OnInit {
 
 
     postulando = "POSTULADO"
-    postular(id,email) {
+    postular(id,email, telefo) {
     
       // Realizar el posteo
+      this.postulacionModelo.telefonoPostulante = telefo  
       this.postulacionModelo.emailEmpleador= this.usuario.email;  
       this.postulacionModelo.emailPostulante = email
       this.postulacionModelo.nombre = this.usuario.usuario
@@ -80,7 +81,7 @@ export class PerfilesPremiumComponent implements OnInit {
     }
 
 
-    ActulizarEstado(id,email) {
+    ActulizarEstado(id,email,telefo) {
     
       this.ofertaModelo._id = id;
     //  this.ofertaModelo.descripcion = this.ID
@@ -97,7 +98,7 @@ export class PerfilesPremiumComponent implements OnInit {
   
         })
   
-     this.postular(id,email)
+     this.postular(id,email,telefo)
     }
   
 

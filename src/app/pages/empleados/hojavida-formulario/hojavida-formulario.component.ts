@@ -108,6 +108,8 @@ export class HojavidaFormularioComponent implements OnInit {
     descripcionExperiencia: ['', [Validators.required]],
 
     nivelEducacion: [''],
+    telefonohoja: [''],
+  
     estado: [''],
     usuario: [''],
     img2: [''],
@@ -338,6 +340,8 @@ export class HojavidaFormularioComponent implements OnInit {
 
     this.registerForm.value.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado
+    this.registerForm.value.telefonohoja = this.usuario.telefono
+    
     this.registerForm.value.emailHoja= this.usuario.email
     this.registerForm.value.img2 = this.usuario.img;
     this.registerForm.value.tipoPlan = this.planRegistro
@@ -429,67 +433,9 @@ export class HojavidaFormularioComponent implements OnInit {
   }
 
 
-  voteUp(valor: number) {
-    if (this.votes >= 50 && valor >= 0) {
-      return this.votes = 50;
-    }
-    //  this.votes++;
-    if (this.votes <= 0 && valor < 0) {
-      return this.votes = 0;
-    }
-
-    this.votes = this.votes + valor;
-
-  }
 
 
-  registrarPlan() {
-    
 
-    // Realizar el posteo
-      this.planModelo.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
-  
-      this.planModelo.amount = this.cantidad;
-
-      this.planModelo.fecha1 = new Date ()
-      this.planModelo.tipoPlan = this.tipo
-      this.planModelo.valor = this.valor
- 
-      if (this.cantidad == "599") {
-        this.planModelo.tipoPlan = this.paquete
-        this.planModelo.valor = this.valor1
-        this.planModelo.fecha1 = new Date ()
-        this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
-      }
-   
-      else if (this.cantidad == "999") {
-        this.planModelo.tipoPlan = this.paquete2
-        this.planModelo.valor = this.valor2
-        this.planModelo.fecha1 = new Date ()
-        this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
-  
-      }
-      this.planModelo.clientTransactionId = this.clientTId
-      this.planModelo.optionalParameter1 = this.parametro1
-      this.planModelo.optionalParameter2 = this.parametro2
-      this.planModelo.reference = this.referencia
-      console.log(this.planModelo,'Que es lo que se va')
-      this.planes2.addPlan(this.planModelo).subscribe(
-        resp => {
-         console.log(resp,'RESPUESTA')
-          Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
-          this.notificacion.emit(resp);
-          setTimeout(() => {
-    
-            this.next()
-            }, 2000);
-        }, (err) => {
-          
-          Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
-    
-        })
-     
-      }
 
   valor1 = '5.99'
   valor2 = '9.99'
@@ -648,6 +594,7 @@ export class HojavidaFormularioComponent implements OnInit {
         this.parametro2 = resp.optionalParameter2
         this.referencia = resp.reference
         Swal.fire("Pago realizado con exito", resp.clientTransactionId, "success")
+        this.registrarPlan()
         this.registrarPlanGeneral()
         setTimeout(() => {
 
@@ -772,6 +719,54 @@ fecha2
   show() {
     this.toastr.info('Si ya estas suscrito a un plan en este paso esta el boton de publicar !', 'Hola');
   }
+
+  registrarPlan() {
+    
+
+    // Realizar el posteo
+      this.planModelo.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
+  
+      this.planModelo.amount = this.cantidad;
+
+      this.planModelo.fecha1 = new Date ()
+      this.planModelo.tipoPlan = this.tipo
+      this.planModelo.valor = this.valor
+ 
+      if (this.cantidad == "599") {
+        this.planModelo.tipoPlan = this.paquete
+        this.planModelo.valor = this.valor1
+        this.planModelo.fecha1 = new Date ()
+        this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+      }
+   
+      else if (this.cantidad == "999") {
+        this.planModelo.tipoPlan = this.paquete2
+        this.planModelo.valor = this.valor2
+        this.planModelo.fecha1 = new Date ()
+        this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
+  
+      }
+      this.planModelo.clientTransactionId = this.clientTId
+      this.planModelo.optionalParameter1 = this.parametro1
+      this.planModelo.optionalParameter2 = this.parametro2
+      this.planModelo.reference = this.referencia
+      console.log(this.planModelo,'Que es lo que se va')
+      this.planes2.addPlan(this.planModelo).subscribe(
+        resp => {
+         console.log(resp,'RESPUESTA')
+          Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
+          this.notificacion.emit(resp);
+          setTimeout(() => {
+    
+            this.next()
+            }, 2000);
+        }, (err) => {
+          
+          Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
+          this.registrarPlanGeneral()
+        })
+     
+      }
 
 
   verSeleccion: string = '';

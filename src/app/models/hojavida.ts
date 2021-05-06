@@ -25,6 +25,8 @@ export class Hojavida {
       usuario:Usuario;
       check: boolean;
       user: Usuario;
+
+      telefonohoja:string;
       //referencia1
       nombreRef1:string;
       cargoRef1: string;

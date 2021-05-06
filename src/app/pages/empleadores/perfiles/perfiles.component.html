@@ -57,6 +57,7 @@
                             <th scope="col" COLSPAN=1 style="background: azure">NOMBRE</th>
                             <th scope="col" COLSPAN=1 style="background: azure">DESCRIPCIÓN</th>
                             <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
                             <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
                          <!--  <th scope="col" COLSPAN=1 style="background: azure">CALIFICACIÓN</th>  --> 
                             <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
@@ -72,7 +73,8 @@
                             <td> {{form.nombre}} {{form.apellido}}</td>
                             <td>{{form.descripcion}}</td>
                             <td>{{form.categorias}}</td>
-                            <td> {{form.usuario.telefono}} </td>
+                            <td>{{form.ciudad}}</td>
+                            <td> {{form.telefonohoja}} </td>
                          <!--   <td>
                               <i *ngIf="rate==1">⭐</i>
                               <i *ngIf="rate==2">⭐⭐</i>
@@ -82,7 +84,7 @@
                             </td>-->
                             <td>
                                 <button type="button" class="btn btn-outline-primary"
-                    style="width: 140px;height: 75;font-size: 70%;" (click)="ActulizarEstado(form._id,form.emailHoja)"
+                    style="width: 140px;height: 75;font-size: 70%;" (click)="ActulizarEstado(form._id,form.emailHoja,form.telefonohoja)"
                                               ><b>Quieres contactar</b></button>
                             </td>
                         </tr>

@@ -109,7 +109,7 @@ export class OfertasPublicadasComponent implements OnInit {
      this.listainforme.getOpciones().subscribe(
       result => {
         this.formularios = result
-
+        
         console.log(this.formularios,'las postulaciones')
                 //  localStorage.setItem("result",JSON.stringify(this.formularios) )
       });
@@ -140,9 +140,9 @@ export class OfertasPublicadasComponent implements OnInit {
       }, (err) => {
 
           Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
-
+     
       })
-    
+ 
   }
 
 

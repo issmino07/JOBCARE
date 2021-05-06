@@ -74,13 +74,10 @@ export class LoginComponent implements OnInit {
      
         '<a href="#/home2"><button class="btn btn-outline-primary" >PUBLICAR EMPLEO</button></a><br>  '+ 
         '<br> <a href="#/home"><button class="btn btn-outline-primary" >ENCONTRAR EMPLEO</button></a> ',
-      showCloseButton: true,
+      showCloseButton: false,
    
-      focusConfirm: false,
-      confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> OK',
-      confirmButtonAriaLabel: 'Thumbs up, great!',
-    
+      focusConfirm: true,
+   
     })
 
 

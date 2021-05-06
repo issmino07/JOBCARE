@@ -38,12 +38,43 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
 
-
-                           <!-- ============================================================== -->
-                           <li class="nav-item hidden-xs-down "> 
-                               <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)">{{usuario.usuario}} estas como {{usuario.role | roles}}</a>
+                                   <!-- Comment -->
+                <!-- ============================================================== -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="font-size:1vw">Bienvenido ! {{usuario.usuario}} estás en modo “ {{usuario.role | roles}} ”
+                        <div class="notify">  </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right mailbox animated fadeIn fast">
+                        <ul>
                            
-                        </li>
+                            <li>
+                                <div class="message-center">
+                                    <!-- Message -->
+                                    <a>
+                                        <div class="btn btn-danger btn-circle"><i class="fa fa-handshake-o" (click)="guardarUsuario( usuario )"></i></div>
+                                        &nbsp;&nbsp;
+                                        <div class="mail-contnet">
+                                            <h5 (click)="guardarUsuario( usuario )">CABIAR A MODO</h5> <span class="mail-desc" (click)="guardarUsuario( usuario )">EMPLEADO</span>  </div>
+                                    </a>
+                                    <!-- Message -->
+                                    <a >
+                                        <div class="btn btn-success btn-circle"><i class="fa fa-briefcase" (click)="guardarUsuario1( usuario )"></i></div>
+                                        &nbsp;&nbsp;
+                                        <div class="mail-contnet">
+                                            <h5 (click)="guardarUsuario1( usuario )">CABIAR A MODO</h5> <span class="mail-desc" (click)="guardarUsuario1( usuario )">EMPLEADOR</span></div>
+                                    </a>
+                                    <!-- Message -->
+                                  
+                                 
+                                </div>
+                            </li>
+                         
+                        </ul>
+                    </div>
+                </li>
+                <!-- ============================================================== -->
+                <!-- End Comment -->
+                       
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->

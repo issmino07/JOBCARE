@@ -9,5 +9,5 @@ export class Contacto {
     emailEmpleador:string
     nombre:string;
     telefono:string;
-
+    telefonoPostulante:string
 }
