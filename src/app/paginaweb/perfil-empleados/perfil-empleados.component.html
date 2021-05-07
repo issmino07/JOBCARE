@@ -137,7 +137,10 @@
                                                         href="#/profesionalEmpleador">
                                                         {{form.categorias}}</a>
                                                 </span>
-
+                                                <span *ngIf="(form.categorias ==='OTROS')">
+                                                    <a type="button" class="btn btn-outline-primary">
+                                                        {{form.categorias}}</a>
+                                                </span>
 
                                             </td>
                                             <td>

@@ -63,6 +63,7 @@
                                         <th  scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
                                         <th  scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
                                         <th  scope="col" COLSPAN=1 style="background: azure">REMUNERACIÓN</th>
+                                        <th  scope="col" COLSPAN=1 style="background: azure">FECHA PUBLICACIÓN</th>
                                         <th  scope="col" COLSPAN=1 style="background: azure" joyrideStep="perfil" title="Bienvenido"
                                             text="Presiona el boton en la sección de categoria para que te redirija a la parte de registro y puedas ver estas ofertas en nuestra plataforma ">
                                             CATEGORIA</th>
@@ -80,6 +81,9 @@
                                         <td>{{form.horario}}</td>
                                         <td>{{form.ciudad}}</td>
                                         <td>{{form.remuneracion}}</td>
+                                        <td>
+                                            {{form.fechaReporte  | date:'dd-MM-yyyy'}}
+                                        </td>
                                         <td>
                                             <span *ngIf="(form.categorias ==='NIÑERAS')" #ruta>
                                                 <a type="button" class="btn btn-outline-primary" href="#/ninera">
@@ -125,11 +129,15 @@
                                                 <a type="button" class="btn btn-outline-primary" href="#/profesional">
                                                     {{form.categorias}}</a>
                                             </span>
+                                            <span *ngIf="(form.categorias ==='OTROS')">
+                                                <a type="button" class="btn btn-outline-primary">
+                                                    {{form.categorias}}</a>
+                                            </span>
 
 
                                         </td>
 
-
+                                       
 
                                         <td>
 

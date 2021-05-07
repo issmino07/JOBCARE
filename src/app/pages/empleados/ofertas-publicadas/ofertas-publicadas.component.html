@@ -45,6 +45,7 @@
                         <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">FECHA PUBLICACIÓN</th>
                         <th scope="col" COLSPAN=1 style="background: azure">VER OFERTA</th>
                         <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
    
@@ -58,6 +59,9 @@
                         <td>{{form.horario}}</td>
                         <td>{{form.categorias}}</td>
                         <td>{{form.ciudad}}</td>
+                        <td>
+                            {{form.fechaReporte  | date:'dd-MM-yyyy'}}
+                        </td>
                         <td>
                             <button type="button" class="btn btn-outline-primary"
                                        style="width: 75px;height: 70;font-size: 50%;"
