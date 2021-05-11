@@ -107,7 +107,7 @@ export class OfertasPremiumComponent implements OnInit {
   
 
   postulando = "POSTULADO"
-  postular(id, usuario,email) {
+  postular(id, usuario,email, titulo, remu, salario,categoria, ciudad, tele,) {
     console.log('estoy postulando')
     // Realizar el posteo
     this.postulacionModelo.emailOfertante = email
@@ -116,6 +116,14 @@ export class OfertasPremiumComponent implements OnInit {
     this.postulacionModelo.estado = this.postulando
     this.postulacionModelo.urlPdf = this.urlPdf
     this.postulacionModelo.nombre = this.nom
+
+    this.postulacionModelo.tituloEmpleo = titulo;
+    this.postulacionModelo.remuneracion = remu;
+    this.postulacionModelo.salario = salario;
+    this.postulacionModelo.categoria = categoria;
+    this.postulacionModelo.ciudad = ciudad;
+
+    this.postulacionModelo.telefonoEmpleador = tele;
     this.postulacionModelo.telefono = this.usuario.telefono
     this.postulacionModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
   
@@ -137,7 +145,7 @@ export class OfertasPremiumComponent implements OnInit {
 
 
  post= "POSTULADO"
-  ActulizarEstado(id, usuario,email) {
+  ActulizarEstado(id, usuario,email, titulo, remu, salario,categoria, ciudad, tele,) {
     
     this.ofertaModelo._id = id;
     this.ofertaModelo.descripcion = this.ID;
@@ -155,7 +163,7 @@ export class OfertasPremiumComponent implements OnInit {
 
       })
 
-   this.postular(id,usuario,email)
+   this.postular(id, usuario,email, titulo, remu, salario,categoria, ciudad, tele,)
   }
 
   buscarOferta( termino: string ) {

@@ -21,5 +21,6 @@ postulacion?:Array<Object>
 descripcion?:Hojavida;
 user?: Usuario;
 emailEmpleador:string;
+telefonoEmpleador:string
 estatus: string ="POSTULADO";
 }

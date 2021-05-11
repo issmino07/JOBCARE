@@ -20,29 +20,28 @@
                 </thead>
                 <tbody *ngFor="let form of  formularios">
                     <tr *ngFor="let post of  form.postulacion | paginate: { itemsPerPage: 10, currentPage: totalRegistros }; let i = index" >
-                     
-                    
-                    
+
+
+
                         <td>{{i+1}}</td>
-                    
-                        <td> {{post.user.usuario }}</td> 
-                        <td> {{post.user.email }}</td> 
-                     
-                        <td> {{post.user.telefono }}</td> 
-                        <td> {{post.user.categorias }}</td> 
+
+                        <td> {{post.user.usuario }}</td>
+                        <td> {{post.user.email }}</td>
+
+                        <td> {{post.user.telefono }}</td>
+                        <td> {{post.user.categorias }}</td>
                        <td align="center">
-                      
+
 
                         <a type="button" class="btn btn-outline-primary"*ngIf="post.descripcion.urlPdf != null" href="{{post.descripcion.urlPdf}}"
                         style="width: 100px;height: 70;font-size: 50%;"   target="_blank"
                                                           ><b>VER HOJA DE VIDA</b></a>
-                      
+
                        </td>
-                     
-                    
-                    
-                      
-                    </tr>                  
+                   
+
+
+                    </tr>
                 </tbody>
             </table>
             <br>

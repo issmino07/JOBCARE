@@ -9,5 +9,13 @@ export class Contacto {
     emailEmpleador:string
     nombre:string;
     telefono:string;
+    urlPdf:string
     telefonoPostulante:string
+    nombrePostulante:string
+    apellidoPostulante:string
+    categoriaPostulante:string
+    cedulaPostulante:string
+    ciudadPostulante:string
+    direccionPostulante:string
+  
 }

@@ -11,6 +11,15 @@ export class Postulacion {
     urlPdf:string;
     telefono: string
     nombre:string
+
+    tituloEmpleo:string
+    remuneracion:string
+    salario:string
+   
+    horario:string
+    categoria:string
+    ciudad:string
+    telefonoEmpleador:string
 }
 
 

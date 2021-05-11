@@ -78,7 +78,8 @@ export class AdmininicioComponent implements OnInit {
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     TipoPlan: [''],
-    emailEmpleador:['']
+    emailEmpleador:[''],
+    telefonoEmpleador:['']
   //  direccionmapa: ['', [Validators.required]],
   //  lavado: ['',],
   //  comida: ['',],
@@ -298,6 +299,7 @@ selectProvincia(provincia) {
     this.registerForm.value.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado;
     this.registerForm.value.emailEmpleador = this.usuario.email;
+    this.registerForm.value.telefonoEmpleador = this.usuario.telefono
     this.registerForm.value.tipoPlan = this.planregistrado
     this.formSubmitted = true;
 
@@ -550,9 +552,9 @@ public  valor2= '9.99'
            this.updateEstado()
            this.registrarPlanGeneral()
 
-           this.registrarPlanGeneral()
+         //  this.registrarPlanGeneral()
         
-             this.registrarPlan()
+           //  this.registrarPlan()
              console.log(this.planregistrado,'PORQUE NO REGISTRA EL PLAN')
            this.next()
           }, 3000);

@@ -1,7 +1,17 @@
 
 
 
+<div class="row animated fadeIn m-0 justify-content-center align-items-center vh-100 ">
+    <div class="col-10">
+        <div class="card">
+            <div class="card-body">
 
+                <input #input (keyup)="buscarOferta( input.value )" type="text" class="form-control" placeholder="Buscar ofertas...">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class=" container p-3 " class="col-sm">
     <h3 align="center" id="color">OFERTAS PREMIUM PUBLICADAS</h3>
@@ -48,7 +58,7 @@
                 
                         <td>
                             <button type="button" class="btn btn-outline-primary"
-                                       style="width: 85px;height: 75;font-size: 50%;" (click)="ActulizarEstado(form._id, form.usuario, form.emailEmpleador)"
+                                       style="width: 85px;height: 75;font-size: 50%;" (click)="ActulizarEstado(form._id, form.usuario, form.emailEmpleador, form.tituloEmpleo,form.remuneracion,form.valor,form.categorias,form.ciudad,form.telefonoEmpleador)"
                           ><b>Quieres postular</b></button>
                         
                  

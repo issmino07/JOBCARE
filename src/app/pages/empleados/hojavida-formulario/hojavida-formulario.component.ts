@@ -602,7 +602,7 @@ export class HojavidaFormularioComponent implements OnInit {
 
           this.registrarPlanGeneral()
          
-            this.registrarPlan()
+          //  this.registrarPlan()
           
 
         }, 3000);

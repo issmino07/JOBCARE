@@ -55,15 +55,26 @@ export class PerfilesPremiumComponent implements OnInit {
 
 
     postulando = "POSTULADO"
-    postular(id,email, telefo) {
+    postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,) {
+
+
     
       // Realizar el posteo
+    //  this.postulacionModelo.postulacion = id;
       this.postulacionModelo.telefonoPostulante = telefo  
-      this.postulacionModelo.emailEmpleador= this.usuario.email;  
       this.postulacionModelo.emailPostulante = email
+      this.postulacionModelo.nombrePostulante = nombre
+      this.postulacionModelo.apellidoPostulante= apellido
+      this.postulacionModelo.cedulaPostulante = cedula
+      this.postulacionModelo.direccionPostulante = descripcion
+     this.postulacionModelo.direccionPostulante = direccion
+     this.postulacionModelo.categoriaPostulante = categoria
+     this.postulacionModelo.ciudadPostulante = ciudad
+     this.postulacionModelo.urlPdf = pdf
+      this.postulacionModelo.emailEmpleador= this.usuario.email;  
       this.postulacionModelo.nombre = this.usuario.usuario
       this.postulacionModelo.telefono = this.usuario.telefono
-      this.postulacionModelo.postulacion = id;
+    
       this.postulacionModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     
          this._contacto.addContacto(this.postulacionModelo).subscribe(
@@ -81,7 +92,7 @@ export class PerfilesPremiumComponent implements OnInit {
     }
 
 
-    ActulizarEstado(id,email,telefo) {
+    ActulizarEstado(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria,email, telefo,pdf, ) {
     
       this.ofertaModelo._id = id;
     //  this.ofertaModelo.descripcion = this.ID
@@ -98,7 +109,7 @@ export class PerfilesPremiumComponent implements OnInit {
   
         })
   
-     this.postular(id,email,telefo)
+     this.postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria,email, telefo,pdf, )
     }
   
 

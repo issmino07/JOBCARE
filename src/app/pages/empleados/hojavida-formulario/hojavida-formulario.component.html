@@ -62,7 +62,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">NOMBRES</label>
-                                    <input [(ngModel)]="hojaModelo.nombre" formControlName="nombre" type="text" id="firstName" class="form-control"
+                                    <input formControlName="nombre" type="text" id="firstName" class="form-control"
                                         placeholder="NOMBRES">
                                     <small class="form-control-feedback"></small>
                                 </div>
@@ -383,7 +383,7 @@
                                         </div>
                                     </div>
                                 </div>
-                             
+
                                 <div class="col-md-12">
                                     <label class="text-danger" for="tipoDeArchivp">Por favor su hoja de vida debe ser
                                         adjuntada en formato ".pdf" </label>
@@ -395,7 +395,7 @@
 
                                     </div>
 
-                                   
+
 
 
                                 </div>
@@ -448,13 +448,13 @@
                         </div>
 
                     </div>
-                    
+
 
                     <div class="row m-0 justify-content-center align-items-center vh-100">
                         <button  type="submit" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
                         &nbsp;&nbsp;
 
-                      
+
                     </div>
 
                 </form>
@@ -475,7 +475,7 @@
                                         <th scope="col" COLSPAN=1 style="background: azure">CEDULA</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
-                                     
+
                                         <th scope="col" COLSPAN=1 style="background: azure">SALARIO</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">EDITAR</th>
@@ -493,20 +493,20 @@
                                         <td>{{form.cedula}}</td>
                                         <td>{{form.categorias}}</td>
                                         <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
-                                     
+
                                         <td>{{form.refSalarial}}</td>
                                         <td class="text3" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
                                         <td>
                                             <button type="button" class="btn btn-outline-primary"
                                                        style="width: 75px;height: 70;font-size: 50%;"
                                             [routerLink]="['/dashboard/hoja/',form._id]"><b>EDITAR</b></button>
-                                        
+
                                         </td>
                                         <td  *ngFor="let plan of formu" >
                                             <button type="button" class="btn btn-outline-primary"*ngIf="(plan.tipoPlan != null)"
                                                        style="width: 75px;height: 70;font-size: 50%;"   (click)="updateEstado()"
                                             ><b>PUBLICAR</b></button>
-                                        
+
                                         </td>
 
                                         <!--
@@ -515,14 +515,14 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="alert alert-primary " role="alert ">
-                                <em class="text2">Suscribete a uno de nuestros planes para publicar tu hoja de
+                            <div  *ngFor="let plan of formu" class="alert alert-primary " role="alert ">
+                                <em *ngIf="(plan.tipoPlan =='Free')" class="text2">Suscribete a uno de nuestros planes para publicar tu hoja de
                                     vida.</em>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
 
 
                 <div class="row m-0 justify-content-center align-items-center vh-100">
@@ -542,7 +542,7 @@
 
             <div id="test-l-3" class="content text-center">
 
-                
+
 <div class=" container p-3 " class="col-sm">
     <h3 align="center" id="color">ESTÁS SUSCRITO A :</h3>
 </div>
@@ -559,8 +559,8 @@
                         <th scope="col" COLSPAN=1 style="background: azure">FECHA SUCRIPCIÓN</th>
                         <th scope="col" COLSPAN=1 style="background: azure">FECHA VENCIMIENTO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
-                   
-           
+
+
                     </tr>
                 </thead>
                 <tbody >
@@ -570,12 +570,12 @@
                         <td>{{form.fecha1 |date:'dd-MM-yyyy'}}</td>
                         <td>{{form.fecha2 |date:'dd-MM-yyyy'}}</td>
                         <td>{{form.valor}}</td>
-                   
-                      
-                    </tr>                  
+
+
+                    </tr>
                 </tbody>
             </table>
-         
+
         </div>
     </div>
 </div>
@@ -728,7 +728,7 @@
             </div>
 
         </div>
-      
+
 
     </div>
 

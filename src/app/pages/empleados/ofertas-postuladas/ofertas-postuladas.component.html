@@ -12,32 +12,45 @@
                 <table class="table table-hover table-responsive btn-table  table-bordered tabla">
                     <thead>
                         <tr>
-                       
+
                             <th scope="col" COLSPAN=1 style="background: azure">TÍTULO EMPLEO</th>
                             <th scope="col" COLSPAN=1 style="background: azure">REMUNERACIÓN</th>
                             <th scope="col" COLSPAN=1 style="background: azure">SALARIO</th>
                             <th scope="col" COLSPAN=1 style="background: azure">CONTACTO</th>
                             <th scope="col" COLSPAN=1 style="background: azure">CORREO</th>
-                            <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
                             <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
+                            <th scope="col" COLSPAN=1 style="background: azure">ELIMINAR</th>
+
+
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr
                             *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
-                          
-                            <td> {{form.postulacion.tituloEmpleo}} </td>
-                            <td>{{form.postulacion.remuneracion}}</td>
-                            <td> ${{form.postulacion.valor}}</td>
-                            <td> {{form.ofertante.telefono}} </td>
-                            <td> {{form.ofertante.email}} </td>
-                            <td>{{form.postulacion.horario}}</td>
+
+                            <td> {{form.tituloEmpleo}} </td>
+                            <td>{{form.remuneracion}}</td>
+                            <td> {{form.salario|currency:'USD'}}</td>
+                            <td> {{form.telefonoEmpleador}} </td>
+                            <td> {{form.emailOfertante}} </td>
+                            <td>{{form.ciudad}}</td>
                            <td>
-                                <button type="button" class="btn btn-outline-primary"
-                    style="width: 140px;height: 75;font-size: 70%;" 
+
+                                <button type="button" class="btn btn-outline-primary" *ngIf="form.postulacion!= null"
+                    style="width: 140px;height: 75;font-size: 70%;"
                     [routerLink]="['/dashboard/ofertaCompleta/',form.postulacion._id]" ><b>VER OFERTA</b></button>
+
+                    <span *ngIf="form.postulacion == null" class="btn btn-warning" >OFERTA NO DISPONIBLE</span>
                             </td>
+
+                            <td>
+                              <button (click)=" eliminar(form._id)" class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                             </td>
+
                         </tr>
 
                     </tbody>
