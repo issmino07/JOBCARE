@@ -68,6 +68,7 @@
                   <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                   <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
                   <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
+                  <th scope="col" COLSPAN=1 style="background: azure">TEMARIO</th>
                   <th scope="col" COLSPAN=1 style="background: azure">REGISTRARSE</th>
               </tr>
           </thead>
@@ -79,18 +80,25 @@
                   <td>{{form.tituloCurso}}</td>
                   <td>{{form.categorias}}</td>
                   <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
-      
+
                   <td>{{form.valor|currency:'USD'}}</td>
-      
-      
-      
-      
-      
+
+
+                  <td align="center">
+
+
+                    <a type="button" class="btn btn-outline-primary"*ngIf="form.urlPdf != null" href="{{form.urlPdf}}"
+                    style="width: 100px;height: 70;font-size: 50%;"   target="_blank"
+                                                      ><b>VER TEMARIO</b></a>
+                      <span *ngIf="form.urlPdf == null">NO HAY TEMARIO</span>
+                   </td>
+
+
                   <td>
-                    <button type="button" class="btn btn-outline-primary" style="width: 85px;height: 75;font-size: 50%;"
-                      (click)="postular()"><b>REGISTRARSE</b></button>
-      
-      
+                    <button type="button" class="btn btn-outline-primary" 
+                      (click)="postular()"><b>REGISTRAR UN CURSO</b></button>
+
+
                   </td>
               </tr>
           </tbody>

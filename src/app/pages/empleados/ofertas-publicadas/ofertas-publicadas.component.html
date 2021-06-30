@@ -41,14 +41,13 @@
                         <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
                         <th scope="col" COLSPAN=1 style="background: azure">TÍTULO EMPLEO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
-                   
-                        <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
+
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
                         <th scope="col" COLSPAN=1 style="background: azure">FECHA PUBLICACIÓN</th>
                         <th scope="col" COLSPAN=1 style="background: azure">VER OFERTA</th>
                         <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
-   
+
                     </tr>
                 </thead>
                 <tbody>
@@ -56,7 +55,7 @@
                         <td>{{i+1}}</td>
                         <td>{{form.tituloEmpleo}}</td>
                         <td>${{form.valor}}</td>
-                        <td>{{form.horario}}</td>
+
                         <td>{{form.categorias}}</td>
                         <td>{{form.ciudad}}</td>
                         <td>
@@ -65,23 +64,23 @@
                         <td>
                             <button type="button" class="btn btn-outline-primary"
                                        style="width: 75px;height: 70;font-size: 50%;"
-                                       [routerLink]="['/dashboard/ofertaCompleta/',form._id]" 
+                                       [routerLink]="['/dashboard/ofertaCompleta/',form._id]"
                            ><b>VER OFERTA</b></button>
-                        
-                        </td> 
-                
-                        <td >
-                            <button type="button" class="btn btn-outline-primary" 
-                                       style="width: 85px;height: 75;font-size: 50%;" (click)="ActulizarEstado(form._id, form.usuario, form.emailEmpleador, form.tituloEmpleo,form.remuneracion,form.valor,form.categorias,form.ciudad,form.telefonoEmpleador)"
-                          ><b>Quieres postular</b></button>
-                        
-                 
+
                         </td>
 
-                      
+                        <td >
+                            <button type="button" class="btn btn-outline-primary"
+                                       style="width: 85px;height: 75;font-size: 50%;" (click)="ActulizarEstado(form._id, form.usuario, form.emailEmpleador, form.tituloEmpleo,form.remuneracion,form.valor,form.categorias,form.ciudad,form.telefonoEmpleador)"
+                          ><b>Quieres postular</b></button>
 
-                      
-                    </tr>                  
+
+                        </td>
+
+
+
+
+                    </tr>
                 </tbody>
             </table>
             <br>

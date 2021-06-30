@@ -41,15 +41,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NopagefoundComponent,
 
-  
-   
- 
-  
+
+
+
+
+
+
 
 
   ],
@@ -69,16 +73,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BarRatingModule,
     TooltipModule,
     NgbModule,
-    
+
   ],
   providers: [
     UsuarioService,
     SidebarService,
-    SubirArchivoService, 
+    SubirArchivoService,
     OfertaService,
     CategoriasService,
     HojavidaService,
-   
+
   ],
   bootstrap: [AppComponent]
 })

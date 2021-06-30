@@ -42,7 +42,7 @@ private opcionesUrl2 =  environment.base_url + '/ofertas/insertar';
     return this.http.get<Ofertas[]>(this.opcionesUrl1)
   }
 
- 
+
   getOpciones(): Observable<Ofertas[]> {
     return this.http.get<Ofertas[]>(this.opcionesUrl1)
   }
@@ -83,11 +83,24 @@ private opcionesUrl2 =  environment.base_url + '/ofertas/insertar';
   }
 
 
+
+  actualizaroferta( proveedor: Ofertas ) {
+    let url = `${ this.opcionesUrl }/${ proveedor._id }`;
+
+    return this.http.put(url, proveedor)
+  }
+  actualizaroferta1( proveedor: Ofertas, id ) {
+    let url = `${ this.opcionesUrl }/${ proveedor._id }`;
+
+    return this.http.put(url, proveedor, id)
+  }
+
+
   buscarOfertas( termino: string ) {
     let url = `${ environment.base_url }/busqueda/coleccion/ofertas/${ termino }`;
 
     return this.http.get( url ).pipe(map((resp: any) => resp.ofertas ));
-   
+
   }
 
   //====mensajes====================================

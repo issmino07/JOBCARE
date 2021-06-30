@@ -43,7 +43,7 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+   /*  usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -67,7 +67,7 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
 
 
 
-  
+
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,private joyride: JoyrideService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
@@ -81,7 +81,7 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
 
   }
 
-  
+
       //mensaje guia ================================//
       mascotas(){
         this.joyride.startTour(
@@ -171,7 +171,7 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-     
+
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -184,8 +184,8 @@ emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)
 
       )
      // this.resetUsuario()
- 
-  
+
+
   }
 
 

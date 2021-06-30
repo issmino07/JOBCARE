@@ -47,7 +47,7 @@ export class CapacidadesEspecialesComponent implements OnInit {
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+   /*  usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -71,7 +71,7 @@ export class CapacidadesEspecialesComponent implements OnInit {
 
 
 
- 
+
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,private joyride: JoyrideService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
@@ -101,7 +101,7 @@ export class CapacidadesEspecialesComponent implements OnInit {
 
   //==================================================================//
 
-  private url = environment.base_url; 
+  private url = environment.base_url;
 
   verificarEmail() {
 
@@ -165,20 +165,20 @@ export class CapacidadesEspecialesComponent implements OnInit {
   crearUsuario() {
     this.formSubmitted = true;
 
- 
+
 
     console.log(this.registerForm.value)
     if (this.registerForm.invalid) {
       return;
     }
- 
+
       console.log(this.registerForm.value)
 
       this.registerForm.value.categorias = this.cate;
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-      
+
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -191,7 +191,7 @@ export class CapacidadesEspecialesComponent implements OnInit {
 
       )
      // this.resetUsuario()
-  
+
 
   }
 

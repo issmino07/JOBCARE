@@ -71,7 +71,7 @@ export class TrabajosEmpleadorComponent implements OnInit {
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+   /*  usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -81,35 +81,35 @@ export class TrabajosEmpleadorComponent implements OnInit {
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
     direccionmapa: [''],
-  
+
     fecha: ['', [Validators.required]],
     categorias:[''],
     role:[''],
     experiencia: ['', [Validators.required]],
-     
- 
+
+
     albanil:false,
-  
+
     electricista:false,
     plomero:false,
-  
+
     carpintero:false,
-   
+
     cerrajero:false,
- 
+
     jardinero:false,
-    
+
     servicioTecnico:false,
     otros:false
 
   })
 
- 
 
 
 
 
-  
+
+
 
   constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,private spinner: NgxSpinnerService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,  private joyride: JoyrideService,
@@ -122,9 +122,9 @@ export class TrabajosEmpleadorComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
- 
-   
+
+
+
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -162,7 +162,7 @@ export class TrabajosEmpleadorComponent implements OnInit {
 
 
 
-  //metodo de las localidades taridas de la base 
+  //metodo de las localidades taridas de la base
   getOpciones1() {
     return this.ciudadOpcion.getOpciones()
       .subscribe(
@@ -262,7 +262,7 @@ export class TrabajosEmpleadorComponent implements OnInit {
   if(this.votes <= 0 && valor < 0){
     return this.votes = 0;
   }
-  
+
    this.votes = this.votes + valor;
 
   }
@@ -278,7 +278,7 @@ export class TrabajosEmpleadorComponent implements OnInit {
       this.verificar.sendEmail(this.url +'/codigo').subscribe(
 
         res => {
-          
+
           this.msg = res['msg'];
           console.log(this.msg)
         }
@@ -304,7 +304,7 @@ export class TrabajosEmpleadorComponent implements OnInit {
 
 
         if (this.validarEamil == "sent") {
-      
+
           Swal.fire("Email enviado a " + to, "Se envío correo electrónico con su clave  Por favor revise la bandeja de entrada o spam!", "success")
           console.log('verifico')
         }
@@ -318,8 +318,8 @@ export class TrabajosEmpleadorComponent implements OnInit {
   /*
    $(document).ready(function(){
          var from,to,subject,text;
-         $("#send_email").click(function(){		
-             to=$("#to").val();		
+         $("#send_email").click(function(){
+             to=$("#to").val();
              $("#message").text("Enviando correo electrónico ... Espere");
              $.get(this.url+'/send',{to:to},function(data){
              console.log(data)
@@ -327,8 +327,8 @@ export class TrabajosEmpleadorComponent implements OnInit {
              {
                  $("#message").empty().text("El correo electrónico con su clave se envió a "+to+" Por favor revise la bandeja de entrada o spam !");
              }
-           
-     
+
+
      });
          });
      });
@@ -343,7 +343,7 @@ export class TrabajosEmpleadorComponent implements OnInit {
 
       //  document.getElementById("habilitarBoton").style.display ="inline";
     } else {
-   
+
       Swal.fire("Codigo verificado con  exito", "", "success")
       console.log('funciona la verificacion')
       this.crearUsuario();
@@ -362,7 +362,7 @@ export class TrabajosEmpleadorComponent implements OnInit {
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-          
+
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -375,8 +375,8 @@ export class TrabajosEmpleadorComponent implements OnInit {
 
       )
     //  this.resetUsuario()
-  
-    
+
+
   }
 
 
@@ -424,7 +424,7 @@ export class TrabajosEmpleadorComponent implements OnInit {
     )
   }
 
-  
+
   asistencia4(){
     this.joyride.startTour(
       { steps: ['prota1802'],

@@ -77,9 +77,9 @@
               <div class="form-group">
                 <label>Mi Dirección</label>
                 <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
-                  formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia" 
+                  formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"
                   spellcheck="off" type="text" #search  >
-                 
+
                   <div
                   *ngIf="registerForm.get('direccion').errors && registerForm.get('direccion').dirty">
                   <p class="text-danger center"
@@ -95,7 +95,7 @@
               </agm-map>
               <br>
               <h5>Dirección: {{address}}</h5>
-            
+
             </div>
           </div>
 
@@ -131,7 +131,7 @@
         <div id="test-l-3" class="content text-center">
 
           <h2 align="center" joyrideStep="prota301" title="Bienvenido" text="Llena los 4 campos para terminar tu registro e iniciar sesión ">REGÍSTRATE</h2>
-          <div class="form-group">
+    <!--       <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="USUARIO" formControlName="usuario" />
             <div *ngIf="registerForm.get('usuario').errors && registerForm.get('usuario').dirty">
@@ -146,7 +146,7 @@
               </p>
 
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="TELEFONO" formControlName="telefono" />
@@ -199,14 +199,14 @@
               <p class="center" *ngIf="campoNoValido('ciudad')|| opcion1 == '0'" >Debe seleccionar una ciudad en el paso uno</p>
                <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el market del mapa en el paso uno</p>
                <p class="center" *ngIf="campoNoValido('fecha')">Debe seleccionar una fecha indicando cuando lo necesitas en el paso 2</p>
-  
-              
-                <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p>
+
+
+          <!--       <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p> -->
                 <p class="center" *ngIf="campoNoValido('telefono')">Debe llenar el campo teléfono 10 caracteres ejemplo: 0900 000 000</p>
                 <p class="center" *ngIf="campoNoValido('email')">Debe llenar el campo email</p>
                 <p class="center" *ngIf="campoNoValido('password')">Debe poner una contraseña para completar el registro</p>
             </div>
- 
+
            </div>
           &nbsp;&nbsp;
           <button type="submit" class="btn btn-primary mt-5" >REGISTRAR</button>

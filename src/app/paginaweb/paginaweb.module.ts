@@ -48,6 +48,7 @@ import { PaginawebComponent } from './paginaweb.component';
 import { JoyrideModule } from 'ngx-joyride';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactoComponent } from './contacto/contacto.component';
+import { RegistroCapacitacionComponent } from './registro-capacitacion/registro-capacitacion.component';
 
 
 
@@ -89,6 +90,7 @@ import { ContactoComponent } from './contacto/contacto.component';
     PerfilEmpleadosComponent,
     PaginawebComponent,
     ContactoComponent,
+    RegistroCapacitacionComponent,
    
   ],
   imports: [

@@ -14,13 +14,13 @@
                         <tr>
 
                             <th scope="col" COLSPAN=1 style="background: azure">TÍTULO EMPLEO</th>
-                            <th scope="col" COLSPAN=1 style="background: azure">REMUNERACIÓN</th>
+
                             <th scope="col" COLSPAN=1 style="background: azure">SALARIO</th>
                             <th scope="col" COLSPAN=1 style="background: azure">CONTACTO</th>
                             <th scope="col" COLSPAN=1 style="background: azure">CORREO</th>
                             <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
                             <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
-                            <th scope="col" COLSPAN=1 style="background: azure">ELIMINAR</th>
+                            <th scope="col" COLSPAN=1 style="background: azure"><i class="fa fa-trash-o"></i></th>
 
 
                         </tr>
@@ -31,7 +31,7 @@
                             *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
 
                             <td> {{form.tituloEmpleo}} </td>
-                            <td>{{form.remuneracion}}</td>
+
                             <td> {{form.salario|currency:'USD'}}</td>
                             <td> {{form.telefonoEmpleador}} </td>
                             <td> {{form.emailOfertante}} </td>
@@ -39,10 +39,10 @@
                            <td>
 
                                 <button type="button" class="btn btn-outline-primary" *ngIf="form.postulacion!= null"
-                    style="width: 140px;height: 75;font-size: 70%;"
+                    style="width: 80px;height: 65;font-size: 60%;"
                     [routerLink]="['/dashboard/ofertaCompleta/',form.postulacion._id]" ><b>VER OFERTA</b></button>
 
-                    <span *ngIf="form.postulacion == null" class="btn btn-warning" >OFERTA NO DISPONIBLE</span>
+                    <span *ngIf="form.postulacion == null"  >OFERTA NO DISPONIBLE</span>
                             </td>
 
                             <td>

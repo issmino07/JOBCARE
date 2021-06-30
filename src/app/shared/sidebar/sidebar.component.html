@@ -52,7 +52,7 @@
 
 
 
-                    <li><a href="javascript:void()" (click)="asistencia()">&nbsp;<i><img
+                    <li  *ngIf="(usuario.role ==='EMPLEADO_ROLE'||usuario.role ==='EMPLEADOR_ROLE' )"><a href="javascript:void()" (click)="asistencia()">&nbsp;<i><img
                                     src="../../../../assets/images/patch-question.svg" alt=""></i>&nbsp; Guia</a></li>
                 </ul>
             </ul>

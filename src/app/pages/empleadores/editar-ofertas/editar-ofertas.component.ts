@@ -54,7 +54,7 @@ export class EditarOfertasComponent implements OnInit {
   //  tareas: ['',],
   //  fecha: ['', [Validators.required]],
 
-    
+
 
 
 
@@ -73,7 +73,12 @@ export class EditarOfertasComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.oferta.getOfertasId(id)
       .subscribe(resp => this.ofertaModelo = resp);
-    
+
+      this.getOpciones1();
+      this.getOpciones2();
+      this.ciuadadesOpcion = new Array<Ciudad>();
+      this.ciudad = new Ciudad();
+
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
@@ -97,10 +102,7 @@ export class EditarOfertasComponent implements OnInit {
       });
     });
 
-   this.getOpciones1();
-   this.getOpciones2();
-   this.ciuadadesOpcion = new Array<Ciudad>();
-   this.ciudad = new Ciudad();
+
   }
 
 
@@ -114,15 +116,15 @@ export class EditarOfertasComponent implements OnInit {
           if (this.ciuadadesOpcion.length > 0) {
             this.ciudad = this.ciuadadesOpcion[0];
           }
-  
+
         });
-  
+
   }
 
   selectProvincia(provincia) {
 
     this.ciudad = this.ciuadadesOpcion.find(element => element.provincia == provincia);
-  
+
   }
 
   getOpciones1() {
@@ -172,7 +174,7 @@ export class EditarOfertasComponent implements OnInit {
   }
 
 
- 
+
 
 
   update(): void {
@@ -222,8 +224,8 @@ export class EditarOfertasComponent implements OnInit {
  //   this.submitted = true;
     this.oferta.deleteOpcion(this.ofertaModelo._id)
         .subscribe(
-          result => { 
-        
+          result => {
+
 
             console.log(result)
         });

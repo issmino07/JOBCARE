@@ -45,7 +45,7 @@ export class NineraComponent implements OnInit {
 
   public registerForm = this.fb.group({
 
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+  /*   usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -70,7 +70,7 @@ export class NineraComponent implements OnInit {
 
 
 
- 
+
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,private joyride: JoyrideService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
@@ -100,7 +100,7 @@ export class NineraComponent implements OnInit {
   //==================================================================//
 
   private url = environment.base_url;
-  
+
   verificarEmail() {
 
     setTimeout(() => {
@@ -163,20 +163,20 @@ export class NineraComponent implements OnInit {
   crearUsuario() {
     this.formSubmitted = true;
 
-   
- 
+
+
       console.log(this.registerForm.value)
 
 
       if (this.registerForm.invalid) {
         return;
       }
-  
+
       this.registerForm.value.categorias = this.cate;
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-     
+
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')

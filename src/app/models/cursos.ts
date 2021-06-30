@@ -6,8 +6,8 @@ export class Cursos {
     valor:number;
     horario:string;
     categorias: string;
-    
+    urlPdf:string
 
    estado: String;
- 
+
    }

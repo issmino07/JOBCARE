@@ -42,7 +42,7 @@
           <span class="bs-stepper-label"></span>
         </button>
       </div>
-     
+
     </div>
 
 
@@ -62,9 +62,9 @@
                   <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
                     {{prov.provincia}}</option>
                 </select>
-    
+
               </td>
-    
+
             </tr>
             <br>
             <tr>
@@ -76,20 +76,20 @@
                     {{canton}}
                   </option>
                 </select>
-    
-    
+
+
               </td>
-    
+
             </tr>
             <br>
             <br>
             <div class="container">
-    
-    
-    
+
+
+
             <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"  
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
                   spellcheck="off" type="text" #search>
 
@@ -102,20 +102,20 @@
 
                 </div>
               </div>
-    
+
               <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
                 <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
                   (dragEnd)="markerDragEnd($event)"></agm-marker>
               </agm-map>
               <br>
               <h5>Dirección: {{address}}</h5>
-            
+
             </div>
           </div>
-    
-    
-    
-    
+
+
+
+
                <div class="row m-0 justify-content-center align-items-center vh-100">
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
                 &nbsp;&nbsp;
@@ -128,10 +128,10 @@
             <div>
               <div class="row m-0 justify-content-center align-items-center vh-100">
                 <!-- Column -->
-    
-              
-                
-    
+
+
+
+
                   <div>
                     <br>
                     <div class="form-group ">
@@ -147,17 +147,17 @@
                       </p>
                    </div>
                   </div>
-    
-              
-           
-             
-           
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
               </div>
-    
+
             </div>
           </div>
                <div class="row m-0 justify-content-center align-items-center vh-100">
@@ -171,14 +171,14 @@
           <div class="form-group">
             <div>
               <div class="row m-0 justify-content-center align-items-center vh-100">
-    
+
                 <button (click)="voteDown(-1)" class="btn btn-danger"min="1">
                   -
                 </button> &nbsp;&nbsp;&nbsp;&nbsp; <h3 class="display-4">{{votes}}</h3> &nbsp;&nbsp;&nbsp;&nbsp; <button
                   (click)="voteUp(+1)" class="btn btn-primary">
                   +
                 </button>
-    
+
               </div>
 
               <div formArrayName="ninos" *ngFor="let ninos of ninos.controls; let i = index">
@@ -186,39 +186,39 @@
                   <div class="form-group row">
                     <label class="col-md-1" [attr.for]="'nino' + i">Niños</label>
                     <div>
-                     
+
                       <h3 type="number" [attr.id]="'nino' + i" class="form-control" >{{i +1}}</h3>
                     </div>
                     <label class="col-md-1" [attr.for]="'edad' + i">Edad</label>
                     <div>
-                     
+
                       <input type="number" [attr.id]="'edad' + i" class="form-control" formControlName="edad" />
                     </div>
                     &nbsp;&nbsp;
-                  
-                     
+
+
                      <input type="checkbox" class="check form-control" id="minimal-checkbox-5" formControlName="masculino" [attr.id]="'masculino' + i">
                      <label    for="minimal-checkbox-5" [attr.for]="'masculino' + i">M</label>
                      &nbsp;&nbsp;
                      <input type="checkbox" class="check form-control" id="minimal-checkbox-6" formControlName="femenino" [attr.id]="'femenino' + i">
                      <label  [attr.for]="'femenino' + i"  for="minimal-checkbox-6">F</label>
-                   
+
 
                   </div>
 
-               
+
                 </div>
 
 
               </div>
-    
-    
-    
+
+
+
             </div>
-            
+
 
             <div class="form-group">
-              <label >Experiencia:&nbsp;&nbsp;</label> 
+              <label >Experiencia:&nbsp;&nbsp;</label>
             <input type="text" class="form-control col-6"  placeholder="Años de experiencia" formControlName="experiencia" />
 
             <div
@@ -235,14 +235,14 @@
                 <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
                 &nbsp;&nbsp;
                 <button type="button" class="btn btn-success mt-5" (click)="asistencia3()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
-                
+
               </div>
         </div>
         <div id="test-l-4" class="content">
           <div class="form-group">
             <h2 align="center" joyrideStep="prota1202" title="Bienvenido" text="En este paso 4 Selecciona el curso o nivel" >Nivel que está cursando</h2>
             <div class="form-group row m-0 justify-content-center align-items-center vh-100">
-    
+
               <div class="input-group row m-0 justify-content-center align-items-center vh-100">
                 <ul class="icheck-list" class="list">
                   <li>
@@ -261,9 +261,9 @@
                     <input type="checkbox" class="check form-control" id="minimal-checkbox-4"formControlName="colegio">
                     <label for="minimal-checkbox-4">Colegio</label>
                   </li>
-    
+
                 </ul>
-    
+
               </div>
             </div>
           </div>
@@ -273,15 +273,15 @@
                 <button type="button" class="btn btn-success mt-5" (click)="asistencia4()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
               </div>
         </div>
-    
-    
-    
-    
+
+
+
+
         <div id="test-l-5" class="content text-center">
 
           <h2 align="center" joyrideStep="prota1203" title="Bienvenido" text="Llena los 4 campos para terminar tu registro e iniciar sesión ">REGÍSTRATE</h2>
-          <div class="form-group">
-            
+         <!--  <div class="form-group">
+
             <input type="text" class="form-control col-6"  placeholder="USUARIO"formControlName="usuario" />
 
             <div *ngIf="registerForm.get('usuario').errors && registerForm.get('usuario').dirty">
@@ -294,11 +294,11 @@
               <p class="text-danger center" *ngIf="registerForm.get('usuario').hasError('maxlength')">
                 <span size="2">Maximo de 30 Caracteres</span>
               </p>
-    
+
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
-            
+
             <input type="text" class="form-control col-6"  placeholder="TELEFONO"formControlName="telefono" />
             <div *ngIf="registerForm.get('telefono').errors && registerForm.get('telefono').dirty">
               <p class="text-danger center" *ngIf="registerForm.get('telefono').hasError('required')">
@@ -314,7 +314,7 @@
           </div>
           </div>
           <div class="form-group">
-           
+
             <input type="email" class="form-control col-6" id="exampleInputEmail1"  placeholder="CORREO ELECTRONICO"formControlName="email" />
             <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
               <p class="text-danger center" *ngIf="registerForm.get('email').hasError('required')">
@@ -329,13 +329,13 @@
 
           </div>
           </div>
-          
+
           <div class="form-group">
-           
+
             <input type="password" class="form-control col-6" id="exampleInputPassword1" placeholder="CONTRASEÑA" formControlName="password" />
           </div>
          <!--   <div class="form-group">
-          
+
             <input type="number" class="form-control col-6" id="exampleInputPassword1"tooltip = "La clave se enviara al correo presionando el boton enviar clave a<b> Email </b> "theme="light"
               placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
           </div>
@@ -347,8 +347,8 @@
              <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el market del mapa en el paso uno</p>
              <p class="center" *ngIf="campoNoValido('fecha')">Debe seleccionar una fecha indicando cuando lo necesitas en el paso 2</p>
              <p class="center" *ngIf="campoNoValido('experiencia')">Debe escribir cuanta experiencia necesitas en el paso 3</p>
-            
-              <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p>
+
+            <!--   <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p> -->
               <p class="center" *ngIf="campoNoValido('telefono')">Debe llenar el campo teléfono 10 caracteres ejemplo: 0900 000 000</p>
               <p class="center" *ngIf="campoNoValido('email')">Debe llenar el campo email</p>
               <p class="center" *ngIf="campoNoValido('password')">Debe poner una contraseña para completar el registro</p>

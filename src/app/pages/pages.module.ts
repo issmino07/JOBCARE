@@ -51,6 +51,9 @@ import { CursosCompradosComponent } from './administracion/cursos-comprados/curs
 import { SuscripcionesEmpleadoresComponent } from './administracion/suscripciones-empleadores/suscripciones-empleadores.component';
 import { SuscripcionesEmpleadosComponent } from './administracion/suscripciones-empleados/suscripciones-empleados.component';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { EditarOfertas2Component } from './empleadores/editar-ofertas2/editar-ofertas2.component';
+import { CursosGeneralesComponent } from './capacitaciones/cursos-generales/cursos-generales.component';
+import { CursosGeneralesCompradosComponent } from './capacitaciones/cursos-generales-comprados/cursos-generales-comprados.component';
 
 
 
@@ -95,7 +98,9 @@ import { BarRatingModule } from 'ngx-bar-rating';
     CursosCompradosComponent,
     SuscripcionesEmpleadoresComponent,
     SuscripcionesEmpleadosComponent,
-   
+    EditarOfertas2Component,
+    CursosGeneralesComponent,
+    CursosGeneralesCompradosComponent
   ],
 
   exports: [

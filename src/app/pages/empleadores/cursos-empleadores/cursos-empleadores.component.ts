@@ -52,7 +52,6 @@ export class CursosEmpleadoresComponent implements OnInit {
     }
   }
 
-  val1: number = 0
 
   val2: number = 100
 
@@ -176,7 +175,7 @@ datosCurso(titulo:string,categoria:string,descripcion: string,valor:string ){
   localStorage.setItem("categoria",categoria)
   localStorage.setItem("descripcion",descripcion)
   localStorage.setItem("valor",valor)
- 
+
 
 }
 

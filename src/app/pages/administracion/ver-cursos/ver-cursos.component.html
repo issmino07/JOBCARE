@@ -13,12 +13,13 @@
                         <th scope="col" COLSPAN=1 style="background: azure">TÍTULO CURSO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                         <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
-                   
-                   
+
+
                         <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
-                     
-                   
+
+
                         <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
+                        <th scope="col" COLSPAN=1 style="background: azure">TEMARIO</th>
                         <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
                     </tr>
                 </thead>
@@ -28,19 +29,28 @@
                         <td>{{form.tituloCurso}}</td>
                         <td>{{form.categorias}}</td>
                         <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
-                     
+
                         <td>{{form.valor |currency:'USD'}}</td>
-                      
-                     
-                     
+
+
+
                         <td class="text" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
+
+                        <td align="center">
+
+
+                          <a type="button" class="btn btn-outline-primary"*ngIf="form.urlPdf != null" href="{{form.urlPdf}}"
+                          style="width: 100px;height: 70;font-size: 50%;"   target="_blank"
+                                                            ><b>VER TEMARIO</b></a>
+                                                            <span *ngIf="form.urlPdf == null">NO HAY TEMARIO</span>
+                         </td>
                         <td>
                             <button type="button" class="btn btn-outline-primary"
                                        style="width: 75px;height: 70;font-size: 50%;"
                             [routerLink]="['/dashboard/editarCursos/',form._id]"><b>EDITAR</b></button>
-                        
+
                         </td>
-                    </tr>                  
+                    </tr>
                 </tbody>
             </table>
             <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>

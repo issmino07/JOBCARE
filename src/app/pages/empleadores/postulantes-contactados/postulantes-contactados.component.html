@@ -19,6 +19,7 @@
                             <th scope="col" COLSPAN=1 style="background: azure">DIRECCIÓN</th>
                             <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
                             <th scope="col" COLSPAN=1 style="background: azure">VER HOJA DE VIDA</th>
+                            <th scope="col" COLSPAN=1 style="background: azure"><i class="fa fa-trash-o"></i></th>
                         </tr>
                     </thead>
 
@@ -51,6 +52,12 @@
                                     target="_blank"><b>VER HOJA DE VIDA</b></a>
                                 <span *ngIf="form.urlPdf == null">NO HAY HOJA DE VIDA</span>
                             </td>
+
+                            <td>
+                              <button (click)=" eliminar(form._id)" class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                             </td>
 
                         </tr>
 

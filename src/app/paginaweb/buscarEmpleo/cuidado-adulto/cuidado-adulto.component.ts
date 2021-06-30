@@ -17,7 +17,7 @@ import { JoyrideService } from 'ngx-joyride';
 })
 export class CuidadoAdultoComponent implements OnInit {
 
- 
+
   msg;
   validarEamil;
   Error;
@@ -46,7 +46,7 @@ export class CuidadoAdultoComponent implements OnInit {
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+ /*    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -99,7 +99,7 @@ export class CuidadoAdultoComponent implements OnInit {
       }
   //==================================================================//
   private url = environment.base_url;
-  
+
   verificarEmail() {
 
     setTimeout(() => {
@@ -173,7 +173,7 @@ export class CuidadoAdultoComponent implements OnInit {
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-       
+
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -181,14 +181,14 @@ export class CuidadoAdultoComponent implements OnInit {
           // Si sucede un error
           //  Swal.fire('Error', err['msg'], 'error' );
           Swal.fire('Error', err.error.msg, 'error');
-          
+
           //this.router.navigateByUrl('/inicio')
         }
 
       )
     //  this.resetUsuario()
 
-    
+
   }
 
 

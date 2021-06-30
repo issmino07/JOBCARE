@@ -5,16 +5,16 @@ const base_url = environment.base_url;
 export class Login {
 
     constructor(
-      
+
        // public email: string,
-       public usuario: string,
+       public email: string,
         public password: string,
-      
+
     //    public telefono: string,
     //    public _id: string,
     //    public clave: String,
     //    public img: string,
-    //   
+    //
 //
 //
     //    public provincia?: string,

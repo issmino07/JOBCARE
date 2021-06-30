@@ -63,7 +63,7 @@ export class SpaEmpleadorComponent implements OnInit {
     return false;
   }
   //===============================
-  
+
   //Expresiones Regulares
   emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
@@ -71,7 +71,7 @@ export class SpaEmpleadorComponent implements OnInit {
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+  /*   usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -81,12 +81,12 @@ export class SpaEmpleadorComponent implements OnInit {
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
     direccionmapa: [''],
-  
+
     fecha: ['', [Validators.required]],
     categorias:[''],
     role:[''],
     experiencia: ['', [Validators.required]],
-     
+
     peluqueria:false,
     masajes:false,
     manicure:false,
@@ -96,7 +96,7 @@ export class SpaEmpleadorComponent implements OnInit {
 
   })
 
- 
+
 
 
 
@@ -113,9 +113,9 @@ export class SpaEmpleadorComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
- 
-   
+
+
+
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -153,7 +153,7 @@ export class SpaEmpleadorComponent implements OnInit {
 
 
 
-  //metodo de las localidades taridas de la base 
+  //metodo de las localidades taridas de la base
   getOpciones1() {
     return this.ciudadOpcion.getOpciones()
       .subscribe(
@@ -253,7 +253,7 @@ export class SpaEmpleadorComponent implements OnInit {
   if(this.votes <= 0 && valor < 0){
     return this.votes = 0;
   }
-  
+
    this.votes = this.votes + valor;
 
   }
@@ -269,7 +269,7 @@ export class SpaEmpleadorComponent implements OnInit {
       this.verificar.sendEmail(this.url +'/codigo').subscribe(
 
         res => {
-          
+
           this.msg = res['msg'];
           console.log(this.msg)
         }
@@ -295,7 +295,7 @@ export class SpaEmpleadorComponent implements OnInit {
 
 
         if (this.validarEamil == "sent") {
-      
+
           Swal.fire("Email enviado a " + to, "Se envío correo electrónico con su clave  Por favor revise la bandeja de entrada o spam!", "success")
           console.log('verifico')
         }
@@ -309,8 +309,8 @@ export class SpaEmpleadorComponent implements OnInit {
   /*
    $(document).ready(function(){
          var from,to,subject,text;
-         $("#send_email").click(function(){		
-             to=$("#to").val();		
+         $("#send_email").click(function(){
+             to=$("#to").val();
              $("#message").text("Enviando correo electrónico ... Espere");
              $.get(this.url+'/send',{to:to},function(data){
              console.log(data)
@@ -318,8 +318,8 @@ export class SpaEmpleadorComponent implements OnInit {
              {
                  $("#message").empty().text("El correo electrónico con su clave se envió a "+to+" Por favor revise la bandeja de entrada o spam !");
              }
-           
-     
+
+
      });
          });
      });
@@ -334,7 +334,7 @@ export class SpaEmpleadorComponent implements OnInit {
 
       //  document.getElementById("habilitarBoton").style.display ="inline";
     } else {
-   
+
       Swal.fire("Codigo verificado con  exito", "", "success")
       console.log('funciona la verificacion')
       this.crearUsuario();
@@ -353,7 +353,7 @@ export class SpaEmpleadorComponent implements OnInit {
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-        
+
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -366,8 +366,8 @@ export class SpaEmpleadorComponent implements OnInit {
 
       )
     //  this.resetUsuario()
-    
- 
+
+
   }
 
 

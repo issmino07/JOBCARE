@@ -14,37 +14,37 @@ import { Login } from 'src/app/models/login';
 })
 export class LoginComponent implements OnInit {
 
-  
+
   recuerdame: boolean = false;
-  usuario: string = '';
+  email: string = '';
   constructor( private router: Router, private _usuarioService : UsuarioService,
- 
+
   ) { }
 
   ngOnInit() {
-  
-    this.usuario= localStorage.getItem('email') || '';
+
+    this.email= localStorage.getItem('email') || '';
   }
 
 
   ingresar( form: NgForm ) {
     if ( !form.valid ) {
-      
+
       Swal.fire('warning', 'Hay errores en los campos!', 'error');
       return;
     }
 
     let usuario = new Login(
-    
-      form.value.usuario,
+
+      form.value.email,
       form.value.password,
-    
-     
+
+
 
     );
 
     this._usuarioService.login( usuario, form.value.recuerdame ).subscribe(res => {
-    
+
       this.router.navigate(['/dashboard']);
       Swal.fire('Login', `Hola  has iniciado sesión con éxito!`, 'success');
     },
@@ -71,13 +71,13 @@ export class LoginComponent implements OnInit {
       },
       icon: 'info',
       html:
-     
-        '<a href="#/home2"><button class="btn btn-outline-primary" >PUBLICAR EMPLEO</button></a><br>  '+ 
+
+        '<a href="#/home2"><button class="btn btn-outline-primary" >PUBLICAR EMPLEO</button></a><br>  '+
         '<br> <a href="#/home"><button class="btn btn-outline-primary" >ENCONTRAR EMPLEO</button></a> ',
       showCloseButton: false,
-   
+
       focusConfirm: true,
-   
+
     })
 
 

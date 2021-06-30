@@ -26,14 +26,14 @@ export class PerfilesComponent implements OnInit {
   totalRegistros: number = 1;
   rate = 5;
 
-  constructor(private listainforme :HojavidaService, private _contacto: ContactoPostulanteService, public _usuarioServices: UsuarioService,) { 
+  constructor(private listainforme :HojavidaService, private _contacto: ContactoPostulanteService, public _usuarioServices: UsuarioService,) {
 
     this.usuario = this._usuarioServices.usuario;
-  
+
   }
 
- 
-  
+
+
   ngOnInit(): void {
 
     this.getFormulariosOfertas()
@@ -43,13 +43,13 @@ export class PerfilesComponent implements OnInit {
 
 
   getFormulariosOfertas() {
-    
+
     this.listainforme.getOpciones().subscribe(
-      result => { 
+      result => {
         this.formularios =  result ;
          console.log(this.formularios)
 
-     
+
 
 
      });
@@ -61,7 +61,7 @@ export class PerfilesComponent implements OnInit {
     postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,) {
       console.log('estoy postulando')
       // Realizar el posteo
-      this.postulacionModelo.telefonoPostulante = telefo  
+      this.postulacionModelo.telefonoPostulante = telefo
       this.postulacionModelo.emailPostulante = email
       this.postulacionModelo.nombrePostulante = nombre
       this.postulacionModelo.apellidoPostulante= apellido
@@ -73,51 +73,51 @@ export class PerfilesComponent implements OnInit {
      this.postulacionModelo.urlPdf = pdf
 
 
-    this.postulacionModelo.telefonoPostulante = telefo  
-    this.postulacionModelo.emailEmpleador= this.usuario.email;  
+    this.postulacionModelo.telefonoPostulante = telefo
+    this.postulacionModelo.emailEmpleador= this.usuario.email;
 
     this.postulacionModelo.nombre = this.usuario.usuario
     this.postulacionModelo.telefono = this.usuario.telefono
     //  this.postulacionModelo.postulacion = id;
       this.postulacionModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
-    
+
          this._contacto.addContacto(this.postulacionModelo).subscribe(
         resp => {
              console.log(resp,'Postulación Exitosa')
         //  Swal.fire("Postulación EXITOSA", "", "success")
         //  console.log(resp);
-  
+
         }, (err) => {
-  
-         Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
-  
+
+         Swal.fire(this.postulacionModelo.usuario.email, err.error.msg, 'error');
+
         })
-      
+
     }
 
 
     ActulizarEstado(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,) {
-    
+
       this.ofertaModelo._id = id;
     //  this.ofertaModelo.descripcion = this.ID
       this.ofertaModelo.user = JSON.parse(localStorage.getItem('usuario')) as Usuario;
       this.listainforme.addOpcion2(this.ofertaModelo).subscribe(
           resp => {
-  
+
           Swal.fire("Perfil Notificado", "", "success")
        //   console.log(resp);
-  
+
         }, (err) => {
-  
-          Swal.fire(this.ofertaModelo.usuario.usuario, err.error.msg, 'error');
-  
+
+          Swal.fire(this.ofertaModelo.usuario.email, err.error.msg, 'error');
+
         })
-  
+
      this.postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,)
     }
-  
 
-    
+
+
  buscarHoja( termino: string ) {
 
   if ( termino.length <= 0 ) {
@@ -137,7 +137,7 @@ export class PerfilesComponent implements OnInit {
           });
 
 }
-  
-  
+
+
 
 }

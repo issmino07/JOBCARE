@@ -32,6 +32,7 @@ import { ProfesionalEmpleadorComponent } from './publicarEmpleo/profesional-empl
 import { OfertasEmpleoComponent } from './ofertas-empleo/ofertas-empleo.component';
 import { PerfilEmpleadosComponent } from './perfil-empleados/perfil-empleados.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { RegistroCapacitacionComponent } from './registro-capacitacion/registro-capacitacion.component';
 
 
 const routes: Routes = [
@@ -65,8 +66,8 @@ const routes: Routes = [
   { path: 'perfilEmpleados', component: PerfilEmpleadosComponent},
   { path: 'contacto', component: ContactoComponent},
 
+  { path: 'capacitarse', component: RegistroCapacitacionComponent},
 
- 
 
 ];
 

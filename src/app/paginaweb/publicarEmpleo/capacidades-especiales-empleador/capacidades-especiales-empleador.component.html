@@ -97,7 +97,7 @@
 
               <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"  joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia" 
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"  joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
                   spellcheck="off" type="text" #search>
                 <div *ngIf="registerForm.get('direccion').errors && registerForm.get('direccion').dirty">
@@ -115,7 +115,7 @@
               </agm-map>
               <br>
               <h5>Dirección: {{address}}</h5>
-            
+
             </div>
           </div>
 
@@ -147,18 +147,18 @@
           <h2 align="center"joyrideStep="asi2" title="Bienvenido" text="En este paso 3  cuanta experiencia necesitas">¿Cuanta experiencia tienes?</h2>
           <div class="form-group">
             <div>
-            
+
 
 
               <div class="row m-0 justify-content-center align-items-center vh-100 ">
                 <div class="form-group col-6">
 
                   <div class="input-group">
-                  
+
 
                     <input  type="text" class="form-control " placeholder="Años de experiencia"
                       formControlName="experiencia" />
-                  
+
                   </div>
                   <div
                   *ngIf="registerForm.get('experiencia').errors && registerForm.get('experiencia').dirty">
@@ -174,7 +174,7 @@
 
             </div>
             <!--div class="form-group" >
-              <label >Experiencia:&nbsp;&nbsp;</label> 
+              <label >Experiencia:&nbsp;&nbsp;</label>
             <input type="number" class="form-control col-6"  placeholder="Ingrese un número" formControlName="experiencia" />
             </!--div-->
 
@@ -188,7 +188,7 @@
         <div id="test-l-4" class="content">
           <h2 align="center" joyrideStep="asi3" title="Bienvenido" text="En este paso 4 indica quien necesita atención ">Persona que necesita atención</h2>
           <div class="form-group row m-0 justify-content-center align-items-center vh-100">
-          
+
             <div class="form-group row m-0 justify-content-center align-items-center vh-100">
 
               <div class="input-group ">
@@ -255,12 +255,12 @@
             <button type="button" class="btn btn-success mt-5" (click)="asistencia5()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>
           </div>
         </div>
-      
+
 
         <div id="test-l-6" class="content text-center">
 
           <h2 align="center" joyrideStep="asi5" title="Bienvenido" text="Llena los 4 campos para terminar tu registro e iniciar sesión ">REGÍSTRATE</h2>
-          <div class="form-group">
+    <!--       <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="USUARIO" formControlName="usuario" />
             <div *ngIf="registerForm.get('usuario').errors && registerForm.get('usuario').dirty">
@@ -275,7 +275,7 @@
               </p>
 
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="TELEFONO" formControlName="telefono" />
@@ -331,12 +331,12 @@
                <p class="center" *ngIf="campoNoValido('fecha')">Debe seleccionar una fecha indicando cuando lo necesitas en el paso 2</p>
                <p class="center" *ngIf="campoNoValido('experiencia')">Debe escribir cuanta experiencia necesitas en el paso 3</p>
                <p class="center" *ngIf="campoNoValido('descripcion')">Debe escribir una descripción en el  paso 5</p>
-                <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p>
+           <!--      <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p> -->
                 <p class="center" *ngIf="campoNoValido('telefono')">Debe llenar el campo teléfono 10 caracteres ejemplo: 0900 000 000</p>
                 <p class="center" *ngIf="campoNoValido('email')">Debe llenar el campo email</p>
                 <p class="center" *ngIf="campoNoValido('password')">Debe poner una contraseña para completar el registro</p>
             </div>
- 
+
            </div>
           &nbsp;&nbsp;
           <button type="submit" class="btn btn-primary mt-5" >REGISTRAR</button>

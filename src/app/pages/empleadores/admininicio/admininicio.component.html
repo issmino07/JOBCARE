@@ -140,8 +140,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Provincias</label>
-                                    <select name="Provincia" class="browser-default custom-select form-control"[(ngModel)]="opcion" (change)="capturar()"
-                                        formControlName="provincia" (change)="selectProvincia($event.target.value)">
+                                    <select name="Provincia" class="browser-default custom-select form-control"
+                                        [(ngModel)]="opcion" (change)="capturar()" formControlName="provincia"
+                                        (change)="selectProvincia($event.target.value)">
                                         <option value="0">SELECCIONE UNA PROVINCIA</option>
                                         <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
                                             {{prov.provincia}}</option>
@@ -198,8 +199,10 @@
                                 </p>
                                 <p class="center" *ngIf="campoNoValido('horario')">Debe seleccionar un horario</p>
                                 <p class="center" *ngIf="campoNoValido('categorias')">Debe seleccionar una categoria</p>
-                                <p class="center" *ngIf="campoNoValido('provincia')|| opcion == '0' ">Debe seleccionar una provincia</p>
-                                <p class="center" *ngIf="campoNoValido('ciudad')|| opcion1 == '0'" >Debe seleccionar una ciudad</p>
+                                <p class="center" *ngIf="campoNoValido('provincia')|| opcion == '0' ">Debe seleccionar
+                                    una provincia</p>
+                                <p class="center" *ngIf="campoNoValido('ciudad')|| opcion1 == '0'">Debe seleccionar una
+                                    ciudad</p>
                                 <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección </p>
 
 
@@ -209,10 +212,11 @@
 
                     </div>
                     <div class="form-actions row m-0 justify-content-center align-items-center vh-100">
-                        
-                        <button (click)="show()"type="submit" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
-                      
-                     
+
+                        <button (click)="show()" type="submit" class="btn btn-primary  mt-5"
+                            align="center">SIGUIENTE</button>
+
+
 
                     </div>
 
@@ -238,7 +242,7 @@
                                         <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
 
-     
+
                                         <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
@@ -255,21 +259,24 @@
                                         <td>{{form.tituloEmpleo}}</td>
                                         <td>{{form.categorias}}</td>
                                         <td>{{form.fechaReporte | date:'dd-MM-yyyy'}}</td>
-                                      
+
                                         <td>{{form.horario}}</td>
                                         <td>{{form.ciudad}}</td>
-                                        <td class="text3" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
+                                        <td class="text3"
+                                            [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">
+                                            {{form.estado}}</td>
                                         <td>
                                             <button type="button" class="btn btn-outline-primary"
-                                                       style="width: 75px;height: 70;font-size: 50%;"
-                                            [routerLink]="['/dashboard/editaroferta/',form._id]"><b>EDITAR</b></button>
-                                        
+                                                style="width: 75px;height: 70;font-size: 50%;"
+                                                [routerLink]="['/dashboard/editaroferta2/',form._id]"><b>EDITAR</b></button>
+
                                         </td>
-                                        <td  *ngFor="let plan of plan" >
-                                            <button type="button" class="btn btn-outline-primary"*ngIf="(plan.tipoPlan != null)"
-                                                       style="width: 75px;height: 70;font-size: 50%;"   (click)="updateEstado1()"
-                                            ><b>PUBLICAR</b></button>
-                                        
+                                        <td *ngFor="let plan of plan">
+                                            <button type="button" class="btn btn-outline-primary"
+                                                *ngIf="(plan.tipoPlan != null)"
+                                                style="width: 75px;height: 70;font-size: 50%;"
+                                                (click)="updateEstado1(form._id)"><b>PUBLICAR</b></button>
+
                                         </td>
                                         <!--
                         <td class="text2" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
@@ -290,11 +297,12 @@
 
 
                 <div class="row m-0 justify-content-center align-items-center vh-100">
-                    <button (click)="previus()"type="submit" class="btn btn-primary  mt-5" align="center">PUBLICAR OTRA OFERTA</button>
+                    <button (click)="previus()" type="submit" class="btn btn-primary  mt-5" align="center">PUBLICAR OTRA
+                        OFERTA</button>
                     &nbsp;&nbsp;
                     <button (click)="next()" class="btn btn-primary  mt-5" align="center">SIGUIENTE</button>
-                   
-        
+
+
                 </div>
 
             </div>
@@ -309,41 +317,42 @@
                 <div class=" container p-3 " class="col-sm">
                     <h3 align="center" id="color">ESTÁS SUSCRITO A :</h3>
                 </div>
-                
-                
-                <div class="container " >
+
+
+                <div class="container ">
                     <div class="row ">
                         <div class="col-12">
-                            <table class="table table-hover table-responsive btn-table  tabla" id="tableColor" >
+                            <table class="table table-hover table-responsive btn-table  tabla" id="tableColor">
                                 <thead>
-                                    <tr *ngFor="let form of  plan" >
+                                    <tr *ngFor="let form of  plan">
                                         <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">TÍPO DE PLAN</th>
-                                        <th scope="col" COLSPAN=1 style="background: azure" >FECHA SUCRIPCIÓN</th>
-                                        <th scope="col" COLSPAN=1 style="background: azure"  >FECHA VENCIMIENTO</th>
+                                        <th scope="col" COLSPAN=1 style="background: azure">FECHA SUCRIPCIÓN</th>
+                                        <th scope="col" COLSPAN=1 style="background: azure">FECHA VENCIMIENTO</th>
                                         <th scope="col" COLSPAN=1 style="background: azure">VALOR</th>
-                
-                
+
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let form of  plan ; let i = index">
                                         <td>{{i+1}}</td>
                                         <td>{{form.tipoPlan}}</td>
-                                        <td >{{form.fecha1 |date:'dd-MM-yyyy'}}</td>
-                                        <td >{{form.fecha2 |date:'dd-MM-yyyy'}}</td>
-                                        <td>{{form.valor}}</td>
-                
-                
+                                        <td>{{form.fecha1 |date:'dd-MM-yyyy'}}</td>
+                                        <td>{{form.fecha2 |date:'dd-MM-yyyy'}}</td>
+                                        <td> {{form.valor}}</td>
+
+
                                     </tr>
                                 </tbody>
                             </table>
-                
+
                         </div>
                     </div>
                 </div>
-     <br>
-     <br>
+                <br>
+                <br>
+
 
                 <!-- Row -->
                 <div class="row m-0 justify-content-center align-items-center vh-100">
@@ -478,10 +487,74 @@
                 &nbsp;&nbsp;
 
 
+                <br>
+                <br>
+                <div class=" container p-3 " class="col-sm">
+                    <h3 align="center" id="color">OFERTA PARA PUBLICAR</h3>
+                </div>
+
+
+
+                <div class="container" *ngFor="let plan of plan">
+                    <div class="row" *ngIf="(plan.tipoPlan != null)">
+                        <div class="col-12">
+                            <table class="table table-hover table-responsive btn-table  table-bordered" id="tableColor">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
+                                        <th scope="col" COLSPAN=1 style="background: azure">TÍTULO EMPLEO</th>
+
+                                        <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
+
+
+                                        <th scope="col" COLSPAN=1 style="background: azure">HORARIO</th>
+
+                                        <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
+
+                                        <th scope="col" COLSPAN=1 style="background: azure">PUBLICAR</th>
+                                        <!--
+                        <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
+                 -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let form of  formularios let i = index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{form.tituloEmpleo}}</td>
+
+                                        <td>{{form.fechaReporte | date:'dd-MM-yyyy'}}</td>
+
+                                        <td>{{form.horario}}</td>
+
+                                        <td class="text3" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
+
+                                        <td  >
+                                            <button type="button" class="btn btn-outline-primary"
+                                                       style="width: 75px;height: 70;font-size: 50%;"   (click)="updateEstado1(form._id)"
+                                            ><b>PUBLICAR</b></button>
+
+                                        </td>
+                                        <!--
+                        <td class="text2" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
+                      -->
+
+
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
 
         </div>
-        
+
     </div>
 
 

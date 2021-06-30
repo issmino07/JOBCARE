@@ -36,15 +36,15 @@
 
 
 
-            <table class="table table-hover table-responsive btn-table " class="table table-bordered" *ngIf="!cargando">
+            <table class="table table-hover table-responsive btn-table  table-bordered tabla"  *ngIf="!cargando">
                 <thead>
                     <tr>
                         <th scope="col" COLSPAN=1 style="background: azure">IMAGEN</th>
                         <th scope="col" COLSPAN=1 style="background: azure">NOMBRE</th>
                         <th scope="col" COLSPAN=1 style="background: azure">DESCRIPCIÓN</th>
                         <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
-                 
-                 
+
+
                     </tr>
                 </thead>
 
@@ -56,8 +56,8 @@
                         <td> {{form.nombre}} {{form.apellido}}</td>
                         <td>{{form.descripcion}}</td>
                         <td> {{form.usuario.telefono}} </td>
-                     
-                     
+
+
                     </tr>
 
                 </tbody>

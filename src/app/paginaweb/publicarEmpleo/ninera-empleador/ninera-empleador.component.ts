@@ -4,7 +4,7 @@ import { Component, ElementRef, NgZone, OnInit, ViewChild, } from '@angular/core
 
 import Stepper from 'bs-stepper';
 import { MapsAPILoader } from '@agm/core';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
@@ -67,11 +67,11 @@ export class NineraEmpleadorComponent implements OnInit {
  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
   // formulario de registro //
 
-  
+
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+   /*  usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -83,7 +83,7 @@ export class NineraEmpleadorComponent implements OnInit {
     direccionmapa: [''],
     fecha: ['', [Validators.required]],
     categorias:[''],
-  
+
     experiencia: ['', [Validators.required]],
     role:[''],
 
@@ -91,7 +91,7 @@ export class NineraEmpleadorComponent implements OnInit {
     comida: [false,],
     limpieza: [false,],
     tareas: [false,],
- 
+
     ninos: this.fb.array([])
 
 
@@ -126,7 +126,7 @@ export class NineraEmpleadorComponent implements OnInit {
   }
 
 
- 
+
 
   constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,private spinner: NgxSpinnerService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router, private joyride: JoyrideService,
@@ -139,9 +139,9 @@ export class NineraEmpleadorComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
- 
-   
+
+
+
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -179,7 +179,7 @@ export class NineraEmpleadorComponent implements OnInit {
 
 
 
-  //metodo de las localidades taridas de la base 
+  //metodo de las localidades taridas de la base
   getOpciones1() {
     return this.ciudadOpcion.getOpciones()
       .subscribe(
@@ -238,10 +238,10 @@ export class NineraEmpleadorComponent implements OnInit {
 
 
   crearUsuario() {
-   
+
     console.log(this.registerForm.value)
- 
-    
+
+
       this.registerForm.value.direccionmapa = this.address;
       this.registerForm.value.categorias = this.cate;
       this.registerForm.value.role = this.rol;
@@ -252,7 +252,7 @@ export class NineraEmpleadorComponent implements OnInit {
       }
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-       
+
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -266,7 +266,7 @@ export class NineraEmpleadorComponent implements OnInit {
       )
     //  this.resetUsuario()
 
- 
+
   }
   activar() {
 
@@ -312,7 +312,7 @@ export class NineraEmpleadorComponent implements OnInit {
     if(this.votes <= 0 && valor < 0){
       return this.votes = 0;
     }
-    
+
      this.votes = this.votes + valor;
 
     this.agregarninos();
@@ -331,7 +331,7 @@ export class NineraEmpleadorComponent implements OnInit {
 
 
 
-  
+
   private url = environment.base_url;
   verificarEmail() {
 
@@ -339,7 +339,7 @@ export class NineraEmpleadorComponent implements OnInit {
       this.verificar.sendEmail(this.url +'/codigo').subscribe(
 
         res => {
-          
+
           this.msg = res['msg'];
           console.log(this.msg)
         }
@@ -365,7 +365,7 @@ export class NineraEmpleadorComponent implements OnInit {
 
 
         if (this.validarEamil == "sent") {
-      
+
           Swal.fire("Email enviado a " + to, "Se envío correo electrónico con su clave  Por favor revise la bandeja de entrada o spam!", "success")
           console.log('verifico')
         }
@@ -379,8 +379,8 @@ export class NineraEmpleadorComponent implements OnInit {
   /*
    $(document).ready(function(){
          var from,to,subject,text;
-         $("#send_email").click(function(){		
-             to=$("#to").val();		
+         $("#send_email").click(function(){
+             to=$("#to").val();
              $("#message").text("Enviando correo electrónico ... Espere");
              $.get(this.url+'/send',{to:to},function(data){
              console.log(data)
@@ -388,8 +388,8 @@ export class NineraEmpleadorComponent implements OnInit {
              {
                  $("#message").empty().text("El correo electrónico con su clave se envió a "+to+" Por favor revise la bandeja de entrada o spam !");
              }
-           
-     
+
+
      });
          });
      });
@@ -404,7 +404,7 @@ export class NineraEmpleadorComponent implements OnInit {
 
       //  document.getElementById("habilitarBoton").style.display ="inline";
     } else {
-   
+
       Swal.fire("Codigo verificado con  exito", "", "success")
       console.log('funciona la verificacion')
      // this.crearUsuario();

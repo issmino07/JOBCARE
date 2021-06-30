@@ -91,7 +91,7 @@
 
               <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"  
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
                   spellcheck="off" #search>
 
@@ -130,7 +130,7 @@
             <div>
               <div class="form-group">
                 <label class="control-label">FECHA </label>
-                <input type="date" class="form-control" placeholder="dd/mm/yyyy" joyrideStep="prota501" title="Bienvenido" text="Selecciona en la fecha que deseas el servicio solicitado" 
+                <input type="date" class="form-control" placeholder="dd/mm/yyyy" joyrideStep="prota501" title="Bienvenido" text="Selecciona en la fecha que deseas el servicio solicitado"
                 formControlName="fecha">
               </div>
             </div>
@@ -181,7 +181,7 @@
               </div>
             </div>
             <!--div class="form-group" >
-              <label >Experiencia:&nbsp;&nbsp;</label> 
+              <label >Experiencia:&nbsp;&nbsp;</label>
             <input type="number" class="form-control col-6"  placeholder="Ingrese un número" formControlName="experiencia" />
             </div-->
 
@@ -248,7 +248,7 @@
         <div id="test-l-5" class="content text-center">
 
           <h2 align="center" joyrideStep="prota503" title="Bienvenido" text="Llena los 4 campos para terminar tu registro e iniciar sesión ">REGÍSTRATE</h2>
-          <div class="form-group">
+   <!--        <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="USUARIO" formControlName="usuario" />
             <div *ngIf="registerForm.get('usuario').errors && registerForm.get('usuario').dirty">
@@ -263,7 +263,7 @@
               </p>
 
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
 
             <input type="text" class="form-control col-6" placeholder="TELEFONO" formControlName="telefono" />
@@ -307,7 +307,7 @@
 
             <input type="number" class="form-control col-6" id="exampleInputPassword1"
               placeholder="CLAVE DE VERIFICACIÓN ENVIADA AL CORREO" formControlName="clave" />
-          </div> 
+          </div>
            <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button> -->
 
            <div class="row ">
@@ -317,16 +317,16 @@
                <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el market del mapa en el paso uno</p>
                <p class="center" *ngIf="campoNoValido('fecha')">Debe seleccionar una fecha indicando cuando lo necesitas en el paso 3</p>
                <p class="center" *ngIf="campoNoValido('experiencia')">Debe escribir cuanta experiencia necesitas en el paso 4</p>
-                <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p>
+              <!--   <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p> -->
                 <p class="center" *ngIf="campoNoValido('telefono')">Debe llenar el campo teléfono 10 caracteres ejemplo: 0900 000 000</p>
                 <p class="center" *ngIf="campoNoValido('email')">Debe llenar el campo email</p>
                 <p class="center" *ngIf="campoNoValido('password')">Debe poner una contraseña para completar el registro</p>
             </div>
- 
+
            </div>
-          
+
           &nbsp;&nbsp;
-          <button type="submit" class="btn btn-primary mt-5" 
+          <button type="submit" class="btn btn-primary mt-5"
            >REGISTRAR</button>
            &nbsp;&nbsp;
            <button type="button" class="btn btn-success mt-5" (click)="asistencia5()" ><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>

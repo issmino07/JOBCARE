@@ -47,7 +47,7 @@ export class DomesticoComponent implements OnInit {
 
   public registerForm = this.fb.group({
 
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+   /*  usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -99,7 +99,7 @@ export class DomesticoComponent implements OnInit {
       }
 
   //==================================================================//
-  private url = environment.base_url; 
+  private url = environment.base_url;
 
   verificarEmail() {
 
@@ -169,13 +169,13 @@ export class DomesticoComponent implements OnInit {
     }
 
 
-    
+
 
       this.registerForm.value.categorias = this.cate;
       this.registerForm.value.role = this.rol;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
-         
+
           Swal.fire("Registro  existoso", "", "success")
           console.log(resp);
           this.router.navigateByUrl('/login')
@@ -188,15 +188,15 @@ export class DomesticoComponent implements OnInit {
 
       )
      // this.resetUsuario()
- 
- 
+
+
   }
 
 
   resetUsuario() {
     this.registerForm.reset()
   }
-  
+
   campoNoValido(campo: string): boolean {
 
     if (this.registerForm.get(campo).invalid && this.formSubmitted) {

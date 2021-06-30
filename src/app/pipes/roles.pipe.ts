@@ -14,9 +14,12 @@ export class RolesPipe implements PipeTransform {
       case 'EMPLEADO_ROLE':
         return 'empleado';
 
-        case 'PROFESIONAL_ROLE':
-        return 'empleado';
-     
+       /*  case 'PROFESIONAL_ROLE':
+        return 'empleado'; */
+
+        case 'CAPACITATE_ROLE':
+          return 'capacitarse';
+
       default:
        return '';
     }

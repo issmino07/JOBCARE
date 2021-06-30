@@ -2,7 +2,7 @@
 
     <div id="stepper1" class="bs-stepper">
         <div class="bs-stepper-header">
-            <div class="step" data-target="#test-l-1">
+            <div class="step" data-target="#test-l-1"  [ngStyle]="myStyles">
                 <button class="step-trigger">
                     <span class="bs-stepper-circle">1</span>
                     <span class="bs-stepper-label"></span>
@@ -31,8 +31,10 @@
 
         <div class="bs-stepper-content">
 
-            <div id="test-l-1" class="content">
-                <form [formGroup]="registerForm" (ngSubmit)="crearUsuarioHoja()">
+            <div id="test-l-1" class="content"  >
+              <div  [ngStyle]="myStyles">
+                <div >
+                <form [formGroup]="registerForm" (ngSubmit)="crearUsuarioHoja()" >
                     <div class="">
                         <div class="card-header bg-primary">
                             <h4 class="m-b-0 text-white">FORMULARIO</h4>
@@ -458,8 +460,10 @@
                     </div>
 
                 </form>
+              </div>
             </div>
-
+            <button   class="btn btn-primary  mt-5" align="center" (click)="next()">INICIAR</button>
+          </div>
 
             <div id="test-l-2" class="content">
 
@@ -721,6 +725,62 @@
                 </div>
                 <!-- Row -->
 
+                <div class="container"  *ngFor="let plan of formu" >
+                  <div class="row" *ngIf="(plan.tipoPlan != null)">
+                      <div class="col-12">
+                          <table class="table table-responsive btn-table" id="tableColor">
+                              <thead>
+                                  <tr>
+                                      <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
+                                      <th scope="col" COLSPAN=1 style="background: azure">NOMBRE</th>
+
+                                      <th scope="col" COLSPAN=1 style="background: azure">FECHA CREACIÓN</th>
+
+                                      <th scope="col" COLSPAN=1 style="background: azure">SALARIO</th>
+                                      <th scope="col" COLSPAN=1 style="background: azure">ESTADO</th>
+                                      <th scope="col" COLSPAN=1 style="background: azure">EDITAR</th>
+                                      <th scope="col" COLSPAN=1 style="background: azure">PUBLICAR</th>
+
+
+
+
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let form of  formularios; let i = index">
+                                      <td>{{i+1}}</td>
+                                      <td>{{form.nombre}}</td>
+
+                                      <td>{{form.fechaReporte |date:'dd-MM-yyyy'}}</td>
+
+                                      <td>{{form.refSalarial}}</td>
+                                      <td class="text3" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
+                                      <td>
+                                          <button type="button" class="btn btn-outline-primary"
+                                                     style="width: 75px;height: 70;font-size: 50%;"
+                                          [routerLink]="['/dashboard/hoja/',form._id]"><b>EDITAR</b></button>
+
+                                      </td>
+                                      <td >
+                                          <button type="button" class="btn btn-outline-primary"
+                                                     style="width: 75px;height: 70;font-size: 50%;"   (click)="updateEstado()"
+                                          ><b>PUBLICAR</b></button>
+
+                                      </td>
+
+                                      <!--
+                      <td class="text2" [ngClass]="{'bg-primary text-white':form.estado=='PUBLICADO','bg-danger text-white':form.estado=='NO PUBLICADO'}">{{form.estado}}</td>
+                -->
+                                  </tr>
+                              </tbody>
+                          </table>
+                          <div  *ngFor="let plan of formu" class="alert alert-primary " role="alert ">
+                              <em *ngIf="(plan.tipoPlan =='Free')" class="text2">Suscribete a uno de nuestros planes para publicar tu hoja de
+                                  vida.</em>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
                 <button (click)="previus()" class="btn btn-primary mt-5">ATRAS</button>
 

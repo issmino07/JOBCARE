@@ -52,8 +52,9 @@ export class HojavidaFormularioComponent implements OnInit {
   hojaModelo = new Hojavida();
   opcionesGenerales: Categoria[]
   ofertaModelo = new Ofertas();
-  estado = 'NO PUBLICADO'
-  estado2 = 'PUBLICADO'
+  estado = 'NO PUBLICADO';
+  estado2 = 'PUBLICADO';
+  estatus = 'HOJA CREADA'
   latitude: number;
   longitude: number;
   zoom: number;
@@ -109,7 +110,7 @@ export class HojavidaFormularioComponent implements OnInit {
 
     nivelEducacion: [''],
     telefonohoja: [''],
-  
+
     estado: [''],
     usuario: [''],
     img2: [''],
@@ -134,7 +135,8 @@ export class HojavidaFormularioComponent implements OnInit {
 
     avatar: [null],
     urlPdf: [''],
-    emailHoja:['']
+    emailHoja:[''],
+    estatus:['']
     //  lavado: ['',],
     //  comida: ['',],
     //  limpieza: ['',],
@@ -164,11 +166,11 @@ export class HojavidaFormularioComponent implements OnInit {
     this.id = this.urlTree.queryParams['id'];
     this.type = this.urlTree.queryParams['clientTransactionId'];
     this.planRegistro
- 
+
     this.notificacion.subscribe(
       resp =>
       this.getFormulariosHoja()
-      
+
     )
     this.getPlanOfertas()
     this.notificacion.subscribe(
@@ -182,11 +184,11 @@ export class HojavidaFormularioComponent implements OnInit {
 
    this.cf()
 
- 
+
     this.getPlanOfertas()
     this.getFormulariosHoja()
 
- 
+
 
     this.getOpciones2();
     this.ciuadadesOpcion = new Array<Ciudad>();
@@ -244,7 +246,7 @@ export class HojavidaFormularioComponent implements OnInit {
         for (var form in result) {
           this.planRegistro = result[form].tipoPlan;
           this.IDPLAN = result[form]._id
-         
+
 
       /*    if (this.planRegistro == 'Free' || this.planRegistro == 'Premium (3 meses)' || this.planRegistro == 'Premium (6 meses)') {
             this.updateEstado()
@@ -332,7 +334,21 @@ export class HojavidaFormularioComponent implements OnInit {
 
     });
   }
+  ocultar = true
 
+  get myStyles(): any {
+
+    if(this.OJO =="HOJA CREADA"){
+     this.ocultar = false
+    
+    }
+
+    return {
+        'display' : this.ocultar ? '': 'none'
+
+    }
+
+}
 
 
   crearUsuarioHoja() {
@@ -341,11 +357,12 @@ export class HojavidaFormularioComponent implements OnInit {
     this.registerForm.value.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.registerForm.value.estado = this.estado
     this.registerForm.value.telefonohoja = this.usuario.telefono
-    
+
     this.registerForm.value.emailHoja= this.usuario.email
     this.registerForm.value.img2 = this.usuario.img;
     this.registerForm.value.tipoPlan = this.planRegistro
     this.registerForm.value.urlPdf = this.urlPDF;
+    this.registerForm.value.estatus = this.estatus;
     this.formSubmitted = true;
 
 
@@ -355,7 +372,7 @@ export class HojavidaFormularioComponent implements OnInit {
     this._hojavida.addOpcion(this.registerForm.value).subscribe(
       resp => {
 
-     
+
 
         Swal.fire("Registro  existoso", "", "success")
            this.notificacion.emit( resp );
@@ -382,14 +399,14 @@ export class HojavidaFormularioComponent implements OnInit {
   }
   resetUsuario() {
     this.registerForm.reset()
-  
+
    // this.getFormulariosHoja();
 
    setTimeout(() => {
   //  window.location.reload()
     this.next()
  },3000);
- 
+
   }
 
   update(): void {
@@ -405,6 +422,7 @@ export class HojavidaFormularioComponent implements OnInit {
   //========================Trae la Hoja de Vida Guardada y muestra el previo en el steper==============================//
  public ID;
   planregistrado
+  OJO
   getFormulariosHoja() {
 
     const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
@@ -417,7 +435,8 @@ export class HojavidaFormularioComponent implements OnInit {
         console.log(this.formularios, 'esto llega')
         for (var form in result) {
           this.ID = result[form]._id
-      
+          this.OJO= result[form].estatus
+          console.log(this.OJO,'siesta')
           localStorage.setItem("idHoja",JSON.stringify(this.ID) )
           this.planregistrado = result[form].tipoplan
 //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
@@ -426,7 +445,7 @@ export class HojavidaFormularioComponent implements OnInit {
 
   //=================Actualiza el estado de la publicacion de la hoja de vida una vez que se realiza el pago ===//
 
- 
+
 
   actualizarpagina() {
     window.location.reload()
@@ -472,7 +491,7 @@ export class HojavidaFormularioComponent implements OnInit {
 
         Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
         setTimeout(() => {
-    
+
           this.next()
           }, 2000);
 
@@ -601,9 +620,9 @@ export class HojavidaFormularioComponent implements OnInit {
           this.updateEstado()
 
           this.registrarPlanGeneral()
-         
+
           //  this.registrarPlan()
-          
+
 
         }, 3000);
 
@@ -695,8 +714,8 @@ export class HojavidaFormularioComponent implements OnInit {
 
     this.hojaModelo.estado = this.estado2;
     this.hojaModelo.tipoplan = this.planRegistro;
-   
- 
+
+
     this._hojavida.updateOpcion(this.hojaModelo)
       .subscribe(result => {
 
@@ -711,7 +730,7 @@ date
 fecha2
   cf(){
     this.date = new Date();
- 
+
    this.fecha2 =(this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
 
   }
@@ -721,30 +740,30 @@ fecha2
   }
 
   registrarPlan() {
-    
+
 
     // Realizar el posteo
       this.planModelo.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
-  
+
       this.planModelo.amount = this.cantidad;
 
       this.planModelo.fecha1 = new Date ()
       this.planModelo.tipoPlan = this.tipo
       this.planModelo.valor = this.valor
- 
+
       if (this.cantidad == "599") {
         this.planModelo.tipoPlan = this.paquete
         this.planModelo.valor = this.valor1
         this.planModelo.fecha1 = new Date ()
         this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
       }
-   
+
       else if (this.cantidad == "999") {
         this.planModelo.tipoPlan = this.paquete2
         this.planModelo.valor = this.valor2
         this.planModelo.fecha1 = new Date ()
         this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
-  
+
       }
       this.planModelo.clientTransactionId = this.clientTId
       this.planModelo.optionalParameter1 = this.parametro1
@@ -757,15 +776,15 @@ fecha2
           Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
           this.notificacion.emit(resp);
           setTimeout(() => {
-    
+
             this.next()
             }, 2000);
         }, (err) => {
-          
+
           Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
           this.registrarPlanGeneral()
         })
-     
+
       }
 
 

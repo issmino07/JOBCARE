@@ -45,7 +45,7 @@ export class OfertaCompletaComponent implements OnInit {
     categorias:[''],
      provincia: ['', [Validators.required]],
    ciudad: ['', [Validators.required]],
- 
+
   //  direccionmapa: ['', [Validators.required]],
   //  lavado: ['',],
   //  comida: ['',],
@@ -53,7 +53,7 @@ export class OfertaCompletaComponent implements OnInit {
   //  tareas: ['',],
   //  fecha: ['', [Validators.required]],
 
-    
+
 
 
 
@@ -63,7 +63,7 @@ export class OfertaCompletaComponent implements OnInit {
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone, private route: ActivatedRoute,
      private oferta : OfertaService, private opcionesServices : CategoriasService,  private location: Location,
      private ciudadOpcion: CiudadesService) {
-
+     
 
       }
 
@@ -71,11 +71,16 @@ export class OfertaCompletaComponent implements OnInit {
 
     const id = this.route.snapshot.paramMap.get('id');
     this.oferta.getOfertasId(id)
-      .subscribe(resp =>{ 
+      .subscribe(resp =>{
         this.ofertaModelo = resp
        console.log(resp,'ID OFERTA')
       });
-    
+
+      this.getOpciones1();
+      this.getOpciones2();
+      this.ciuadadesOpcion = new Array<Ciudad>();
+      this.ciudad = new Ciudad();
+
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
@@ -99,10 +104,7 @@ export class OfertaCompletaComponent implements OnInit {
       });
     });
 
-   this.getOpciones1();
-   this.getOpciones2();
-   this.ciuadadesOpcion = new Array<Ciudad>();
-   this.ciudad = new Ciudad();
+
   }
 
 
@@ -116,15 +118,15 @@ export class OfertaCompletaComponent implements OnInit {
           if (this.ciuadadesOpcion.length > 0) {
             this.ciudad = this.ciuadadesOpcion[0];
           }
-  
+
         });
-  
+
   }
 
   selectProvincia(provincia) {
 
     this.ciudad = this.ciuadadesOpcion.find(element => element.provincia == provincia);
-  
+
   }
 
   getOpciones1() {
@@ -174,7 +176,7 @@ export class OfertaCompletaComponent implements OnInit {
   }
 
 
- 
+
 
 
   update(): void {
@@ -199,8 +201,8 @@ export class OfertaCompletaComponent implements OnInit {
  //   this.submitted = true;
     this.oferta.deleteOpcion(this.ofertaModelo._id)
         .subscribe(
-          result => { 
-        
+          result => {
+
 
             console.log(result)
         });

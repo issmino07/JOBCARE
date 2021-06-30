@@ -42,7 +42,7 @@ export class Hojavida {
       cargoRef3: string;
       empresaRef3:string;
       telefonoRef3:string;
-    
+
       postulacion:Array<Object>
       urlPdf:string
       tipoplan:string
@@ -52,4 +52,6 @@ export class Hojavida {
       dispoViaje:string
       idioma:string
       nivelIdioma:string
+
+      estatus: string
 }

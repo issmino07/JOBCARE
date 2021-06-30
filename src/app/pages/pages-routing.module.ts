@@ -41,14 +41,17 @@ import { CursosCompradosempleadorComponent } from './empleadores/cursos-comprado
 import { CursosCompradosComponent } from './administracion/cursos-comprados/cursos-comprados.component';
 import { SuscripcionesEmpleadoresComponent } from './administracion/suscripciones-empleadores/suscripciones-empleadores.component';
 import { SuscripcionesEmpleadosComponent } from './administracion/suscripciones-empleados/suscripciones-empleados.component';
+import { EditarOfertas2Component } from './empleadores/editar-ofertas2/editar-ofertas2.component';
+import { CursosGeneralesComponent } from './capacitaciones/cursos-generales/cursos-generales.component';
+import { CursosGeneralesCompradosComponent } from './capacitaciones/cursos-generales-comprados/cursos-generales-comprados.component';
 
 
 
 
 const routes: Routes = [
-  { 
-    path: 'dashboard', 
-    component: PagesComponent,canActivate:[AdminGuard], 
+  {
+    path: 'dashboard',
+    component: PagesComponent,canActivate:[AdminGuard],
     children: [
         { path: '', component: DashboardComponent, data:{ titulo: 'Dashboard'},canActivate:[AdminGuard] },
         { path: 'admininico', component: AdmininicioComponent },
@@ -58,6 +61,8 @@ const routes: Routes = [
         { path: 'verofertas', component: VerOfertasComponent,  data:{ titulo: 'Ver Ofertas'},canActivate:[AdminGuard] },
         { path: 'editaroferta', component: EditarOfertasComponent,  data:{ titulo: 'Editar Ofertas'},canActivate:[AdminGuard] },
         { path: 'editaroferta/:id', component: EditarOfertasComponent,  data:{ titulo: 'Editar Ofertas'},canActivate:[AdminGuard] },
+        { path: 'editaroferta2', component: EditarOfertas2Component,  data:{ titulo: 'Editar Ofertas'},canActivate:[AdminGuard] },
+        { path: 'editaroferta2/:id', component: EditarOfertas2Component,  data:{ titulo: 'Editar Ofertas'},canActivate:[AdminGuard] },
         { path: 'planes', component: PlanesComponent,  data:{ titulo: 'Planes'} },
         { path: 'planes/empleados', component: PlanEmpleadosComponent,  data:{ titulo: 'Planes'},canActivate:[AdminGuard] },
         { path: 'hojavida', component: HojavidaFormularioComponent ,canActivate:[AdminGuard] },
@@ -90,16 +95,17 @@ const routes: Routes = [
         { path: 'hoja/:id', component: IdhojavidaPrevioComponent,canActivate:[AdminGuard] },
         { path: 'cursosComprados', component: CursosCompradosempleadoComponent,canActivate:[AdminGuard] },
         { path: 'cursosCompradosEmpleador', component: CursosCompradosempleadorComponent,canActivate:[AdminGuard] },
-      
+
 
         { path: 'suscripcionesEmpleadores', component: SuscripcionesEmpleadoresComponent,canActivate:[AdminGuard] },
         { path: 'suscripcionesEmpleados', component: SuscripcionesEmpleadosComponent,canActivate:[AdminGuard] },
         { path: 'cursosCompradosT', component: CursosCompradosComponent,canActivate:[AdminGuard] },
-        
-    
-        
-        
-        
+        { path: 'cursosCompra', component: CursosGeneralesComponent,canActivate:[AdminGuard] },
+        { path: 'cursosComprad', component: CursosGeneralesCompradosComponent,canActivate:[AdminGuard] },
+
+
+
+
       ]
 },
 

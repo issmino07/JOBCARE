@@ -24,16 +24,16 @@ const base_url = environment.base_url;
 })
 export class UsuarioService {
 
-  
+
   userLogin: Login;
   usuario: Usuario;
- 
+
   token: string;
   menu: any[] = [];
 
   public auth2: any;
 
-  constructor( private http: HttpClient, 
+  constructor( private http: HttpClient,
     private _subirArchivoService: SubirArchivoService,
                 private router: Router,
                 private ngZone: NgZone ) {
@@ -58,7 +58,7 @@ export class UsuarioService {
       this.menu = [];
     }
 
-  }  
+  }
 
   guardarStorage( id: string, token: string, usuario: Usuario, menu: any ) {
 
@@ -73,7 +73,7 @@ export class UsuarioService {
   }
 
 
- 
+
 
   logOut() {
     this.usuario = null;
@@ -105,7 +105,7 @@ export class UsuarioService {
 
 
   crearUsuario( formData: Usuario ) {
-    
+
     return this.http.post(`${ base_url }/usuarios`, formData )
               .pipe(
                 tap( (resp: any) => {
@@ -117,8 +117,8 @@ export class UsuarioService {
 
   login( usuario: Login, recuerdame: boolean = false ) {
     if ( !recuerdame ) {
-      localStorage.setItem('email', usuario.usuario);
-     
+      localStorage.setItem('email', usuario.email);
+
     } else {
       localStorage.removeItem('email');
     }
@@ -164,10 +164,10 @@ export class UsuarioService {
       Swal.fire('Usuario actualizado', usuario.usuario, 'success' );
       console.log(resp)
       return resp;
-     
+
     }));
   }
-  
+
 
   cargarUsuarios1( desde: number = 0 ) {
 
@@ -193,6 +193,6 @@ export class UsuarioService {
 
     return this.http.delete( url ).pipe(map((resp: any) => resp.usuario));
   }
-  
+
 
 }

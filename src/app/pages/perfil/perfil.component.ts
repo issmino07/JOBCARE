@@ -15,63 +15,63 @@ export class PerfilComponent implements OnInit {
   usuario :Usuario;
   imagenSubir: File;
   imagenTemporal: any;
-  
-    constructor(public _usuarioServices: UsuarioService,  private router: Router, ) {
+
+    constructor(public _usuarioServices: UsuarioService ) {
      this.usuario = this._usuarioServices.usuario;
      }
-  
+
     ngOnInit() {
     }
-    
-  
+
+
     guardar(usuario:Usuario){
-  
+
       this.usuario.usuario = usuario.usuario;
       this.usuario.email = usuario.email;
-      
-      //funcion de actulizar 
+
+      //funcion de actulizar
       this._usuarioServices.actualizarUsuario(usuario)
       .subscribe( resp =>{
         console.log(resp);
-  
+       this.actu()
         Swal.fire('Usuario', `Actualizado con exito`, 'success');
       })
    }
-  
+
+actu(){
+    //funcion de actulizar
+    this.usuario._id
+    this._usuarioServices.actualizarUsuario(this.usuario)
+    .subscribe( resp =>{
+      console.log(resp);
+
+      Swal.fire('Usuario', `Actualizado con exito`, 'success');
+    })
+}
+
    seleccionaImagen( archivo: File){
-     
+
     if(!archivo){
       this.imagenSubir = null;
      return;
     }
-  
+
     this.imagenSubir = archivo;
    console.log(event);
-  
+
    let reader = new FileReader();
    let urlImagenTemp = reader.readAsDataURL( archivo );
-  
+
    reader.onloadend = () =>{
     this.imagenTemporal = reader.result;
-  
-   } 
+
    }
-  
-  
+   }
+
+
    cambiarImagen(){
-  
+
     this._usuarioServices.cambiarImagen(this.imagenSubir, this.usuario._id)
    }
-  
-
-
-   guardarUsuario( usuario: Usuario ) {
-
-    this._usuarioServices.actualizarUsuario( usuario )
-            .subscribe();
-
-            this.router.navigate(['/login']);
 
   }
-  }
-  

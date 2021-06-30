@@ -16,15 +16,15 @@ export class AdminGuard implements CanActivate {
     if ( this._usuarioService.usuario.role === 'ADMIN_ROLE') {
       return true;
     }
- 
-  
+
+
     if ( this._usuarioService.usuario.role === 'EMPLEADOR_ROLE') {
       return true;
     }
     if ( this._usuarioService.usuario.role === 'EMPLEADO_ROLE') {
       return true;
     }
-    if ( this._usuarioService.usuario.role === 'PROFESIONAL_ROLE') {
+    if ( this._usuarioService.usuario.role === 'CAPACITATE_ROLE') {
       return true;
     }
     else {
@@ -33,7 +33,7 @@ export class AdminGuard implements CanActivate {
         icon: 'error',
         title: 'Oops...',
         text: 'Su usuario esta Inactivo',
-      
+
       });
       this._usuarioService.logOut();
       return false;
@@ -41,6 +41,6 @@ export class AdminGuard implements CanActivate {
 
 
   }
-  
+
 }
 

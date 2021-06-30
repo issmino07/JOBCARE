@@ -7,7 +7,7 @@
             <div class="card-body">
                 <form [formGroup]="registerForm" >
                     <div class="form-body">
-                     
+
                         <hr>
                         <div class="row p-t-20">
                             <div class="col-md-6">
@@ -28,7 +28,7 @@
                         </div>
                         <!--/row-->
                         <div class="row">
-                         
+
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -36,25 +36,66 @@
                                     <input formControlName="valor" type="number" class="form-control" placeholder="$">
                                 </div>
                             </div>
-                      
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">Categoria</label>
                                 <select class="form-control custom-select" data-placeholder="CATEGORIAS" tabindex="1"formControlName="categorias">
                                     <option *ngFor="let opcionesgenerales of opcionesGenerales" value="{{opcionesgenerales.categorias}}">{{opcionesgenerales.categorias}}</option>
-                                  
+
                                 </select>
                             </div>
                         </div>
                         </div>
                         <!--/row-->
-                     
-                       
-                     
+
+                           <!-- Fin cambio de diseño -->
+                           <div class="container fileUploadWrapper">
+                            <div class="row">
+                                <!-- Progress Bar -->
+                                <div class="col-md-12" *ngIf="progress">
+                                    <div class="progress form-group">
+                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                            [style.width.%]="progress">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="text-danger" for="tipoDeArchivp">Por favor temario de curso debe ser
+                                        adjuntado en formato ".pdf" </label>
+                                    <div class="fileupload" appDragDropFileUpload (click)="fileField.click()"
+                                        (fileDropped)="upload($event)">
+                                        <span class="ddinfo">Presione aqui para subir temario de curso</span>
+                                        <input type="file" accept=".pdf" name="avatars" #fileField
+                                            (change)="upload($event.target.files)" hidden multiple>
+
+                                    </div>
+
+
+
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="image-list" *ngFor="let file of fileArr; let i = index">
+                                        <div class="profile">
+                                            <img [src]="sanitize(file['url'])" alt="">
+                                        </div>
+                                        <p>{{file.item.name}}</p>
+                                    </div>
+                                    <p class="message">{{msg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                           <!--/row-->
+
+
+
                     </div>
                     <div class="form-actions">
                         <button type="submit"  class="btn btn-primary" (click)="crearCurso()" > <i class="fa fa-save"></i>GUARDAR </button>
-                        
+
                     </div>
                 </form>
             </div>

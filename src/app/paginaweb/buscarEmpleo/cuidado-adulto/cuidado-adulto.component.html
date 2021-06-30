@@ -16,7 +16,7 @@
 
       <h2 align="center"  joyrideStep="primer" title="Bienvenido" text="Estas en la categoria Cuidado del adulto mayor llena los cuatro campos para que te registres en nuestra plataforma ">REGÍSTRATE</h2>
 
-      <div class="form-group">
+  <!--     <div class="form-group">
 
         <input type="text" class="form-control col-6" placeholder="USUARIO" formControlName="usuario" />
 
@@ -34,7 +34,7 @@
 
         </div>
 
-      </div>
+      </div> -->
       <div class="form-group">
 
         <input type="text" class="form-control col-6" placeholder="TELEFONO" formControlName="telefono" />
@@ -127,18 +127,18 @@
               </ul>
 
             </div>
-         <!--  <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button>  -->  
-           
+         <!--  <button class="btn btn-primary mt-5" (click)="RevisandoEmail()">ENVIAR CLAVE A EMAIL</button>  -->
+
          <div class="row">
           <div class="col text-danger">
-              <p *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p>
+           <!--    <p *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p> -->
               <p *ngIf="campoNoValido('telefono')">Debe llenar el campo teléfono 10 caracteres ejemplo: 0900-000-000</p>
               <p *ngIf="campoNoValido('email')">Debe llenar el campo email</p>
               <p *ngIf="campoNoValido('password')">Debe poner una contraseña para completar el registro</p>
           </div>
 
          </div>
-            <button type="submit" class="btn btn-primary mt-5" 
+            <button type="submit" class="btn btn-primary mt-5"
              >REGISTRAR</button>
               &nbsp;&nbsp;
               <button type="button" class="btn btn-success mt-5" (click)="cuidados()"><i><img src="../../../../assets/images/patch-question.svg" alt=""></i></button>

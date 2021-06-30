@@ -91,7 +91,7 @@
 
             <div class="form-group">
                 <label>Mi Dirección</label>
-                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"  
+                <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" joyrideStep="prota2" title="REGISTRO CLIENTE" text="En este campo ingresa tu dirección o mueve el marker del mapa para encontrar tu ubicación mientras miras este mensaje desliza la pantalla para ver el campo de referencia"
                   formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off" autocapitalize="off"
                   spellcheck="off" type="text" #search>
 
@@ -111,7 +111,7 @@
               </agm-map>
               <br>
               <h5>Dirección: {{address}}</h5>
-            
+
             </div>
           </div>
 
@@ -143,16 +143,16 @@
           <h2 align="center" joyrideStep="prota502" title="Bienvenido" text="En este paso 3  cuanta experiencia necesitas">¿Cuanta experiencia tienes?</h2>
           <div class="form-group">
             <div>
-           
+
 
               <div class="row m-0 justify-content-center align-items-center vh-100 ">
                 <div class="form-group col-6">
 
                   <div class="input-group">
-                  
+
                     <input  type="text" class="form-control " placeholder="Años de experiencia"
                       formControlName="experiencia" />
-                   
+
                   </div>
                   <div
                   *ngIf="registerForm.get('experiencia').errors && registerForm.get('experiencia').dirty">
@@ -168,7 +168,7 @@
 
             </div>
             <!--div class="form-group" >
-              <label >Experiencia:&nbsp;&nbsp;</label> 
+              <label >Experiencia:&nbsp;&nbsp;</label>
             <input type="number" class="form-control col-6"  placeholder="Ingrese un número" formControlName="experiencia" />
             </!--div-->
 
@@ -182,7 +182,7 @@
         <div id="test-l-4" class="content">
           <h2 align="center"joyrideStep="prota503" title="Bienvenido" text="En este paso 4  selecciona que debe ser capaz de cuidar">Debe ser capaz de cuidar</h2>
           <div class="form-group row m-0 justify-content-center align-items-center vh-100 ">
-            
+
             <div class="form-group row m-0 justify-content-center align-items-center vh-100">
 
               <div class="input-group ">
@@ -288,13 +288,13 @@
                <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el market del mapa en el paso uno</p>
                <p class="center" *ngIf="campoNoValido('fecha')">Debe seleccionar una fecha indicando cuando lo necesitas en el paso 2</p>
                <p class="center" *ngIf="campoNoValido('experiencia')">Debe escribir cuanta experiencia necesitas en el paso 3</p>
-              
-                <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p>
+
+            <!--     <p class="center" *ngIf="campoNoValido('usuario')">Debe llenar el campo usuario</p> -->
                 <p class="center" *ngIf="campoNoValido('telefono')">Debe llenar el campo teléfono 10 caracteres ejemplo: 0900 000 000</p>
                 <p class="center" *ngIf="campoNoValido('email')">Debe llenar el campo email</p>
                 <p class="center" *ngIf="campoNoValido('password')">Debe poner una contraseña para completar el registro</p>
             </div>
- 
+
            </div>
           &nbsp;&nbsp;
           <button type="submit" class="btn btn-primary mt-5" >REGISTRAR</button>

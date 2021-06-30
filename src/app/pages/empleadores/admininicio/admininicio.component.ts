@@ -59,7 +59,7 @@ export class AdmininicioComponent implements OnInit {
     this.stepper.previous();
 
    }
- 
+
    onSubmit() {
      return false;
    }
@@ -87,7 +87,7 @@ export class AdmininicioComponent implements OnInit {
   //  tareas: ['',],
   //  fecha: ['', [Validators.required]],
 
-    
+
 
 
 
@@ -97,14 +97,14 @@ export class AdmininicioComponent implements OnInit {
   urlTree
   id
   type
- 
+
   IDOFERTA
   usuario: Usuario;
 
   public notificacion = new EventEmitter<any>();
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone,private spinner: NgxSpinnerService,
     private opcionesServices : CategoriasService,private ciudadOpcion: CiudadesService,private planes : PlanesService,public _usuarioServices: UsuarioService,
-     private oferta : OfertaService,  private router: Router,private toastr: ToastrService) { 
+     private oferta : OfertaService,  private router: Router,private toastr: ToastrService) {
 
     this.usuario = this._usuarioServices.usuario;
     this.urlTree = this.router.parseUrl(this.router.url);
@@ -128,23 +128,23 @@ export class AdmininicioComponent implements OnInit {
     this.show1()
     this.cf()
 
-   
+
     this.getOpciones2();
     this.getFormulariosOfertas()
     this.ciuadadesOpcion = new Array<Ciudad>();
     this.ciudad = new Ciudad();
-    
+
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
-    
+
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
-         
+
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-        
+
           //verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
@@ -158,7 +158,7 @@ export class AdmininicioComponent implements OnInit {
         });
       });
     });
-  
+
    this.getOpciones1()
 
    this.stepper = new Stepper(document.querySelector('#stepper1'), {
@@ -173,7 +173,7 @@ export class AdmininicioComponent implements OnInit {
     }
   }
 
-  
+
 
   planregistrado
   IDPLAN
@@ -181,12 +181,12 @@ export class AdmininicioComponent implements OnInit {
 
     const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.planes.getPlan(usuario._id).subscribe(
-      result => { 
-         this.plan =  result 
+      result => {
+         this.plan =  result
          for (var form in result) {
           this.planregistrado = result[form].tipoPlan;
           this.IDPLAN = result[form]._id
-         
+
         /*  if (this.planregistrado == 'Free' || this.planregistrado == 'Premium (3 meses)' || this.planregistrado == 'Premium (6 meses)') {
             this.updateEstado()
             //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
@@ -194,11 +194,11 @@ export class AdmininicioComponent implements OnInit {
             Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
           } */
          }
-        
-   
+
+
      });
 
-  
+
 
 }
 
@@ -206,16 +206,16 @@ export class AdmininicioComponent implements OnInit {
 
     const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     this.oferta.getOfertas(usuario._id).subscribe(
-      result => { 
+      result => {
          this.formularios =  result;
 
          for (var form in result) {
           this.ID = result[form]._id
           localStorage.setItem("Idoferta",JSON.stringify(this.ID) )
-          this.planregistrado= result[form].tipoPlan
+          this.planregistrado = result[form].tipoPlan
 
          }
-     
+
          },error =>{
 
     //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
@@ -228,7 +228,7 @@ export class AdmininicioComponent implements OnInit {
   return this.opcionesServices.getOpciones()
     .subscribe(
       opcionesGenerales => {
-    
+
         this.opcionesGenerales = opcionesGenerales
       }
     );
@@ -239,7 +239,7 @@ getOpciones2() {
   return this.ciudadOpcion.getOpciones()
     .subscribe(
       ciudades => {
-     
+
         this.ciuadadesOpcion = ciudades;
         if (this.ciuadadesOpcion.length > 0) {
           this.ciudad = this.ciuadadesOpcion[0];
@@ -267,7 +267,7 @@ selectProvincia(provincia) {
     }
   }
   markerDragEnd($event: google.maps.MouseEvent) {
-  
+
     this.latitude = $event.latLng.lat();
     this.longitude = $event.latLng.lng();
     this.getAddress(this.latitude, this.longitude);
@@ -275,12 +275,12 @@ selectProvincia(provincia) {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-   
+
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 28;
           this.address = results[0].formatted_address;
-       
+
         } else {
           window.alert('No results found');
         }
@@ -319,21 +319,21 @@ selectProvincia(provincia) {
           Swal.fire("Para publicar ", "Debes suscribirte a uno de nuestros planes si ya estas suscrito omite este mensaje o suscribete en el paso 3", "warning")
         }  */
 
-       
-      // this.ID =   resp._id 
+
+      // this.ID =   resp._id
      //  this.ID = localStorage.setItem('Idoferta',this.ID)
-      
+
 
     //  this.IDOFERTA = localStorage.getItem('Idoferta')
-     
+
       }, (err) => {
         // Si sucede un error
         //  Swal.fire('Error', err['msg'], 'error' );
-        Swal.fire('Error', err.error.msg, 'error');
-  
+      //  Swal.fire('Error', err.error.msg, 'error');
+
       }
 
-    
+
     )
     this.resetUsuario()
   }
@@ -341,70 +341,70 @@ selectProvincia(provincia) {
 
     resetUsuario() {
       this.registerForm.reset()
-    
+
      // this.getFormulariosHoja();
-  
+
      setTimeout(() => {
     //  window.location.reload()
       this.next()
    },3000);
-    
-      
+
+
     }
 
      //=================Actualiza el estado de la publicacion de la hoja de vida una vez que se realiza el pago ===//
 ID
   updateEstado(): void {
-    this.IDOFERTA =JSON.parse(localStorage.getItem('Idoferta')) 
- 
+    this.IDOFERTA =JSON.parse(localStorage.getItem('Idoferta'))
+
     this.ofertaModelo._id = this.IDOFERTA
     this.ofertaModelo.estado = this.etsado2
     this.ofertaModelo.tipoPlan = this.planregistrado
     this.oferta.updateOpcion(this.ofertaModelo)
       .subscribe(result => {
-       
+
         this.toastr.info('Si ya estas suscrito a un plan puedes publicar las ofertas que desees !', 'Hola 😃');
        //  Swal.fire("OFERTA PUBLICADA CON EXITO", "", "success")
         // window.location.reload()
       });
   }
 
-  updateEstado1(): void {
-    this.IDOFERTA =JSON.parse(localStorage.getItem('Idoferta')) 
- 
+  updateEstado1(id): void {
+    this.IDOFERTA =JSON.parse(localStorage.getItem('Idoferta'))
+
     this.ofertaModelo._id = this.IDOFERTA
     this.ofertaModelo.estado = this.etsado2
     this.ofertaModelo.tipoPlan = this.planregistrado
-    this.oferta.updateOpcion(this.ofertaModelo)
+    this.oferta.actualizaroferta1(this.ofertaModelo, id)
       .subscribe(result => {
-       
+
       //  this.toastr.info('Si ya estas suscrito a un plan puedes publicar las ofertas que desees !', 'Hola 😃');
       this.notificacion.emit(result);
         Swal.fire("OFERTA PUBLICADA CON EXITO", "", "success")
 
-       
+
     //  window.location.reload()
-   
-      
+
+
       });
   }
 
 
-  
+
     activar(){
       this.ocultar = true;
-     
+
     }
 
     ocultar = false
 
     get myStyles(): any {
-  
+
       return {
           'display' : this.ocultar ? '': 'none'
-         
+
       }
-   
+
   }
 
     ///===================prueba botton de pagos========================================//
@@ -415,35 +415,35 @@ ID
     //
     paquete = 'Premium (3 meses)'
     producto1() {
-  
+
       this.rand = Math.floor((Math.random() * 1000) + 60000);
-  
+
       let parametros = {
         amount: "599",
         amountWithoutTax: "599",
         clientTransactionID: this.rand,
         responseUrl: URL_SERVICIOS+"/#/dashboard/admininico",
         cancellationUrl:URL_SERVICIOS+ "/#/dashboard/admininico"
-  
+
       }
-   
+
       this.planes.pagar(parametros).subscribe(resp => {
-  
-  
+
+
         this.apiPay = resp.payWithCard;
-  
+
         window.location.href = this.apiPay;
       }, (err) => {
-  
+
         Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
-  
+
       })
-     
+
     }
-  
+
    paquete2= 'Premium (6 Meses)'
     producto2() {
-  
+
       this.rand = Math.floor((Math.random() * 1000) + 90000);
       let parametros = {
         amount: "999",
@@ -451,27 +451,27 @@ ID
         clientTransactionID: this.rand,
         responseUrl:URL_SERVICIOS + "/#/dashboard/admininico",
         cancellationUrl: URL_SERVICIOS+ "/#/dashboard/admininico"
-  
+
       }
-   
+
       this.planes.pagar(parametros).subscribe(resp => {
-  
-  
+
+
         this.apiPay = resp.payWithCard;
         window.location.href = this.apiPay;
       }, (err) => {
-  
+
         Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
-  
+
       })
-  
+
     }
 
 public valor1= '5.99'
-public  valor2= '9.99'  
+public  valor2= '9.99'
   registrarPlanGeneral() {
 
-    
+
     // Realizar el posteo
    // this.planModelo.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
    this.planModelo._id = this.IDPLAN;
@@ -499,7 +499,7 @@ public  valor2= '9.99'
         this.notificacion.emit(resp);
         Swal.fire("Suscrito a Plan ", resp.tipoPlan, "success")
         setTimeout(() => {
-    
+
           this.next()
           }, 2000);
         this.updateEstado()
@@ -512,9 +512,9 @@ public  valor2= '9.99'
 
   }
 
-  
+
     //======================Confirmacion de pago para registro en la base =============//
-  
+
     //variables de pago
     cantidad
     clientTId
@@ -524,18 +524,18 @@ public  valor2= '9.99'
     confirmacionPago() {
 
       this.IDOFERTA = localStorage.getItem('Idoferta')
-     
+
       let parametros = {
         id: this.id,
         clientTxId: this.type
       }
-  
+
       if (this.id == 0 || this.id == '') {
         Swal.fire('Transacción cancelada', 'vuelva intentar', 'error');
         return false
       } else {
         this.planes.getPago(parametros).subscribe(resp => {
-         
+
             this.cantidad = resp.amount
             this.clientTId = resp.clientTransactionId
             this.parametro1 = resp.optionalParameter1
@@ -544,24 +544,24 @@ public  valor2= '9.99'
           Swal.fire("Pago realizado con exito", resp.clientTransactionId, "success")
           this.registrarPlan()
           this.registrarPlanGeneral()
-         
+
           this.urlTree.removeEmptyProps['id']
           this.urlTree.removeEmptyProps['clientTransactionId']
           setTimeout(() => {
-          
+
            this.updateEstado()
            this.registrarPlanGeneral()
 
          //  this.registrarPlanGeneral()
-        
+
            //  this.registrarPlan()
              console.log(this.planregistrado,'PORQUE NO REGISTRA EL PLAN')
            this.next()
           }, 3000);
-  
-  
+
+
         }, (err) => {
-  
+
           // Swal.fire('NO SE PROCESO EL PAGO', err.error.msg, 'error');
           }) }
           }
@@ -570,10 +570,10 @@ public  valor2= '9.99'
           campoNoValido(campo: string): boolean {
 
             if (this.registerForm.get(campo).invalid && this.formSubmitted) {
-        
+
               return true
             } else {
-        
+
               return false;
             }
           }
@@ -588,30 +588,30 @@ public  valor2= '9.99'
 
 
             registrarPlan() {
-    
+
 
               // Realizar el posteo
                 this.planModelo.usuario =JSON.parse(localStorage.getItem('usuario')) as Usuario;
-            
+
                 this.planModelo.amount = this.cantidad;
 
                 this.planModelo.fecha1 = new Date ()
                 this.planModelo.tipoPlan = this.tipo
                 this.planModelo.valor = this.valor
-           
+
                 if (this.cantidad == "599") {
                   this.planModelo.tipoPlan = this.paquete
                   this.planModelo.valor = this.valor1
                   this.planModelo.fecha1 = new Date ()
                   this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
                 }
-             
+
                 else if (this.cantidad == "999") {
                   this.planModelo.tipoPlan = this.paquete2
                   this.planModelo.valor = this.valor2
                   this.planModelo.fecha1 = new Date ()
                   this.planModelo.fecha2 = (this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 6)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
-            
+
                 }
                 this.planModelo.clientTransactionId = this.clientTId
                 this.planModelo.optionalParameter1 = this.parametro1
@@ -623,22 +623,22 @@ public  valor2= '9.99'
                     this.notificacion.emit(resp);
                     Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
                     setTimeout(() => {
-    
+
                       this.next()
                       }, 2000);
-                   
+
                   }, (err) => {
-                    
-                    Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
-              
+
+                //    Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
+
                   })
-               
+
                 }
-            
+
                 show() {
                   this.toastr.info('Si ya estas suscrito a un plan en este paso esta el boton de publicar !', 'Hola');
                 }
-                
+
                 show1() {
                   this.toastr.info('Cuando ingrese sus datos presione guardar si esta seguro de que su información es correcta  y luego puede presionar 2 o siguiente!', 'Hola ✋',{
                     timeOut: 7000,

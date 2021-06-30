@@ -25,7 +25,7 @@ export class ProfesionalComponent implements OnInit {
 
 
   cate = 'PROFESIONALES TITULADOS';
-  rol = 'PROFESIONAL_ROLE';
+  rol = 'EMPLEADO_ROLE';
 
 
 
@@ -44,7 +44,7 @@ export class ProfesionalComponent implements OnInit {
   public formSubmitted = false;
 
   public registerForm = this.fb.group({
-    usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    /* usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -68,7 +68,7 @@ export class ProfesionalComponent implements OnInit {
 
 
 
- 
+
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,private joyride: JoyrideService,
     private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,
@@ -160,8 +160,8 @@ export class ProfesionalComponent implements OnInit {
   crearUsuario() {
     this.formSubmitted = true;
 
- 
-    
+
+
       console.log(this.registerForm.value)
       if (this.registerForm.invalid) {
         return;
@@ -183,8 +183,8 @@ export class ProfesionalComponent implements OnInit {
 
       )
      // this.resetUsuario()
- 
-   
+
+
   }
 
 
