@@ -8,7 +8,9 @@ import { Hojavida } from 'src/app/models/hojavida';
 import Swal from 'sweetalert2';
 import { Contacto } from 'src/app/models/contactoPOstulante';
 import { UsuarioService } from 'src/app/services/usuario.service';
-
+import { Notification } from 'src/app/models/notification';
+import { GeneralService } from 'src/app/services/general.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-perfiles',
@@ -18,7 +20,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class PerfilesComponent implements OnInit {
 
   usuario: Usuario;
-
+  notification = new Notification();
   postulacionModelo = new Contacto();
   cargando = false;
   formularios: Hojavida[];
@@ -26,7 +28,19 @@ export class PerfilesComponent implements OnInit {
   totalRegistros: number = 1;
   rate = 5;
 
-  constructor(private listainforme :HojavidaService, private _contacto: ContactoPostulanteService, public _usuarioServices: UsuarioService,) {
+
+  public registerForm = this.fb.group({
+
+    rating:[],
+  })
+
+  constructor(
+    private listainforme :HojavidaService,
+    private _contacto: ContactoPostulanteService,
+    public _usuarioServices: UsuarioService,
+    private _notificationService: GeneralService,
+    private fb: FormBuilder,
+    ) {
 
     this.usuario = this._usuarioServices.usuario;
 
@@ -58,7 +72,7 @@ export class PerfilesComponent implements OnInit {
 
 
     postulando = "POSTULADO"
-    postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,) {
+    postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,usuario) {
       console.log('estoy postulando')
       // Realizar el posteo
       this.postulacionModelo.telefonoPostulante = telefo
@@ -87,6 +101,28 @@ export class PerfilesComponent implements OnInit {
         //  Swal.fire("Postulación EXITOSA", "", "success")
         //  console.log(resp);
 
+        this.notification.title = this.usuario.email;
+        this.notification.detalle = 'Solicitud de empleador le gusta tu hoja de vida';
+        this.notification.uri = id;
+        this.notification.receiver=usuario;
+        this.notification.trasmitter = JSON.parse(localStorage.getItem('usuario')) as Usuario;;
+        this.notification.view = false;
+
+        this._notificationService
+          .create(this.notification, `notification`)
+          .subscribe(
+            (res) => {
+              Swal.fire(
+                'Postulación Exitosa',
+                '',
+                'success'
+              );
+            },
+            (err) => {
+              console.error(err);
+            }
+          );
+
         }, (err) => {
 
          Swal.fire(this.postulacionModelo.usuario.email, err.error.msg, 'error');
@@ -96,7 +132,7 @@ export class PerfilesComponent implements OnInit {
     }
 
 
-    ActulizarEstado(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,) {
+    ActulizarEstado(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,usuario) {
 
       this.ofertaModelo._id = id;
     //  this.ofertaModelo.descripcion = this.ID
@@ -113,10 +149,24 @@ export class PerfilesComponent implements OnInit {
 
         })
 
-     this.postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,)
+     this.postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,usuario)
     }
 
+   actualizarRating(formularios: Hojavida){
 
+   // this.ofertaModelo.rating = this.registerForm.value.rating
+    this.listainforme.updateOpcion(formularios).subscribe(
+      resp => {
+
+      Swal.fire("Perfil Calificado", "", "success")
+    console.log(resp);
+
+    }, (err) => {
+
+      Swal.fire(this.ofertaModelo.usuario.email, err.error.msg, 'error');
+
+    })
+   }
 
  buscarHoja( termino: string ) {
 

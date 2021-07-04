@@ -16,14 +16,14 @@ export class PostulacionesOfertasComponent implements OnInit {
   usuario: Usuario;
 
 
- 
 
-  
+
+
   formularios: Ofertas[];
   ofertaModelo= new Ofertas();
   totalRegistros: number = 1;
-  
-    
+
+
 
   constructor( private listainforme: OfertaService
     ) {
@@ -33,24 +33,24 @@ export class PostulacionesOfertasComponent implements OnInit {
   ngOnInit() {
 
 
-  
+
     this.getFormulariosOfertas();
- 
+
   }
 
 
 
- 
- 
+
+
 
   getFormulariosOfertas() {
 
       const usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
       this.listainforme.getOfertas(usuario._id).subscribe(
-        result => { 
+        result => {
            this.formularios =  result
            console.log(this.formularios,'TODO')
-       
+
        },error =>{
        console.log(error,'Error')
       //  Swal.fire( error.error.msg.sumary, error.error.msg.detail, 'error');
@@ -58,17 +58,17 @@ export class PostulacionesOfertasComponent implements OnInit {
 
        });
 
-    
- 
+
+
   }
 
   nohay(){
     Swal.fire(
-  
+
       'NO HAY',
       'ADJUNTOS EN ESTA HOJA DE VIDA',
       'warning'
     );
-  
+
   }
 }
