@@ -13,28 +13,28 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                
+
                                 <div class="row animated fadeIn m-0 justify-content-center align-items-center vh-100 ">
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                
+
                                                 <input #input (keyup)="buscarHoja( input.value )" type="text" class="form-control" placeholder="Buscar Perfiles...">
-                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                           
-                                
+
+
                                 <div class=" container p-3 " class="col-sm">
                                     <h3 align="center" id="color">PERFILES PREMIUM PUBLICADOS</h3>
                                 </div>
-                                
+
                                 <div class="row animated fadeIn" *ngIf="cargando">
-                                
+
                                     <div class="col-sm-12">
-                                
+
                                         <div class="alert alert-warning text-center">
                                             <strong>Cargando</strong>
                                             <br>
@@ -44,8 +44,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                
+
+
 
 
 
@@ -59,6 +59,8 @@
                             <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
                             <th scope="col" COLSPAN=1 style="background: azure">CIUDAD</th>
                             <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
+                            <th scope="col" COLSPAN=1 style="background: azure"></th>
+                            <th scope="col" COLSPAN=1 style="background: azure">CALIFICACIÓN</th>
                             <th scope="col" COLSPAN=1 style="background: azure">ACCIÓN</th>
                         </tr>
                     </thead>
@@ -74,7 +76,27 @@
                             <td>{{form.categorias}}</td>
                             <td>{{form.ciudad}}</td>
                             <td> {{form.telefonohoja}} </td>
-                           
+                            <td>
+                              <select
+                              (change)="actualizarRating(form)"[(ngModel)]="form.rating"
+                            class="form-control custom-select text" data-placeholder="Seleccionar"(change)="actualizarRating(form)"
+                              tabindex="1" >
+                              <option class="text" value="1">1</option>
+                              <option class="text" value="2">2</option>
+                              <option class="text" value="3">3</option>
+                              <option class="text" value="4">4</option>
+                              <option class="text" value="5">5</option>
+                            </select>
+                            </td>
+
+                          <td>
+                              <span *ngIf="form.rating==1">⭐</span>
+                              <span *ngIf="form.rating==2">⭐⭐</span>
+                              <span *ngIf="form.rating==3">⭐⭐⭐</span>
+                              <span *ngIf="form.rating==4">⭐⭐⭐⭐</span>
+                              <span *ngIf="form.rating==5">⭐⭐⭐⭐⭐</span>
+                            </td>
+
                             <td>
                                 <button type="button" class="btn btn-outline-primary"
                     style="width: 140px;height: 75;font-size: 70%;" (click)="ActulizarEstado(form._id,form.nombre,form.apellido,form.descripcion,form.cedula,form.ciudad,form.direccion,form.categorias, form.emailHoja,form.telefonohoja, form.urlPdf)"

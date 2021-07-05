@@ -134,6 +134,20 @@ export class PerfilesPremiumComponent implements OnInit {
 
 }
 
+actualizarRating(formularios: Hojavida){
 
+  // this.ofertaModelo.rating = this.registerForm.value.rating
+   this.listainforme.updateOpcion(formularios).subscribe(
+     resp => {
+
+     Swal.fire("Perfil Calificado", "", "success")
+   console.log(resp);
+
+   }, (err) => {
+
+     Swal.fire(this.ofertaModelo.usuario.email, err.error.msg, 'error');
+
+   })
+  }
 
 }
