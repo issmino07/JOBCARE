@@ -7,7 +7,7 @@ const base_url = environment.base_url;
 export class Usuario {
 
     _id: string;
-    usuario: string;
+
     telefono: string;
     email: string;
     password:string;
@@ -28,7 +28,7 @@ export class Usuario {
     categorias?: string;
     adulto?:string;
 
-
+    usuario?: string;
     compania?: boolean;
     alimentacion?: boolean;
     actividades?: boolean;
@@ -54,7 +54,7 @@ export class Usuario {
     descripcion?:string;
 
     prekinder?: boolean;
-     
+
      kinder?: boolean;
      escuela?:boolean;
      colegio?:boolean;
@@ -62,43 +62,43 @@ export class Usuario {
 
 
      albanil?:boolean;
-  
+
      electricista?:boolean;
-  
+
      plomero?:boolean;
-   
+
      carpintero?:boolean;
-    
+
      cerrajero?:boolean;
-  
+
      jardinero?:boolean;
-     
+
      servicioTecnico?:boolean;
 
 
-     
+
     grua?:boolean;
-  
+
     mecanico?:boolean;
     electrico?:boolean;
-  
+
     lavadoAuto?:boolean;
-   
+
     chofer?:boolean;
     cerrajeroAutomotriz?:boolean;
 
 
-    
+
     paqueteria?:boolean;
     tramites?:boolean;
     movilizacion?:boolean;
-  
+
     dentroCiudad?:boolean;
-   
+
     otrasCiudades?:boolean;
- 
+
     fueraPais?:boolean;
-    
+
     facebook?:boolean;
     twitter?:boolean;
     instagram?:boolean;
