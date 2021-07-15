@@ -27,7 +27,7 @@ export class NineraComponent implements OnInit {
 
   cate = 'NIÑERAS';
   rol = 'EMPLEADO_ROLE';
-
+  User= 'Usuario'
 
 
   UsuarioModelo = new Usuario();
@@ -45,7 +45,7 @@ export class NineraComponent implements OnInit {
 
   public registerForm = this.fb.group({
 
-  /*   usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]], */
+    usuario: [''],
     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -174,6 +174,7 @@ export class NineraComponent implements OnInit {
 
       this.registerForm.value.categorias = this.cate;
       this.registerForm.value.role = this.rol;
+      this.registerForm.value.usuario= this.User;
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         resp => {
 

@@ -44,6 +44,7 @@ import { SuscripcionesEmpleadosComponent } from './administracion/suscripciones-
 import { EditarOfertas2Component } from './empleadores/editar-ofertas2/editar-ofertas2.component';
 import { CursosGeneralesComponent } from './capacitaciones/cursos-generales/cursos-generales.component';
 import { CursosGeneralesCompradosComponent } from './capacitaciones/cursos-generales-comprados/cursos-generales-comprados.component';
+import { PerfilRegistroEmpleadorComponent } from './empleadores/perfil-registro-empleador/perfil-registro-empleador.component';
 
 
 
@@ -102,8 +103,8 @@ const routes: Routes = [
         { path: 'cursosCompradosT', component: CursosCompradosComponent,canActivate:[AdminGuard] },
         { path: 'cursosCompra', component: CursosGeneralesComponent,canActivate:[AdminGuard] },
         { path: 'cursosComprad', component: CursosGeneralesCompradosComponent,canActivate:[AdminGuard] },
-
-
+        { path: 'registro', component: PerfilRegistroEmpleadorComponent,canActivate:[AdminGuard] },
+    
 
 
       ]

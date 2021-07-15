@@ -6,6 +6,7 @@ import { GeneralService } from 'src/app/services/general.service';
 
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Notification } from 'src/app/models/notification';
+import Swal from 'sweetalert2';
 declare function customInitFunctions();
 @Component({
   selector: 'app-header',
@@ -44,6 +45,30 @@ export class HeaderComponent implements OnInit {
     customInitFunctions();
   }
 
+  actualizarRol(usuario: Usuario){
+    Swal.fire({
+      title: 'Esta seguro de cambiar a modo empleado?',
+      text: "¡Debe iniciar sesión de nuevo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'CANCELAR',
+      confirmButtonText: 'Si, CAMBIAR'
+    }).then((result) => {
+      if (result.isConfirmed) {
+      this.guardarUsuario(usuario)
+        Swal.fire(
+          'Oferta de empleo !',
+          'ha sido eliminada.',
+          'success'
+        )
+      }
+    })
+
+
+  }
+
   role = 'EMPLEADO_ROLE';
 
   guardarUsuario(usuario: Usuario) {
@@ -52,6 +77,32 @@ export class HeaderComponent implements OnInit {
 
     this.router.navigate(['/login']);
   }
+
+
+  actualizarRol1(usuario: Usuario){
+    Swal.fire({
+      title: 'Esta seguro de cambiar a modo empleador?',
+      text: "¡Debe iniciar sesión de nuevo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'CANCELAR',
+      confirmButtonText: 'Si, CAMBIAR'
+    }).then((result) => {
+      if (result.isConfirmed) {
+      this.guardarUsuario1(usuario)
+        Swal.fire(
+          'Oferta de empleo !',
+          'ha sido eliminada.',
+          'success'
+        )
+      }
+    })
+
+
+  }
+
   role1 = 'EMPLEADOR_ROLE';
   guardarUsuario1(usuario: Usuario) {
     this.usuario.role = this.role1;

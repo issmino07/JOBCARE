@@ -54,6 +54,7 @@ import { BarRatingModule } from 'ngx-bar-rating';
 import { EditarOfertas2Component } from './empleadores/editar-ofertas2/editar-ofertas2.component';
 import { CursosGeneralesComponent } from './capacitaciones/cursos-generales/cursos-generales.component';
 import { CursosGeneralesCompradosComponent } from './capacitaciones/cursos-generales-comprados/cursos-generales-comprados.component';
+import { PerfilRegistroEmpleadorComponent } from './empleadores/perfil-registro-empleador/perfil-registro-empleador.component';
 
 
 
@@ -100,7 +101,8 @@ import { CursosGeneralesCompradosComponent } from './capacitaciones/cursos-gener
     SuscripcionesEmpleadosComponent,
     EditarOfertas2Component,
     CursosGeneralesComponent,
-    CursosGeneralesCompradosComponent
+    CursosGeneralesCompradosComponent,
+    PerfilRegistroEmpleadorComponent
   ],
 
   exports: [

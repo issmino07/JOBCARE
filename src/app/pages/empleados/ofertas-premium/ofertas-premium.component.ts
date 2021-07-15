@@ -164,7 +164,7 @@ export class OfertasPremiumComponent implements OnInit {
 
       }, (err) => {
 
-          Swal.fire(this.postulacionModelo.usuario.usuario, err.error.msg, 'error');
+          Swal.fire(this.postulacionModelo.usuario.email, err.error.msg, 'error');
 
       })
 
