@@ -26,7 +26,10 @@ export class HeaderComponent implements OnInit {
     private _usuarioService: UsuarioService,
     private router: Router,
     private _notificationService: GeneralService,
-  ) {}
+  ) {
+
+    customInitFunctions();
+  }
 
   ngOnInit() {
     this.usuario = this._usuarioService.usuario;
