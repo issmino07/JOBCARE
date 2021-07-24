@@ -506,7 +506,7 @@ public  valor2= '9.99'
 
       }, (err) => {
 
-        Swal.fire(this.planModelo.usuario.usuario,'Ya estas sucscrito a plan'+ err.error.msg, 'error');
+      //  Swal.fire(this.planModelo.usuario.usuario,'Ya estas sucscrito a plan'+ err.error.msg, 'error');
         this.updateEstado()
       })
 
@@ -622,15 +622,12 @@ public  valor2= '9.99'
                   resp => {
                     this.notificacion.emit(resp);
                     Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
-                    setTimeout(() => {
-
-                      this.next()
-                      }, 2000);
+                    this.actualizarFree();
 
                   }, (err) => {
 
                 //    Swal.fire(this.planModelo.usuario.usuario, err.error.msg, 'error');
-
+                   this.actualizarFree();
                   })
 
                 }
@@ -657,5 +654,19 @@ public  valor2= '9.99'
                   this.verSeleccion1 = this.opcion1;
                 }
 
+
+                actualizarFree(){
+                  this.planModelo._id = this.IDPLAN;
+                  if( this.id == null){
+                    this.planModelo.fecha2= ''
+                  }
+
+                  this.planes.updatePlan(this.planModelo).subscribe(
+                    resp => {
+                      this.notificacion.emit(resp);
+                      Swal.fire("Suscrito a Plan",resp.tipoPlan, "success")
+
+                    })
+                }
 
 }
