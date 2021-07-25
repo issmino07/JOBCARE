@@ -97,10 +97,10 @@ export class HojavidaFormularioComponent implements OnInit {
     refSalarial: ['', [Validators.required]],
     fechaNacimiento: ['', [Validators.required]],
     edad: ['', [Validators.required]],
-    genero: [''],
-    ocupacion: [''],
-    descripcion: [''],
-    categorias: [''],
+    genero: ['',[Validators.required]],
+    ocupacion: ['',[Validators.required]],
+    descripcion: ['',[Validators.required]],
+    categorias: ['',[Validators.required]],
     provincia: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
@@ -340,7 +340,7 @@ export class HojavidaFormularioComponent implements OnInit {
 
     if(this.OJO =="HOJA CREADA"){
      this.ocultar = false
-    
+
     }
 
     return {

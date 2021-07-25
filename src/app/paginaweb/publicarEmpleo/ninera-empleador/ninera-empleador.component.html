@@ -188,14 +188,14 @@
             </div>
             <div class="form-group">
 
-              <input type="text" class="form-control col-6" placeholder="Años de experiencia"
+              <input type="text" class="form-control col-6" placeholder="Tiempo de experiencia requerida"
                 formControlName="experiencia" />
 
                 <div
                 *ngIf="registerForm.get('experiencia').errors && registerForm.get('experiencia').dirty">
                 <p class="text-danger center"
                     *ngIf="registerForm.get('experiencia').hasError('required')">
-                    <span size="2">Experiencia es requerida</span>
+                    <span size="2"> Experiencia es requerida</span>
                 </p>
            </div>
             </div>

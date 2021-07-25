@@ -67,6 +67,11 @@
                                     <input formControlName="nombre" type="text" id="firstName" class="form-control"
                                         placeholder="NOMBRES">
                                     <small class="form-control-feedback"></small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('nombre')">Debe llenar el campo nombre</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -76,6 +81,11 @@
                                     <input formControlName="apellido" type="text" id="firstName" class="form-control"
                                         placeholder="APELLIDOS">
                                     <small class="form-control-feedback"></small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('apellido')">Debe llenar el campo apellido</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -86,6 +96,12 @@
                                     <input formControlName="cedula" type="number" class="form-control"
                                         placeholder="CEDULA DE IDENTIDAD">
                                     <small class="form-control-feedback"></small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('cedula')">Debe llenar el campo cedula con sus 10
+                                          digitos</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -97,6 +113,12 @@
                                     <input formControlName="refSalarial" type="text" id="firstName" class="form-control"
                                         placeholder="REFERENCIA SALARIAL">
                                     <small class="form-control-feedback"></small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('refSalarial')">Debe llenar el campo de referencia
+                                          salarial cuanto aspira a ganar</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <!--/span-->
@@ -107,6 +129,12 @@
                                     <input formControlName="fechaNacimiento" type="date" id="firstName"
                                         class="form-control" placeholder="Fecha">
                                     <small class="form-control-feedback"></small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('fechaNacimiento')">Debe seleccionar su fecha de
+                                          nacimiento</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -115,6 +143,11 @@
                                     <input formControlName="edad" type="number" id="firstName" class="form-control"
                                         placeholder="EDAD">
                                     <small class="form-control-feedback"></small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('edad')">Debe indicar su edad </p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -128,6 +161,11 @@
                                         <option value="OTROS">OTROS</option>
                                     </select>
                                     <small class="form-control-feedback"> </small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('genero')">Debe seleccionar un genero </p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <!--/span-->
@@ -135,8 +173,13 @@
                                 <div class="form-group">
                                     <label class="control-label">OCUPACIÓN</label>
                                     <input formControlName="ocupacion" type="text" id="firstName" class="form-control"
-                                        placeholder="ocupacion">
+                                        placeholder="Ocupación">
                                     <small class="form-control-feedback"></small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('ocupacion')">Debe escribir su ocupación</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -151,6 +194,11 @@
                                     <textarea formControlName="descripcion" type="text" id="lastName"
                                         class="form-control" placeholder="Breve descripción"></textarea>
                                     <small class="form-control-feedback"> </small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('descripcion')">Debe poner una descripción</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <!--/span-->
@@ -165,6 +213,12 @@
                                             {{opcionesgenerales.categorias}}</option>
 
                                     </select>
+
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('categorias')">Debe seleccionar una categoria </p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -179,6 +233,11 @@
                                         <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
                                             {{prov.provincia}}</option>
                                     </select>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('provincia')|| opcion == '0' ">Debe seleccionar una provincia</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -191,7 +250,11 @@
                                             {{canton}}
                                         </option>
                                     </select>
-
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('ciudad')|| opcion1 == '0'" >Debe seleccionar una ciudad</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -202,6 +265,11 @@
                                     <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
                                         formControlName="direccion" placeholder="Buscar mi ubicación" autocorrect="off"
                                         autocapitalize="on" spellcheck="off" type="text" #search>
+                                        <div class="row ">
+                                          <div class="col text-danger  ">
+                                            <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el marker del mapa </p>
+                                          </div>
+                                        </div>
                                 </div>
                                 <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
                                     <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
@@ -220,8 +288,13 @@
                                     <input type="text" class="form-control " placeholder="Años de experiencia"
                                         formControlName="experiencia" />
 
-                                </div>
 
+                                </div>
+                                <div class="row ">
+                                  <div class="col text-danger  ">
+                                    <p class="center" *ngIf="campoNoValido('experiencia')">Debe poner los años de experiencia</p>
+                                  </div>
+                                </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
@@ -231,6 +304,12 @@
                                     <textarea formControlName="descripcionExperiencia" type="text" id="lastName"
                                         class="form-control" placeholder="Breve descripción"></textarea>
                                     <small class="form-control-feedback"> </small>
+
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+                                        <p class="center" *ngIf="campoNoValido('descripcionExperiencia')">Debe poner una descripción de su experincia</p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -243,6 +322,12 @@
                                         <option value="SUPERIOR">SUPERIOR</option>
                                     </select>
                                     <small class="form-control-feedback"> </small>
+                                    <div class="row ">
+                                      <div class="col text-danger  ">
+
+                            <p class="center" *ngIf="campoNoValido('nivelEducacion')">Debe seleccionar nivel de educación </p>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -443,7 +528,7 @@
                             <p class="center" *ngIf="campoNoValido('ciudad')|| opcion1 == '0'" >Debe seleccionar una ciudad</p>
                             <p class="center" *ngIf="campoNoValido('direccion')">Debe escribir una dirección o mover el marker del mapa </p>
                             <p class="center" *ngIf="campoNoValido('experiencia')">Debe poner los años de experiencia</p>
-                            <p class="center" *ngIf="campoNoValido('descripcionExperiencia')">Debe poner una descripción de su experincia</p>
+                            <p class="center" *ngIf="campoNoValido('descripcionExperiencia')">Debe poner una descripción de su experiencia</p>
 
                             <p class="center" *ngIf="campoNoValido('nivelEducacion')">Debe seleccionar nivel de educación </p>
 
