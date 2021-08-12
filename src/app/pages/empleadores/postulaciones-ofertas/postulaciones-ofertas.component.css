@@ -10,3 +10,46 @@
 .x {
     text-align: center;
   }
+
+
+
+  .rating {
+    display: flex!important;
+    flex-direction: row-reverse!important;
+    justify-content: center!important
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative!important;
+    width: 1em;
+    font-size: 6vw;
+    color: #FFD600!important;
+    cursor: pointer!important
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute!important;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+#rating>input:checked~label:before {
+    opacity: 1!important
+}
+
+#rating:hover>input:checked~label:before {
+    opacity: 0.4!important
+}
+.rating-header {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}

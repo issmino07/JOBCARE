@@ -78,12 +78,14 @@ export class UsuarioService {
   logOut() {
     this.usuario = null;
     this.token = '';
+    localStorage.removeItem('rating');
     localStorage.removeItem('id');
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     localStorage.removeItem('itempages');
     localStorage.removeItem('menu');
     this.router.navigate(['/inicio']);
+
   }
 
   validarToken(): Observable<boolean> {

@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
 
      <!-- Bootstrap Core CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <link href="./assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
      <link href="./assets/css/pages/user-card.css" rel="stylesheet">
      <link href="./assets/plugins/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
@@ -27,12 +27,14 @@
      <!-- Color picker plugins css -->
      <link href="./assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
      <!-- Date picker plugins css -->
-     <link href="./assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+     <link href="./assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css"/>
      <!-- Daterange picker plugins css -->
      <link href="./assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
      <link href="./assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
      <link href="./assets/plugins/tablesaw-master/dist/tablesaw.css" rel="stylesheet">
-   
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
 </head>
 <body class="fix-header card-no-border fix-sidebar">
 
@@ -56,7 +58,7 @@
 
    <!-- All Jquery -->
     <!-- ============================================================== -->
-   
+
     <script src="./assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="./assets/plugins/bootstrap/js/popper.min.js"></script>
@@ -91,13 +93,13 @@
     <script src="./assets/plugins/tablesaw-master/dist/tablesaw.js"></script>
     <script src="./assets/plugins/tablesaw-master/dist/tablesaw-init.js"></script>
     <!-- ============================================================== -->
-    
+
     <script>
-      // MAterial Date picker    
+      // MAterial Date picker
       $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
       $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
       $('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
-    
+
       $('#min-date').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm', minDate: new Date() });
       // Clock pickers
       $('#single-input').clockpicker({
@@ -167,14 +169,42 @@
           }
       });
       </script>
-   
+   <script>
+    jQuery(document).ready(function($){
+
+      $(".btnrating").on('click',(function(e) {
+
+      var previous_value = $("#selected_rating").val();
+
+      var selected_value = $(this).attr("data-attr");
+      $("#selected_rating").val(selected_value);
+
+      $(".selected-rating").empty();
+      $(".selected-rating").html(selected_value);
+
+      for (i = 1; i <= selected_value; ++i) {
+      $("#rating-star-"+i).toggleClass('btn-warning');
+      $("#rating-star-"+i).toggleClass('btn-default');
+      }
+
+      for (ix = 1; ix <= previous_value; ++ix) {
+      $("#rating-star-"+ix).toggleClass('btn-warning');
+      $("#rating-star-"+ix).toggleClass('btn-default');
+      }
+
+      }));
+
+
+    });
+   </script>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 
 <!--script>
     $(document).ready(function(){
         var from,to,subject,text;
-        $("#send_email").click(function(){		
-            to=$("#to").val();		
+        $("#send_email").click(function(){
+            to=$("#to").val();
             $("#message").text("Enviando correo electrónico ... Espere");
             $.get(this.url+'/send',{to:to},function(data){
             console.log(data)
@@ -182,12 +212,12 @@
             {
                 $("#message").empty().text("El correo electrónico con su clave se envió a "+to+" Por favor revise la bandeja de entrada o spam !");
             }
-          
-    
+
+
     });
         });
     });
     </script-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk&libraries=places&language=es"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk&amp;libraries=places&amp;language=es"></script>
 
 </html>

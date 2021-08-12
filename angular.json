@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lottie-web"
+           ],
             "outputPath": "dist/jobandcare",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -22,17 +25,18 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/plugins"
+              "src/assets/plugins",
+              "src/manifest.webmanifest"
             ],
             "styles": [
-            
+
               "src/styles.css",
-             
+
               "node_modules/ngx-toastr/toastr.css"
-             
+
             ],
             "scripts": [
-        
+
             ]
           },
           "configurations": {
@@ -62,7 +66,9 @@
                   "maximumWarning": "50kb",
                   "maximumError": "100kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
@@ -92,7 +98,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.css"

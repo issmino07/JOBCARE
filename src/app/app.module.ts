@@ -32,6 +32,8 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -73,6 +75,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BarRatingModule,
     TooltipModule,
     NgbModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
   ],
   providers: [

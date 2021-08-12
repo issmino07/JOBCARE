@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Plan } from '../models/planes';
 import { Usuario } from '../models/usuario.model';
@@ -56,12 +57,27 @@ export class PlanesService {
 
   pagar(data: any): Observable<any> {
 
-    return this.http.post(this.Url, data, httpBearer);
+    return this.http.post(this.Url, data, httpBearer)  .pipe(
+      tap( (resp: any) => {
+        this.guardarLocalStorage( resp.token, resp.menu );
+      })
+    );
+  }
+
+  guardarLocalStorage( token: string, menu: any ) {
+
+    localStorage.setItem('token', token );
+    localStorage.setItem('menu', JSON.stringify(menu) );
+
   }
 
   getPago(data:any): Observable<any>{
 
-    return this.http.post(this.UrlPago,data, httpBearer);
+    return this.http.post(this.UrlPago,data, httpBearer) .pipe(
+      tap( (resp: any) => {
+        this.guardarLocalStorage( resp.token, resp.menu );
+      })
+    );;
 
   }
 

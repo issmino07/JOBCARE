@@ -16,13 +16,13 @@ export class PagesComponent implements OnInit {
   public linkTheme = document.querySelector('#theme');
 
   constructor( setting:SettingsService) {
-    customInitFunctions();
+  //  customInitFunctions();
    }
 
   ngOnInit(): void {
 
-    customInitFunctions();
-  
+   // customInitFunctions();
+
     const url = localStorage.getItem('theme') || './assets/css/colors/megna.css';
     //const url = `./assets/css/colors/${theme}.css`;
 

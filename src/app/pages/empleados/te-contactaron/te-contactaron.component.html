@@ -18,18 +18,18 @@
 
                     </tr>
                 </thead>
-                <tbody *ngFor="let form of  formularios">
-                    <tr *ngFor="let post of  form.postulacion | paginate: { itemsPerPage: 5, currentPage: totalRegistros }; let i = index" >
+                <tbody>
+                    <tr *ngFor="let post of  notifications| paginate: { itemsPerPage: 5, currentPage: totalRegistros }; let i = index" >
 
 
 
                         <td>{{i+1}}</td>
-                    
-                        <td> {{post.user.email }}</td>
 
-                        <td> {{post.user.telefono }}</td>
+                        <td> {{post.trasmitter.email }}</td>
 
-                        <td> {{post.user.categorias }}</td>
+                        <td> {{post.trasmitter.telefono }}</td>
+
+                        <td> {{post.trasmitter.categorias }}</td>
 
 
 

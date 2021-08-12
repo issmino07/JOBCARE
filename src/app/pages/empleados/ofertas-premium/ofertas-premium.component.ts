@@ -8,9 +8,12 @@ import Swal from 'sweetalert2';
 import { Postulacion } from 'src/app/models/postulacion';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
-import { Notification } from 'src/app/models/notification';
+
 import { HojavidaService } from 'src/app/services/hojavida.service';
-import { GeneralService } from 'src/app/services/general.service';
+
+import { AnimationOptions } from 'ngx-lottie';
+import { Calificacion } from 'src/app/models/calficacion.model';
+import { CalificacionService } from 'src/app/services/calificacion.service';
 
 @Component({
   selector: 'app-ofertas-premium',
@@ -20,8 +23,11 @@ import { GeneralService } from 'src/app/services/general.service';
 export class OfertasPremiumComponent implements OnInit {
   usuario: Usuario;
 
+
+
+  notification = new Calificacion();
   formulariosPostulacion: Postulacion[];
-  notification = new Notification();
+ // notification = new Notification();
   postulacionModelo = new Postulacion();
 
   form: Postulacion[] = [];
@@ -32,7 +38,9 @@ export class OfertasPremiumComponent implements OnInit {
   hoja;
   cargando = false;
 
-
+  options: AnimationOptions = {
+    path: '/assets/premium-gold.json',
+  };
 
 
 
@@ -41,7 +49,8 @@ export class OfertasPremiumComponent implements OnInit {
     public _usuarioServices: UsuarioService,
     private listaPostulacion: PostulacionService,
     private _hojaServices: HojavidaService,
-    private _notificationService: GeneralService
+    //private _notificationService: GeneralService
+    private _notificationService: CalificacionService,
     ) {
     this.usuario = this._usuarioServices.usuario;
 
@@ -111,7 +120,7 @@ export class OfertasPremiumComponent implements OnInit {
 
 
 
-  postulando = "POSTULADO"
+/*   postulando = "POSTULADO"
   postular(id, usuario,email, titulo, remu, salario,categoria, ciudad, tele,) {
     console.log('estoy postulando')
     // Realizar el posteo
@@ -169,11 +178,11 @@ export class OfertasPremiumComponent implements OnInit {
       })
 
   }
+ */
 
 
 
-
- post= "POSTULADO"
+/*  post= "POSTULADO"
   ActulizarEstado(id, usuario,email, titulo, remu, salario,categoria, ciudad, tele,) {
 
     this.ofertaModelo._id = id;
@@ -193,7 +202,7 @@ export class OfertasPremiumComponent implements OnInit {
       })
 
    this.postular(id, usuario,email, titulo, remu, salario,categoria, ciudad, tele,)
-  }
+  } */
 
   buscarOferta( termino: string ) {
 
@@ -215,6 +224,40 @@ export class OfertasPremiumComponent implements OnInit {
 
   }
 
+
+  calificando(id, user, email){
+
+    this.notification.title = this.usuario.email;
+    this.notification.detalle = "Nueva postulación"
+    this.notification.uri = id;
+    this.notification.receiverOferta = id;
+    this.notification.receiverHoja = this.ID;
+    this.notification.receiver= user;
+    this.notification.trasmitter = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.notification.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.notification.view = false;
+    this.notification.emailOfertante= email;
+    this.notification.urlPdfHoja = this.urlPdf;
+    this.notification.nombreEmpleado = this.nom
+    this.notification.telefonohoja = this.usuario.telefono
+
+    this._notificationService
+      .create(this.notification, `calificacion/postulacion`)
+      .subscribe(
+        (res) => {
+
+          Swal.fire(
+            'Postulación Exitosa',
+            '',
+            'success'
+          );
+        },
+        (err) => {
+          console.error(err);
+          Swal.fire("Ya te postulaste a esta oferta",  "anteriormente", 'error');
+        }
+      );
+  }
 
 }
 

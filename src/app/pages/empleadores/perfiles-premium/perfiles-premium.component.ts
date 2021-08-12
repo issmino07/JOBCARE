@@ -8,6 +8,9 @@ import { Hojavida } from 'src/app/models/hojavida';
 import Swal from 'sweetalert2';
 import { Contacto } from 'src/app/models/contactoPOstulante';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { AnimationOptions } from 'ngx-lottie';
+import { CalificacionService } from 'src/app/services/calificacion.service';
+import { Calificacion } from 'src/app/models/calficacion.model';
 
 @Component({
   selector: 'app-perfiles-premium',
@@ -17,19 +20,25 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class PerfilesPremiumComponent implements OnInit {
 
   usuario: Usuario;
-
+  notification = new Calificacion();
   postulacionModelo = new Contacto();
   cargando = false;
   formularios: Hojavida[];
   ofertaModelo= new Hojavida();
   totalRegistros: number = 1;
-  constructor(private listainforme :HojavidaService, private _contacto: ContactoPostulanteService, public _usuarioServices: UsuarioService,) {
+  constructor(private listainforme :HojavidaService,
+    private _contacto: ContactoPostulanteService,
+    public _usuarioServices: UsuarioService,
+    private _notificationService: CalificacionService,
+    ) {
 
     this.usuario = this._usuarioServices.usuario;
 
   }
 
-
+  options: AnimationOptions = {
+    path: '/assets/premium-gold.json',
+  };
 
   ngOnInit(): void {
 
@@ -54,7 +63,7 @@ export class PerfilesPremiumComponent implements OnInit {
 
 
 
-    postulando = "POSTULADO"
+/*     postulando = "POSTULADO"
     postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria, email, telefo,pdf,) {
 
 
@@ -90,8 +99,8 @@ export class PerfilesPremiumComponent implements OnInit {
         })
 
     }
-
-
+ */
+/*
     ActulizarEstado(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria,email, telefo,pdf, ) {
 
       this.ofertaModelo._id = id;
@@ -111,7 +120,7 @@ export class PerfilesPremiumComponent implements OnInit {
 
      this.postular(id,nombre, apellido,descripcion,cedula,ciudad,direccion,categoria,email, telefo,pdf, )
     }
-
+ */
 
 
  buscarHoja( termino: string ) {
@@ -148,6 +157,37 @@ actualizarRating(formularios: Hojavida){
      Swal.fire(this.ofertaModelo.usuario.email, err.error.msg, 'error');
 
    })
+  }
+
+  calificando(id, user,email){
+
+    this.notification.title = this.usuario.email;
+    this.notification.detalle = "Empleador solicitando"
+    this.notification.uri = id;
+    this.notification.receiverHoja = id;
+    this.notification.receiver= user;
+    this.notification.trasmitter = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.notification.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.notification.view = false;
+
+    this.notification.emailHoja =  email;
+    this.notification.telefonoEmpleador = this.usuario.telefono;
+    this._notificationService
+      .create(this.notification, `calificacion`)
+      .subscribe(
+        (res) => {
+
+           Swal.fire(
+            'Perfíl contactado Exitosamente',
+            '',
+            'success'
+          );
+        },
+        (err) => {
+          console.error(err);
+          Swal.fire("Ya seleccionaste este perfíl",  "anteriormente", 'error');
+        }
+      );
   }
 
 }

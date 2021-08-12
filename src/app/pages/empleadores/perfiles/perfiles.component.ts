@@ -1,3 +1,4 @@
+import { CalificacionService } from './../../../services/calificacion.service';
 import { ContactoPostulanteService } from './../../../services/contacto-postulante.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Notification } from 'src/app/models/notification';
 import { GeneralService } from 'src/app/services/general.service';
 import { FormBuilder } from '@angular/forms';
+import { Calificacion } from 'src/app/models/calficacion.model';
 
 @Component({
   selector: 'app-perfiles',
@@ -20,14 +22,16 @@ import { FormBuilder } from '@angular/forms';
 export class PerfilesComponent implements OnInit {
 
   usuario: Usuario;
-  notification = new Notification();
+  notification = new  Calificacion();
+
+  notifications = new Array<Calificacion>();
   postulacionModelo = new Contacto();
   cargando = false;
   formularios: Hojavida[];
   ofertaModelo= new Hojavida();
   totalRegistros: number = 1;
   rate = 5;
-
+  newNotifications: number;
 
   public registerForm = this.fb.group({
 
@@ -38,7 +42,9 @@ export class PerfilesComponent implements OnInit {
     private listainforme :HojavidaService,
     private _contacto: ContactoPostulanteService,
     public _usuarioServices: UsuarioService,
-    private _notificationService: GeneralService,
+    private _notificationService: CalificacionService,
+
+
     private fb: FormBuilder,
     ) {
 
@@ -50,7 +56,8 @@ export class PerfilesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getFormulariosOfertas()
+    this.getFormulariosOfertas();
+    this.getNotificationsCalificacion();
   }
 
 
@@ -188,6 +195,59 @@ export class PerfilesComponent implements OnInit {
 
 }
 
+getNotificationsCalificacion() {
 
+
+
+  this.newNotifications = 0;
+  this._notificationService
+    .get(`calificacion?user_id=${this.usuario._id}`)
+    .subscribe(
+      (res) => {
+        this.notifications = res['data'];
+        console.log(res, 'mis calificaciones')
+        this.notifications.forEach((element) => {
+          if (!element.view) {
+            this.newNotifications += 1;
+          }
+        });
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+}
+
+calificando(id, user, email){
+
+  this.notification.title = this.usuario.email;
+  this.notification.detalle = "Empleador solicitando"
+  this.notification.uri = id;
+  this.notification.receiverHoja = id;
+  this.notification.receiver= user;
+  this.notification.trasmitter = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+  this.notification.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+  this.notification.view = false;
+
+
+  this.notification.emailHoja =  email;
+  this.notification.telefonoEmpleador = this.usuario.telefono;
+  this._notificationService
+    .create(this.notification, `calificacion`)
+    .subscribe(
+      (res) => {
+
+        Swal.fire(
+          'Perfíl contactado Exitosamente',
+          '',
+          'success'
+        );
+      },
+      (err) => {
+        console.error(err);
+        Swal.fire("Ya seleccionaste este perfíl",  "anteriormente", 'error');
+      }
+    );
+}
 
 }

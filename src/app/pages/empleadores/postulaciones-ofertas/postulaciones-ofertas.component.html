@@ -1,52 +1,123 @@
-
-  <div class=" container p-3 " class="col-sm">
-    <h3 align="center" id="color">POSTULACIÓN OFERTAS</h3>
+<div class=" container p-3 " class="col-sm">
+  <h3 align="center" id="color">POSTULACIÓN OFERTAS</h3>
 </div>
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-responsive btn-table table-hover  table-bordered tabla"  id="tableColor" >
-                <thead>
-                    <tr>
-                        <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
-                   
-                        <th scope="col" COLSPAN=1 style="background: azure">CORREO</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
-                        <th scope="col" COLSPAN=1 style="background: azure">VER HOJA DE VIDA</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let form of  formularios">
-                    <tr *ngFor="let post of  form.postulacion | paginate: { itemsPerPage: 10, currentPage: totalRegistros }; let i = index" >
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-responsive btn-table table-hover  table-bordered tabla" id="tableColor">
+        <thead>
+          <tr>
+            <th scope="col" COLSPAN=1 style="background: azure">Nº</th>
+
+            <th scope="col" COLSPAN=1 style="background: azure">CORREO</th>
+            <th scope="col" COLSPAN=1 style="background: azure">TELÉFONO</th>
+            <th scope="col" COLSPAN=1 style="background: azure">CATEGORIA</th>
+            <th scope="col" COLSPAN=1 style="background: azure">CALIFICACIÓN</th>
+            <th scope="col" COLSPAN=1 style="background: azure">VER HOJA DE VIDA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let post of  notifications | paginate: { itemsPerPage: 10, currentPage: totalRegistros }; let i = index">
 
 
 
-                        <td>{{i+1}}</td>
+            <td>{{i+1}}</td>
 
 
-                        <td> {{post.user.email }}</td>
+            <td> {{post.trasmitter.email }}</td>
 
-                        <td> {{post.user.telefono }}</td>
-                        <td> {{post.user.categorias }}</td>
-                       <td align="center">
+            <td> {{post.trasmitter.telefono }}</td>
+            <td> {{post.receiverHoja.categorias }}</td>
+            <td>
+              <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                data-target="#exampleModalCenter" style="width: 100px;height: 70;font-size: 50%;" (click)="calificar(post.receiverHoja._id)">
+                <b>CALIFICAR</b>
+              </button>
 
-
-                        <a type="button" class="btn btn-outline-primary"*ngIf="post.descripcion.urlPdf != null" href="{{post.descripcion.urlPdf}}"
-                        style="width: 100px;height: 70;font-size: 50%;"   target="_blank"
-                                                          ><b>VER HOJA DE VIDA</b></a>
-
-                       </td>
-
+            </td>
 
 
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <br>
-            <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
-        </div>
+            <td align="center">
+
+
+              <a type="button" class="btn btn-outline-primary" *ngIf="post.receiverHoja.urlPdf != null"
+                href="{{post.receiverHoja.urlPdf}}" style="width: 100px;height: 70;font-size: 50%;"
+                target="_blank"><b>VER HOJA DE VIDA</b></a>
+
+            </td>
+
+
+
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <pagination-controls (pageChange)="totalRegistros = $event"></pagination-controls>
     </div>
+  </div>
+
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#56c2c6"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: rgb(35, 192, 219)">Calificando...</p>
+</ngx-spinner>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">CALIFICA EL SERVICIO DE LOS POSTULANTES</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" id="rating-ability-wrapper"  >
+          <label class="control-label" for="rating">
+
+            <span class="field-label-info"></span>
+            <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required" >
+          </label>
+          <h2 class="bold rating-header">
+            <span class="selected-rating">0</span><small> / 5</small>
+          </h2>
+          <button  type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1" (click)="presionar(1)" >
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </button>
+          &nbsp;
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2"  (click)="presionar(2)">
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </button>
+          &nbsp;
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3"  (click)="presionar(3)">
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </button>
+          &nbsp;
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4"  (click)="presionar(4)">
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </button>
+          &nbsp;
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5" (click)="presionar(5)" >
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+
+      </div>
+    </div>
+  </div>
 </div>

@@ -25,36 +25,36 @@
 
                     <tbody>
                         <tr
-                            *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
+                            *ngFor="let form of  notifications | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
 
-                            <td> {{form.nombrePostulante}} {{form.apellidoPostulante}}</td>
+                            <td> {{form.receiverHoja.nombre}} {{form.receiverHoja.apellido}}</td>
                             <td>
-                                {{form.categoriaPostulante}}
+                                {{form.receiverHoja.categorias}}
                             </td>
                             <td>
-                                {{form.cedulaPostulante}}
+                                {{form.receiverHoja.cedula}}
                             </td>
                             <td>
-                                {{form.ciudadPostulante}}
+                                {{form.receiverHoja.ciudad}}
                             </td>
                             <td>
-                                {{form.direccionPostulante}}
+                                {{form.receiverHoja.direccion}}
                             </td>
                             <td>
-                                {{form.telefonoPostulante}}
+                                {{form.receiverHoja.telefonohoja}}
                             </td>
 
                             <td align="center">
 
 
-                                <a type="button" class="btn btn-outline-primary" *ngIf="form.urlPdf != null"
-                                    href="{{form.urlPdf}}" style="width: 100px;height: 70;font-size: 50%;"
+                                <a type="button" class="btn btn-outline-primary" *ngIf="form.receiverHoja.urlPdf != null"
+                                    href="{{form.receiverHoja.urlPdf}}" style="width: 100px;height: 70;font-size: 50%;"
                                     target="_blank"><b>VER HOJA DE VIDA</b></a>
-                                <span *ngIf="form.urlPdf == null">NO HAY HOJA DE VIDA</span>
+                                <span *ngIf="form.receiverHoja.urlPdf == null">NO HAY HOJA DE VIDA</span>
                             </td>
 
                             <td>
-                              <button (click)=" eliminar(form._id)" class="btn btn-danger">
+                              <button (click)=" eliminar(form)" class="btn btn-danger">
                                 <i class="fa fa-trash-o"></i>
                               </button>
                              </td>

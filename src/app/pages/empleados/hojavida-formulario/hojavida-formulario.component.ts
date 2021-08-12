@@ -541,8 +541,8 @@ export class HojavidaFormularioComponent implements OnInit {
       amount: "599",
       amountWithoutTax: "599",
       clientTransactionID: this.rand,
-      responseUrl: URL_SERVICIOS + "/#/dashboard/hojavida",
-      cancellationUrl: URL_SERVICIOS + "/#/dashboard/hojavida"
+      responseUrl: "https://com.jobandcare.app",
+      cancellationUrl: "https://com.jobandcare.app"
 
     }
 

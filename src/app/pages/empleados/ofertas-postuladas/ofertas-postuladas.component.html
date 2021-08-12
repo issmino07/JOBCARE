@@ -28,25 +28,25 @@
 
                     <tbody>
                         <tr
-                            *ngFor="let form of  formularios | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
+                            *ngFor="let form of  notifications | paginate: { itemsPerPage: 5, currentPage: totalRegistros }">
 
-                            <td> {{form.tituloEmpleo}} </td>
+                            <td> {{form.receiverOferta.tituloEmpleo}} </td>
 
-                            <td> {{form.salario|currency:'USD'}}</td>
-                            <td> {{form.telefonoEmpleador}} </td>
-                            <td> {{form.emailOfertante}} </td>
-                            <td>{{form.ciudad}}</td>
+                            <td> {{form.receiverOferta.valor|currency:'USD'}}</td>
+                            <td> {{form.receiverOferta.telefonoEmpleador}} </td>
+                            <td> {{form.receiverOferta.emailEmpleador}} </td>
+                            <td>{{form.receiverOferta.ciudad}}</td>
                            <td>
 
-                                <button type="button" class="btn btn-outline-primary" *ngIf="form.postulacion!= null"
+                                <button type="button" class="btn btn-outline-primary" *ngIf="form.uri!= null"
                     style="width: 80px;height: 65;font-size: 60%;"
-                    [routerLink]="['/dashboard/ofertaCompleta/',form.postulacion._id]" ><b>VER OFERTA</b></button>
+                    [routerLink]="['/dashboard/ofertaCompleta/',form.uri]" ><b>VER OFERTA</b></button>
 
-                    <span *ngIf="form.postulacion == null"  >OFERTA NO DISPONIBLE</span>
+                    <span *ngIf="form.uri == null"  >OFERTA NO DISPONIBLE</span>
                             </td>
 
                             <td>
-                              <button (click)=" eliminar(form._id)" class="btn btn-danger">
+                              <button (click)=" eliminar(form)" class="btn btn-danger">
                                 <i class="fa fa-trash-o"></i>
                               </button>
                              </td>

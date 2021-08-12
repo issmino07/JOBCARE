@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Usuario } from 'src/app/models/usuario.model';
-import { GeneralService } from 'src/app/services/general.service';
+//import { GeneralService } from 'src/app/services/general.service';
 
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Notification } from 'src/app/models/notification';
 import Swal from 'sweetalert2';
+import { CalificacionService } from 'src/app/services/calificacion.service';
 declare function customInitFunctions();
 @Component({
   selector: 'app-header',
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private _usuarioService: UsuarioService,
     private router: Router,
-    private _notificationService: GeneralService,
+    private _notificationService: CalificacionService,
   ) {
 
     customInitFunctions();
@@ -118,7 +119,7 @@ export class HeaderComponent implements OnInit {
   getNotifications() {
     this.newNotifications = 0;
     this._notificationService
-      .get(`notification?user_id=${this.usuario._id}`)
+      .get(`calificacion?user_id=${this.usuario._id}`)
       .subscribe(
         (res) => {
           this.notifications = res['data'];
@@ -142,7 +143,7 @@ export class HeaderComponent implements OnInit {
     } else {
       notification.view = true;
       this._notificationService
-        .updateOpcion(notification, `notification`)
+        .updateOpcion(notification, `calificacion`)
         .subscribe(
           (res) => {
             this.routerNavigate(notification);
@@ -181,7 +182,7 @@ export class HeaderComponent implements OnInit {
   }
 
   eliminar(notification: Notification){
-    this._notificationService.deleteOpcion(`notification/${notification._id}`)
+    this._notificationService.deleteOpcion(`calificacion/${notification._id}`)
     .subscribe( res => {
        console.log(res, 'se elimino')
     }, err => {

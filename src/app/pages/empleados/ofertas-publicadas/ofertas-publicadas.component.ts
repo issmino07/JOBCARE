@@ -12,6 +12,7 @@ import { Notification } from 'src/app/models/notification';
 import { HojavidaService } from 'src/app/services/hojavida.service';
 import { Mensaje } from 'src/app/models/mensaje';
 import { GeneralService } from 'src/app/services/general.service';
+import { Calificacion } from 'src/app/models/calficacion.model';
 
 
 
@@ -22,11 +23,11 @@ import { GeneralService } from 'src/app/services/general.service';
 })
 export class OfertasPublicadasComponent implements OnInit {
   usuario: Usuario;
-
+ // notification = new Calificacion();
   formulariosPostulacion: Postulacion[];
 
   postulacionModelo = new Postulacion();
-  notification = new Notification();
+  notification = new Calificacion();
   form: Postulacion[] = [];
   hojas:Hojavida[];
   formularios: Ofertas[];
@@ -229,6 +230,39 @@ export class OfertasPublicadasComponent implements OnInit {
 
   }
 
+  calificando(id, user,email){
+
+    this.notification.title = this.usuario.email;
+    this.notification.detalle = "Nueva postulación"
+    this.notification.uri = id;
+    this.notification.receiverOferta = id;
+    this.notification.receiverHoja = this.ID;
+    this.notification.receiver= user;
+    this.notification.trasmitter = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.notification.usuario = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+    this.notification.view = false;
+
+    this.notification.emailOfertante= email;
+    this.notification.urlPdfHoja = this.urlPdf;
+    this.notification.nombreEmpleado = this.nom
+    this.notification.telefonohoja = this.usuario.telefono
+    this._notificationService
+      .create(this.notification, `calificacion`)
+      .subscribe(
+        (res) => {
+
+          Swal.fire(
+            'Postulación Exitosa',
+            '',
+            'success'
+          );
+        },
+        (err) => {
+          console.error(err);
+          Swal.fire("Ya te postulaste a esta oferta",  "anteriormente", 'error');
+        }
+      );
+  }
 
 
 

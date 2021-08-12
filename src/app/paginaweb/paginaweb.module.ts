@@ -50,6 +50,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactoComponent } from './contacto/contacto.component';
 import { RegistroCapacitacionComponent } from './registro-capacitacion/registro-capacitacion.component';
 
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+
+export function playerFactory() {
+  return player;
+}
 
 
 
@@ -60,7 +67,7 @@ import { RegistroCapacitacionComponent } from './registro-capacitacion/registro-
 
     InicioComponent,
     HomeComponent,
- 
+
     FooterComponent,
     Home2Component,
     NineraComponent,
@@ -91,7 +98,7 @@ import { RegistroCapacitacionComponent } from './registro-capacitacion/registro-
     PaginawebComponent,
     ContactoComponent,
     RegistroCapacitacionComponent,
-   
+
   ],
   imports: [
     CommonModule,
@@ -107,7 +114,8 @@ import { RegistroCapacitacionComponent } from './registro-capacitacion/registro-
     PipesModule,
     BarRatingModule,
     RatingModule,
-    JoyrideModule.forRoot(), 
+    LottieModule.forRoot({ player: playerFactory }),
+    JoyrideModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
       libraries: ['places']
@@ -119,7 +127,7 @@ import { RegistroCapacitacionComponent } from './registro-capacitacion/registro-
     HeaderPaginaComponent,
     NineraComponent,
     HeaderPaginaComponent,
- 
+
   ]
 })
 export class PaginawebModule { }

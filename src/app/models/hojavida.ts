@@ -21,7 +21,7 @@ export class Hojavida {
       descripcionExperiencia: string;
       nivelEducacion: string;
       estado: string;
-      rating: number;
+      rating: string;
       usuario:Usuario;
       check: boolean;
       user: Usuario;
@@ -54,4 +54,5 @@ export class Hojavida {
       nivelIdioma:string
 
       estatus: string
+      comentario:string
 }

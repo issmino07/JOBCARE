@@ -56,7 +56,13 @@ import { CursosGeneralesComponent } from './capacitaciones/cursos-generales/curs
 import { CursosGeneralesCompradosComponent } from './capacitaciones/cursos-generales-comprados/cursos-generales-comprados.component';
 import { PerfilRegistroEmpleadorComponent } from './empleadores/perfil-registro-empleador/perfil-registro-empleador.component';
 
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 
+
+export function playerFactory() {
+  return player;
+}
 
 
 @NgModule({
@@ -126,6 +132,7 @@ import { PerfilRegistroEmpleadorComponent } from './empleadores/perfil-registro-
     NgxSpinnerModule,
     NgxStarRatingModule,
     BarRatingModule,
+    LottieModule.forRoot({ player: playerFactory }),
     ToastrModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXx41aKyQCxdHC7ixwG0rfOvmMAcvYJZk',
