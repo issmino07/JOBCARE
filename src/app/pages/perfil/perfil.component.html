@@ -5,7 +5,7 @@
               <h4 class="card-title">Perfil del Usuario</h4>
           <form ngNativeValidate class="form p-t-20" >
 
-                 
+
                   <div class="form-group">
                       <label for="exampleInputEmail1">Correo de usuario</label>
                       <div class="input-group">
@@ -17,7 +17,8 @@
 
                   <button type="submit" class="btn btn-primary waves-effect waves-light m-r-10" hidden>
                       <i class="fa fa-save"></i> Guardar</button>
-
+                      <button type="button" class="btn btn-primary waves-effect waves-light m-r-10"[routerLink]="['/dashboard/registroCompleto']" routerLinkActive="router-link-active" >
+                        <i class="fa fa-user-o"></i>&nbsp;PERFIL COMPLETO</button>
               </form>
           </div>
       </div>
@@ -37,5 +38,7 @@
               </div>
           </div>
   </div>
+
+
 </div>
 

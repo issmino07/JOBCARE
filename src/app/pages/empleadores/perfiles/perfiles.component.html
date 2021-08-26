@@ -20,8 +20,26 @@
                                         <div class="card">
                                             <div class="card-body">
 
-                                                <input #input (keyup)="buscarHoja( input.value )" type="text" class="form-control" placeholder="Buscar Perfiles...">
+                                              <!--   <input #input (keyup)="buscarHoja( input.value )" type="text" class="form-control" placeholder="Buscar Perfiles..."> -->
+                                              <div>
 
+                                                <select class="form-control text-uppercase has-dropdown" name="tipo" #input (change)="buscarHoja( input.value )">
+                                                  <option value="">TODAS LAS CATEGORIAS</option>
+                                                  <option value="NIÑERAS">NIÑERAS</option>
+                                                  <option value="CUIDADO ADULTO MAYOR">CUIDADO ADULTO MAYOR</option>
+                                                  <option value="SERVICIO DOMESTICO">SERVICIO DOMESTICO</option>
+                                                  <option value="CUIDADO DE MASCOTAS">CUIDADO DE MASCOTAS</option>
+                                                  <option value="CUIDADOS CAPACIDADES ESPECIALES">CUIDADOS CAPACIDADES ESPECIALES</option>
+                                                  <option value="TUTORIAS ESCOLARES">TUTORIAS ESCOLARES</option>
+                                                  <option value="TRABAJOS DEL HOGAR">TRABAJOS DEL HOGAR</option>
+                                                  <option value="ASISTENCIA AUTOMOTRIZ">ASISTENCIA AUTOMOTRIZ</option>
+                                                  <option value="MENSAJERIA">MENSAJERIA</option>
+                                                  <option value="SPA">SPA</option>
+                                                  <option value="OTROS">OTROS</option>
+                                                  <option value="PROFESIONALES TITULADOS">PROFESIONALES TITULADOS</option>
+                                                </select>
+
+                                              </div>
                                             </div>
                                         </div>
                                     </div>

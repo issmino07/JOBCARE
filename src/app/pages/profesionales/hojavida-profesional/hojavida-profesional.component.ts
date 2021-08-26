@@ -19,12 +19,13 @@ import { HojavidaService } from 'src/app/services/hojavida.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlanEmpleadosService } from 'src/app/services/plan-empleados.service';
 import { Hojavida } from 'src/app/models/hojavida';
-import { URL_SERVICIOS } from 'src/app/config/config';
+
 import { Planempleados } from 'src/app/models/planEmpleados';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DragdropService } from 'src/app/services/dragdrop.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-hojavida-profesional',
@@ -107,7 +108,7 @@ export class HojavidaProfesionalComponent implements OnInit {
     descripcionExperiencia: ['', [Validators.required]],
     cambioCiudad:['' ,[Validators.required]],
     dispoViaje:['' ,[Validators.required]],
-  
+
 
 
     nivelEducacion: [''],
@@ -134,7 +135,7 @@ export class HojavidaProfesionalComponent implements OnInit {
     empresaRef3: [''],
     telefonoRef3: [''],
     tipoplan: [''],
-   
+
     avatar: [null],
     urlPdf: [''],
     emailHoja:['']
@@ -177,7 +178,7 @@ export class HojavidaProfesionalComponent implements OnInit {
     this.getPlanOfertas()
     this.getFormulariosHoja()
 
- 
+
 
     this.getOpciones2();
     this.ciuadadesOpcion = new Array<Ciudad>();
@@ -372,16 +373,16 @@ export class HojavidaProfesionalComponent implements OnInit {
      this.notificacion.subscribe(resp => {
        this.getFormulariosHoja();
        console.log(resp, 'emiter')
- 
+
      })
      // this.getFormulariosHoja();
- 
+
      setTimeout(() => {
        window.location.reload()
      }, 5000);
- 
- 
-   }  
+
+
+   }
 
 
   update(): void {
@@ -409,7 +410,7 @@ export class HojavidaProfesionalComponent implements OnInit {
         console.log(this.formularios, 'esto llega')
         for (var form in result) {
           this.ID = result[form]._id
-      
+
           localStorage.setItem("idHoja",JSON.stringify(this.ID) )
           this.planregistrado = result[form].tipoplan
 //  Swal.fire("HOJA DE VIDA PUBLICADA CON EXITO", "Porque ya estas suscrito a uno de nuestros planes", "success")
@@ -418,7 +419,7 @@ export class HojavidaProfesionalComponent implements OnInit {
 
   //=================Actualiza el estado de la publicacion de la hoja de vida una vez que se realiza el pago ===//
 
- 
+
 
   actualizarpagina() {
     window.location.reload()
@@ -575,8 +576,8 @@ export class HojavidaProfesionalComponent implements OnInit {
       amount: "599",
       amountWithoutTax: "599",
       clientTransactionID: this.rand,
-      responseUrl: URL_SERVICIOS + "/#/dashboard/hojavida",
-      cancellationUrl: URL_SERVICIOS + "/#/dashboard/hojavida"
+      responseUrl: environment.URL_SERVICIOS + "/#/dashboard/hojavida",
+      cancellationUrl: environment.URL_SERVICIOS + "/#/dashboard/hojavida"
 
     }
 
@@ -603,8 +604,8 @@ export class HojavidaProfesionalComponent implements OnInit {
       amount: "999",
       amountWithoutTax: "999",
       clientTransactionID: this.rand,
-      responseUrl: URL_SERVICIOS + "/#/dashboard/hojavida",
-      cancellationUrl: URL_SERVICIOS + "/#/dashboard/hojavida"
+      responseUrl: environment.URL_SERVICIOS + "/#/dashboard/hojavida",
+      cancellationUrl: environment.URL_SERVICIOS + "/#/dashboard/hojavida"
 
     }
 
@@ -746,8 +747,8 @@ export class HojavidaProfesionalComponent implements OnInit {
 
     this.hojaModelo.estado = this.estado2;
     this.hojaModelo.tipoplan = this.planRegistro;
-   
- 
+
+
     this._hojavida.updateOpcion(this.hojaModelo)
       .subscribe(result => {
 
@@ -761,7 +762,7 @@ date
 fecha2
   cf(){
     this.date = new Date();
- 
+
    this.fecha2 =(this.date.getFullYear().toString() + '-' + ("0" + (this.date.getMonth() + 3)).slice(-2) + '-' + ("0" + (this.date.getDate() + 1)).slice(-2));
 
   }

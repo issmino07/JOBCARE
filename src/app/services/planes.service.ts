@@ -13,7 +13,6 @@ const httpBearer ={
   headers:new HttpHeaders({ 'Content-Type': 'application/json','Authorization': "Bearer t6pDUpNiA6ZzAG3AqQF8g8R6D6lVl_VVvnsY7wiokC6OAEGeNXxGnSPbXHZq2W0sj1gAumd5tpSjmPpcQamwe4I5DoYIcs78RHKnPs721jlmqNb3JryBmcuvysW5KOIqd_SZIWKO_ccX8arZEuQbhUR2KhncdMts0lYCayq9q2fxCTYg9urUlLvK2h34IsB0zEYa88RDAWQdKSrLuxtHc8j0oho0kb8zjlTdUbBa9M3DbB0LFt_d4h8p4mGkMF1phhDh_msDfNFg__6f52GyHkcyk4G396TGjynA1uWY-eQKfWd0YQ6dFC03Ffz4LwHDAaTQ5A"})
  }
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -57,27 +56,12 @@ export class PlanesService {
 
   pagar(data: any): Observable<any> {
 
-    return this.http.post(this.Url, data, httpBearer)  .pipe(
-      tap( (resp: any) => {
-        this.guardarLocalStorage( resp.token, resp.menu );
-      })
-    );
-  }
-
-  guardarLocalStorage( token: string, menu: any ) {
-
-    localStorage.setItem('token', token );
-    localStorage.setItem('menu', JSON.stringify(menu) );
-
+    return this.http.post(this.Url, data, httpBearer);
   }
 
   getPago(data:any): Observable<any>{
 
-    return this.http.post(this.UrlPago,data, httpBearer) .pipe(
-      tap( (resp: any) => {
-        this.guardarLocalStorage( resp.token, resp.menu );
-      })
-    );;
+    return this.http.post(this.UrlPago,data, httpBearer);
 
   }
 

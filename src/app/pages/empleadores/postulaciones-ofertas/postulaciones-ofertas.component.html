@@ -31,9 +31,11 @@
 
             <td> {{post.trasmitter.telefono }}</td>
             <td> {{post.receiverHoja.categorias }}</td>
+
             <td>
               <button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                data-target="#exampleModalCenter" style="width: 100px;height: 70;font-size: 50%;" (click)="calificar(post.receiverHoja._id)">
+                data-target="#exampleModalCenter" style="width: 100px;height: 70;font-size: 50%;"
+                (click)="calificar(post.receiverHoja._id)">
                 <b>CALIFICAR</b>
               </button>
 
@@ -60,14 +62,9 @@
     </div>
   </div>
 
-  <ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#56c2c6"
-  type="ball-scale-multiple"
->
-  <p style="font-size: 20px; color: rgb(35, 192, 219)">Calificando...</p>
-</ngx-spinner>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#56c2c6" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: rgb(35, 192, 219)">Calificando...</p>
+  </ngx-spinner>
 </div>
 
 
@@ -84,32 +81,54 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group" id="rating-ability-wrapper"  >
+
+        <div class="form-group has-success">
+
+          <form [formGroup]="registerForm">
+            <label class="control-label">CONTRATASTE:</label>
+            <br>
+            <span class="field-label-info">En caso de haber contratado seleccione si para calificar</span>
+            <select class="form-control custom-select" (change)="cal()" formControlName="contratado">
+              <option value="">SELECCIONE</option>
+              <option value="SI">SI</option>
+              <option value="NO">NO</option>
+
+            </select>
+          </form>
+
+          <small class="form-control-feedback"> </small>
+        </div>
+        <div class="form-group" id="rating-ability-wrapper" *ngIf="(dato ==='SI')" >
           <label class="control-label" for="rating">
 
             <span class="field-label-info"></span>
-            <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required" >
+            <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required">
           </label>
           <h2 class="bold rating-header">
             <span class="selected-rating">0</span><small> / 5</small>
           </h2>
-          <button  type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1" (click)="presionar(1)" >
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1"
+            (click)="presionar(1)">
             <i class="fa fa-star" aria-hidden="true"></i>
           </button>
           &nbsp;
-          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2"  (click)="presionar(2)">
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2"
+            (click)="presionar(2)">
             <i class="fa fa-star" aria-hidden="true"></i>
           </button>
           &nbsp;
-          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3"  (click)="presionar(3)">
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3"
+            (click)="presionar(3)">
             <i class="fa fa-star" aria-hidden="true"></i>
           </button>
           &nbsp;
-          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4"  (click)="presionar(4)">
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4"
+            (click)="presionar(4)">
             <i class="fa fa-star" aria-hidden="true"></i>
           </button>
           &nbsp;
-          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5" (click)="presionar(5)" >
+          <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5"
+            (click)="presionar(5)">
             <i class="fa fa-star" aria-hidden="true"></i>
           </button>
         </div>
@@ -120,4 +139,5 @@
       </div>
     </div>
   </div>
+
 </div>

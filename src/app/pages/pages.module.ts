@@ -58,6 +58,7 @@ import { PerfilRegistroEmpleadorComponent } from './empleadores/perfil-registro-
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { RegistroCompletoComponent } from './empleadores/registro-completo/registro-completo.component';
 
 
 export function playerFactory() {
@@ -108,7 +109,8 @@ export function playerFactory() {
     EditarOfertas2Component,
     CursosGeneralesComponent,
     CursosGeneralesCompradosComponent,
-    PerfilRegistroEmpleadorComponent
+    PerfilRegistroEmpleadorComponent,
+    RegistroCompletoComponent
   ],
 
   exports: [

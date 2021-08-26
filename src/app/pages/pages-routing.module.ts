@@ -45,6 +45,7 @@ import { EditarOfertas2Component } from './empleadores/editar-ofertas2/editar-of
 import { CursosGeneralesComponent } from './capacitaciones/cursos-generales/cursos-generales.component';
 import { CursosGeneralesCompradosComponent } from './capacitaciones/cursos-generales-comprados/cursos-generales-comprados.component';
 import { PerfilRegistroEmpleadorComponent } from './empleadores/perfil-registro-empleador/perfil-registro-empleador.component';
+import { RegistroCompletoComponent } from './empleadores/registro-completo/registro-completo.component';
 
 
 
@@ -54,8 +55,8 @@ const routes: Routes = [
     path: 'dashboard',
     component: PagesComponent,canActivate:[AdminGuard],
     children: [
-        { path: '', component: DashboardComponent, data:{ titulo: 'Dashboard'},canActivate:[AdminGuard] },
-        { path: 'admininico', component: AdmininicioComponent },
+        { path: '', component: DashboardComponent, data:{ titulo: 'Dashboard'}},
+        { path: 'admininico', component: AdmininicioComponent  },
         { path: 'admininico/:id', component: AdmininicioComponent },
         { path: 'account-settings', component: AccountSettingsComponent,  data:{ titulo: 'Temas'},canActivate:[AdminGuard] },
         { path: 'perfil', component: PerfilComponent,  data:{ titulo: 'Perfil'} },
@@ -104,8 +105,8 @@ const routes: Routes = [
         { path: 'cursosCompra', component: CursosGeneralesComponent,canActivate:[AdminGuard] },
         { path: 'cursosComprad', component: CursosGeneralesCompradosComponent,canActivate:[AdminGuard] },
         { path: 'registro', component: PerfilRegistroEmpleadorComponent,canActivate:[AdminGuard] },
-    
 
+        { path: 'registroCompleto', component: RegistroCompletoComponent,canActivate:[AdminGuard] },
 
       ]
 },

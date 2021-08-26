@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   base_url: 'http://localhost:4500/api',
-  imagenUrl: 'http://localhost:4500/api'
+  imagenUrl: 'http://localhost:4500/api',
+
+  URL_SERVICIOS : 'http://localhost:4200'
 // base_url: 'https://vmi336691.contaboserver.net/api'
 };
 

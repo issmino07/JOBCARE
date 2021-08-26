@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { URL_SERVICIOS } from 'src/app/config/config';
+
 import { Cursos } from 'src/app/models/cursos';
 import { CursosComprados } from 'src/app/models/cursosComprados';
 import { Usuario } from 'src/app/models/usuario.model';
@@ -8,6 +8,7 @@ import { CursosCompradosCompradosService } from 'src/app/services/cursos-comprad
 import { CursosService } from 'src/app/services/cursos.service';
 import { PlanesService } from 'src/app/services/planes.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -105,8 +106,8 @@ export class CursosEmpleadoresComponent implements OnInit {
       amount: this.resp,
       amountWithoutTax: this.resp,
       clientTransactionID: this.rand,
-      responseUrl: URL_SERVICIOS + "/#/dashboard/cursosEmpleadores",
-      cancellationUrl: URL_SERVICIOS + "/#/dashboard/cursosEmpleadores"
+      responseUrl: environment.URL_SERVICIOS + "/#/dashboard/cursosEmpleadores",
+      cancellationUrl: environment.URL_SERVICIOS + "/#/dashboard/cursosEmpleadores"
 
     }
 

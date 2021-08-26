@@ -2,7 +2,7 @@ import { Categoria } from 'src/app/models/categoria.model';
 import { CursosComprados } from './../../../models/cursosComprados';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { URL_SERVICIOS } from 'src/app/config/config';
+
 import { Cursos } from 'src/app/models/cursos';
 import { Usuario } from 'src/app/models/usuario.model';
 import { CursosCompradosCompradosService } from 'src/app/services/cursos-comprados.service';
@@ -10,6 +10,7 @@ import { CursosService } from 'src/app/services/cursos.service';
 import { PlanesService } from 'src/app/services/planes.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cursos-empleados',
@@ -109,8 +110,8 @@ export class CursosEmpleadosComponent implements OnInit {
       amount: this.resp,
       amountWithoutTax: this.resp,
       clientTransactionID: this.rand,
-      responseUrl: URL_SERVICIOS + "/#/dashboard/cursosEmpleados",
-      cancellationUrl: URL_SERVICIOS + "/#/dashboard/cursosEmpleados"
+      responseUrl: environment.URL_SERVICIOS + "/#/dashboard/cursosEmpleados",
+      cancellationUrl: environment.URL_SERVICIOS + "/#/dashboard/cursosEmpleados"
 
     }
 
@@ -180,7 +181,7 @@ datosCurso(titulo:string,categoria:string,descripcion: string,valor:string ){
   localStorage.setItem("categoria",categoria)
   localStorage.setItem("descripcion",descripcion)
   localStorage.setItem("valor",valor)
- 
+
 
 }
 

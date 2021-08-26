@@ -10,6 +10,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { HojavidaService } from 'src/app/services/hojavida.service';
 import { Hojavida } from 'src/app/models/hojavida';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormBuilder } from '@angular/forms';
 
 
 
@@ -31,12 +32,13 @@ export class PostulacionesOfertasComponent implements OnInit {
   newNotifications: number;
   ofertaModel1= new Hojavida();
 
-
   formularios: Ofertas[];
   ofertaModelo= new Ofertas();
   totalRegistros: number = 1;
 
-
+  public registerForm = this.fb.group({
+   contratado:['']
+  })
 
   constructor(
 
@@ -44,7 +46,8 @@ export class PostulacionesOfertasComponent implements OnInit {
     private _notificationService: CalificacionService,
     public _usuarioServices: UsuarioService,
     private listainforme :HojavidaService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private fb: FormBuilder
     ) {
 
       this.usuario = this._usuarioServices.usuario;
@@ -200,6 +203,7 @@ actualizarRating(n): void{
      resp => {
 
      Swal.fire("Perfil Calificado", "", "success")
+     this.registerForm.reset()
    console.log(resp);
    localStorage.removeItem('idHoja');
 
@@ -214,5 +218,21 @@ actualizarRating(n): void{
   }, 5000);
   localStorage.removeItem('rating');
   }
+dato: any
+cal(){
+   this.dato= this.registerForm.value.contratado
+   if(this.dato =='SI'){
+    Swal.fire("Confirmación de perfil contratado", "por favor califique recuerde que si no contrato su cuenta puede ser borrada", "success")
+   }else{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Solo calificas si contrataste!',
+
+    })
+   }
+
+}
+
 
 }

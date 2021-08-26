@@ -19,12 +19,13 @@ import { HojavidaService } from 'src/app/services/hojavida.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlanEmpleadosService } from 'src/app/services/plan-empleados.service';
 import { Hojavida } from 'src/app/models/hojavida';
-import { URL_SERVICIOS } from 'src/app/config/config';
+
 import { Planempleados } from 'src/app/models/planEmpleados';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DragdropService } from 'src/app/services/dragdrop.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-hojavida-formulario',
@@ -155,7 +156,11 @@ export class HojavidaFormularioComponent implements OnInit {
   type
 
   public notificacion = new EventEmitter<any>();
-  constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone, private spinner: NgxSpinnerService,
+  constructor(
+     private mapsAPILoader: MapsAPILoader,
+     private fb: FormBuilder,
+     private ngZone: NgZone,
+     private spinner: NgxSpinnerService,
     private opcionesServices: CategoriasService, private ciudadOpcion: CiudadesService, public _usuarioServices: UsuarioService,
     private _hojavida: HojavidaService, private router: Router, private planes2: PlanEmpleadosService, private sanitizer: DomSanitizer, private route: ActivatedRoute,
     public dragdropService: DragdropService, private toastr: ToastrService) {
@@ -541,8 +546,8 @@ export class HojavidaFormularioComponent implements OnInit {
       amount: "599",
       amountWithoutTax: "599",
       clientTransactionID: this.rand,
-      responseUrl: "https://com.jobandcare.app",
-      cancellationUrl: "https://com.jobandcare.app"
+      responseUrl:environment.URL_SERVICIOS + "/#/dashboard/hojavida",
+      cancellationUrl:environment.URL_SERVICIOS + "/#/dashboard/hojavida"
 
     }
 
@@ -569,8 +574,8 @@ export class HojavidaFormularioComponent implements OnInit {
       amount: "999",
       amountWithoutTax: "999",
       clientTransactionID: this.rand,
-      responseUrl: URL_SERVICIOS + "/#/dashboard/hojavida",
-      cancellationUrl: URL_SERVICIOS + "/#/dashboard/hojavida"
+      responseUrl: environment.URL_SERVICIOS + "/#/dashboard/hojavida",
+      cancellationUrl:environment.URL_SERVICIOS + "/#/dashboard/hojavida"
 
     }
 

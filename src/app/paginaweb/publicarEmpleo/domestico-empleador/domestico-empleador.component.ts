@@ -4,7 +4,7 @@ import { Component, ElementRef, NgZone, OnInit, ViewChild, } from '@angular/core
 
 import Stepper from 'bs-stepper';
 import { MapsAPILoader } from '@agm/core';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { VerificacionService } from 'src/app/services/verificacion.service';
@@ -100,14 +100,21 @@ export class DomesticoEmpleadorComponent implements OnInit {
 
 
 
-  constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,private spinner: NgxSpinnerService,
-    private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router,private joyride: JoyrideService,
-
-    private ngZone: NgZone) {
+  constructor(private ciudadOpcion: CiudadesService,
+     private mapsAPILoader: MapsAPILoader,
+     private fb: FormBuilder,
+     private spinner: NgxSpinnerService,
+     private verificar: VerificacionService,
+     private usuarioService: UsuarioService,
+     private router: Router,
+     private joyride: JoyrideService,
+     private ngZone: NgZone
+     )
+      {
     this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
     // this.to = new FormControl('', [Validators.required]);
     this.votes = this.votes || 0;
-  }
+      }
 
   ngOnInit(): void {
 
