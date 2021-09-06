@@ -8,12 +8,13 @@ export class Usuario {
 
     _id: string;
 
-    telefono: string;
+
     email: string;
     password:string;
-    clave: String;
-    img: string
-    role: string
+    telefono?: string;
+    clave?: String;
+    img?: string
+    role?: string
     provincia?:string;
     ciudad?:string;
     direccion?:string;

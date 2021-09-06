@@ -12,7 +12,7 @@ declare function customInitFunctions();
 })
 export class PagesComponent implements OnInit {
 
-
+  year = new Date().getFullYear();
   public linkTheme = document.querySelector('#theme');
 
   constructor( setting:SettingsService) {

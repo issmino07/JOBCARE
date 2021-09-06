@@ -107,7 +107,7 @@ const routes: Routes = [
         { path: 'registro', component: PerfilRegistroEmpleadorComponent,canActivate:[AdminGuard] },
 
         { path: 'registroCompleto', component: RegistroCompletoComponent,canActivate:[AdminGuard] },
-
+        { path: 'registroCompleto/:id', component: RegistroCompletoComponent,canActivate:[AdminGuard] },
       ]
 },
 

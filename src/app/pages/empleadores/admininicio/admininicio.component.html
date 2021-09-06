@@ -141,7 +141,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Provincias</label>
                                     <select name="Provincia" class="browser-default custom-select form-control"
-                                        [(ngModel)]="opcion" (change)="capturar()" formControlName="provincia"
+                                       formControlName="provincia"
                                         (change)="selectProvincia($event.target.value)">
                                         <option value="0">SELECCIONE UNA PROVINCIA</option>
                                         <option *ngFor="let prov of ciuadadesOpcion" value="{{prov.provincia}}">
@@ -153,7 +153,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Ciudad</label>
                                     <select name="Ciudad" class="browser-default custom-select form-control"
-                                        formControlName="ciudad" [(ngModel)]="opcion1" (change)="capturar1()">
+                                        formControlName="ciudad">
                                         <option value="0">SELECCIONE UNA CIUDAD</option>
                                         <option *ngFor="let canton of ciudad.cantones" value="{{canton}}">
                                             {{canton}}

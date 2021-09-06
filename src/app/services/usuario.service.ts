@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -17,14 +17,16 @@ import { SubirArchivoService } from './subir-archivo.service';
 
 const base_url = environment.base_url;
 
-
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-
+  private opcionesUrl2 =  environment.base_url + '/usuarios/registro/user';
   userLogin: Login;
   usuario: Usuario;
 
@@ -32,14 +34,18 @@ export class UsuarioService {
   menu: any[] = [];
 
   public auth2: any;
-
+id
   constructor( private http: HttpClient,
     private _subirArchivoService: SubirArchivoService,
                 private router: Router,
                 private ngZone: NgZone ) {
 
                   this.cargarStorage();
+
+     this.id = localStorage.getItem('id');
   }
+
+
 
   estaLogueado() {
     return ( localStorage.getItem('token') ) ? true : false;
@@ -171,6 +177,14 @@ export class UsuarioService {
   }
 
 
+  actualizarPerfil( data:Usuario, ) {
+
+
+
+    return this.http.put(`${ base_url }/usuarios/${ this.id }`, data, );
+
+  }
+
   cargarUsuarios1( desde: number = 0 ) {
 
     let url = environment.base_url+ '/usuarios?desde=' + desde;
@@ -197,4 +211,17 @@ export class UsuarioService {
   }
 
 
+
+  //Actualizaci[on de registro
+
+  getusuarioId(id: string): Observable<Usuario> {
+    const url = `${environment.base_url}/usuarios/${id}`;
+    return this.http.get<Usuario>(url);
+  }
+
+  updateOpcion (proveedor: Usuario): Observable<any> {
+
+  //  let url = `${ environment.base_url }/usuarios/registro`;
+    return this.http.put(this.opcionesUrl2, proveedor, httpOptions);
+  }
 }

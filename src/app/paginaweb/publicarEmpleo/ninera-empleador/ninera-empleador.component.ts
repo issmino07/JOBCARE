@@ -128,10 +128,17 @@ export class NineraEmpleadorComponent implements OnInit {
 
 
 
-  constructor(private ciudadOpcion: CiudadesService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder,private spinner: NgxSpinnerService,
-    private verificar: VerificacionService, private usuarioService: UsuarioService, private router: Router, private joyride: JoyrideService,
-
-    private ngZone: NgZone) {
+  constructor(
+    private ciudadOpcion: CiudadesService,
+    private mapsAPILoader: MapsAPILoader,
+    private fb: FormBuilder,
+    private spinner: NgxSpinnerService,
+    private verificar: VerificacionService,
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private joyride: JoyrideService,
+    private ngZone: NgZone
+    ) {
    // this.email = new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]);
     // this.to = new FormControl('', [Validators.required]);
     this.votes = this.votes || 0;

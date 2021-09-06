@@ -3,7 +3,7 @@ import { CategoriasService } from '../../../services/categorias.service';
 import { OfertaService } from '../../../services/oferta.service';
 import { Component, ElementRef, EventEmitter, NgZone, OnInit, ViewChild } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import Stepper from 'bs-stepper';
 import { Ofertas } from 'src/app/models/ofertas';
@@ -25,7 +25,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./admininicio.component.css']
 })
 export class AdmininicioComponent implements OnInit {
-
+  usuario: Usuario;
  plan :Plan[]
   formularios: Ofertas[];
   opcionesGenerales: Categoria[]
@@ -43,7 +43,7 @@ export class AdmininicioComponent implements OnInit {
   public formSubmitted = false;
   tipo = "Free";
   valor = "0.00";
-
+  registerForm : FormGroup
   planModelo = new Plan();
   ciuadadesOpcion: Ciudad[];
   ciudad: Ciudad;
@@ -66,41 +66,14 @@ export class AdmininicioComponent implements OnInit {
    }
 
 
-  public registerForm = this.fb.group({
-    tituloEmpleo: ['', [Validators.required]],
-    descripcionEmpleo: ['', [Validators.required]],
-    remuneracion: ['', [Validators.required]],
-    valor: ['', [Validators.required]],
-    horario: ['', [Validators.required]],
-    direccion: ['', [Validators.required]],
-    usuario:[''],
-    estado:[''],
-    categorias:[''],
-    provincia: ['', [Validators.required]],
-    ciudad: ['', [Validators.required]],
-    TipoPlan: [''],
-    emailEmpleador:[''],
-    telefonoEmpleador:['']
-  //  direccionmapa: ['', [Validators.required]],
-  //  lavado: ['',],
-  //  comida: ['',],
-  //  limpieza: ['',],
-  //  tareas: ['',],
-  //  fecha: ['', [Validators.required]],
 
-
-
-
-
-
-  })
 
   urlTree
   id
   type
 
   IDOFERTA
-  usuario: Usuario;
+
 
   public notificacion = new EventEmitter<any>();
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone,private spinner: NgxSpinnerService,
@@ -125,7 +98,38 @@ export class AdmininicioComponent implements OnInit {
     )
      }
 
+
+
   ngOnInit(){
+
+    this.registerForm = this.fb.group({
+      tituloEmpleo: ['', [Validators.required]],
+      descripcionEmpleo: ['', [Validators.required]],
+      remuneracion: ['', [Validators.required]],
+      valor: ['', [Validators.required]],
+      horario: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      usuario:[''],
+      estado:[''],
+      categorias:[this.usuario.categorias],
+      provincia: [this.usuario.provincia, [Validators.required]],
+      ciudad: [this.usuario.ciudad, [Validators.required]],
+      TipoPlan: [''],
+      emailEmpleador:[''],
+      telefonoEmpleador:['']
+    //  direccionmapa: ['', [Validators.required]],
+    //  lavado: ['',],
+    //  comida: ['',],
+    //  limpieza: ['',],
+    //  tareas: ['',],
+    //  fecha: ['', [Validators.required]],
+
+
+
+
+
+
+    })
     this.show1()
     this.cf()
 

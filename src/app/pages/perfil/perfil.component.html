@@ -17,7 +17,7 @@
 
                   <button type="submit" class="btn btn-primary waves-effect waves-light m-r-10" hidden>
                       <i class="fa fa-save"></i> Guardar</button>
-                      <button type="button" class="btn btn-primary waves-effect waves-light m-r-10"[routerLink]="['/dashboard/registroCompleto']" routerLinkActive="router-link-active" >
+                      <button *ngIf="(usuario.role ==='EMPLEADOR_ROLE')" type="button" class="btn btn-primary waves-effect waves-light m-r-10"[routerLink]="['/dashboard/registroCompleto/',usuario._id]" routerLinkActive="router-link-active" >
                         <i class="fa fa-user-o"></i>&nbsp;PERFIL COMPLETO</button>
               </form>
           </div>
