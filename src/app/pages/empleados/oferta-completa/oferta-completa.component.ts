@@ -1,6 +1,6 @@
 import { MapsAPILoader } from '@agm/core';
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Ofertas } from 'src/app/models/ofertas';
 
@@ -63,7 +63,7 @@ export class OfertaCompletaComponent implements OnInit {
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone, private route: ActivatedRoute,
      private oferta : OfertaService, private opcionesServices : CategoriasService,  private location: Location,
      private ciudadOpcion: CiudadesService) {
-     
+
 
       }
 
@@ -74,6 +74,10 @@ export class OfertaCompletaComponent implements OnInit {
       .subscribe(resp =>{
         this.ofertaModelo = resp
        console.log(resp,'ID OFERTA')
+      });
+
+      this.selected.valueChanges.subscribe(changes => {
+        this.Opciones(changes);
       });
 
       this.getOpciones1();
@@ -113,7 +117,7 @@ export class OfertaCompletaComponent implements OnInit {
     return this.ciudadOpcion.getOpciones()
       .subscribe(
         ciudades => {
-            console.log(ciudades);
+           
           this.ciuadadesOpcion = ciudades;
           if (this.ciuadadesOpcion.length > 0) {
             this.ciudad = this.ciuadadesOpcion[0];
@@ -133,7 +137,7 @@ export class OfertaCompletaComponent implements OnInit {
     return this.opcionesServices.getOpciones()
       .subscribe(
         opcionesGenerales => {
-          console.log(opcionesGenerales);
+
           this.opcionesGenerales = opcionesGenerales
         }
       );
@@ -215,6 +219,211 @@ export class OfertaCompletaComponent implements OnInit {
   atras(): void {
     this.location.back();
   }
+
+  //logica del formulario
+mostrar = false;
+mostrar2 = false;
+mostrar3 = false;
+mostrar4 = false;
+mostrar5 = false;
+mostrar6 = false;
+mostrar7 = false;
+mostrar8 = false;
+mostrar9 = false;
+mostrar10 = false;
+mostrar11 = false;
+mostrar12 = false;
+selected: FormControl = new FormControl(null);
+opc: any;
+
+
+Opciones(opc) {
+
+  this.opc;
+  if (opc == "NIÑERAS") {
+
+    this.opc = opc;
+    console.log(this.opc,'NIÑERAS');
+    this.mostrar = true
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 = false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  } else if (opc == "CUIDADO ADULTO MAYOR") {
+    console.log("CUIDADO ADULTO MAYOR");
+    this.opc = opc;
+    this.mostrar = false;
+    this.mostrar2 = true;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 = false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  } else if (opc == "SERVICIO DOMESTICO") {
+    console.log("SERVICIO DOMESTICO");
+    this.opc = opc;
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = true;
+    this.mostrar4 = false;
+    this.mostrar5 = false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  } else if (opc == "CUIDADO DE MASCOTAS") {
+    console.log("CUIDADO DE MASCOTAS");
+    this.opc = opc;
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = true;
+    this.mostrar5 = false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  } else if (opc == "CUIDADOS CAPACIDADES ESPECIALES") {
+    this.opc = opc;
+    console.log("CUIDADOS CAPACIDADES ESPECIALES");
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 = true;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  }
+  else if (opc == "TUTORIAS ESCOLARES") {
+    this.opc = opc;
+    console.log("TUTORIAS ESCOLARES");
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 = false;
+    this.mostrar6 = true;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  }else if (opc == "TRABAJOS DEL HOGAR") {
+    this.opc = opc;
+    console.log("TRABAJOS DEL HOGAR");
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 =false;
+    this.mostrar6 = false;
+    this.mostrar7 = true;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  }else if (opc == "ASISTENCIA AUTOMOTRIZ") {
+    this.opc = opc;
+    console.log("ASISTENCIA AUTOMOTRIZ");
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 = false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = true;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  }else if (opc == "MENSAJERIA") {
+    this.opc = opc;
+    console.log("MENSAJERIA");
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 =false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = true;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  }else if (opc == "SPA") {
+    this.opc = opc;
+    console.log("SPA");
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 = false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = true;
+    this.mostrar11 = false;
+    this.mostrar12 = false;
+  }else if (opc == "PROFESIONALES TITULADOS") {
+    this.opc = opc;
+    console.log("PROFESIONALES TITULADOS");
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 = false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = true;
+    this.mostrar12 = false;
+  }else if (opc == "OTROS") {
+    this.opc = opc;
+    console.log("OTROS");
+    this.mostrar = false;
+    this.mostrar2 = false;
+    this.mostrar3 = false;
+    this.mostrar4 = false;
+    this.mostrar5 = false;
+    this.mostrar6 = false;
+    this.mostrar7 = false;
+    this.mostrar8 = false;
+    this.mostrar9 = false;
+    this.mostrar10 = false;
+    this.mostrar11 = false;
+    this.mostrar12 = true;
+  }
+}
 }
 
 

@@ -1,18 +1,18 @@
 
  <nav class="navbar navbar-expand-lg navbar-dark static-top"style="background-color:">
     <div class="container">
- 
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
          <li class="nav-item"routerLinkActive="active">
         <button class="btn btn-circle" type="button" (click)="atras()"  >REGRESAR</button>
-     
+
           </li>
         </ul>
       </div>
     </div>
   </nav>
- 
+
  <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -22,7 +22,7 @@
             <div class="card-body">
                 <form [formGroup]="registerForm" >
                     <div class="form-body">
-                     
+
                         <hr>
                         <div class="row p-t-20">
                             <div class="col-md-6">
@@ -67,7 +67,7 @@
                                 <select [(ngModel)]="ofertaModelo.horario" formControlName="horario" class="form-control custom-select">
                                     <option value="Fijo">Fijo</option>
                                     <option value="Una Vez">Una Vez</option>
-                            
+
                                 </select>
                                 <small class="form-control-feedback"> </small>
                             </div>
@@ -77,7 +77,7 @@
                                 <label class="control-label">Categorias</label>
                                 <select [(ngModel)]="ofertaModelo.categorias"  class="form-control custom-select" data-placeholder="CATEGORIAS" tabindex="1"formControlName="categorias">
                                     <option *ngFor="let opcionesgenerales of opcionesGenerales" value="{{opcionesgenerales.categorias}}">{{opcionesgenerales.categorias}}</option>
-                                  
+
                                 </select>
                             </div>
                         </div>
@@ -103,10 +103,10 @@
                                           {{canton}}
                                         </option>
                                       </select>
-                          
+
                                 </div>
                             </div>
-                       
+
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -123,22 +123,22 @@
                                     (change)="updateEstado()">
                                         <option class="text" value="PUBLICADO">PUBLICADO</option>
                                         <option class="text"  value="NO PUBLICADO">NO PUBLICADO</option>
-                                  
+
                                     </select>
                                 </div>
                             </div>
                             <!--/span-->
                         </div>
                         <!--/row-->
-                       
-                     
+
+
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary"(click)="update()"><i class="fa fa-save"></i>ACTUALIZAR</button>
                         &nbsp;&nbsp;
                         <button type="submit" class="btn btn-danger"(click)="eliminar()"> <i class="fa fa-check"></i>ELIMINAR</button>
                     </div>
-                 
+
                 </form>
             </div>
         </div>

@@ -11,6 +11,8 @@ import { Categoria } from 'src/app/models/categoria.model';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { Ciudad } from 'src/app/models/ciudad.model';
 import { CiudadesService } from 'src/app/services/ciudades.service';
+import { Usuario } from 'src/app/models/usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 
 @Component({
@@ -19,7 +21,7 @@ import { CiudadesService } from 'src/app/services/ciudades.service';
   styleUrls: ['./editar-ofertas.component.css']
 })
 export class EditarOfertasComponent implements OnInit {
-
+  usuario: Usuario;
   ofertaModelo= new Ofertas();
   opcionesGenerales: Categoria[]
   latitude: number;
@@ -35,40 +37,44 @@ export class EditarOfertasComponent implements OnInit {
   ciuadadesOpcion: Ciudad[];
   ciudad: Ciudad;
 
-  public registerForm = this.fb.group({
-    tituloEmpleo: ['', [Validators.required]],
-    descripcionEmpleo: ['', [Validators.required]],
-    remuneracion: ['', [Validators.required]],
-    valor: ['', [Validators.required]],
-    horario: ['', [Validators.required]],
-    direccion: ['', [Validators.required]],
-    usuario:[''],
-    estado:[''],
-    categorias:[''],
-     provincia: ['', [Validators.required]],
-   ciudad: ['', [Validators.required]],
-  //  direccionmapa: ['', [Validators.required]],
-  //  lavado: ['',],
-  //  comida: ['',],
-  //  limpieza: ['',],
-  //  tareas: ['',],
-  //  fecha: ['', [Validators.required]],
 
-
-
-
-
-
-  })
 
   constructor(private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private ngZone: NgZone, private route: ActivatedRoute,
      private oferta : OfertaService, private opcionesServices : CategoriasService,  private location: Location,
-     private ciudadOpcion: CiudadesService) {
+     private ciudadOpcion: CiudadesService,
+     public _usuarioServices: UsuarioService,) {
 
-
+      this.usuario = this._usuarioServices.usuario;
       }
-
+      registerForm
   ngOnInit(): void {
+
+    this.registerForm = this.fb.group({
+      tituloEmpleo: ['', [Validators.required]],
+      descripcionEmpleo: ['', [Validators.required]],
+      remuneracion: ['', [Validators.required]],
+      valor: ['', [Validators.required]],
+      horario: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      usuario:[''],
+      estado:[''],
+      categorias:[this.usuario.categorias],
+       provincia: [this.usuario.provincia],
+     ciudad: [this.usuario.ciudad],
+    //  direccionmapa: ['', [Validators.required]],
+    //  lavado: ['',],
+    //  comida: ['',],
+    //  limpieza: ['',],
+    //  tareas: ['',],
+    //  fecha: ['', [Validators.required]],
+
+
+
+
+
+
+    })
+
 
     const id = this.route.snapshot.paramMap.get('id');
     this.oferta.getOfertasId(id)
@@ -104,7 +110,6 @@ export class EditarOfertasComponent implements OnInit {
 
 
   }
-
 
 
   getOpciones2() {
