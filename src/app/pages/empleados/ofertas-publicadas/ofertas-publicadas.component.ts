@@ -13,6 +13,7 @@ import { HojavidaService } from 'src/app/services/hojavida.service';
 import { Mensaje } from 'src/app/models/mensaje';
 import { GeneralService } from 'src/app/services/general.service';
 import { Calificacion } from 'src/app/models/calficacion.model';
+import { AnimationOptions } from 'ngx-lottie';
 
 
 
@@ -42,7 +43,9 @@ export class OfertasPublicadasComponent implements OnInit {
   mensajes: Array<Mensaje>;
   mensaje: Mensaje;
 
-
+  options: AnimationOptions = {
+    path: '/assets/premium-gold.json',
+  };
 
 
   constructor(

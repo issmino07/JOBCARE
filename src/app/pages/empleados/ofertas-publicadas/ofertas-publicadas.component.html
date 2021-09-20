@@ -75,7 +75,13 @@
                         <td>{{form.tituloEmpleo}}</td>
                         <td>${{form.valor}}</td>
 
-                        <td>{{form.categorias}}</td>
+                        <td>
+                          <div  *ngIf="(form.tipoPlan ==='Premium (3 meses)'|| form.tipoPlan ==='Premium (6 meses)')" >
+                          <ng-lottie [options]="options" width="20px" height="40px"></ng-lottie>
+                         </div>
+
+                          {{form.categorias}}
+                        </td>
                         <td>{{form.ciudad}}</td>
                         <td>
                             {{form.fechaReporte  | date:'dd-MM-yyyy'}}
